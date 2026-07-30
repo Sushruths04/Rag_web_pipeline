@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Secrets / local config
+.env
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Runtime data produced by the app
+production/data/runs/
+data/cache/
+
+# OS
+.DS_Store
+Thumbs.db

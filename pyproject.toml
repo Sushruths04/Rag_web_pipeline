@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag_gt"
+version = "9.2.0"
+description = "RAG Ground-Truth generation pipeline"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+    "pdfplumber",
+    "docling",
+    "PyMuPDF",
+    "python-docx",
+    "spacy",
+    "langchain-text-splitters>=0.2,<0.4",
+    "rapidfuzz",
+    "sentence-transformers>=2.7.0",
+    "torch",
+    "requests",
+    "loguru",
+    "pyyaml",
+    "tqdm",
+    "json-repair",
+    "python-dotenv",
+    "numpy",
+    "scikit-learn",
+    "faiss-cpu",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+    "rank_bm25>=0.2.2",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "pytest-cov>=4.1",
+]
+ragas = [
+    "ragas>=0.2.10,<0.3",
+    "datasets>=2.19",
+    "langchain-openai>=0.2",
+    "langchain-huggingface>=0.1",
+    "langchain-community>=0.3",
+]
+
+[project.scripts]
+rag-gt-generate = "rag_gt.cli.generate:main"
+rag-gt-evaluate = "rag_gt.cli.evaluate:main"
+rag-gt-compare = "rag_gt.cli.compare:main"
+rag-gt-cache-chunks = "rag_gt.cli.cache_chunks:main"
+rag-gt-retrieval-eval = "rag_gt.cli.retrieval_eval:main"
+rag-gt-build-fact-store = "rag_gt.cli.build_fact_store:main"
+rag-gt-retrieve-dense = "rag_gt.cli.retrieve_dense:main"
+rag-gt-sample-facts-for-audit = "rag_gt.cli.sample_facts_for_audit:main"
+rag-gt-score-audit = "rag_gt.cli.score_audit:main"
+rag-gt-validate-replacement = "rag_gt.cli.validate_replacement:main"
+rag-gt-build-comparison-report = "rag_gt.cli.build_comparison_report:main"
+rag-gt-retrieve-hybrid = "rag_gt.cli.retrieve_hybrid:main"
+rag-gt-build-master-report = "rag_gt.cli.build_master_report:main"
+rag-gt-retrieve-fact-anchored = "rag_gt.cli.retrieve_fact_anchored:main"
+rag-gt-retrieve-fact-indexed  = "rag_gt.cli.retrieve_fact_indexed:main"
+rag-gt-retrieve-from-cache    = "rag_gt.cli.retrieve_from_cache:main"
+rag-gt-audit-gt-quality       = "rag_gt.cli.audit_gt_quality:main"
+rag-gt-summarize              = "rag_gt.cli.summarize_gt:main"
+rag-gt-compress-retrieval     = "rag_gt.cli.compress_retrieval:main"
+rag-gt-map-facts-to-chunks    = "rag_gt.cli.map_facts_to_chunks:main"
+rag-gt-adaptive-topk          = "rag_gt.cli.adaptive_topk:main"
+rag-gt-generate-answers-from-retrieval = "rag_gt.cli.generate_answers_from_retrieval:main"
+rag-gt-build-pipeline-dashboard = "rag_gt.cli.build_pipeline_dashboard:main"
+rag-gt-diagnose-pipeline = "rag_gt.cli.diagnose_pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+markers = [
+    "live_llm: requires a reachable LLM endpoint; skipped by default. Opt in with `pytest -m live_llm`.",
+]
+# Live-LLM tests are skipped by tests/conftest.py unless explicitly selected
+# with `pytest -m live_llm` or `pytest --run-live-llm`.
