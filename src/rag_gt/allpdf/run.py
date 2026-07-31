@@ -44,7 +44,7 @@ def _discover(args) -> List[Tuple[str, str]]:
 
 
 def run_pipeline(
-    docs: List[Tuple[str, str]], out_dir: str, docling_page_cap: int = 8
+    docs: List[Tuple[str, str]], out_dir: str, docling_page_cap: int = 60
 ) -> dict:
     out = Path(out_dir)
     ckpt = out / "checkpoints"
@@ -96,6 +96,14 @@ def run_pipeline(
               lambda: all(s["n_units"] > 0 for s, p in zip(ingests, profiles) if not p["scanned"]))
     g1.expect("all ok docs: chars>0 (non-scanned)",
               lambda: all(s["char_count"] > 0 for s, p in zip(ingests, profiles) if not p["scanned"]))
+    g1.expect(
+        "all ok docs: pages_covered>=90% of page_count (non-scanned)",
+        lambda: all(
+            s["pages_covered"] >= 0.9 * p["page_count"]
+            for s, p in zip(ingests, profiles) if not p["scanned"]
+        ),
+        "catches silent truncation (e.g. docling_page_cap slicing) before it ships",
+    )
     g2.expect("every ok doc has chunks>0", lambda: all(s["n_chunks"] > 0 for s in chunks))
     g2.expect(">=3 chunking strategies used", lambda: len({s["strategy"] for s in chunks}) >= 3)
 
@@ -155,7 +163,7 @@ def main() -> int:
     ap.add_argument("--input", help="PDF file or directory of PDFs")
     ap.add_argument("--manifest", help="corpus_manifest.json")
     ap.add_argument("--out-dir", default=None)
-    ap.add_argument("--docling-page-cap", type=int, default=8)
+    ap.add_argument("--docling-page-cap", type=int, default=60)
     args = ap.parse_args()
     if not args.input and not args.manifest:
         raise SystemExit("provide --input or --manifest")

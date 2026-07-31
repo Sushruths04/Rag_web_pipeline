@@ -105,12 +105,23 @@ def ingest_document(
         and profile.page_count > docling_page_cap
         and backend == BACKEND_DOCLING_TABLE
     ):
-        # Bound the table path on big docs to a window; OCR docs are usually small.
-        page_range = (1, min(docling_page_cap, profile.page_count))
-        notes.append(
-            f"docling_table bounded to pages {page_range} "
-            f"(doc has {profile.page_count}; full run uses same path)"
+        # Doc exceeds the bound: fall back to legacy extraction for the FULL
+        # document rather than truncating to a window and still running
+        # Docling on it. Slicing-then-Docling silently drops every page past
+        # the cap (e.g. a 144-page report would only ever ingest its front
+        # matter) with no signal reaching the caller. Legacy loses table
+        # cell/row/column structure but covers every page, which is the
+        # documented contract for this cap.
+        msg = (
+            f"{doc_id}: {profile.page_count} pages > docling_page_cap="
+            f"{docling_page_cap}; falling back to legacy extraction for full "
+            f"page coverage (docling table-structure skipped to bound "
+            f"runtime/memory on this document)"
         )
+        logger.warning(f"[ingest] {msg}")
+        notes.append(msg)
+        backend = BACKEND_LEGACY
+        want_docling = False
 
     if want_docling:
         try:

@@ -510,7 +510,7 @@ def run_doc_pipeline(
     min_page_gap: int = 1,
     score_necessity: bool = False,
     llm_chunk_cap: int = 80,
-    docling_page_cap: int = 8,
+    docling_page_cap: int = 60,
     seed: int = 42,
     extract_only: bool = False,
     extract_workers: Optional[int] = None,
@@ -546,6 +546,11 @@ def run_doc_pipeline(
     save_checkpoint(ingest.summary(), str(ckpt / "s1_ingest.json"))
     g1.check("units>0", ingest.n_units > 0 or profile.scanned)
     g1.check("chars>0", ingest.char_count > 0 or profile.scanned)
+    g1.check(
+        "pages_covered>=90% of page_count",
+        profile.scanned or ingest.pages_covered >= 0.9 * profile.page_count,
+        f"covered {ingest.pages_covered}/{profile.page_count} pages",
+    )
     logger.info(g1.report())
     _mark("s1_ingest")
 
@@ -874,7 +879,7 @@ def main() -> int:
                     help="Run Stages 0-4 with LLM then stop (writes s4_facts). "
                          "Per-chunk extraction is cached, so re-running resumes; "
                          "use scripts/resume_from_s4.py for Stages 5-7.")
-    ap.add_argument("--docling-page-cap", type=int, default=8)
+    ap.add_argument("--docling-page-cap", type=int, default=60)
     ap.add_argument("--seed", type=int, default=42)
     args = ap.parse_args()
 

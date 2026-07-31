@@ -43,7 +43,7 @@ def run_and_evaluate(
     target_chains: int = 8,
     chain_depth: int = 2,
     llm_chunk_cap: int = 30,
-    docling_page_cap: int = 8,
+    docling_page_cap: int = 60,
     seed: int = 42,
 ) -> dict:
     """Run pipeline + Stage 10 evaluation for one document."""
@@ -100,7 +100,7 @@ def run_corpus(
     target_chains: int = 8,
     chain_depth: int = 2,
     llm_chunk_cap: int = 30,
-    docling_page_cap: int = 8,
+    docling_page_cap: int = 60,
 ) -> dict:
     """Run the pipeline on every doc in the corpus and collect results."""
     out = Path(out_dir)
@@ -195,7 +195,7 @@ def main() -> int:
     ap.add_argument("--target-chains", type=int, default=8)
     ap.add_argument("--chain-depth", type=int, default=2)
     ap.add_argument("--llm-chunk-cap", type=int, default=30)
-    ap.add_argument("--docling-page-cap", type=int, default=8)
+    ap.add_argument("--docling-page-cap", type=int, default=60)
     ap.add_argument("--doc-ids", nargs="+", help="Subset of docs to run (default: all)")
     args = ap.parse_args()
 
