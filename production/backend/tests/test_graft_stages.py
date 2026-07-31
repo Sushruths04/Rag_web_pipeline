@@ -130,6 +130,75 @@ def test_traced_llm_spans_and_budget(tmp_path):
             llm.generate("more " * 200)
 
 
+def test_traced_llm_live_mode_requires_explicit_prices(tmp_path):
+    """A live run with unset prices must fail loudly, not report $0 cost."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, LivePricingRequired, TracedLLM
+
+    class FakeLLM:
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "answer"
+
+    ctx = StageContext(
+        "r1", "qagen", tmp_path,
+        {"llm_mode": "live"},  # no price_in_per_mtok / price_out_per_mtok
+        lambda *a, **k: None, threading.Event(),
+    )
+    budget = CostBudget(max_cost_usd=5.0)
+
+    with pytest.raises(LivePricingRequired, match="price_in_per_mtok, price_out_per_mtok"):
+        TracedLLM(FakeLLM(), ctx, "gt", budget)
+
+
+def test_traced_llm_live_mode_accepts_explicit_zero_price(tmp_path):
+    """Explicit 0.0 (genuinely free endpoint) is a deliberate choice, not a default."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, TracedLLM
+
+    class FakeLLM:
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "answer"
+
+    ctx = StageContext(
+        "r1", "qagen", tmp_path,
+        {"llm_mode": "live", "price_in_per_mtok": 0.0, "price_out_per_mtok": 0.0},
+        lambda *a, **k: None, threading.Event(),
+    )
+    budget = CostBudget(max_cost_usd=5.0)
+    llm = TracedLLM(FakeLLM(), ctx, "gt", budget)
+
+    llm.generate("hello")
+    assert budget.spent == 0.0
+
+
+def test_traced_llm_import_mode_does_not_require_prices(tmp_path):
+    """The guard is scoped to llm_mode=live; import-mode direct construction
+    (as other tests in this file do) must not start requiring prices too."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, TracedLLM
+
+    class FakeLLM:
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "answer"
+
+    ctx = StageContext(
+        "r1", "qagen", tmp_path,
+        {},  # no llm_mode, no prices
+        lambda *a, **k: None, threading.Event(),
+    )
+    budget = CostBudget(max_cost_usd=5.0)
+    llm = TracedLLM(FakeLLM(), ctx, "gt", budget)  # must not raise
+
+    llm.generate("hello")
+    assert budget.spent == 0.0
+
+
 def test_reranker_orders_by_cross_encoder_score():
     from app.ragengine.rerank import Reranker
 

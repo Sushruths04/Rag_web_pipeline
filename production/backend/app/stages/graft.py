@@ -273,6 +273,18 @@ class CostBudget:
 _PAYLOAD_CAP = 4000  # chars of prompt/output stored per span
 
 
+class LivePricingRequired(RuntimeError):
+    """Raised when a live-mode LLM call starts without explicit per-token pricing.
+
+    Defaulting price_in_per_mtok/price_out_per_mtok to 0.0 would make every
+    live run "look free" in cost metrics while real API spend accrues against
+    max_cost_usd — fail loudly instead, matching the rest of this codebase's
+    convention of surfacing unknown pricing (see the "unknown" price-table
+    entry and `price_unknown` flag in `rag_gt.comparison.cost_tracker`)
+    rather than silently guessing a number.
+    """
+
+
 class TracedLLM:
     """Wraps the rag_gt `LLM` protocol; one `llm` span per generate() call."""
 
@@ -281,8 +293,28 @@ class TracedLLM:
         self._ctx = ctx
         self._role = role
         self._budget = budget
-        self._price_in = float(ctx.config.get("price_in_per_mtok", 0.0))
-        self._price_out = float(ctx.config.get("price_out_per_mtok", 0.0))
+        live = ctx.config.get("llm_mode", "import") == "live"
+        price_in = ctx.config.get("price_in_per_mtok")
+        price_out = ctx.config.get("price_out_per_mtok")
+        if live and (price_in is None or price_out is None):
+            missing = [
+                name
+                for name, val in (
+                    ("price_in_per_mtok", price_in),
+                    ("price_out_per_mtok", price_out),
+                )
+                if val is None
+            ]
+            raise LivePricingRequired(
+                f"llm_mode=live requires {', '.join(missing)} to be set "
+                "explicitly in the run config (USD per 1,000,000 tokens) — "
+                "otherwise cost metrics silently read as $0 while real API "
+                "spend accrues against max_cost_usd. Pass both fields in the "
+                "run config before starting a live run (use 0.0 explicitly "
+                "if the endpoint is genuinely free)."
+            )
+        self._price_in = float(price_in) if price_in is not None else 0.0
+        self._price_out = float(price_out) if price_out is not None else 0.0
 
     def generate(self, prompt: str, temperature: float = 0.0, max_tokens: int = 512) -> str:
         with self._ctx.span(

@@ -65,6 +65,11 @@ cp .env.example .env
 # Ollama equivalents if you're running a local model)
 ```
 
+Note: if `RAG_LLM_CHAT_MODEL` is also set in `.env`, it wins for every role and
+`API_GT_MODEL`/`API_ANSWER_MODEL` are ignored — see `get_llm()` in
+`src/rag_gt/core/llm.py`. Leave `RAG_LLM_CHAT_MODEL` blank to use separate
+gt/answer models.
+
 ## 4. Run it
 
 Two processes, in two terminals.
