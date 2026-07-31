@@ -1,0 +1,183 @@
+# RAG_GT Pipeline V9.2 -- Pipeline hyperparameters. Tune these, not .env.
+#
+# Canonical location: configs/config.yaml.
+# `core.config.load_config` searches this path first. The repo-root
+# `config.yaml` was a legacy mirror that drifted from this file across four
+# keys (min_fact_length, min_cosine, depth_distribution, reject_stitched_patterns).
+# It has been removed; this file is the single source of truth.
+
+chunking:
+  default_chunk_size: 512
+  default_overlap:    64
+
+fact_extraction:
+  min_fact_length:    20      # was 40 in old configs/; 20 retains short clauses
+  max_fact_length:    300
+  quality_threshold:  0.5
+
+fact_domain_filter:
+  enabled: true               # drop references/captions/source artifacts before graph construction
+  doc_page_excludes:
+    Computer-Networking-Principles-Bonaventure_f:
+      - [1, 8]                # title/license/TOC/preface/contributor front matter
+      - [255, 9999]           # bibliography/index/end matter in this source PDF
+    requirementsengi:
+      - [1, 18]               # author bios, foreword, contributors, TOC/glossary front matter
+      - [149, 9999]           # references/index/end matter in this source PDF
+    SuttonBartoIPRLBook2ndEd:
+      - [1, 12]               # front matter / acknowledgements
+      - [315, 9999]           # references/index pages in this source PDF
+
+chain_quality:
+  enabled: true               # reject weak multi-hop chains before question generation
+  max_page_gap: 40            # require local/bridged evidence; far-page hops need a future explicit bridge gate
+
+span_normalization:
+  fuzzy_threshold:    85
+  iou_tau_recall:     0.30
+  iou_tau_precision:  0.50
+
+profiling:
+  enable_folder_heuristic: true
+
+ingestion:
+  enable_docx: false            # PDFs primary; DOCX opt-in
+  pdf_backend: "legacy"         # production default: pdfplumber/PyMuPDF
+  docling_export_format: "markdown"
+  docling_do_ocr: false         # text PDFs should not pay OCR memory cost
+  docling_do_table_structure: false
+  docling_batch_size: 1          # lower memory for long PDFs
+  docling_page_range_size: 20    # convert long PDFs in bounded page windows
+  docling_min_text_chars: 1000
+  docling_min_text_file_ratio: 0.05
+
+vectorstore:
+  backend:                  "faiss"   # or "sklearn"
+  embedding_model:          "BAAI/bge-base-en-v1.5"
+  persist_dir:              "data/cache/embeddings"
+  cluster_method:           "agglomerative"
+  cluster_cosine_threshold: 0.55
+
+multihop:
+  min_cosine:         0.55                    # stricter coherence threshold
+  role_bias:          true
+  depth_distribution: {1: 0.60, 2: 0.40, 3: 0.00}   # favour yield: 6 single-hop, 4 two-hop per 10
+  n_chains_oversample: 6
+
+performance:
+  max_concurrent_llm_calls:      8           # 8 for remote API; drop to 4 on Ollama
+  max_concurrent_minimality_loo: 4
+  answer_cache_path:             "data/cache/answer_cache.db"
+
+validation:
+  fuzz_match_threshold:          85
+  nli_entailment_threshold:      0.70
+  nli_gt_consistency_threshold:  0.65
+  nli_batch_size:                16
+  min_answer_length:             15
+  enable_minimality_check:       true
+  enable_nli_checks:             true
+  persist_answer_cache:          true
+  min_gt_quality:                0.70
+
+question_generation:
+  num_tries:           3
+  min_question_length: 15
+  output_buffer_multiplier: 1.25      # --n_questions 60 targets up to 75 validated rows
+  candidate_submit_multiplier: 4      # submit extra LLM candidates before filtering
+  reject_stitched_patterns:
+    - ", and "
+    - "; what "
+    - "? what "
+    - "? how "
+    - "? why "
+  semantic_duplicate_threshold: 0.92
+  progress_every: 25
+  max_wall_minutes: 0          # 0 disables; CLI can set a hard run budget
+
+# Stage C: answer-first generation from verified cross-page bridge pairs.
+# These are explicit experiment parameters; CLI flags may override the three
+# NLI thresholds and concurrency for a particular run.
+answer_first:
+  clause_entailment_min: 0.65
+  single_fact_answer_max: 0.50
+  joint_answer_min: 0.85
+  min_clause_chars: 8
+  min_question_chars: 12
+  generation_attempts: 2
+  question_generation_attempts: 3   # v2 cluster question call only (cheap, bridge-hiding is hard)
+  temperature_initial: 0.0
+  temperature_retry: 0.2
+  bridge_max_tokens: 384
+  single_max_tokens: 192
+  progress_every: 25
+  # Human-readable document names injected into the QA prompts so questions
+  # anchor to the real document ("in ISO 3834") instead of leaking dataset
+  # phrases ("in this document", "the provided fact"). Data-driven: a new corpus
+  # just adds a line. Missing ids fall back to "the source document".
+  doc_display_names:
+    sutton_rl_full: "the Reinforcement Learning book (Sutton & Barto)"
+    din_iso_6507_vickers_full: "ISO 6507 (Vickers hardness test)"
+    requirements_eng_full: "the Requirements Engineering book"
+    ecma404_json_full: "the ECMA-404 JSON standard"
+    din_iso_15609_welding_procedure_full: "ISO 15609 (welding procedure specification)"
+    din_iso_3834_welding_quality_full: "ISO 3834 (welding quality requirements)"
+    bonaventure_net_full: "the Computer Networking book"
+
+# Stage D: deterministic-first validation of answer-first bridge QA.
+bridge_verifier:
+  duplicate_jaccard_max: 0.60
+  mutual_entailment_min: 0.85
+  borderline_margin: 0.05
+  use_llm_borderline: true
+  judge_temperature: 0.0
+  judge_max_tokens: 192
+
+# Stage E: multi-gold retrieval evaluation and standalone HTML report.
+multigold_evaluation:
+  retrievers: [bm25, dense, hybrid, hybrid_rerank, bridge_rerank, decompose]
+  top_k_values: [1, 3, 5, 10]
+  match_overlap_min: 0.60
+  rrf_k: 60
+  embedding_batch_size: 64
+  report_snippet_chars: 280
+  bbox_fuzzy_alignment_min: 0.75
+  reranker_model: "BAAI/bge-reranker-base"
+  reranker_candidate_k: 30
+  reranker_batch_size: 64
+  bridge_reranker_weights:
+    relevance: 0.65
+    novelty: 0.15
+    query_coverage: 0.10
+    page_diversity: 0.10
+
+llm_options:
+  temperature_gt:     0.1
+  temperature_answer: 0.0
+  num_ctx:            4096
+  num_predict:        2048
+  num_predict_question: 512        # reasoning models may deliberate before emitting the final question
+  num_predict_answer: 768           # Phase 3.2: was hard-coded 256 in answers.py;
+                                    # too small for any non-trivial multi-hop answer
+                                    # and catastrophic for reasoning models that
+                                    # emit visible CoT before the answer.
+  repeat_penalty:     1.1
+
+legacy:
+  use_random_sampler: false      # rollback switch for multi-hop sampler
+
+v13_qrsg:
+  enabled: false                     # opt in with RAG_GT_QRSG_ENABLED=true for v13 runs
+  gate_version: "v1"
+  llm_role: "answer"                 # Mistral is more JSON-stable than the reasoning-heavy GT model
+  max_tokens: 2048
+  cache_path: "data/cache/qrsg_cache.db"
+  candidate_submit_multiplier: 4     # used only when QRSG is enabled
+  c3_score_threshold: 0.7        # C3: facts with score < this are hard-rejected (known=True only)
+  reject_unknown_self_containment: false  # C3: false = warn-only for unscored facts (v14+ to flip)
+
+# v16 PASS-GT feature flags (detailed config lives in configs/v16.yaml).
+# This stanza controls top-level enablement; v16.yaml holds per-primitive thresholds.
+v16:
+  enabled: false          # enabled by --v16 CLI flag or RAG_GT_V16=true
+  config_path: "configs/v16.yaml"

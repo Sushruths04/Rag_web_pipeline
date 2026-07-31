@@ -1,0 +1,6702 @@
+{
+  "pairs": [
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000049",
+      "fact_b": "din_iso_15609_welding_procedure_F000065",
+      "bridge_entity": "ISO 15607",
+      "bridge_norm": "iso 15607",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0001"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000055",
+      "fact_b": "din_iso_15609_welding_procedure_F000065",
+      "bridge_entity": "ISO 15607",
+      "bridge_norm": "iso 15607",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0002"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000027",
+      "fact_b": "ecma404_json_F000070",
+      "bridge_entity": "IEC 10646",
+      "bridge_norm": "iec 10646",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        9,
+        12
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0003"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000013",
+      "fact_b": "din_iso_3834_welding_quality_F000032",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        11,
+        12
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0004"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000033",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        12
+      ],
+      "content_jaccard": 0.074,
+      "pair_id": "BP0005"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000025",
+      "fact_b": "din_iso_3834_welding_quality_F000033",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        11,
+        12
+      ],
+      "content_jaccard": 0.087,
+      "pair_id": "BP0006"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000013",
+      "fact_b": "din_iso_3834_welding_quality_F000033",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        11,
+        12
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0007"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000032",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        12
+      ],
+      "content_jaccard": 0.136,
+      "pair_id": "BP0008"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000025",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.143,
+      "pair_id": "BP0009"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000025",
+      "fact_b": "din_iso_3834_welding_quality_F000032",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        11,
+        12
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0010"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000042",
+      "fact_b": "din_iso_15609_welding_procedure_F000049",
+      "bridge_entity": "ISO 15609",
+      "bridge_norm": "iso 15609",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        8,
+        10
+      ],
+      "content_jaccard": 0.2,
+      "pair_id": "BP0011"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000013",
+      "bridge_entity": "ISO 3834",
+      "bridge_norm": "iso 3834",
+      "bridge_type": "STANDARD_REF",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.45,
+      "pair_id": "BP0012"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000725",
+      "fact_b": "sutton_rl_F000966",
+      "bridge_entity": "full reinforcement learning problem",
+      "bridge_norm": "full reinforcement learning problem",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        61
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0013"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000725",
+      "fact_b": "sutton_rl_F000967",
+      "bridge_entity": "full reinforcement learning problem",
+      "bridge_norm": "full reinforcement learning problem",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        61
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0014"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000044",
+      "fact_b": "din_iso_15609_welding_procedure_F000048",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        10
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0015"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000044",
+      "fact_b": "din_iso_15609_welding_procedure_F000063",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0016"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000044",
+      "fact_b": "din_iso_15609_welding_procedure_F000120",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0017"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000044",
+      "fact_b": "din_iso_15609_welding_procedure_F000122",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0018"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000048",
+      "fact_b": "din_iso_15609_welding_procedure_F000063",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0019"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000048",
+      "fact_b": "din_iso_15609_welding_procedure_F000120",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0020"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000048",
+      "fact_b": "din_iso_15609_welding_procedure_F000122",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0021"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000063",
+      "fact_b": "din_iso_15609_welding_procedure_F000120",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0022"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000063",
+      "fact_b": "din_iso_15609_welding_procedure_F000122",
+      "bridge_entity": "welding procedure specifications",
+      "bridge_norm": "welding procedure specification",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        14
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0023"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000966",
+      "fact_b": "sutton_rl_F002978",
+      "bridge_entity": "reinforcement learning problems",
+      "bridge_norm": "reinforcement learning problem",
+      "bridge_type": "TERM",
+      "pages": [
+        61,
+        176
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0024"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000355",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "Vickers hardness measurement",
+      "bridge_norm": "vicker hardness measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0025"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000355",
+      "fact_b": "din_iso_6507_vickers_F000375",
+      "bridge_entity": "Vickers hardness measurement",
+      "bridge_norm": "vicker hardness measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0026"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000073",
+      "fact_b": "ecma404_json_F000074",
+      "bridge_entity": "character may be represented",
+      "bridge_norm": "character may be represented",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0027"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000724",
+      "fact_b": "sutton_rl_F000789",
+      "bridge_entity": "exploration and exploitation",
+      "bridge_norm": "exploration and exploitation",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        50
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0028"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000003",
+      "fact_b": "din_iso_3834_welding_quality_F000033",
+      "bridge_entity": "quality management system",
+      "bridge_norm": "quality management system",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        12
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0029"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000008",
+      "fact_b": "din_iso_3834_welding_quality_F000033",
+      "bridge_entity": "quality management system",
+      "bridge_norm": "quality management system",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        12
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0030"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000224",
+      "fact_b": "din_iso_6507_vickers_F000229",
+      "bridge_entity": "diagonal measuring system",
+      "bridge_norm": "diagonal measuring system",
+      "bridge_type": "TERM",
+      "pages": [
+        27,
+        28
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0031"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000170",
+      "fact_b": "din_iso_6507_vickers_F000292",
+      "bridge_entity": "result of the measurement",
+      "bridge_norm": "result of the measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        32
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0032"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000170",
+      "fact_b": "din_iso_6507_vickers_F000305",
+      "bridge_entity": "result of the measurement",
+      "bridge_norm": "result of the measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        33
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0033"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000272",
+      "fact_b": "requirements_eng_F000275",
+      "bridge_entity": "define the system context",
+      "bridge_norm": "define the system context",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        31
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0034"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000293",
+      "bridge_entity": "hardness testing machine",
+      "bridge_norm": "hardness testing machine",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        32
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0035"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000297",
+      "bridge_entity": "hardness testing machine",
+      "bridge_norm": "hardness testing machine",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        32
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0036"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000362",
+      "fact_b": "din_iso_6507_vickers_F000381",
+      "bridge_entity": "Direct Verification path",
+      "bridge_norm": "direct verification path",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0037"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001589",
+      "fact_b": "sutton_rl_F002695",
+      "bridge_entity": "model of the environment",
+      "bridge_norm": "model of the environment",
+      "bridge_type": "TERM",
+      "pages": [
+        93,
+        158
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0038"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000380",
+      "fact_b": "din_iso_6507_vickers_F000473",
+      "bridge_entity": "Comparison measurements",
+      "bridge_norm": "comparison measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0039"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000337",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        37
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0040"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000383",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0041"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000022",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "processor of JSON texts",
+      "bridge_norm": "processor of json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0042"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000078",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Ecma International 2017",
+      "bridge_norm": "ecma international 2017",
+      "bridge_type": "TERM",
+      "pages": [
+        13,
+        15
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0043"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002483",
+      "fact_b": "sutton_rl_F003131",
+      "bridge_entity": "converge to the correct",
+      "bridge_norm": "converge to the correct",
+      "bridge_type": "TERM",
+      "pages": [
+        145,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0044"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000890",
+      "fact_b": "sutton_rl_F003899",
+      "bridge_entity": "greedy action selection",
+      "bridge_norm": "greedy action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        56,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0045"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000325",
+      "fact_b": "requirements_eng_F001760",
+      "bridge_entity": "system to be developed",
+      "bridge_norm": "system to be developed",
+      "bridge_type": "TERM",
+      "pages": [
+        35,
+        149
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0046"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000345",
+      "fact_b": "requirements_eng_F001493",
+      "bridge_entity": "negative repercussions",
+      "bridge_norm": "negative repercussion",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        125
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0047"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000345",
+      "fact_b": "requirements_eng_F001494",
+      "bridge_entity": "negative repercussions",
+      "bridge_norm": "negative repercussion",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        125
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0048"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000709",
+      "fact_b": "sutton_rl_F000729",
+      "bridge_entity": "n armed bandit problem",
+      "bridge_norm": "n armed bandit problem",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        47
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0049"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000710",
+      "fact_b": "sutton_rl_F000729",
+      "bridge_entity": "n armed bandit problem",
+      "bridge_norm": "n armed bandit problem",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        47
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0050"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000135",
+      "fact_b": "din_iso_6507_vickers_F000225",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        18,
+        27
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0051"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000135",
+      "fact_b": "din_iso_6507_vickers_F000236",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        18,
+        28
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0052"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000135",
+      "fact_b": "din_iso_6507_vickers_F000237",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        18,
+        28
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0053"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000135",
+      "fact_b": "din_iso_6507_vickers_F000244",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        18,
+        29
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0054"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000225",
+      "fact_b": "din_iso_6507_vickers_F000236",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        27,
+        28
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0055"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000225",
+      "fact_b": "din_iso_6507_vickers_F000237",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        27,
+        28
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0056"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000225",
+      "fact_b": "din_iso_6507_vickers_F000244",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        27,
+        29
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0057"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000114",
+      "fact_b": "din_iso_6507_vickers_F000172",
+      "bridge_entity": "Vickers microhardness",
+      "bridge_norm": "vicker microhardness",
+      "bridge_type": "TERM",
+      "pages": [
+        17,
+        20
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0058"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000414",
+      "bridge_entity": "Vickers microhardness",
+      "bridge_norm": "vicker microhardness",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0059"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000310",
+      "fact_b": "requirements_eng_F001629",
+      "bridge_entity": "influences the system",
+      "bridge_norm": "influence the system",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        138
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0060"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001698",
+      "fact_b": "requirements_eng_F001814",
+      "bridge_entity": "development artifacts",
+      "bridge_norm": "development artifact",
+      "bridge_type": "TERM",
+      "pages": [
+        144,
+        153
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0061"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000458",
+      "bridge_entity": "mean diagonal length",
+      "bridge_norm": "mean diagonal length",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        44
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0062"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000345",
+      "fact_b": "requirements_eng_F000503",
+      "bridge_entity": "stakeholders are not",
+      "bridge_norm": "stakeholder are not",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        48
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0063"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000710",
+      "fact_b": "sutton_rl_F002267",
+      "bridge_entity": "value of each action",
+      "bridge_norm": "value of each action",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        133
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0064"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000762",
+      "fact_b": "sutton_rl_F002523",
+      "bridge_entity": "actions are selected",
+      "bridge_norm": "action are selected",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        148
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0065"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000023",
+      "fact_b": "din_iso_15609_welding_procedure_F000024",
+      "bridge_entity": "Technical Committee",
+      "bridge_norm": "technical committee",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0066"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000023",
+      "fact_b": "din_iso_15609_welding_procedure_F000035",
+      "bridge_entity": "Technical Committee",
+      "bridge_norm": "technical committee",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0067"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000362",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        38
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0068"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000225",
+      "fact_b": "requirements_eng_F001746",
+      "bridge_entity": "development process",
+      "bridge_norm": "development process",
+      "bridge_type": "TERM",
+      "pages": [
+        26,
+        148
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0069"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001493",
+      "fact_b": "requirements_eng_F001506",
+      "bridge_entity": "conflict resolution",
+      "bridge_norm": "conflict resolution",
+      "bridge_type": "TERM",
+      "pages": [
+        125,
+        126
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0070"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001493",
+      "fact_b": "requirements_eng_F001507",
+      "bridge_entity": "conflict resolution",
+      "bridge_norm": "conflict resolution",
+      "bridge_type": "TERM",
+      "pages": [
+        125,
+        126
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0071"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000369",
+      "bridge_entity": "machine components",
+      "bridge_norm": "machine component",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0072"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000305",
+      "fact_b": "din_iso_6507_vickers_F000394",
+      "bridge_entity": "should be included",
+      "bridge_norm": "should be included",
+      "bridge_type": "TERM",
+      "pages": [
+        33,
+        41
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0073"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000372",
+      "fact_b": "din_iso_6507_vickers_F000394",
+      "bridge_entity": "hardness standards",
+      "bridge_norm": "hardness standard",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        41
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0074"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000007",
+      "fact_b": "ecma404_json_F000032",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        9
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0075"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000007",
+      "fact_b": "ecma404_json_F000034",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        9
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0076"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000007",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        15
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0077"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000032",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0078"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000034",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0079"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000375",
+      "fact_b": "requirements_eng_F001415",
+      "bridge_entity": "must be considered",
+      "bridge_norm": "must be considered",
+      "bridge_type": "TERM",
+      "pages": [
+        40,
+        121
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0080"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002981",
+      "fact_b": "sutton_rl_F003131",
+      "bridge_entity": "prediction methods",
+      "bridge_norm": "prediction method",
+      "bridge_type": "TERM",
+      "pages": [
+        176,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0081"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003067",
+      "fact_b": "sutton_rl_F003364",
+      "bridge_entity": "eligibility traces",
+      "bridge_norm": "eligibility trace",
+      "bridge_type": "TERM",
+      "pages": [
+        181,
+        200
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0082"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000015",
+      "fact_b": "din_iso_15609_welding_procedure_F000036",
+      "bridge_entity": "national standard",
+      "bridge_norm": "national standard",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0083"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000019",
+      "fact_b": "din_iso_15609_welding_procedure_F000036",
+      "bridge_entity": "national standard",
+      "bridge_norm": "national standard",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0084"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000423",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "test report see H",
+      "bridge_norm": "test report see h",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0085"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000427",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "test report see H",
+      "bridge_norm": "test report see h",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0086"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000476",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "test report see H",
+      "bridge_norm": "test report see h",
+      "bridge_type": "TERM",
+      "pages": [
+        45,
+        46
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0087"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000428",
+      "fact_b": "din_iso_6507_vickers_F000455",
+      "bridge_entity": "coating thickness",
+      "bridge_norm": "coating thickness",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        44
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0088"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000293",
+      "fact_b": "din_iso_6507_vickers_F000420",
+      "bridge_entity": "measured hardness",
+      "bridge_norm": "measured hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0089"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000362",
+      "fact_b": "din_iso_6507_vickers_F000420",
+      "bridge_entity": "measured hardness",
+      "bridge_norm": "measured hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0090"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000375",
+      "fact_b": "requirements_eng_F001935",
+      "bridge_entity": "must be fulfilled",
+      "bridge_norm": "must be fulfilled",
+      "bridge_type": "TERM",
+      "pages": [
+        40,
+        164
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0091"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001806",
+      "fact_b": "sutton_rl_F003847",
+      "bridge_entity": "policy evaluation",
+      "bridge_norm": "policy evaluation",
+      "bridge_type": "TERM",
+      "pages": [
+        105,
+        228
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0092"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001923",
+      "fact_b": "sutton_rl_F003847",
+      "bridge_entity": "policy evaluation",
+      "bridge_norm": "policy evaluation",
+      "bridge_type": "TERM",
+      "pages": [
+        112,
+        228
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0093"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F000798",
+      "fact_b": "bonaventure_net_F003373",
+      "bridge_entity": "message has been",
+      "bridge_norm": "message has been",
+      "bridge_type": "TERM",
+      "pages": [
+        44,
+        141
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0094"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000360",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        38
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0095"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0096"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0097"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000375",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0098"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0099"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0100"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000375",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0101"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0102"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000355",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0103"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000375",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0104"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0105"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0106"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000374",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0107"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000375",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0108"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000502",
+      "fact_b": "requirements_eng_F000794",
+      "bridge_entity": "formulated using",
+      "bridge_norm": "formulated using",
+      "bridge_type": "TERM",
+      "pages": [
+        48,
+        71
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0109"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000707",
+      "fact_b": "sutton_rl_F000890",
+      "bridge_entity": "action selection",
+      "bridge_norm": "action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        56
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0110"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000707",
+      "fact_b": "sutton_rl_F003899",
+      "bridge_entity": "action selection",
+      "bridge_norm": "action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0111"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000707",
+      "fact_b": "sutton_rl_F004566",
+      "bridge_entity": "action selection",
+      "bridge_norm": "action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        273
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0112"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000890",
+      "fact_b": "sutton_rl_F004566",
+      "bridge_entity": "action selection",
+      "bridge_norm": "action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        56,
+        273
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0113"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003899",
+      "fact_b": "sutton_rl_F004566",
+      "bridge_entity": "action selection",
+      "bridge_norm": "action selection",
+      "bridge_type": "TERM",
+      "pages": [
+        231,
+        273
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0114"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003899",
+      "fact_b": "sutton_rl_F003937",
+      "bridge_entity": "heuristic search",
+      "bridge_norm": "heuristic search",
+      "bridge_type": "TERM",
+      "pages": [
+        231,
+        233
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0115"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000292",
+      "fact_b": "din_iso_6507_vickers_F000367",
+      "bridge_entity": "measurement can",
+      "bridge_norm": "measurement can",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        38
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0116"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000292",
+      "fact_b": "din_iso_6507_vickers_F000452",
+      "bridge_entity": "measurement can",
+      "bridge_norm": "measurement can",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        44
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0117"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000225",
+      "fact_b": "requirements_eng_F001552",
+      "bridge_entity": "not implemented",
+      "bridge_norm": "not implemented",
+      "bridge_type": "TERM",
+      "pages": [
+        26,
+        131
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0118"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001552",
+      "fact_b": "requirements_eng_F001629",
+      "bridge_entity": "not implemented",
+      "bridge_norm": "not implemented",
+      "bridge_type": "TERM",
+      "pages": [
+        131,
+        138
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0119"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001666",
+      "fact_b": "bonaventure_net_F003388",
+      "bridge_entity": "able to detect",
+      "bridge_norm": "able to detect",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        142
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0120"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000023",
+      "bridge_entity": "fusion welding",
+      "bridge_norm": "fusion welding",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0121"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000024",
+      "bridge_entity": "fusion welding",
+      "bridge_norm": "fusion welding",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0122"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000272",
+      "fact_b": "requirements_eng_F000310",
+      "bridge_entity": "system context",
+      "bridge_norm": "system context",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        34
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0123"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000275",
+      "fact_b": "requirements_eng_F000310",
+      "bridge_entity": "system context",
+      "bridge_norm": "system context",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        34
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0124"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000310",
+      "fact_b": "requirements_eng_F000325",
+      "bridge_entity": "system context",
+      "bridge_norm": "system context",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        35
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0125"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000453",
+      "fact_b": "requirements_eng_F001415",
+      "bridge_entity": "can be applied",
+      "bridge_norm": "can be applied",
+      "bridge_type": "TERM",
+      "pages": [
+        45,
+        121
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0126"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000449",
+      "fact_b": "requirements_eng_F000463",
+      "bridge_entity": "very laborious",
+      "bridge_norm": "very laboriou",
+      "bridge_type": "TERM",
+      "pages": [
+        45,
+        46
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0127"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001760",
+      "fact_b": "requirements_eng_F001800",
+      "bridge_entity": "change request",
+      "bridge_norm": "change request",
+      "bridge_type": "TERM",
+      "pages": [
+        149,
+        152
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0128"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001798",
+      "fact_b": "requirements_eng_F001815",
+      "bridge_entity": "change request",
+      "bridge_norm": "change request",
+      "bridge_type": "TERM",
+      "pages": [
+        152,
+        153
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0129"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001800",
+      "fact_b": "requirements_eng_F001815",
+      "bridge_entity": "change request",
+      "bridge_norm": "change request",
+      "bridge_type": "TERM",
+      "pages": [
+        152,
+        153
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0130"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000739",
+      "fact_b": "sutton_rl_F002523",
+      "bridge_entity": "converges to q",
+      "bridge_norm": "converge to q",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        148
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0131"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000017",
+      "fact_b": "din_iso_15609_welding_procedure_F000030",
+      "bridge_entity": "patent rights",
+      "bridge_norm": "patent right",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0132"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000168",
+      "fact_b": "din_iso_6507_vickers_F000404",
+      "bridge_entity": "field of view",
+      "bridge_norm": "field of view",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0133"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000404",
+      "bridge_entity": "field of view",
+      "bridge_norm": "field of view",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0134"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000367",
+      "fact_b": "din_iso_6507_vickers_F000381",
+      "bridge_entity": "s measurement",
+      "bridge_norm": "s measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0135"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001395",
+      "fact_b": "sutton_rl_F002770",
+      "bridge_entity": "probability 1",
+      "bridge_norm": "probability 1",
+      "bridge_type": "TERM",
+      "pages": [
+        82,
+        162
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0136"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001395",
+      "fact_b": "sutton_rl_F002910",
+      "bridge_entity": "probability 1",
+      "bridge_norm": "probability 1",
+      "bridge_type": "TERM",
+      "pages": [
+        82,
+        171
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0137"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000713",
+      "fact_b": "sutton_rl_F003899",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0138"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000890",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        56,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0139"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003365",
+      "fact_b": "sutton_rl_F003899",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        200,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0140"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F003388",
+      "fact_b": "bonaventure_net_F005871",
+      "bridge_entity": "must be able",
+      "bridge_norm": "must be able",
+      "bridge_type": "TERM",
+      "pages": [
+        142,
+        232
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0141"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000417",
+      "fact_b": "din_iso_6507_vickers_F000463",
+      "bridge_entity": "test surface",
+      "bridge_norm": "test surface",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        44
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0142"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000474",
+      "bridge_entity": "greater than",
+      "bridge_norm": "greater than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0143"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000427",
+      "fact_b": "din_iso_6507_vickers_F000474",
+      "bridge_entity": "greater than",
+      "bridge_norm": "greater than",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0144"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000030",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "JSON grammar",
+      "bridge_norm": "json grammar",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0145"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F001369",
+      "bridge_entity": "whether they",
+      "bridge_norm": "whether they",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        118
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0146"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000762",
+      "fact_b": "requirements_eng_F001369",
+      "bridge_entity": "whether they",
+      "bridge_norm": "whether they",
+      "bridge_type": "TERM",
+      "pages": [
+        69,
+        118
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0147"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001136",
+      "fact_b": "requirements_eng_F001144",
+      "bridge_entity": "object flows",
+      "bridge_norm": "object flow",
+      "bridge_type": "TERM",
+      "pages": [
+        98,
+        99
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0148"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001137",
+      "fact_b": "requirements_eng_F001144",
+      "bridge_entity": "object flows",
+      "bridge_norm": "object flow",
+      "bridge_type": "TERM",
+      "pages": [
+        98,
+        99
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0149"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000449",
+      "fact_b": "requirements_eng_F001252",
+      "bridge_entity": "fine grained",
+      "bridge_norm": "fine grained",
+      "bridge_type": "TERM",
+      "pages": [
+        45,
+        109
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0150"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000710",
+      "fact_b": "sutton_rl_F004791",
+      "bridge_entity": "would always",
+      "bridge_norm": "would alway",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        293
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0151"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003105",
+      "fact_b": "sutton_rl_F003178",
+      "bridge_entity": "step returns",
+      "bridge_norm": "step return",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        188
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0152"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003105",
+      "fact_b": "sutton_rl_F003367",
+      "bridge_entity": "step returns",
+      "bridge_norm": "step return",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        200
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0153"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003106",
+      "fact_b": "sutton_rl_F003367",
+      "bridge_entity": "step returns",
+      "bridge_norm": "step return",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        200
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0154"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003178",
+      "fact_b": "sutton_rl_F003367",
+      "bridge_entity": "step returns",
+      "bridge_norm": "step return",
+      "bridge_type": "TERM",
+      "pages": [
+        188,
+        200
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0155"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000711",
+      "fact_b": "sutton_rl_F000961",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        61
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0156"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000761",
+      "fact_b": "sutton_rl_F000961",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        61
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0157"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000761",
+      "fact_b": "sutton_rl_F002307",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        135
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0158"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000961",
+      "fact_b": "sutton_rl_F002307",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        61,
+        135
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0159"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002768",
+      "fact_b": "sutton_rl_F003787",
+      "bridge_entity": "because they",
+      "bridge_norm": "because they",
+      "bridge_type": "TERM",
+      "pages": [
+        162,
+        224
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0160"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002768",
+      "fact_b": "sutton_rl_F003828",
+      "bridge_entity": "because they",
+      "bridge_norm": "because they",
+      "bridge_type": "TERM",
+      "pages": [
+        162,
+        227
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0161"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003787",
+      "fact_b": "sutton_rl_F003828",
+      "bridge_entity": "because they",
+      "bridge_norm": "because they",
+      "bridge_type": "TERM",
+      "pages": [
+        224,
+        227
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0162"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000668",
+      "fact_b": "sutton_rl_F004791",
+      "bridge_entity": "would result",
+      "bridge_norm": "would result",
+      "bridge_type": "TERM",
+      "pages": [
+        40,
+        293
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0163"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000420",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "carried out",
+      "bridge_norm": "carried out",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        45
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0164"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000016",
+      "fact_b": "ecma404_json_F000047",
+      "bridge_entity": "JSON syntax",
+      "bridge_norm": "json syntax",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0165"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000016",
+      "fact_b": "ecma404_json_F000051",
+      "bridge_entity": "JSON syntax",
+      "bridge_norm": "json syntax",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0166"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000060",
+      "fact_b": "ecma404_json_F000075",
+      "bridge_entity": "character U",
+      "bridge_norm": "character u",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0167"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000064",
+      "fact_b": "ecma404_json_F000075",
+      "bridge_entity": "character U",
+      "bridge_norm": "character u",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0168"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000065",
+      "fact_b": "ecma404_json_F000075",
+      "bridge_entity": "character U",
+      "bridge_norm": "character u",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0169"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000645",
+      "bridge_entity": "addition it",
+      "bridge_norm": "addition it",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        60
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0170"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000318",
+      "fact_b": "requirements_eng_F001229",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        35,
+        107
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0171"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000318",
+      "fact_b": "requirements_eng_F001255",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        35,
+        109
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0172"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000318",
+      "fact_b": "requirements_eng_F001864",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        35,
+        158
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0173"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001229",
+      "fact_b": "requirements_eng_F001864",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        107,
+        158
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0174"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000645",
+      "fact_b": "requirements_eng_F001153",
+      "bridge_entity": "one another",
+      "bridge_norm": "one another",
+      "bridge_type": "TERM",
+      "pages": [
+        60,
+        99
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0175"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001177",
+      "fact_b": "requirements_eng_F001211",
+      "bridge_entity": "super state",
+      "bridge_norm": "super state",
+      "bridge_type": "TERM",
+      "pages": [
+        101,
+        104
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0176"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001177",
+      "fact_b": "requirements_eng_F001216",
+      "bridge_entity": "super state",
+      "bridge_norm": "super state",
+      "bridge_type": "TERM",
+      "pages": [
+        101,
+        104
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0177"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000794",
+      "fact_b": "requirements_eng_F001177",
+      "bridge_entity": "rather than",
+      "bridge_norm": "rather than",
+      "bridge_type": "TERM",
+      "pages": [
+        71,
+        101
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0178"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001175",
+      "fact_b": "sutton_rl_F002270",
+      "bridge_entity": "rather than",
+      "bridge_norm": "rather than",
+      "bridge_type": "TERM",
+      "pages": [
+        72,
+        133
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0179"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001353",
+      "fact_b": "sutton_rl_F003719",
+      "bridge_entity": "has already",
+      "bridge_norm": "has already",
+      "bridge_type": "TERM",
+      "pages": [
+        80,
+        220
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0180"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000963",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "best action",
+      "bridge_norm": "best action",
+      "bridge_type": "TERM",
+      "pages": [
+        61,
+        231
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0181"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001923",
+      "fact_b": "sutton_rl_F003066",
+      "bridge_entity": "occurs only",
+      "bridge_norm": "occur only",
+      "bridge_type": "TERM",
+      "pages": [
+        112,
+        181
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0182"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002523",
+      "fact_b": "sutton_rl_F002845",
+      "bridge_entity": "even though",
+      "bridge_norm": "even though",
+      "bridge_type": "TERM",
+      "pages": [
+        148,
+        167
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0183"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001911",
+      "fact_b": "sutton_rl_F002479",
+      "bridge_entity": "some number",
+      "bridge_norm": "some number",
+      "bridge_type": "TERM",
+      "pages": [
+        112,
+        145
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0184"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003936",
+      "fact_b": "sutton_rl_F004791",
+      "bridge_entity": "search tree",
+      "bridge_norm": "search tree",
+      "bridge_type": "TERM",
+      "pages": [
+        233,
+        293
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0185"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003936",
+      "fact_b": "sutton_rl_F004793",
+      "bridge_entity": "search tree",
+      "bridge_norm": "search tree",
+      "bridge_type": "TERM",
+      "pages": [
+        233,
+        293
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0186"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003785",
+      "fact_b": "sutton_rl_F003832",
+      "bridge_entity": "backups can",
+      "bridge_norm": "backup can",
+      "bridge_type": "TERM",
+      "pages": [
+        224,
+        227
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0187"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000425",
+      "fact_b": "sutton_rl_F002847",
+      "bridge_entity": "set whereas",
+      "bridge_norm": "set wherea",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        167
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0188"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000359",
+      "fact_b": "sutton_rl_F002850",
+      "bridge_entity": "can compute",
+      "bridge_norm": "can compute",
+      "bridge_type": "TERM",
+      "pages": [
+        25,
+        167
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0189"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000117",
+      "fact_b": "din_iso_6507_vickers_F000153",
+      "bridge_entity": "Test Piece",
+      "bridge_norm": "test piece",
+      "bridge_type": "TERM",
+      "pages": [
+        17,
+        19
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0190"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000117",
+      "fact_b": "din_iso_6507_vickers_F000417",
+      "bridge_entity": "Test Piece",
+      "bridge_norm": "test piece",
+      "bridge_type": "TERM",
+      "pages": [
+        17,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0191"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000117",
+      "fact_b": "din_iso_6507_vickers_F000419",
+      "bridge_entity": "Test Piece",
+      "bridge_norm": "test piece",
+      "bridge_type": "TERM",
+      "pages": [
+        17,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0192"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000153",
+      "fact_b": "din_iso_6507_vickers_F000417",
+      "bridge_entity": "Test Piece",
+      "bridge_norm": "test piece",
+      "bridge_type": "TERM",
+      "pages": [
+        19,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0193"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000153",
+      "fact_b": "din_iso_6507_vickers_F000419",
+      "bridge_entity": "Test Piece",
+      "bridge_norm": "test piece",
+      "bridge_type": "TERM",
+      "pages": [
+        19,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0194"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000329",
+      "fact_b": "din_iso_6507_vickers_F000446",
+      "bridge_entity": "under test",
+      "bridge_norm": "under test",
+      "bridge_type": "TERM",
+      "pages": [
+        36,
+        44
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0195"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000060",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "code point",
+      "bridge_norm": "code point",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0196"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000071",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "code point",
+      "bridge_norm": "code point",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0197"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000013",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "JSON texts",
+      "bridge_norm": "json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0198"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000015",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "JSON texts",
+      "bridge_norm": "json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0199"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000020",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "JSON texts",
+      "bridge_norm": "json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0200"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000633",
+      "fact_b": "requirements_eng_F001369",
+      "bridge_entity": "test cases",
+      "bridge_norm": "test case",
+      "bridge_type": "TERM",
+      "pages": [
+        59,
+        118
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0201"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002910",
+      "fact_b": "sutton_rl_F003364",
+      "bridge_entity": "Q learning",
+      "bridge_norm": "q learning",
+      "bridge_type": "TERM",
+      "pages": [
+        171,
+        200
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0202"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001324",
+      "fact_b": "sutton_rl_F005294",
+      "bridge_entity": "non Markov",
+      "bridge_norm": "non markov",
+      "bridge_type": "TERM",
+      "pages": [
+        79,
+        321
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0203"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001800",
+      "fact_b": "sutton_rl_F002233",
+      "bridge_entity": "signi cant",
+      "bridge_norm": "signi cant",
+      "bridge_type": "TERM",
+      "pages": [
+        105,
+        131
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0204"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000059",
+      "fact_b": "din_iso_6507_vickers_F000255",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        30
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0205"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000408",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        42
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0206"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000425",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0207"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        46
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0208"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000408",
+      "fact_b": "din_iso_6507_vickers_F000425",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        42,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0209"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000408",
+      "fact_b": "din_iso_6507_vickers_F000437",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        42,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0210"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000408",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        42,
+        46
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0211"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000425",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        46
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0212"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000729",
+      "fact_b": "sutton_rl_F001309",
+      "bridge_entity": "enable us",
+      "bridge_norm": "enable us",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        78
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0213"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002339",
+      "fact_b": "sutton_rl_F003717",
+      "bridge_entity": "they were",
+      "bridge_norm": "they were",
+      "bridge_type": "TERM",
+      "pages": [
+        136,
+        220
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0214"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003717",
+      "fact_b": "sutton_rl_F004358",
+      "bridge_entity": "they were",
+      "bridge_norm": "they were",
+      "bridge_type": "TERM",
+      "pages": [
+        220,
+        259
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0215"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001800",
+      "fact_b": "sutton_rl_F003736",
+      "bridge_entity": "backed up",
+      "bridge_norm": "backed up",
+      "bridge_type": "TERM",
+      "pages": [
+        105,
+        221
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0216"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000711",
+      "fact_b": "sutton_rl_F001344",
+      "bridge_entity": "We assume",
+      "bridge_norm": "we assume",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        80
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0217"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001345",
+      "fact_b": "sutton_rl_F003845",
+      "bridge_entity": "one could",
+      "bridge_norm": "one could",
+      "bridge_type": "TERM",
+      "pages": [
+        80,
+        228
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0218"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001704",
+      "fact_b": "bonaventure_net_F003373",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        141
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0219"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000033",
+      "fact_b": "din_iso_15609_welding_procedure_F000091",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        12
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0220"
+    },
+    {
+      "doc": "din_iso_15609_welding_procedure_full",
+      "fact_a": "din_iso_15609_welding_procedure_F000020",
+      "fact_b": "din_iso_15609_welding_procedure_F000024",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        8
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0221"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000634",
+      "fact_b": "requirements_eng_F001283",
+      "bridge_entity": "can thus",
+      "bridge_norm": "can thus",
+      "bridge_type": "TERM",
+      "pages": [
+        59,
+        112
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0222"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000635",
+      "fact_b": "requirements_eng_F001283",
+      "bridge_entity": "can thus",
+      "bridge_norm": "can thus",
+      "bridge_type": "TERM",
+      "pages": [
+        59,
+        112
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0223"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000461",
+      "fact_b": "requirements_eng_F001404",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        120
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0224"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000436",
+      "fact_b": "sutton_rl_F001242",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        29,
+        75
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0225"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000436",
+      "fact_b": "sutton_rl_F005126",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        29,
+        310
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0226"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001242",
+      "fact_b": "sutton_rl_F002523",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        148
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0227"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001242",
+      "fact_b": "sutton_rl_F005126",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        310
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0228"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003936",
+      "fact_b": "sutton_rl_F004161",
+      "bridge_entity": "we might",
+      "bridge_norm": "we might",
+      "bridge_type": "TERM",
+      "pages": [
+        233,
+        247
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0229"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000738",
+      "fact_b": "sutton_rl_F000967",
+      "bridge_entity": "then we",
+      "bridge_norm": "then we",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        61
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0230"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000738",
+      "fact_b": "sutton_rl_F001518",
+      "bridge_entity": "then we",
+      "bridge_norm": "then we",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        89
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0231"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000425",
+      "bridge_entity": "than 0",
+      "bridge_norm": "than 0",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0232"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003105",
+      "fact_b": "sutton_rl_F003131",
+      "bridge_entity": "n step",
+      "bridge_norm": "n step",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0233"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003105",
+      "fact_b": "sutton_rl_F003132",
+      "bridge_entity": "n step",
+      "bridge_norm": "n step",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0234"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003106",
+      "fact_b": "sutton_rl_F003131",
+      "bridge_entity": "n step",
+      "bridge_norm": "n step",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0235"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003106",
+      "fact_b": "sutton_rl_F003132",
+      "bridge_entity": "n step",
+      "bridge_norm": "n step",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        185
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0236"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000738",
+      "fact_b": "sutton_rl_F003178",
+      "bridge_entity": "0 then",
+      "bridge_norm": "0 then",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        188
+      ],
+      "content_jaccard": 0.0,
+      "pair_id": "BP0237"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000305",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        33,
+        39
+      ],
+      "content_jaccard": 0.018,
+      "pair_id": "BP0238"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "International 2017 Ecma International",
+      "bridge_norm": "international 2017 ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        13
+      ],
+      "content_jaccard": 0.019,
+      "pair_id": "BP0239"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000305",
+      "fact_b": "din_iso_6507_vickers_F000373",
+      "bridge_entity": "measurement system",
+      "bridge_norm": "measurement system",
+      "bridge_type": "TERM",
+      "pages": [
+        33,
+        39
+      ],
+      "content_jaccard": 0.022,
+      "pair_id": "BP0240"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000034",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        9
+      ],
+      "content_jaccard": 0.024,
+      "pair_id": "BP0241"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000762",
+      "fact_b": "requirements_eng_F001258",
+      "bridge_entity": "been defined",
+      "bridge_norm": "been defined",
+      "bridge_type": "TERM",
+      "pages": [
+        69,
+        110
+      ],
+      "content_jaccard": 0.024,
+      "pair_id": "BP0242"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000305",
+      "fact_b": "din_iso_6507_vickers_F000337",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        33,
+        37
+      ],
+      "content_jaccard": 0.025,
+      "pair_id": "BP0243"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000355",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "Vickers hardness measurement",
+      "bridge_norm": "vicker hardness measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.026,
+      "pair_id": "BP0244"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000032",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        9
+      ],
+      "content_jaccard": 0.026,
+      "pair_id": "BP0245"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.026,
+      "pair_id": "BP0246"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.026,
+      "pair_id": "BP0247"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000293",
+      "fact_b": "din_iso_6507_vickers_F000362",
+      "bridge_entity": "measured hardness",
+      "bridge_norm": "measured hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        38
+      ],
+      "content_jaccard": 0.027,
+      "pair_id": "BP0248"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000373",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        40
+      ],
+      "content_jaccard": 0.027,
+      "pair_id": "BP0249"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001252",
+      "fact_b": "requirements_eng_F001258",
+      "bridge_entity": "Quality Aspect",
+      "bridge_norm": "quality aspect",
+      "bridge_type": "TERM",
+      "pages": [
+        109,
+        110
+      ],
+      "content_jaccard": 0.028,
+      "pair_id": "BP0250"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000059",
+      "fact_b": "din_iso_6507_vickers_F000376",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        39
+      ],
+      "content_jaccard": 0.028,
+      "pair_id": "BP0251"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000059",
+      "fact_b": "din_iso_6507_vickers_F000382",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        39
+      ],
+      "content_jaccard": 0.028,
+      "pair_id": "BP0252"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000362",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.029,
+      "pair_id": "BP0253"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        39
+      ],
+      "content_jaccard": 0.029,
+      "pair_id": "BP0254"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001255",
+      "fact_b": "requirements_eng_F001258",
+      "bridge_entity": "Quality Aspect",
+      "bridge_norm": "quality aspect",
+      "bridge_type": "TERM",
+      "pages": [
+        109,
+        110
+      ],
+      "content_jaccard": 0.029,
+      "pair_id": "BP0255"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000020",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "ECMA 262",
+      "bridge_norm": "ecma 262",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.029,
+      "pair_id": "BP0256"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000097",
+      "fact_b": "din_iso_6507_vickers_F000394",
+      "bridge_entity": "Working Group on Hardness",
+      "bridge_norm": "working group on hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        16,
+        41
+      ],
+      "content_jaccard": 0.031,
+      "pair_id": "BP0257"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000271",
+      "fact_b": "din_iso_6507_vickers_F000289",
+      "bridge_entity": "hardness testing machine",
+      "bridge_norm": "hardness testing machine",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        31
+      ],
+      "content_jaccard": 0.031,
+      "pair_id": "BP0258"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000029",
+      "bridge_entity": "Data Interchange Format",
+      "bridge_norm": "data interchange format",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        9
+      ],
+      "content_jaccard": 0.031,
+      "pair_id": "BP0259"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F001760",
+      "bridge_entity": "system to be developed",
+      "bridge_norm": "system to be developed",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        149
+      ],
+      "content_jaccard": 0.032,
+      "pair_id": "BP0260"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002270",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "state values",
+      "bridge_norm": "state value",
+      "bridge_type": "TERM",
+      "pages": [
+        133,
+        231
+      ],
+      "content_jaccard": 0.032,
+      "pair_id": "BP0261"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000329",
+      "bridge_entity": "single hardness measurement",
+      "bridge_norm": "single hardness measurement",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        36
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0262"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002047",
+      "fact_b": "sutton_rl_F002981",
+      "bridge_entity": "their theoretical",
+      "bridge_norm": "their theoretical",
+      "bridge_type": "TERM",
+      "pages": [
+        120,
+        176
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0263"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000355",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0264"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000372",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        42
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0265"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000255",
+      "fact_b": "din_iso_6507_vickers_F000376",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        39
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0266"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000255",
+      "fact_b": "din_iso_6507_vickers_F000382",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        39
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0267"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000461",
+      "fact_b": "requirements_eng_F001265",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        111
+      ],
+      "content_jaccard": 0.033,
+      "pair_id": "BP0268"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000362",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        38
+      ],
+      "content_jaccard": 0.034,
+      "pair_id": "BP0269"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.034,
+      "pair_id": "BP0270"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000097",
+      "fact_b": "din_iso_6507_vickers_F000355",
+      "bridge_entity": "test parameters",
+      "bridge_norm": "test parameter",
+      "bridge_type": "TERM",
+      "pages": [
+        16,
+        38
+      ],
+      "content_jaccard": 0.034,
+      "pair_id": "BP0271"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003131",
+      "fact_b": "sutton_rl_F003936",
+      "bridge_entity": "step backups",
+      "bridge_norm": "step backup",
+      "bridge_type": "TERM",
+      "pages": [
+        185,
+        233
+      ],
+      "content_jaccard": 0.034,
+      "pair_id": "BP0272"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002339",
+      "fact_b": "sutton_rl_F004358",
+      "bridge_entity": "they were",
+      "bridge_norm": "they were",
+      "bridge_type": "TERM",
+      "pages": [
+        136,
+        259
+      ],
+      "content_jaccard": 0.034,
+      "pair_id": "BP0273"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000007",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        13
+      ],
+      "content_jaccard": 0.036,
+      "pair_id": "BP0274"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002307",
+      "fact_b": "sutton_rl_F003364",
+      "bridge_entity": "greedy policy",
+      "bridge_norm": "greedy policy",
+      "bridge_type": "TERM",
+      "pages": [
+        135,
+        200
+      ],
+      "content_jaccard": 0.036,
+      "pair_id": "BP0275"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002233",
+      "fact_b": "sutton_rl_F005291",
+      "bridge_entity": "s dynamics",
+      "bridge_norm": "s dynamic",
+      "bridge_type": "TERM",
+      "pages": [
+        131,
+        321
+      ],
+      "content_jaccard": 0.036,
+      "pair_id": "BP0276"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000255",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        45
+      ],
+      "content_jaccard": 0.036,
+      "pair_id": "BP0277"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002776",
+      "fact_b": "sutton_rl_F002910",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        162,
+        171
+      ],
+      "content_jaccard": 0.036,
+      "pair_id": "BP0278"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000191",
+      "fact_b": "din_iso_6507_vickers_F000358",
+      "bridge_entity": "hardness scale",
+      "bridge_norm": "hardness scale",
+      "bridge_type": "TERM",
+      "pages": [
+        21,
+        38
+      ],
+      "content_jaccard": 0.037,
+      "pair_id": "BP0279"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F000798",
+      "fact_b": "bonaventure_net_F001704",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        44,
+        75
+      ],
+      "content_jaccard": 0.037,
+      "pair_id": "BP0280"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000417",
+      "fact_b": "din_iso_6507_vickers_F000458",
+      "bridge_entity": "length of the indentation",
+      "bridge_norm": "length of the indentation",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        44
+      ],
+      "content_jaccard": 0.038,
+      "pair_id": "BP0281"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "Measurement traceability",
+      "bridge_norm": "measurement traceability",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.038,
+      "pair_id": "BP0282"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000358",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        38
+      ],
+      "content_jaccard": 0.038,
+      "pair_id": "BP0283"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000001",
+      "fact_b": "din_iso_3834_welding_quality_F000015",
+      "bridge_entity": "fusion welding",
+      "bridge_norm": "fusion welding",
+      "bridge_type": "TERM",
+      "pages": [
+        10,
+        11
+      ],
+      "content_jaccard": 0.038,
+      "pair_id": "BP0284"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000071",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "code point",
+      "bridge_norm": "code point",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.038,
+      "pair_id": "BP0285"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000362",
+      "fact_b": "din_iso_6507_vickers_F000384",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0286"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000724",
+      "fact_b": "sutton_rl_F000966",
+      "bridge_entity": "n armed bandit",
+      "bridge_norm": "n armed bandit",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        61
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0287"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000060",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "code point",
+      "bridge_norm": "code point",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0288"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000016",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "JSON texts",
+      "bridge_norm": "json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0289"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000064",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "form feed",
+      "bridge_norm": "form feed",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0290"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000065",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "line feed",
+      "bridge_norm": "line feed",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0291"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002307",
+      "fact_b": "sutton_rl_F003936",
+      "bridge_entity": "case we",
+      "bridge_norm": "case we",
+      "bridge_type": "TERM",
+      "pages": [
+        135,
+        233
+      ],
+      "content_jaccard": 0.04,
+      "pair_id": "BP0292"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000071",
+      "fact_b": "ecma404_json_F000075",
+      "bridge_entity": "may be represented",
+      "bridge_norm": "may be represented",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0293"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000370",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        42
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0294"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000225",
+      "fact_b": "requirements_eng_F001629",
+      "bridge_entity": "not implemented",
+      "bridge_norm": "not implemented",
+      "bridge_type": "TERM",
+      "pages": [
+        26,
+        138
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0295"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003900",
+      "fact_b": "sutton_rl_F004564",
+      "bridge_entity": "possible action",
+      "bridge_norm": "possible action",
+      "bridge_type": "TERM",
+      "pages": [
+        231,
+        273
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0296"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003832",
+      "fact_b": "sutton_rl_F004564",
+      "bridge_entity": "nite number",
+      "bridge_norm": "nite number",
+      "bridge_type": "TERM",
+      "pages": [
+        227,
+        273
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0297"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000015",
+      "fact_b": "ecma404_json_F000047",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0298"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000373",
+      "fact_b": "requirements_eng_F001629",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        40,
+        138
+      ],
+      "content_jaccard": 0.042,
+      "pair_id": "BP0299"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000297",
+      "fact_b": "din_iso_6507_vickers_F000305",
+      "bridge_entity": "deviation of the bias",
+      "bridge_norm": "deviation of the bias",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        33
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0300"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000384",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0301"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000633",
+      "fact_b": "requirements_eng_F001748",
+      "bridge_entity": "serve as the basis",
+      "bridge_norm": "serve as the basi",
+      "bridge_type": "TERM",
+      "pages": [
+        59,
+        148
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0302"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0303"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000037",
+      "fact_b": "din_iso_3834_welding_quality_F000040",
+      "bridge_entity": "required Record",
+      "bridge_norm": "required record",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0304"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000186",
+      "bridge_entity": "see References",
+      "bridge_norm": "see reference",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        21
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0305"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000416",
+      "bridge_entity": "see References",
+      "bridge_norm": "see reference",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0306"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000172",
+      "fact_b": "din_iso_6507_vickers_F000429",
+      "bridge_entity": "see References",
+      "bridge_norm": "see reference",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0307"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001177",
+      "fact_b": "sutton_rl_F001589",
+      "bridge_entity": "we discussed",
+      "bridge_norm": "we discussed",
+      "bridge_type": "TERM",
+      "pages": [
+        72,
+        93
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0308"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000436",
+      "fact_b": "sutton_rl_F002523",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        29,
+        148
+      ],
+      "content_jaccard": 0.043,
+      "pair_id": "BP0309"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000710",
+      "fact_b": "sutton_rl_F000966",
+      "bridge_entity": "n armed bandit problem",
+      "bridge_norm": "n armed bandit problem",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        61
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0310"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003899",
+      "fact_b": "sutton_rl_F003936",
+      "bridge_entity": "heuristic search",
+      "bridge_norm": "heuristic search",
+      "bridge_type": "TERM",
+      "pages": [
+        231,
+        233
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0311"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000710",
+      "fact_b": "sutton_rl_F000724",
+      "bridge_entity": "n armed bandit",
+      "bridge_norm": "n armed bandit",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        47
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0312"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000713",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        231
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0313"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000890",
+      "fact_b": "sutton_rl_F003365",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        56,
+        200
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0314"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000047",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        13
+      ],
+      "content_jaccard": 0.045,
+      "pair_id": "BP0315"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000375",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.048,
+      "pair_id": "BP0316"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000186",
+      "fact_b": "din_iso_6507_vickers_F000416",
+      "bridge_entity": "see References",
+      "bridge_norm": "see reference",
+      "bridge_type": "TERM",
+      "pages": [
+        21,
+        43
+      ],
+      "content_jaccard": 0.048,
+      "pair_id": "BP0317"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001760",
+      "fact_b": "requirements_eng_F001815",
+      "bridge_entity": "change request",
+      "bridge_norm": "change request",
+      "bridge_type": "TERM",
+      "pages": [
+        149,
+        153
+      ],
+      "content_jaccard": 0.048,
+      "pair_id": "BP0318"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000015",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.048,
+      "pair_id": "BP0319"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000967",
+      "fact_b": "sutton_rl_F002978",
+      "bridge_entity": "reinforcement learning problems",
+      "bridge_norm": "reinforcement learning problem",
+      "bridge_type": "TERM",
+      "pages": [
+        61,
+        176
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0320"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        39
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0321"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001325",
+      "fact_b": "sutton_rl_F005294",
+      "bridge_entity": "state representation",
+      "bridge_norm": "state representation",
+      "bridge_type": "TERM",
+      "pages": [
+        79,
+        321
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0322"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001137",
+      "fact_b": "requirements_eng_F001154",
+      "bridge_entity": "actions have been",
+      "bridge_norm": "action have been",
+      "bridge_type": "TERM",
+      "pages": [
+        98,
+        99
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0323"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000367",
+      "fact_b": "din_iso_6507_vickers_F000452",
+      "bridge_entity": "measurement can",
+      "bridge_norm": "measurement can",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        44
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0324"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000967",
+      "fact_b": "sutton_rl_F001518",
+      "bridge_entity": "then we",
+      "bridge_norm": "then we",
+      "bridge_type": "TERM",
+      "pages": [
+        61,
+        89
+      ],
+      "content_jaccard": 0.05,
+      "pair_id": "BP0325"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000234",
+      "fact_b": "din_iso_6507_vickers_F000305",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        33
+      ],
+      "content_jaccard": 0.051,
+      "pair_id": "BP0326"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000236",
+      "fact_b": "din_iso_6507_vickers_F000328",
+      "bridge_entity": "verification according to ISO",
+      "bridge_norm": "verification according to iso",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        36
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0327"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000034",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        15
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0328"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000761",
+      "fact_b": "sutton_rl_F000893",
+      "bridge_entity": "value estimates",
+      "bridge_norm": "value estimate",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        56
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0329"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000709",
+      "fact_b": "sutton_rl_F000724",
+      "bridge_entity": "n armed bandit",
+      "bridge_norm": "n armed bandit",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        47
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0330"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001671",
+      "fact_b": "bonaventure_net_F004989",
+      "bridge_entity": "there are two",
+      "bridge_norm": "there are two",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        197
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0331"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000427",
+      "bridge_entity": "greater than",
+      "bridge_norm": "greater than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0332"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000762",
+      "fact_b": "sutton_rl_F000961",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        61
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0333"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000437",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "less than 5",
+      "bridge_norm": "less than 5",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        46
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0334"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003179",
+      "fact_b": "sutton_rl_F003365",
+      "bridge_entity": "backing up",
+      "bridge_norm": "backing up",
+      "bridge_type": "TERM",
+      "pages": [
+        188,
+        200
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0335"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002523",
+      "fact_b": "sutton_rl_F005126",
+      "bridge_entity": "di erent",
+      "bridge_norm": "di erent",
+      "bridge_type": "TERM",
+      "pages": [
+        148,
+        310
+      ],
+      "content_jaccard": 0.053,
+      "pair_id": "BP0336"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000370",
+      "bridge_entity": "during requirements engineering",
+      "bridge_norm": "during requirement engineering",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        40
+      ],
+      "content_jaccard": 0.054,
+      "pair_id": "BP0337"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000271",
+      "fact_b": "din_iso_6507_vickers_F000297",
+      "bridge_entity": "hardness testing machine",
+      "bridge_norm": "hardness testing machine",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        32
+      ],
+      "content_jaccard": 0.054,
+      "pair_id": "BP0338"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000048",
+      "bridge_entity": "Data Interchange",
+      "bridge_norm": "data interchange",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        11
+      ],
+      "content_jaccard": 0.054,
+      "pair_id": "BP0339"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000380",
+      "bridge_entity": "Test method",
+      "bridge_norm": "test method",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        39
+      ],
+      "content_jaccard": 0.054,
+      "pair_id": "BP0340"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000114",
+      "fact_b": "din_iso_6507_vickers_F000414",
+      "bridge_entity": "Vickers microhardness",
+      "bridge_norm": "vicker microhardness",
+      "bridge_type": "TERM",
+      "pages": [
+        17,
+        43
+      ],
+      "content_jaccard": 0.056,
+      "pair_id": "BP0341"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000762",
+      "fact_b": "sutton_rl_F002307",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        49,
+        135
+      ],
+      "content_jaccard": 0.056,
+      "pair_id": "BP0342"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001255",
+      "fact_b": "requirements_eng_F001864",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        109,
+        158
+      ],
+      "content_jaccard": 0.056,
+      "pair_id": "BP0343"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000305",
+      "fact_b": "din_iso_6507_vickers_F000383",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        33,
+        39
+      ],
+      "content_jaccard": 0.057,
+      "pair_id": "BP0344"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000025",
+      "fact_b": "din_iso_3834_welding_quality_F000045",
+      "bridge_entity": "product standards",
+      "bridge_norm": "product standard",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        13
+      ],
+      "content_jaccard": 0.057,
+      "pair_id": "BP0345"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000425",
+      "fact_b": "sutton_rl_F000436",
+      "bridge_entity": "whereas reinforcement learning can",
+      "bridge_norm": "wherea reinforcement learning can",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        29
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0346"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000032",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Ecma International",
+      "bridge_norm": "ecma international",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        15
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0347"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000162",
+      "fact_b": "sutton_rl_F002490",
+      "bridge_entity": "random variable",
+      "bridge_norm": "random variable",
+      "bridge_type": "TERM",
+      "pages": [
+        13,
+        146
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0348"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000713",
+      "fact_b": "sutton_rl_F003365",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        200
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0349"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002307",
+      "fact_b": "sutton_rl_F003366",
+      "bridge_entity": "greedy policy",
+      "bridge_norm": "greedy policy",
+      "bridge_type": "TERM",
+      "pages": [
+        135,
+        200
+      ],
+      "content_jaccard": 0.059,
+      "pair_id": "BP0350"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000555",
+      "fact_b": "requirements_eng_F000897",
+      "bridge_entity": "modeling languages",
+      "bridge_norm": "modeling language",
+      "bridge_type": "TERM",
+      "pages": [
+        53,
+        79
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0351"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000559",
+      "fact_b": "requirements_eng_F000897",
+      "bridge_entity": "modeling languages",
+      "bridge_norm": "modeling language",
+      "bridge_type": "TERM",
+      "pages": [
+        53,
+        79
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0352"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000048",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Data Interchange",
+      "bridge_norm": "data interchange",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        15
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0353"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000015",
+      "fact_b": "ecma404_json_F000051",
+      "bridge_entity": "does not define",
+      "bridge_norm": "does not define",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0354"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001760",
+      "fact_b": "requirements_eng_F001798",
+      "bridge_entity": "change request",
+      "bridge_norm": "change request",
+      "bridge_type": "TERM",
+      "pages": [
+        149,
+        152
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0355"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000713",
+      "fact_b": "sutton_rl_F000890",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        56
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0356"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001229",
+      "fact_b": "requirements_eng_F001328",
+      "bridge_entity": "section 7",
+      "bridge_norm": "section 7",
+      "bridge_type": "TERM",
+      "pages": [
+        107,
+        116
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0357"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000051",
+      "fact_b": "ecma404_json_F000077",
+      "bridge_entity": "does not",
+      "bridge_norm": "does not",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        13
+      ],
+      "content_jaccard": 0.062,
+      "pair_id": "BP0358"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000059",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "metallic and other inorganic",
+      "bridge_norm": "metallic and other inorganic",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        42
+      ],
+      "content_jaccard": 0.065,
+      "pair_id": "BP0359"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000947",
+      "fact_b": "requirements_eng_F000952",
+      "bridge_entity": "relation between",
+      "bridge_norm": "relation between",
+      "bridge_type": "TERM",
+      "pages": [
+        83,
+        84
+      ],
+      "content_jaccard": 0.065,
+      "pair_id": "BP0360"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000354",
+      "fact_b": "din_iso_6507_vickers_F000380",
+      "bridge_entity": "Test method",
+      "bridge_norm": "test method",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.065,
+      "pair_id": "BP0361"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000237",
+      "fact_b": "din_iso_6507_vickers_F000244",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        29
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0362"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002049",
+      "fact_b": "sutton_rl_F003847",
+      "bridge_entity": "requires computation",
+      "bridge_norm": "require computation",
+      "bridge_type": "TERM",
+      "pages": [
+        120,
+        228
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0363"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000376",
+      "bridge_entity": "calibration chain",
+      "bridge_norm": "calibration chain",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0364"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000382",
+      "bridge_entity": "calibration chain",
+      "bridge_norm": "calibration chain",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0365"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001767",
+      "fact_b": "bonaventure_net_F001808",
+      "bridge_entity": "sequence numbers",
+      "bridge_norm": "sequence number",
+      "bridge_type": "TERM",
+      "pages": [
+        79,
+        80
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0366"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000711",
+      "fact_b": "sutton_rl_F000762",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        49
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0367"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000035",
+      "fact_b": "ecma404_json_F000047",
+      "bridge_entity": "JSON syntax",
+      "bridge_norm": "json syntax",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0368"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001229",
+      "fact_b": "requirements_eng_F001255",
+      "bridge_entity": "see section",
+      "bridge_norm": "see section",
+      "bridge_type": "TERM",
+      "pages": [
+        107,
+        109
+      ],
+      "content_jaccard": 0.067,
+      "pair_id": "BP0369"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000073",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "reverse solidus",
+      "bridge_norm": "reverse solidu",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.069,
+      "pair_id": "BP0370"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000271",
+      "fact_b": "din_iso_6507_vickers_F000292",
+      "bridge_entity": "bias b",
+      "bridge_norm": "bias b",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        32
+      ],
+      "content_jaccard": 0.07,
+      "pair_id": "BP0371"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000725",
+      "fact_b": "sutton_rl_F002978",
+      "bridge_entity": "reinforcement learning problems",
+      "bridge_norm": "reinforcement learning problem",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        176
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0372"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000244",
+      "fact_b": "din_iso_6507_vickers_F000342",
+      "bridge_entity": "verification of the machine",
+      "bridge_norm": "verification of the machine",
+      "bridge_type": "TERM",
+      "pages": [
+        29,
+        37
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0373"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000135",
+      "fact_b": "din_iso_6507_vickers_F000235",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        18,
+        28
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0374"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000272",
+      "fact_b": "requirements_eng_F000325",
+      "bridge_entity": "system context",
+      "bridge_norm": "system context",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        35
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0375"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001252",
+      "fact_b": "requirements_eng_F001265",
+      "bridge_entity": "Quality Aspect",
+      "bridge_norm": "quality aspect",
+      "bridge_type": "TERM",
+      "pages": [
+        109,
+        111
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0376"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003106",
+      "fact_b": "sutton_rl_F003178",
+      "bridge_entity": "step returns",
+      "bridge_norm": "step return",
+      "bridge_type": "TERM",
+      "pages": [
+        184,
+        188
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0377"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000711",
+      "fact_b": "sutton_rl_F002307",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        135
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0378"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000376",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        45
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0379"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000382",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        39,
+        45
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0380"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001345",
+      "fact_b": "sutton_rl_F002203",
+      "bridge_entity": "cards one",
+      "bridge_norm": "card one",
+      "bridge_type": "TERM",
+      "pages": [
+        80,
+        129
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0381"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003179",
+      "fact_b": "sutton_rl_F003784",
+      "bridge_entity": "Chapter 6",
+      "bridge_norm": "chapter 6",
+      "bridge_type": "TERM",
+      "pages": [
+        188,
+        224
+      ],
+      "content_jaccard": 0.071,
+      "pair_id": "BP0382"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003365",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "greedy action",
+      "bridge_norm": "greedy action",
+      "bridge_type": "TERM",
+      "pages": [
+        200,
+        231
+      ],
+      "content_jaccard": 0.074,
+      "pair_id": "BP0383"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001589",
+      "fact_b": "sutton_rl_F002233",
+      "bridge_entity": "environment s dynamics",
+      "bridge_norm": "environment s dynamic",
+      "bridge_type": "TERM",
+      "pages": [
+        93,
+        131
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0384"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000729",
+      "fact_b": "sutton_rl_F000966",
+      "bridge_entity": "n armed bandit problem",
+      "bridge_norm": "n armed bandit problem",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        61
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0385"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000235",
+      "fact_b": "din_iso_6507_vickers_F000244",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        29
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0386"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F003132",
+      "fact_b": "sutton_rl_F003179",
+      "bridge_entity": "one step TD method",
+      "bridge_norm": "one step td method",
+      "bridge_type": "TERM",
+      "pages": [
+        185,
+        188
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0387"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000428",
+      "fact_b": "din_iso_6507_vickers_F000473",
+      "bridge_entity": "coating thickness",
+      "bridge_norm": "coating thickness",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        45
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0388"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000355",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        38
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0389"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000413",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        42
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0390"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000029",
+      "fact_b": "ecma404_json_F000048",
+      "bridge_entity": "Data Interchange",
+      "bridge_norm": "data interchange",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0391"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000859",
+      "fact_b": "requirements_eng_F000897",
+      "bridge_entity": "natural language",
+      "bridge_norm": "natural language",
+      "bridge_type": "TERM",
+      "pages": [
+        77,
+        79
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0392"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001806",
+      "fact_b": "sutton_rl_F003832",
+      "bridge_entity": "but in practice",
+      "bridge_norm": "but in practice",
+      "bridge_type": "TERM",
+      "pages": [
+        105,
+        227
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0393"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000161",
+      "fact_b": "sutton_rl_F002490",
+      "bridge_entity": "random variable",
+      "bridge_norm": "random variable",
+      "bridge_type": "TERM",
+      "pages": [
+        13,
+        146
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0394"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002491",
+      "fact_b": "sutton_rl_F003367",
+      "bridge_entity": "Thus we",
+      "bridge_norm": "thus we",
+      "bridge_type": "TERM",
+      "pages": [
+        146,
+        200
+      ],
+      "content_jaccard": 0.077,
+      "pair_id": "BP0395"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002773",
+      "fact_b": "sutton_rl_F003131",
+      "bridge_entity": "correct predictions",
+      "bridge_norm": "correct prediction",
+      "bridge_type": "TERM",
+      "pages": [
+        162,
+        185
+      ],
+      "content_jaccard": 0.08,
+      "pair_id": "BP0396"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001920",
+      "fact_b": "sutton_rl_F003365",
+      "bridge_entity": "time steps",
+      "bridge_norm": "time step",
+      "bridge_type": "TERM",
+      "pages": [
+        112,
+        200
+      ],
+      "content_jaccard": 0.08,
+      "pair_id": "BP0397"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000423",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "reported in the test",
+      "bridge_norm": "reported in the test",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        46
+      ],
+      "content_jaccard": 0.083,
+      "pair_id": "BP0398"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000275",
+      "fact_b": "requirements_eng_F000325",
+      "bridge_entity": "system context",
+      "bridge_norm": "system context",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        35
+      ],
+      "content_jaccard": 0.083,
+      "pair_id": "BP0399"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000297",
+      "fact_b": "din_iso_6507_vickers_F000329",
+      "bridge_entity": "rather than",
+      "bridge_norm": "rather than",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        36
+      ],
+      "content_jaccard": 0.083,
+      "pair_id": "BP0400"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000762",
+      "bridge_entity": "whether they",
+      "bridge_norm": "whether they",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        69
+      ],
+      "content_jaccard": 0.086,
+      "pair_id": "BP0401"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000234",
+      "fact_b": "din_iso_6507_vickers_F000289",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        31
+      ],
+      "content_jaccard": 0.087,
+      "pair_id": "BP0402"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001265",
+      "fact_b": "requirements_eng_F001404",
+      "bridge_entity": "has been",
+      "bridge_norm": "has been",
+      "bridge_type": "TERM",
+      "pages": [
+        111,
+        120
+      ],
+      "content_jaccard": 0.088,
+      "pair_id": "BP0403"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000010",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "Data Interchange Format",
+      "bridge_norm": "data interchange format",
+      "bridge_type": "TERM",
+      "pages": [
+        7,
+        15
+      ],
+      "content_jaccard": 0.091,
+      "pair_id": "BP0404"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000060",
+      "fact_b": "ecma404_json_F000074",
+      "bridge_entity": "code point",
+      "bridge_norm": "code point",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.094,
+      "pair_id": "BP0405"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000059",
+      "fact_b": "din_iso_6507_vickers_F000476",
+      "bridge_entity": "have been",
+      "bridge_norm": "have been",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        45
+      ],
+      "content_jaccard": 0.094,
+      "pair_id": "BP0406"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001589",
+      "fact_b": "sutton_rl_F005291",
+      "bridge_entity": "s dynamics",
+      "bridge_norm": "s dynamic",
+      "bridge_type": "TERM",
+      "pages": [
+        93,
+        321
+      ],
+      "content_jaccard": 0.095,
+      "pair_id": "BP0407"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000234",
+      "fact_b": "din_iso_6507_vickers_F000292",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        32
+      ],
+      "content_jaccard": 0.097,
+      "pair_id": "BP0408"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000024",
+      "fact_b": "din_iso_3834_welding_quality_F000045",
+      "bridge_entity": "product standards",
+      "bridge_norm": "product standard",
+      "bridge_type": "TERM",
+      "pages": [
+        11,
+        13
+      ],
+      "content_jaccard": 0.097,
+      "pair_id": "BP0409"
+    },
+    {
+      "doc": "din_iso_3834_welding_quality_full",
+      "fact_a": "din_iso_3834_welding_quality_F000037",
+      "fact_b": "din_iso_3834_welding_quality_F000045",
+      "bridge_entity": "No Element ISO 3834",
+      "bridge_norm": "no element iso 3834",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.098,
+      "pair_id": "BP0410"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "calibration chain",
+      "bridge_norm": "calibration chain",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.098,
+      "pair_id": "BP0411"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000328",
+      "fact_b": "requirements_eng_F001760",
+      "bridge_entity": "system to be developed",
+      "bridge_norm": "system to be developed",
+      "bridge_type": "TERM",
+      "pages": [
+        35,
+        149
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0412"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000186",
+      "fact_b": "din_iso_6507_vickers_F000429",
+      "bridge_entity": "see References",
+      "bridge_norm": "see reference",
+      "bridge_type": "TERM",
+      "pages": [
+        21,
+        43
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0413"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001589",
+      "fact_b": "sutton_rl_F003785",
+      "bridge_entity": "not possible",
+      "bridge_norm": "not possible",
+      "bridge_type": "TERM",
+      "pages": [
+        93,
+        224
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0414"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000711",
+      "fact_b": "sutton_rl_F000761",
+      "bridge_entity": "action value",
+      "bridge_norm": "action value",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        49
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0415"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000023",
+      "fact_b": "ecma404_json_F000076",
+      "bridge_entity": "JSON texts",
+      "bridge_norm": "json text",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        13
+      ],
+      "content_jaccard": 0.1,
+      "pair_id": "BP0416"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000893",
+      "fact_b": "sutton_rl_F003719",
+      "bridge_entity": "already been",
+      "bridge_norm": "already been",
+      "bridge_type": "TERM",
+      "pages": [
+        56,
+        220
+      ],
+      "content_jaccard": 0.103,
+      "pair_id": "BP0417"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000305",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        33
+      ],
+      "content_jaccard": 0.105,
+      "pair_id": "BP0418"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000384",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.105,
+      "pair_id": "BP0419"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F001629",
+      "bridge_entity": "not influence the system",
+      "bridge_norm": "not influence the system",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        138
+      ],
+      "content_jaccard": 0.107,
+      "pair_id": "BP0420"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000337",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.108,
+      "pair_id": "BP0421"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000292",
+      "fact_b": "din_iso_6507_vickers_F000305",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        33
+      ],
+      "content_jaccard": 0.109,
+      "pair_id": "BP0422"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000337",
+      "fact_b": "din_iso_6507_vickers_F000383",
+      "bridge_entity": "measurement uncertainty",
+      "bridge_norm": "measurement uncertainty",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0423"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000709",
+      "fact_b": "sutton_rl_F000966",
+      "bridge_entity": "n armed bandit problem",
+      "bridge_norm": "n armed bandit problem",
+      "bridge_type": "TERM",
+      "pages": [
+        46,
+        61
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0424"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001704",
+      "fact_b": "bonaventure_net_F001812",
+      "bridge_entity": "retransmission timer",
+      "bridge_norm": "retransmission timer",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        80
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0425"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0426"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000374",
+      "bridge_entity": "machine components",
+      "bridge_norm": "machine component",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0427"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000421",
+      "fact_b": "din_iso_6507_vickers_F000457",
+      "bridge_entity": "cross section",
+      "bridge_norm": "cross section",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        44
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0428"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000035",
+      "fact_b": "ecma404_json_F000051",
+      "bridge_entity": "JSON syntax",
+      "bridge_norm": "json syntax",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0429"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001309",
+      "fact_b": "sutton_rl_F002265",
+      "bridge_entity": "next state",
+      "bridge_norm": "next state",
+      "bridge_type": "TERM",
+      "pages": [
+        78,
+        133
+      ],
+      "content_jaccard": 0.111,
+      "pair_id": "BP0430"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000359",
+      "fact_b": "din_iso_6507_vickers_F000381",
+      "bridge_entity": "calibration laboratory s",
+      "bridge_norm": "calibration laboratory s",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.115,
+      "pair_id": "BP0431"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000370",
+      "bridge_entity": "traceability paths",
+      "bridge_norm": "traceability path",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.115,
+      "pair_id": "BP0432"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001309",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "next state",
+      "bridge_norm": "next state",
+      "bridge_type": "TERM",
+      "pages": [
+        78,
+        231
+      ],
+      "content_jaccard": 0.115,
+      "pair_id": "BP0433"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000427",
+      "fact_b": "din_iso_6507_vickers_F000485",
+      "bridge_entity": "test report see H",
+      "bridge_norm": "test report see h",
+      "bridge_type": "TERM",
+      "pages": [
+        43,
+        46
+      ],
+      "content_jaccard": 0.118,
+      "pair_id": "BP0434"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000455",
+      "fact_b": "din_iso_6507_vickers_F000473",
+      "bridge_entity": "coating thickness",
+      "bridge_norm": "coating thickness",
+      "bridge_type": "TERM",
+      "pages": [
+        44,
+        45
+      ],
+      "content_jaccard": 0.118,
+      "pair_id": "BP0435"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000329",
+      "fact_b": "din_iso_6507_vickers_F000484",
+      "bridge_entity": "standard deviation",
+      "bridge_norm": "standard deviation",
+      "bridge_type": "TERM",
+      "pages": [
+        36,
+        46
+      ],
+      "content_jaccard": 0.12,
+      "pair_id": "BP0436"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000236",
+      "fact_b": "din_iso_6507_vickers_F000244",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        29
+      ],
+      "content_jaccard": 0.125,
+      "pair_id": "BP0437"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001812",
+      "fact_b": "bonaventure_net_F001817",
+      "bridge_entity": "retransmission timer",
+      "bridge_norm": "retransmission timer",
+      "bridge_type": "TERM",
+      "pages": [
+        80,
+        81
+      ],
+      "content_jaccard": 0.125,
+      "pair_id": "BP0438"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000289",
+      "fact_b": "din_iso_6507_vickers_F000292",
+      "bridge_entity": "calculated according to Formula",
+      "bridge_norm": "calculated according to formula",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        32
+      ],
+      "content_jaccard": 0.129,
+      "pair_id": "BP0439"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000337",
+      "fact_b": "din_iso_6507_vickers_F000380",
+      "bridge_entity": "reference to which traceability",
+      "bridge_norm": "reference to which traceability",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.129,
+      "pair_id": "BP0440"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000360",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "calibration chain",
+      "bridge_norm": "calibration chain",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.129,
+      "pair_id": "BP0441"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000293",
+      "fact_b": "din_iso_6507_vickers_F000342",
+      "bridge_entity": "machine s",
+      "bridge_norm": "machine s",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        37
+      ],
+      "content_jaccard": 0.129,
+      "pair_id": "BP0442"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000017",
+      "fact_b": "din_iso_6507_vickers_F000354",
+      "bridge_entity": "Vickers hardness",
+      "bridge_norm": "vicker hardness",
+      "bridge_type": "TERM",
+      "pages": [
+        8,
+        38
+      ],
+      "content_jaccard": 0.13,
+      "pair_id": "BP0443"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001258",
+      "fact_b": "requirements_eng_F001265",
+      "bridge_entity": "Quality Aspect Documentation",
+      "bridge_norm": "quality aspect documentation",
+      "bridge_type": "TERM",
+      "pages": [
+        110,
+        111
+      ],
+      "content_jaccard": 0.132,
+      "pair_id": "BP0444"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000328",
+      "bridge_entity": "system to be developed",
+      "bridge_norm": "system to be developed",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        35
+      ],
+      "content_jaccard": 0.133,
+      "pair_id": "BP0445"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F001806",
+      "fact_b": "sutton_rl_F001923",
+      "bridge_entity": "only in the limit",
+      "bridge_norm": "only in the limit",
+      "bridge_type": "TERM",
+      "pages": [
+        105,
+        112
+      ],
+      "content_jaccard": 0.133,
+      "pair_id": "BP0446"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000071",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "hexadecimal digits",
+      "bridge_norm": "hexadecimal digit",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.135,
+      "pair_id": "BP0447"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000372",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.138,
+      "pair_id": "BP0448"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000287",
+      "fact_b": "din_iso_6507_vickers_F000292",
+      "bridge_entity": "uncertainty U",
+      "bridge_norm": "uncertainty u",
+      "bridge_type": "TERM",
+      "pages": [
+        31,
+        32
+      ],
+      "content_jaccard": 0.138,
+      "pair_id": "BP0449"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000312",
+      "fact_b": "requirements_eng_F000325",
+      "bridge_entity": "system to be developed",
+      "bridge_norm": "system to be developed",
+      "bridge_type": "TERM",
+      "pages": [
+        34,
+        35
+      ],
+      "content_jaccard": 0.143,
+      "pair_id": "BP0450"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000359",
+      "fact_b": "din_iso_6507_vickers_F000379",
+      "bridge_entity": "s realization",
+      "bridge_norm": "s realization",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.15,
+      "pair_id": "BP0451"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000376",
+      "bridge_entity": "Measurement traceability",
+      "bridge_norm": "measurement traceability",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.154,
+      "pair_id": "BP0452"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000382",
+      "bridge_entity": "Measurement traceability",
+      "bridge_norm": "measurement traceability",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.154,
+      "pair_id": "BP0453"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000293",
+      "fact_b": "din_iso_6507_vickers_F000340",
+      "bridge_entity": "machine s",
+      "bridge_norm": "machine s",
+      "bridge_type": "TERM",
+      "pages": [
+        32,
+        37
+      ],
+      "content_jaccard": 0.162,
+      "pair_id": "BP0454"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F000729",
+      "fact_b": "sutton_rl_F000789",
+      "bridge_entity": "exploration and exploitation",
+      "bridge_norm": "exploration and exploitation",
+      "bridge_type": "TERM",
+      "pages": [
+        47,
+        50
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0455"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000344",
+      "fact_b": "din_iso_6507_vickers_F000381",
+      "bridge_entity": "Indirect Verification path",
+      "bridge_norm": "indirect verification path",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0456"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F001255",
+      "fact_b": "requirements_eng_F001265",
+      "bridge_entity": "criteria of the quality",
+      "bridge_norm": "criteria of the quality",
+      "bridge_type": "TERM",
+      "pages": [
+        109,
+        111
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0457"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001704",
+      "fact_b": "bonaventure_net_F001817",
+      "bridge_entity": "retransmission timer",
+      "bridge_norm": "retransmission timer",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        81
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0458"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000169",
+      "fact_b": "din_iso_6507_vickers_F000437",
+      "bridge_entity": "less than",
+      "bridge_norm": "less than",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.167,
+      "pair_id": "BP0459"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000380",
+      "bridge_entity": "realization of the Vickers",
+      "bridge_norm": "realization of the vicker",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.172,
+      "pair_id": "BP0460"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000225",
+      "fact_b": "din_iso_6507_vickers_F000235",
+      "bridge_entity": "Periodic verification",
+      "bridge_norm": "periodic verification",
+      "bridge_type": "TERM",
+      "pages": [
+        27,
+        28
+      ],
+      "content_jaccard": 0.182,
+      "pair_id": "BP0461"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000271",
+      "fact_b": "din_iso_6507_vickers_F000293",
+      "bridge_entity": "hardness testing machine",
+      "bridge_norm": "hardness testing machine",
+      "bridge_type": "TERM",
+      "pages": [
+        30,
+        32
+      ],
+      "content_jaccard": 0.2,
+      "pair_id": "BP0462"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000174",
+      "fact_b": "din_iso_6507_vickers_F000427",
+      "bridge_entity": "stated in the test",
+      "bridge_norm": "stated in the test",
+      "bridge_type": "TERM",
+      "pages": [
+        20,
+        43
+      ],
+      "content_jaccard": 0.2,
+      "pair_id": "BP0463"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000060",
+      "fact_b": "ecma404_json_F000078",
+      "bridge_entity": "control character",
+      "bridge_norm": "control character",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.206,
+      "pair_id": "BP0464"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000359",
+      "fact_b": "din_iso_6507_vickers_F000380",
+      "bridge_entity": "calibration laboratory s realization",
+      "bridge_norm": "calibration laboratory s realization",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.214,
+      "pair_id": "BP0465"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000071",
+      "fact_b": "ecma404_json_F000074",
+      "bridge_entity": "Basic Multilingual Plane",
+      "bridge_norm": "basic multilingual plane",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.214,
+      "pair_id": "BP0466"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000342",
+      "fact_b": "din_iso_6507_vickers_F000381",
+      "bridge_entity": "Direct Verification",
+      "bridge_norm": "direct verification",
+      "bridge_type": "TERM",
+      "pages": [
+        37,
+        39
+      ],
+      "content_jaccard": 0.227,
+      "pair_id": "BP0467"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000226",
+      "fact_b": "din_iso_6507_vickers_F000293",
+      "bridge_entity": "hardness levels",
+      "bridge_norm": "hardness level",
+      "bridge_type": "TERM",
+      "pages": [
+        28,
+        32
+      ],
+      "content_jaccard": 0.231,
+      "pair_id": "BP0468"
+    },
+    {
+      "doc": "requirements_eng_full",
+      "fact_a": "requirements_eng_F000952",
+      "fact_b": "requirements_eng_F000953",
+      "bridge_entity": "navigate to destination",
+      "bridge_norm": "navigate to destination",
+      "bridge_type": "TERM",
+      "pages": [
+        84,
+        85
+      ],
+      "content_jaccard": 0.238,
+      "pair_id": "BP0469"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001812",
+      "fact_b": "bonaventure_net_F001816",
+      "bridge_entity": "retransmission timer",
+      "bridge_norm": "retransmission timer",
+      "bridge_type": "TERM",
+      "pages": [
+        80,
+        81
+      ],
+      "content_jaccard": 0.25,
+      "pair_id": "BP0470"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000018",
+      "fact_b": "ecma404_json_F000048",
+      "bridge_entity": "Defining specific",
+      "bridge_norm": "defining specific",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        11
+      ],
+      "content_jaccard": 0.25,
+      "pair_id": "BP0471"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002265",
+      "fact_b": "sutton_rl_F003900",
+      "bridge_entity": "state values",
+      "bridge_norm": "state value",
+      "bridge_type": "TERM",
+      "pages": [
+        133,
+        231
+      ],
+      "content_jaccard": 0.25,
+      "pair_id": "BP0472"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000358",
+      "fact_b": "din_iso_6507_vickers_F000379",
+      "bridge_entity": "its own chosen definition",
+      "bridge_norm": "its own chosen definition",
+      "bridge_type": "TERM",
+      "pages": [
+        38,
+        39
+      ],
+      "content_jaccard": 0.267,
+      "pair_id": "BP0473"
+    },
+    {
+      "doc": "sutton_rl_full",
+      "fact_a": "sutton_rl_F002770",
+      "fact_b": "sutton_rl_F002910",
+      "bridge_entity": "usual stochastic approximation conditions",
+      "bridge_norm": "usual stochastic approximation condition",
+      "bridge_type": "TERM",
+      "pages": [
+        162,
+        171
+      ],
+      "content_jaccard": 0.28,
+      "pair_id": "BP0474"
+    },
+    {
+      "doc": "bonaventure_net_full",
+      "fact_a": "bonaventure_net_F001704",
+      "fact_b": "bonaventure_net_F001816",
+      "bridge_entity": "retransmission timer expires",
+      "bridge_norm": "retransmission timer expire",
+      "bridge_type": "TERM",
+      "pages": [
+        75,
+        81
+      ],
+      "content_jaccard": 0.357,
+      "pair_id": "BP0475"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000073",
+      "fact_b": "ecma404_json_F000075",
+      "bridge_entity": "example a string containing",
+      "bridge_norm": "example a string containing",
+      "bridge_type": "TERM",
+      "pages": [
+        12,
+        13
+      ],
+      "content_jaccard": 0.429,
+      "pair_id": "BP0476"
+    },
+    {
+      "doc": "din_iso_6507_vickers_full",
+      "fact_a": "din_iso_6507_vickers_F000208",
+      "fact_b": "din_iso_6507_vickers_F000213",
+      "bridge_entity": "correction factors when tests",
+      "bridge_norm": "correction factor when test",
+      "bridge_type": "TERM",
+      "pages": [
+        23,
+        24
+      ],
+      "content_jaccard": 0.444,
+      "pair_id": "BP0477"
+    },
+    {
+      "doc": "ecma404_json_full",
+      "fact_a": "ecma404_json_F000029",
+      "fact_b": "ecma404_json_F000079",
+      "bridge_entity": "JavaScript Object Notation JSON",
+      "bridge_norm": "javascript object notation json",
+      "bridge_type": "TERM",
+      "pages": [
+        9,
+        15
+      ],
+      "content_jaccard": 0.5,
+      "pair_id": "BP0478"
+    }
+  ],
+  "stats": {
+    "candidate_pairs": 567,
+    "dropped_bridge_missing": 8,
+    "dropped_duplicate": 5,
+    "verified_pairs": 478
+  }
+}

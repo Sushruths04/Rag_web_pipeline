@@ -1,0 +1,390 @@
+# PASS-GT v16 feature flags and hyperparameters.
+# Included from config.yaml under the `v16:` key.
+
+enabled: false   # set true via --v16 CLI flag or RAG_GT_V16=true env var
+
+# ---------- P1: TF-SFG (Typed Fact Sub-Graph) ----------
+tf_sfg:
+  # Soft cosine pre-filter for candidate fact pairs (edges).
+  min_cosine: 0.45
+  # NLI entailment threshold for edge acceptance.
+  nli_edge_threshold: 0.55
+  # LLM role used for relation-type proposal + bridging-quote generation.
+  llm_role: "answer"
+  # Maximum edges to classify per document (cost guard).
+  max_candidate_pairs: 800
+  # Protect smoke/full runs from an unavailable edge-classification endpoint:
+  # TF-SFG may use only this portion of remaining wall time and must leave time
+  # for question generation from accepted/cached edges.
+  max_wall_fraction: 0.35
+  reserve_generation_minutes: 20
+  # Maximum raw neighbor pairs gathered before ranking/diversity selection.
+  raw_candidate_pairs: 20000
+  # Add cheap source-neighbor candidates before final pair selection. This
+  # improves textbook chains where adjacent claims are compositional but not
+  # nearest embedding neighbours.
+  source_neighbor_window: 0
+  source_neighbor_max_page_gap: 2
+  # Keep same-document candidate orientation aligned with the author's source
+  # order; relation/type scoring must not reverse a premise solely for role bonus.
+  canonical_source_order: true
+  # Per page-pair diversity cap so one section cannot consume the whole budget.
+  per_page_pair_cap: 24
+  # Per-anchor cap: max pairs any single source fact can contribute (prevents anchor fanout).
+  per_anchor_pair_cap: 6
+  # Emit progress while classifying large pair budgets; essential for long book runs.
+  progress_interval: 25
+  # Fail fast on endpoint outages; transient API errors are not cached.
+  max_consecutive_api_errors: 3
+  # Cache path for edge verdicts (sha256 key → {type, nli_score}).
+  cache_path: "data/cache/tfsfg_cache.db"
+  # L0 cheap pair pre-filter. This runs in plain --v16 as well as v16.2; the
+  # v16_2.pair_prefilter stanza remains as a compatibility mirror for older
+  # diagnostics and adaptive runs.
+  pair_prefilter:
+    enabled: true
+    min_chars: 30
+    min_bridge_tokens: 2
+    bridge_cosine_min: 0.55
+    max_page_gap_unaided: 30
+    near_duplicate_overlap_cap: 0.75
+    same_role_overlap_floor: 0.45
+    penalty_same_role_high_overlap: 0.20
+    same_page_role_overlap_cap: 0.70
+    penalty_same_page_high_overlap: 0.25
+    penalty_page_gap_outlier_strong_bridge: 0.10
+    penalty_identical_prefix: 0.05
+    penalty_definition_definition_weak_anchor: 0.15
+    penalty_source_fragment_role: 0.20
+    penalty_deictic_unresolved: 0.10
+    penalty_weak_role_pair: 0.12
+    penalty_math_fragment_pair: 0.18
+  # Optional edge-level contribution gate. This is disabled globally and
+  # enabled only for doc types where weak compositional pairs are a known issue.
+  edge_minimality:
+    enabled: false
+    single_fact_threshold: 0.85
+    min_joint_only_margin: 0.05
+  # Typed edges can expose two separately grounded answer clauses. Weak
+  # distinctness is ranked lower rather than rejected until measured.
+  answer_contribution:
+    enabled: false
+    own_entailment_threshold: 0.45
+  # Free local gate before paid relation classification. Mutually entailing
+  # facts are restatements; very high one-way entailment means one support is
+  # already recoverable from the other and is unsafe for strict minimality.
+  pre_llm_redundancy:
+    enabled: true
+    bidirectional_entailment_threshold: 0.86
+    single_fact_entailment_threshold: 0.94
+
+fallback:
+  enabled: true
+  # Used only when typed TF-SFG chains are too sparse after filtering.
+  # These provenance-clean single-hop candidates keep yield usable without
+  # weakening V16 quality gates.
+  singlehop_candidates: 24
+  min_fact_words: 8
+  max_fact_words: 45
+
+# ---------- Relation-aware chain ranking (plain V16) ----------
+# This is a cheap, TF-SFG-native ranker used before question generation. It is
+# intentionally not a literature-copy reranker: it uses our typed edge
+# contribution diagnostics (joint-only margin + relation type strength) so the
+# generator sees compositional chains before weak definition/descriptive chains.
+chain_scorer:
+  enabled: true
+  nli_rerank_k: 0
+  min_pass1_score: 0.0
+  min_final_score_to_keep: 0.0
+  pass1_weights:
+    length: 0.06
+    fragment: 0.10
+    page_compactness: 0.05
+    role_variety: 0.08
+    lexical_bridge: 0.10
+    typed_edge_confidence: 0.16
+    edge_joint_only_margin: 0.25
+    # Positive selector: favors edges with two independently grounded answer
+    # clauses whose information is not recoverable from the opposite fact.
+    answer_contribution_score: 0.30
+    relation_type_strength: 0.20
+    source_text_quality: 0.20
+    # Experimental signal kept in code but disabled after q10 p50 smoke
+    # regressed strict depth-2 yield from 1 to 0.
+    compositional_actionability: 0.0
+    # Positive prior derived from strict-minimality survivors: definition plus
+    # condition/rule chains are more likely to yield true multi-hop answers.
+    multi_hop_questionability: 0.18
+  relation_type_strength:
+    mechanism: 1.00
+    causal: 0.95
+    procedural: 0.90
+    temporal: 0.82
+    quantitative: 0.80
+    contrast: 0.78
+    comparison: 0.76
+    intersection: 0.72
+    condition: 0.70
+    consequence: 0.70
+    rule: 0.68
+    exception: 0.66
+    constraint: 0.64
+    definition: 0.38
+    descriptive: 0.32
+    list: 0.20
+
+question_generation:
+  use_answer_llm: true
+  fallback_to_answer_llm_on_api_error: true
+  api_error_fail_fast_after: 2
+  premise_leakage_guard:
+    enabled: true
+    max_regen_attempts: 2
+    reject_after_regen: false
+    min_common_run: 5
+    min_overlap_tokens: 7
+    min_overlap_ratio: 0.55
+
+# ---------- P2: QA-NLI gate ----------
+qa_nli:
+  # NLI threshold for each assumption to count as grounded.
+  threshold: 0.55
+  # Maximum re-generation attempts when assumptions fail.
+  max_regen_attempts: 3
+  # Drop a row if this fraction of REL assumptions fail after all retries.
+  max_rel_fail_rate: 0.10
+  # In production v16, decomposition failure should reject instead of passing through.
+  fail_open_on_decomposition_error: false
+  # Reject when a REL assumption type conflicts with TF-SFG edge types.
+  enforce_edge_relation_match: true
+  # Fraction of REL assumptions allowed to mismatch before rejecting (fraction-based gate).
+  max_rel_mismatch_rate: 0.5
+  # Drop a row if this fraction of all assumptions fail after all retries.
+  max_total_fail_rate: 0.25
+
+# ---------- P3: PASD (Provenance-Anchored Synthetic Distractors) ----------
+distractors:
+  # Distractors per chain fact.
+  per_fact: 2
+  # Cosine lower bound (distractor must be semi-relevant to the chain fact).
+  min_cosine_to_support: 0.55
+  # NLI upper bound to chain question (distractor must NOT answer the question).
+  max_nli_to_question: 0.30
+
+# ---------- P4: AT/CT twins ----------
+twins:
+  # Generate abstention + counterfactual pair for every accepted strict row.
+  enabled: true
+  # NLI contradiction threshold: perturbed fact must contradict the original.
+  ct_nli_contradiction_threshold: 0.60
+  # Maximum infill retries for the CT generation.
+  ct_max_retries: 3
+  # Avoid deriving CT for every strict row; focus adversarial cost on a sample.
+  ct_sample_rate: 0.30
+  # Require regenerated counterfactual answers to differ from strict answers.
+  require_answer_change: true
+  # Verify CT answer support with local NLI during production generation.
+  validate_answer_entailment: true
+
+# ---------- P5: ARM (Abstractive Reasoning Map) ----------
+arm:
+  # Enable ARM in place of CGA paraphrase step.
+  enabled: true
+  # Maximum noun-phrase token overlap allowed between answer step and source span.
+  max_np_overlap: 0.35
+  # NLI entailment threshold: each reasoning step must entail from its fact_ids.
+  step_nli_threshold: 0.55
+  # Maximum synthesis retries per step.
+  max_step_retries: 5
+  # LLM role for step synthesis.
+  llm_role: "answer"
+
+# ---------- Difficulty matrix ----------
+difficulty_matrix:
+  # Axes: hops × semantic_distance × adversarial
+  hops: [1, 2, 3, 4]
+  semantic_distance: ["intra_section", "intra_doc", "cross_doc"]
+  adversarial: ["clean", "distractor", "abstention", "counterfactual"]
+
+# ---------- Intent taxonomy (DataMorgana-style) ----------
+intent_distribution:
+  # Target fraction per intent across all strict rows. Must sum to 1.0.
+  factoid: 0.15
+  inferential: 0.25
+  comparative: 0.15
+  numerical: 0.10
+  procedural: 0.15
+  counterfactual: 0.05
+  list: 0.10
+  unanswerable: 0.05
+
+# ---------- Generation targets ----------
+generation:
+  # Strict question target (twins are derived, not counted here).
+  n_strict_questions: 100
+  # Oversample multiplier: generate N× then filter down to target.
+  oversample: 3
+  # Per-corpus yield floor; below this the run is flagged as low-yield.
+  min_yield_per_corpus: 20
+
+# ===========================================================================
+# V16.2 — Cost-Adaptive Cascade & Topology-Aware Filtering
+# ===========================================================================
+# Opt-in. Default OFF so existing --v16 runs reproduce V16.1 exactly.
+# Plan: docs/V16_2_FILTER_PLAN_20260519.md
+v16_2:
+  enabled: false   # OPT-IN. Existing --v16 runs MUST keep V16.1 behaviour.
+
+  # ---------- Document-intrinsic adaptive budget ----------
+  # Per-doc spend = f(fact_count, page_count, doc_type).
+  # size_signal = log2(fact_count + 1) * log2(page_count + 1)
+  # Each output: clamp(round(k * size_signal), lo, hi).
+  adaptive_budget:
+    enabled: true
+    attempt_multiplier: 4          # attempt_cap = strict_target * this
+    global_strict_per_doc_cap: 60  # hard upper on strict_target across all docs
+    base_budget:
+      # tf_sfg_pairs_hi: TEXTBOOK gets a higher ceiling because Sutton/Bonaventure
+      # would otherwise saturate the 400 clamp.
+      # fb_k raised across all profiles: QA-NLI rejects ~79% of fallback attempts so
+      # the sampler needs a larger pool to fill the fb_accept_cap.
+      TEXTBOOK:     {tf_sfg_k: 8.0, fb_k: 1.10, target_k: 0.55, tf_sfg_pairs_hi: 800}
+      ISO_STANDARD: {tf_sfg_k: 6.0, fb_k: 0.80, target_k: 0.45, tf_sfg_pairs_hi: 400}
+      KT_DOC:       {tf_sfg_k: 5.0, fb_k: 0.80, target_k: 0.40, tf_sfg_pairs_hi: 400}
+      REPORT:       {tf_sfg_k: 4.0, fb_k: 0.80, target_k: 0.50, tf_sfg_pairs_hi: 400}
+      NARRATIVE:    {tf_sfg_k: 3.0, fb_k: 0.60, target_k: 0.30, tf_sfg_pairs_hi: 400}
+    # Future scope (V16.3) — intentionally disabled in V16.2 so the paper's
+    # adaptive-budget claim is strictly intrinsic and reproducible.
+    # warmup_rescale:
+    #   enabled: false
+    #   warmup_k: 12
+    #   target_acceptance: 0.4
+
+  # ---------- L0: cheap pair pre-filter (pre-TF-SFG) ----------
+  # Mostly downrank/penalty; few hard rejects. Hard reject only on combo evidence.
+  pair_prefilter:
+    enabled: true
+    min_chars: 30
+    min_bridge_tokens: 2
+    bridge_cosine_min: 0.55
+    max_page_gap_unaided: 30
+    near_duplicate_overlap_cap: 0.75
+    same_role_overlap_floor: 0.45
+    penalty_same_role_high_overlap: 0.20
+    same_page_role_overlap_cap: 0.70
+    # Downrank weights (subtracted from raw score, range 0..1).
+    penalty_same_page_high_overlap: 0.25
+    penalty_page_gap_outlier_strong_bridge: 0.10
+    penalty_identical_prefix: 0.05
+
+  # ---------- Edge-label canonicalization ----------
+  # TF-SFG classifier emits varied labels; canonicalize before NLI / topology gate.
+  # Unknown/none → UNKNOWN, routed to untyped_mh path (never typed).
+  edge_canonicalize:
+    enabled: true
+    map:
+      comparison: comparative
+      contrast: comparative
+      definition: definition
+      rule: rule
+      causal: causal
+      mechanism: causal
+      quantitative: quantitative
+      procedural: procedural
+      temporal: temporal
+      intersection: intersection
+      descriptive: descriptive
+      list: descriptive
+      none: UNKNOWN
+      unknown: UNKNOWN
+      empty: UNKNOWN
+
+  # ---------- L1: two-pass chain scorer (pre-question-gen) ----------
+  # Pass 1: cheap structural on ALL chains.
+  # Pass 2: local NLI on top min(nli_rerank_k, ceil(1.5 * attempt_cap)) only.
+  chain_scorer:
+    enabled: true
+    nli_rerank_k: 80              # capped at runtime by ceil(1.5 * attempt_cap)
+    min_pass1_score: 0.40         # below this, chain skipped before NLI
+    pass1_weights:
+      length: 0.10
+      fragment: 0.15
+      page_compactness: 0.10
+      role_variety: 0.10
+      lexical_bridge: 0.20
+      typed_edge_confidence: 0.35
+    pass2_blend:
+      pass1: 0.85
+      nli_pair_compat: 0.15
+    per_group_keep: 3
+    min_final_score_to_keep: 0.45
+
+  # ---------- Topology → intent gate ----------
+  # Single-hop -> factoid only. Typed multi-hop -> intents per canonical label.
+  # untyped_mh allowed only as factoid above pass1 threshold (below = drop).
+  topology_intent:
+    enabled: true
+    counterfactual_min_typed_confidence: 0.65
+    unanswerable_max_typed_confidence: 0.45
+    untyped_mh_min_pass1_for_factoid: 0.65
+
+  # ---------- Yield controller (multi-hop floor + fallback cap) ----------
+  # Row partition: typed_mh + untyped_mh + fb = 100% of strict rows.
+  # Reported as separate columns. Never aggregated as "multi-hop" in paper.
+  yield_controller:
+    enabled: true
+    mh_floor_fraction: 0.10          # lowered from 0.60 — typed MH rarely passes for RL/prose docs
+    untyped_mh_cap_fraction: 0.10    # cap on untyped_mh accepted
+    fb_cap_fraction: 0.70            # raised from 0.40 — allow more single-hop rows
+    fb_attempt_multiplier: 5         # raised from 3 — more LLM attempts per accept slot
+    untyped_mh_attempt_multiplier: 3
+    # typed_mh_attempt_cap: open by default; tracked for reporting
+    stop_when_target_met: true
+    emit_underyield_warning: true
+
+  # ---------- CostTracker (real LLM-call instrumentation) ----------
+  # Wraps every LLM.generate/classify call site. live_api_calls vs cache_hit_calls
+  # tracked separately so the paper's cost-efficiency claim uses live only.
+  # Safe to enable independently of v16_2.enabled (instruments V16.1 runs too).
+  cost_tracker:
+    enabled: true
+    persist_per_call_log: false   # aggregate-only by default; flip for debugging
+    token_estimate_chars_per_token: 3.5
+
+# ===========================================================================
+# Doc-type gate profiles — loosen thresholds for prose-heavy textbooks without
+# touching the ISO_STANDARD calibration that the standing benchmark uses.
+# Resolved per document at runtime; missing doc_type falls back to global defaults.
+# ===========================================================================
+doc_type_profiles:
+  TEXTBOOK:
+    tf_sfg:
+      nli_edge_threshold: 0.50    # staged hardening; 0.55 is a follow-up candidate
+      allow_low_nli_with_quote: true
+      low_nli_floor: 0.45        # was 0.0 — prevents near-zero quote-only edges
+      edge_minimality:
+        enabled: true
+        single_fact_threshold: 0.85
+        min_joint_only_margin: 0.05
+      answer_contribution:
+        enabled: true
+        own_entailment_threshold: 0.45
+    qa_nli:
+      threshold: 0.45             # per-assumption NLI floor
+      max_rel_fail_rate: 0.25     # was 0.10 — allows 1 REL fail on a 2-assumption chain
+      max_rel_mismatch_rate: 0.75
+      enforce_edge_relation_match: false  # main d2 killer — disabled for textbooks
+      require_per_fact_coverage: true
+    chain_quality:
+      max_page_gap: 200           # was 40 — RL concepts span chapters in Sutton
+  ISO_STANDARD:
+    # Explicit so any future global-default change doesn't break ISO calibration.
+    tf_sfg:
+      nli_edge_threshold: 0.55
+    qa_nli:
+      threshold: 0.55
+      max_rel_fail_rate: 0.10
+      enforce_edge_relation_match: true
+    chain_quality:
+      max_page_gap: 40

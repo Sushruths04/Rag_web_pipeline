@@ -17,6 +17,8 @@ dist/
 # Runtime data produced by the app
 production/data/runs/
 data/cache/
+data/logs/
+datacache/
 
 # OS
 .DS_Store

@@ -1,0 +1,2693 @@
+[
+ {
+  "fact_id": "din_iso_6507_vickers_F000376",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Calibration level traceability Measurement traceability is best obtained through the Indirect Verification calibration chain using primary reference blocks that have been calibrated at the National NMI level.",
+  "canonical_form": "Measurement traceability is best obtained through the Indirect Verification calibration chain using primary reference blocks that have been calibrated at the National NMI level.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000217",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 419.1750183105469,
+    "r": 560.8709716796875,
+    "b": 575.3750610351562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000404",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "— Open the field diaphragm so that it just disappears from the field of view.",
+  "canonical_form": "Open the field diaphragm until it just disappears from the field of view.",
+  "page_start": 42,
+  "chunk_id": "din_iso_6507_vickers_c000232",
+  "bboxes": [
+   {
+    "page_no": 42,
+    "l": 36.850399017333984,
+    "t": 352.2290344238281,
+    "r": 402.11004638671875,
+    "b": 363.2290344238281,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000379",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Hardness traceability should be to the NMI’s realization of the CCM-WGH definition of the Vickers scale or when there is an absence of a CCM-WGH definition; traceability should be to the NMI’s realization of its own chosen definition.",
+  "canonical_form": "Hardness traceability should be to the NMI’s realization of the CCM-WGH definition of the Vickers scale or, when there is an absence of a CCM-WGH definition, to the NMI’s realization of its own chosen definition.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000219",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 419.1750183105469,
+    "r": 560.8709716796875,
+    "b": 575.3750610351562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000406",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If all the components are in their proper places, the source of illumination and the aperture diaphragm will appear in sharp focus.",
+  "canonical_form": "If the components are in their proper places, the source of illumination and the aperture diaphragm will appear in sharp focus.",
+  "page_start": 42,
+  "chunk_id": "din_iso_6507_vickers_c000233",
+  "bboxes": [
+   {
+    "page_no": 42,
+    "l": 36.850399017333984,
+    "t": 373.5420227050781,
+    "r": 526.8356323242188,
+    "b": 384.5420227050781,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 42,
+    "l": 56.97639846801758,
+    "t": 385.64202880859375,
+    "r": 526.8294067382812,
+    "b": 408.7420349121094,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000359",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In cases where an NMI does not calibrate reference blocks for certain Vickers scales, the highest reference within a country may be a calibration laboratory’s realization of the Vickers scale definition.",
+  "canonical_form": "In cases where an NMI does not calibrate reference blocks for certain Vickers scales, the highest reference within a country may be a calibration laboratory’s realization of the Vickers scale definition.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000206",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.85575485229492,
+    "t": 454.68585205078125,
+    "r": 526.8577270507812,
+    "b": 610.8858642578125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000416",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Hardness measurements requiring smaller indentation sizes than are allowed in the scope of this standard can be made in accordance with ISO 14577-1 and ISO 14577-4 (see References [6] and [17]).",
+  "canonical_form": "Hardness measurements requiring smaller indentation sizes than are allowed in the scope of this standard can be made in accordance with ISO 14577-1 and ISO 14577-4.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000237",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 220.7369842529297,
+    "r": 562.010986328125,
+    "b": 304.33697509765625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000361",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "However, there are practical issues with both that must be considered.",
+  "canonical_form": "However, there are practical issues with both that must be considered.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000207",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.850555419921875,
+    "t": 655.3418579101562,
+    "r": 526.854248046875,
+    "b": 751.0413818359375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000417",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "H.2 Test Piece H.2.1 Surface roughness If the test surface is rough, it can be impossible to accurately measure the length of the indentation diagonal.",
+  "canonical_form": "If the test surface is rough, it can be impossible to accurately measure the length of the indentation diagonal.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000237",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 374.7480163574219,
+    "r": 561.98388671875,
+    "b": 434.14801025390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000474",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The hardness obtained depends on the applied force to a greater extent than hardness measurements applying forces greater than 9,807 N.",
+  "canonical_form": "The hardness obtained depends on the applied force to a greater extent than hardness measurements applying forces greater than 9.807 N.",
+  "page_start": 45,
+  "chunk_id": "din_iso_6507_vickers_c000261",
+  "bboxes": [
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 683.4446411132812,
+    "r": 560.8570556640625,
+    "b": 767.0450439453125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000476",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Because of a number of factors, including anisotropy, the test specimens shall be marked to indicate where the test and reference measurements have been carried out and the locations shall be recorded in the test report (see H.4).",
+  "canonical_form": "Because of a number of factors, including anisotropy, the test specimens shall be marked to indicate where the test and reference measurements have been carried out, and the locations shall be recorded in the test report.",
+  "page_start": 45,
+  "chunk_id": "din_iso_6507_vickers_c000263",
+  "bboxes": [
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 683.4446411132812,
+    "r": 560.8570556640625,
+    "b": 767.0450439453125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000231",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "At least two hardness measurements shall be made on the calibrated surface of the hardness reference block.",
+  "canonical_form": "At least two hardness measurements shall be made on the calibrated surface of the hardness reference block.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000126",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.851009368896484,
+    "t": 372.338623046875,
+    "r": 526.839599609375,
+    "b": 419.6386413574219,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000473",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Key X1 hardness value X2 minimum coating thickness, μm N applied force, N Figure H.1 — Relationship between minimum coating thickness, applied force and hardness when testing normal to the coating surface H.3.7 Comparison measurements",
+  "canonical_form": "Key X1 hardness value X2 minimum coating thickness and applied force in Figure H.1 show the relationship between minimum coating thickness, applied force, and hardness when testing normal to the coating surface. H.3.7 describes comparison measurements.",
+  "page_start": 45,
+  "chunk_id": "din_iso_6507_vickers_c000261",
+  "bboxes": [
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 538.751708984375,
+    "r": 226.47637939453125,
+    "b": 595.837646484375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 45,
+    "l": 80.98214721679688,
+    "t": 612.1466064453125,
+    "r": 550.723876953125,
+    "b": 626.95263671875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 45,
+    "l": 205.53125,
+    "t": 624.2466430664062,
+    "r": 423.7627258300781,
+    "b": 639.0526733398438,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 657.6596069335938,
+    "r": 259.21942138671875,
+    "b": 673.8116455078125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 683.4446411132812,
+    "r": 560.8570556640625,
+    "b": 767.0450439453125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000208",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Annex B (normative) Tables of correction factors for use in tests made on curved surfaces B.1 Spherical surfaces Tables B.1 and B.2 give the correction factors when tests are made on spherical surfaces.",
+  "canonical_form": "Annex B (normative) contains tables of correction factors for use in tests made on curved surfaces, specifically spherical surfaces, where Tables B.1 and B.2 provide the correction factors.",
+  "page_start": 23,
+  "chunk_id": "din_iso_6507_vickers_c000111",
+  "bboxes": [
+   {
+    "page_no": 23,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000428",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "H.2.2 Coating thickness measurement",
+  "canonical_form": "The coating thickness measurement is specified in H.2.2.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000241",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 512.14697265625,
+    "r": 560.8909912109375,
+    "b": 551.7930297851562,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 559.85595703125,
+    "r": 284.1709899902344,
+    "b": 576.0079956054688,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 585.6409912109375,
+    "r": 560.89599609375,
+    "b": 620.8410034179688,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000225",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Periodic verification The indenter to be used for periodic verification shall be the same as used for testing.",
+  "canonical_form": "For periodic verification, the indenter used shall be the same as the one used for testing.",
+  "page_start": 27,
+  "chunk_id": "din_iso_6507_vickers_c000123",
+  "bboxes": [
+   {
+    "page_no": 27,
+    "l": 202.64999389648438,
+    "t": 823.1424560546875,
+    "r": 584.8685913085938,
+    "b": 831.3453369140625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 27,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000229",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the diagonal measuring system fails this test, a second reference indentation may be measured.",
+  "canonical_form": "If the diagonal measuring system fails this test, a second reference indentation may be measured.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000125",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.851009368896484,
+    "t": 290.5206298828125,
+    "r": 526.8473510742188,
+    "b": 362.025634765625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000224",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Annex C (normative) Procedure for periodic checking of the testing machine, diagonal measuring system and indenter by the user C.1",
+  "canonical_form": "Annex C (normative) describes the procedure for periodic checking of the testing machine, diagonal measuring system, and indenter by the user.",
+  "page_start": 27,
+  "chunk_id": "din_iso_6507_vickers_c000123",
+  "bboxes": [
+   {
+    "page_no": 27,
+    "l": 202.64999389648438,
+    "t": 823.1424560546875,
+    "r": 584.8685913085938,
+    "b": 831.3453369140625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 27,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000429",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Before carrying out a hardness test, the thickness of the coating shall be measured using an appropriate method, e.g. microscopical method described in ISO 1463 (see Reference [18]).",
+  "canonical_form": "Before carrying out a hardness test, the thickness of the coating must be measured using an appropriate method, such as the microscopical method described in ISO 1463.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000241",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 559.85595703125,
+    "r": 284.1709899902344,
+    "b": 576.0079956054688,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 585.6409912109375,
+    "r": 560.89599609375,
+    "b": 620.8410034179688,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000456",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In this case, the location of indentations should be agreed to by the parties concerned.",
+  "canonical_form": "The location of indentations should be agreed to by the parties concerned.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000253",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 519.7739868164062,
+    "r": 526.8411254882812,
+    "b": 542.8740234375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000174",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the difference is greater, this shall be stated in the test report.",
+  "canonical_form": "If the difference is greater, it shall be stated in the test report.",
+  "page_start": 20,
+  "chunk_id": "din_iso_6507_vickers_c000096",
+  "bboxes": [
+   {
+    "page_no": 20,
+    "l": 36.84902572631836,
+    "t": 584.8532104492188,
+    "r": 526.8259887695312,
+    "b": 607.9532470703125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000457",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "H.3.4 Indentation orientation and spacing when measuring a coating cross-section When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.",
+  "canonical_form": "When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000253",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 579.1370239257812,
+    "r": 526.835693359375,
+    "b": 662.7369995117188,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000172",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For Vickers microhardness, the accuracy of determination of the mean diagonal length is unlikely to be better than ±0,001 mm when using an optical microscope (see References [2] to [5]).",
+  "canonical_form": "For Vickers microhardness, the accuracy of determination of the mean diagonal length is unlikely to be better than ±0.001 mm when using an optical microscope.",
+  "page_start": 20,
+  "chunk_id": "din_iso_6507_vickers_c000095",
+  "bboxes": [
+   {
+    "page_no": 20,
+    "l": 36.84902572631836,
+    "t": 499.2782287597656,
+    "r": 526.6151733398438,
+    "b": 553.2781982421875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000135",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The periodic verification is recommended whenever the test force is changed.",
+  "canonical_form": "Periodic verification is recommended whenever the test force is changed.",
+  "page_start": 18,
+  "chunk_id": "din_iso_6507_vickers_c000077",
+  "bboxes": [
+   {
+    "page_no": 18,
+    "l": 36.850257873535156,
+    "t": 564.6835327148438,
+    "r": 526.8486938476562,
+    "b": 599.8836059570312,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000150",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The requirements for the time durations are given with asymmetric limits.",
+  "canonical_form": "The requirements for the time durations are given with asymmetric limits.",
+  "page_start": 19,
+  "chunk_id": "din_iso_6507_vickers_c000083",
+  "bboxes": [
+   {
+    "page_no": 19,
+    "l": 70.86609649658203,
+    "t": 256.02313232421875,
+    "r": 550.1010131835938,
+    "b": 269.1910705566406,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000235",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the testing machine fails this test, verify that the indenter and testing machine are in good working condition and repeat the periodic verification.",
+  "canonical_form": "If the testing machine fails this test, verify that the indenter and testing machine are in good working condition and repeat the periodic verification.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000128",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.8491096496582,
+    "t": 559.171630859375,
+    "r": 526.8550415039062,
+    "b": 618.5765991210938,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000234",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The percent bias, brel, is calculated according to Formula (C.1): b H H H rel = × − 100 CRM CRM (C.1) where H is the hardness value corresponding to the hardness measurement taken; HCRM is the certified hardness of the reference block used.",
+  "canonical_form": "The percent bias, brel, is calculated according to Formula (C.1): b H H H rel = × − 100 CRM CRM where H is the hardness value corresponding to the hardness measurement taken and HCRM is the certified hardness of the reference block used.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000128",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.8491096496582,
+    "t": 427.2396240234375,
+    "r": 330.88360595703125,
+    "b": 443.37060546875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 56.50720977783203,
+    "t": 448.765625,
+    "r": 152.97628784179688,
+    "b": 479.75762939453125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 126.63261413574219,
+    "t": 473.0184326171875,
+    "r": 144.1942901611328,
+    "b": 481.7996520996094,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 157.85061645507812,
+    "t": 459.2636413574219,
+    "r": 524.4080200195312,
+    "b": 470.2636413574219,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 36.85091018676758,
+    "t": 489.78863525390625,
+    "r": 66.78851318359375,
+    "b": 500.78863525390625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 36.85091018676758,
+    "t": 512.8406372070312,
+    "r": 441.5740661621094,
+    "b": 527.4266357421875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 36.85091018676758,
+    "t": 535.1475830078125,
+    "r": 340.77471923828125,
+    "b": 551.28466796875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000422",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Measurements on surfaces supplied in a fine ground condition should be made on the ground surface.",
+  "canonical_form": "Measurements on surfaces supplied in a fine ground condition should be made on the ground surface.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000239",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.87799835205078,
+    "t": 444.45501708984375,
+    "r": 561.8870239257812,
+    "b": 503.8550109863281,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000423",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The surface finish shall be reported in the test report (see H.4).",
+  "canonical_form": "The surface finish shall be reported in the test report.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000239",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.87799835205078,
+    "t": 444.45501708984375,
+    "r": 561.8870239257812,
+    "b": 503.8550109863281,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000420",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Polishing shall be carried out in such a way as to minimize local heating or work hardening that would change the measured hardness.",
+  "canonical_form": "Polishing should be carried out in such a way as to minimize local heating or work hardening that would change the measured hardness.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000238",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 374.7480163574219,
+    "r": 561.98388671875,
+    "b": 434.14801025390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000360",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "E.4 Practical issues Either one of the two traceability paths of calibration chains illustrated in Figure E.1 (left-hand side and right-hand side) could theoretically provide traceability to an appropriate Vickers hardness reference.",
+  "canonical_form": "E.4 Practical issues Either one of the two traceability paths of calibration chains illustrated in Figure E.1 (left-hand side and right-hand side) could theoretically provide traceability to an appropriate Vickers hardness reference.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000207",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.85575485229492,
+    "t": 628.5088500976562,
+    "r": 157.40866088867188,
+    "b": 646.0068969726562,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 38,
+    "l": 36.850555419921875,
+    "t": 655.3418579101562,
+    "r": 526.854248046875,
+    "b": 751.0413818359375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000153",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For micro-hardness tests, the indenter shall contact the test piece at a velocity of ≤0,070 mm/s. The duration of the test force shall be 14 4 1 − + s , except for tests on materials whose time-dependent properties would make this an unsuitable range.",
+  "canonical_form": "For micro-hardness tests, the indenter shall contact the test piece at a velocity of ≤0.070 mm/s. The duration of the test force shall be 14 ± 1 s, except for tests on materials whose time-dependent properties would make this an unsuitable range.",
+  "page_start": 19,
+  "chunk_id": "din_iso_6507_vickers_c000085",
+  "bboxes": [
+   {
+    "page_no": 19,
+    "l": 70.86609649658203,
+    "t": 301.53619384765625,
+    "r": 560.8436279296875,
+    "b": 336.7361755371094,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 19,
+    "l": 70.86609649658203,
+    "t": 350.0481872558594,
+    "r": 286.915771484375,
+    "b": 363.96319580078125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 19,
+    "l": 70.86959838867188,
+    "t": 345.0421447753906,
+    "r": 560.8535766601562,
+    "b": 388.25115966796875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000189",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Care should be taken, if standard uncertainties of type A and B are summarized, that the contributions are not counted twice (JCGM 100:2008, Clause 4[10]).",
+  "canonical_form": "Care should be taken that the contributions are not counted twice when standard uncertainties of type A and B are summarized.",
+  "page_start": 21,
+  "chunk_id": "din_iso_6507_vickers_c000102",
+  "bboxes": [
+   {
+    "page_no": 21,
+    "l": 70.86305236816406,
+    "t": 197.13768005371094,
+    "r": 560.848388671875,
+    "b": 244.4326629638672,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000186",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "— The other possibility is based on indirect calibration using a hardness reference block [below abbreviated as certified reference material (CRM)] (see References [11] to [14]).",
+  "canonical_form": "The other possibility is based on indirect calibration using a hardness reference block, which is abbreviated as certified reference material (CRM).",
+  "page_start": 21,
+  "chunk_id": "din_iso_6507_vickers_c000101",
+  "bboxes": [
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 151.6196746826172,
+    "r": 560.8529052734375,
+    "b": 162.6196746826172,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 21,
+    "l": 90.9915542602539,
+    "t": 163.7196502685547,
+    "r": 560.8488159179688,
+    "b": 186.81968688964844,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000382",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "E.5.3 User level traceability Measurement traceability is best obtained through the Indirect Verification calibration chain using reference blocks that have been calibrated at the calibration level or national level.",
+  "canonical_form": "Measurement traceability is best obtained through the Indirect Verification calibration chain using reference blocks that have been calibrated at the calibration level or national level.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000222",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 611.64404296875,
+    "r": 560.8535766601562,
+    "b": 695.2440185546875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000342",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Historically, the calibration and verification of the machine components has been termed the machine’s Direct Verification and the calibration and verification of the testing machine by reference block measurements its Indirect Verification.",
+  "canonical_form": "Historically, the calibration and verification of the machine components has been termed the machine’s direct verification and the calibration and verification of the testing machine by reference block measurements has been termed its indirect verification.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000195",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 462.0306091308594,
+    "r": 560.8561401367188,
+    "b": 569.8306274414062,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000289",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The combined expanded measurement uncertainty for a single hardness measurement, x, is calculated according to Formula (D.1): U k u u u M H ms HTM 1 2 2 2 2 = × + × + (D.1) where uH is a contribution to the measurement uncertainty due to the lack of measurement repeatability of the hardness testing machine; ums is a contribution to the measurement uncertainty due to the resolution of the hardness test ing machine.",
+  "canonical_form": "The combined expanded measurement uncertainty for a single hardness measurement, x, is calculated according to Formula (D.1): U = k × √(u_H^2 + u_ms^2 + u_M^2 + u_HTM^2), where u_H is a contribution to the measurement uncertainty due to the lack of measurement repeatability of the hardness testing machine and u_ms is a contribution to the measurement uncertainty due to the resolution of the hardness testing machine.",
+  "page_start": 31,
+  "chunk_id": "din_iso_6507_vickers_c000155",
+  "bboxes": [
+   {
+    "page_no": 31,
+    "l": 70.8583984375,
+    "t": 454.7726135253906,
+    "r": 560.8473510742188,
+    "b": 480.5896301269531,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 31,
+    "l": 89.83380126953125,
+    "t": 494.17962646484375,
+    "r": 228.99696350097656,
+    "b": 510.8106689453125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 31,
+    "l": 112.8009033203125,
+    "t": 494.0654296875,
+    "r": 558.4199829101562,
+    "b": 508.91961669921875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 31,
+    "l": 70.86499786376953,
+    "t": 527.421630859375,
+    "r": 100.80260467529297,
+    "b": 538.421630859375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 31,
+    "l": 70.86499786376953,
+    "t": 550.4735717773438,
+    "r": 560.8599853515625,
+    "b": 576.2896118164062,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 31,
+    "l": 70.86499786376953,
+    "t": 584.880615234375,
+    "r": 560.868408203125,
+    "b": 646.9976196289062,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000017",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "EUROPEAN STANDARD NORME EUROPÉENNE EUROPÄISCHE NORM EN ISO 6507-1 October 2023 ICS 77.040.10 Supersedes EN ISO 6507-1:2018 English Version Metallic materials — Vickers hardness test — Part 1: Test method (ISO 6507-1:2023)",
+  "canonical_form": "EUROPEAN STANDARD NORME EUROPÉENNE EUROPÄISCHE NORM EN ISO 6507-1 October 2023 ICS 77.040.10 Supersedes EN ISO 6507-1:2018 English Version Metallic materials — Vickers hardness test — Part 1: Test method (ISO 6507-1:2023)",
+  "page_start": 8,
+  "chunk_id": "din_iso_6507_vickers_c000010",
+  "bboxes": [
+   {
+    "page_no": 8,
+    "l": 202.6699981689453,
+    "t": 823.1718139648438,
+    "r": 584.9098510742188,
+    "b": 831.375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 8,
+    "l": 9.24887466430664,
+    "t": 20.632417678833008,
+    "r": 17.452054977416992,
+    "b": 114.989990234375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000443",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Test coupons may be used when specified by an appropriate document.",
+  "canonical_form": "Test coupons may be used when specified by an appropriate document.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000247",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 107.59501647949219,
+    "r": 526.8402099609375,
+    "b": 191.1949920654297,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000341",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Each of these calibration measurements has specified limits within which the result must lie in order for the machine to pass its verification.",
+  "canonical_form": "Each of these calibration measurements has specified limits within which the result must lie in order for the machine to pass its verification.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000195",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 462.0306091308594,
+    "r": 560.8561401367188,
+    "b": 569.8306274414062,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000344",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "When considering an “unbroken chain of calibrations” to provide measurement traceability to the testing machine, it is apparent that this could come via either the Direct Verification or Indirect Verification path.",
+  "canonical_form": "When considering an “unbroken chain of calibrations” to provide measurement traceability to the testing machine, this could come via either the direct verification or indirect verification path.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000197",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 625.6665649414062,
+    "r": 560.8518676757812,
+    "b": 660.8665771484375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000292",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The result of the measurement can be reported in two ways: — as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3) — or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4) When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.",
+  "canonical_form": "The result of the measurement can be reported in two ways: as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3), or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4). When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.",
+  "page_start": 32,
+  "chunk_id": "din_iso_6507_vickers_c000158",
+  "bboxes": [
+   {
+    "page_no": 32,
+    "l": 36.849491119384766,
+    "t": 236.9842987060547,
+    "r": 322.63946533203125,
+    "b": 247.9842987060547,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85139083862305,
+    "t": 255.58529663085938,
+    "r": 526.8389892578125,
+    "b": 271.7222595214844,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 56.985191345214844,
+    "t": 270.40228271484375,
+    "r": 187.53799438476562,
+    "b": 281.40228271484375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 60.143192291259766,
+    "t": 287.8915710449219,
+    "r": 524.41650390625,
+    "b": 305.74627685546875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85139083862305,
+    "t": 319.5232849121094,
+    "r": 526.8295288085938,
+    "b": 335.6602783203125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 56.969791412353516,
+    "t": 331.623291015625,
+    "r": 520.2919921875,
+    "b": 346.20928955078125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 60.14309310913086,
+    "t": 351.4856262207031,
+    "r": 524.4130249023438,
+    "b": 369.56732177734375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 386.17828369140625,
+    "r": 526.8429565429688,
+    "b": 410.14727783203125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000247",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "lf such faults are detected in time, many indenters may be reclaimed by regrinding.",
+  "canonical_form": "If such faults are detected in time, many indenters may be reclaimed by regrinding.",
+  "page_start": 29,
+  "chunk_id": "din_iso_6507_vickers_c000134",
+  "bboxes": [
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 194.47300720214844,
+    "r": 560.8568115234375,
+    "b": 241.7729949951172,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000425",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "It is recommended that the surface roughness, Ra, is less than 0,3 μm.",
+  "canonical_form": "It is recommended that the surface roughness, Ra, is less than 0.3 μm.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000240",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 512.14697265625,
+    "r": 560.8909912109375,
+    "b": 551.7930297851562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000446",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The electroplating conditions for test coupons, such as current density, temperature, agitation and solution composition, shall be kept as close as possible to those used on production parts for the electroplating process under test.",
+  "canonical_form": "The electroplating conditions for test coupons, such as current density, temperature, agitation, and solution composition, shall be kept as close as possible to those used on production parts for the electroplating process under test.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000249",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 201.5129852294922,
+    "r": 526.849853515625,
+    "b": 236.71299743652344,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000249",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Therefore, — the condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; — the verification of the indenter is no longer valid when the indenter shows defects; — reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.",
+  "canonical_form": "The condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; the verification of the indenter is no longer valid when the indenter shows defects; reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.",
+  "page_start": 29,
+  "chunk_id": "din_iso_6507_vickers_c000135",
+  "bboxes": [
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 252.0859832763672,
+    "r": 560.8612670898438,
+    "b": 263.08599853515625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 29,
+    "l": 90.99210357666016,
+    "t": 264.18603515625,
+    "r": 349.7594909667969,
+    "b": 275.18603515625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 285.498046875,
+    "r": 479.7856140136719,
+    "b": 296.498046875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 306.81103515625,
+    "r": 520.4774169921875,
+    "b": 317.81103515625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000427",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the Ra value is equal or greater than 5 % of the maximum indentation penetration depth, the Ra value shall be stated in the test report (see H.4).",
+  "canonical_form": "If the Ra value is equal to or greater than 5 percent of the maximum indentation penetration depth, the Ra value must be stated in the test report.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000241",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 512.14697265625,
+    "r": 560.8909912109375,
+    "b": 551.7930297851562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000458",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The distance of the indentation centre and the coating/substrate interface shall be at least 2,5 times the mean diagonal length of the indentation in the case of steel, copper and copper alloys and at least three times the mean diagonal length of the indentation in the case of light metals, lead and tin and their alloys.",
+  "canonical_form": "The distance of the indentation center and the coating/substrate interface shall be at least 2.5 times the mean diagonal length of the indentation in the case of steel, copper, and copper alloys and at least three times the mean diagonal length of the indentation in the case of light metals, lead, and tin and their alloys.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000254",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 579.1370239257812,
+    "r": 526.835693359375,
+    "b": 662.7369995117188,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000384",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "It is also desirable that the components of the hardness machine periodically undergo Direct Verification to ensure that offsetting errors are not significant.",
+  "canonical_form": "It is also desirable that the components of the hardness machine periodically undergo direct verification to ensure that offsetting errors are not significant.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000223",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 611.64404296875,
+    "r": 560.8535766601562,
+    "b": 695.2440185546875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000405",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "— Remove the eyepiece and examine the rear focal plane of the objective.",
+  "canonical_form": "Remove the eyepiece and examine the rear focal plane of the objective.",
+  "page_start": 42,
+  "chunk_id": "din_iso_6507_vickers_c000232",
+  "bboxes": [
+   {
+    "page_no": 42,
+    "l": 36.850399017333984,
+    "t": 373.5420227050781,
+    "r": 526.8356323242188,
+    "b": 384.5420227050781,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000385",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "However, typical industrial practice is for these measurements to be made only when the hardness machine is manufactured or repaired, which is the minimum requirement of this document.",
+  "canonical_form": "Typical industrial practice is for these measurements to be made only when the hardness machine is manufactured or repaired, which is the minimum requirement of this document.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000223",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 611.64404296875,
+    "r": 560.8535766601562,
+    "b": 695.2440185546875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000455",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For coatings with a gradient structure, hardness values may vary along the coating thickness.",
+  "canonical_form": "For coatings with a gradient structure, hardness values may vary along the coating thickness.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000252",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 519.7739868164062,
+    "r": 526.8411254882812,
+    "b": 542.8740234375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000369",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the errors in the individual machine components are significant, then traceability again may not be ensured.",
+  "canonical_form": "If the errors in the individual machine components are significant, traceability may not be ensured.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000212",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 84.79600524902344,
+    "r": 560.8543701171875,
+    "b": 156.29600524902344,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000371",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "However, traceability can be achieved based on only one of the two paths if careful examination and evaluation of the measurement process is made.",
+  "canonical_form": "Traceability can be achieved based on only one of the two paths if careful examination and evaluation of the measurement process is made.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000213",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000295",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In all circumstances, a robust method for estimating the uncertainty associated with b is required.",
+  "canonical_form": "In all circumstances, a robust method for estimating the uncertainty associated with b is required.",
+  "page_start": 32,
+  "chunk_id": "din_iso_6507_vickers_c000160",
+  "bboxes": [
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 529.0413208007812,
+    "r": 526.8429565429688,
+    "b": 553.01025390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000236",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the machine continues to fail the periodic verification, an indirect verification according to ISO 6507-2 shall be performed.",
+  "canonical_form": "If the machine continues to fail the periodic verification, an indirect verification according to ISO 6507-2 is performed.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000129",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.8491096496582,
+    "t": 559.171630859375,
+    "r": 526.8550415039062,
+    "b": 618.5765991210938,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000435",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If possible, avoid testing etched surfaces.",
+  "canonical_form": "If possible, avoid testing etched surfaces.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000244",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 714.7219848632812,
+    "r": 560.8948974609375,
+    "b": 757.5029907226562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000380",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the NMI does not provide calibrated reference blocks or conduct comparison measurements with a calibration laboratory and it is not practical to use reference blocks of another NMI, then the reference to which traceability is claimed may need to be to the calibration laboratory’s realization of the Vickers scale definition based on an international test method, such as that defined by this standard.",
+  "canonical_form": "If the NMI does not provide calibrated reference blocks or conduct comparison measurements with a calibration laboratory and it is not practical to use reference blocks of another NMI, then the reference to which traceability is claimed may need to be to the calibration laboratory’s realization of the Vickers scale definition based on an international test method, such as that defined by this standard.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000220",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 419.1750183105469,
+    "r": 560.8709716796875,
+    "b": 575.3750610351562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000452",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "H.3.3 Location of indentation Hardness measurements can be affected by the proximity of materials other than the coating, e.g., if the indentation is close to the substrate, and the substrate is softer than the coating, the hardness measurements obtained can be too low.",
+  "canonical_form": "Hardness measurements can be affected by the proximity of materials other than the coating, such as when the indentation is close to the substrate and the substrate is softer than the coating, resulting in lower hardness measurements.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000251",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 424.27001953125,
+    "r": 202.26922607421875,
+    "b": 440.4220275878906,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 450.0560302734375,
+    "r": 526.8388061523438,
+    "b": 509.4560241699219,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000237",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "A record of the periodic verification results should be maintained over a period of time and used to measure reproducibility and monitor drift of the machine.",
+  "canonical_form": "A record of the periodic verification results should be maintained over a period of time and used to measure reproducibility and monitor drift of the machine.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000129",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.8491096496582,
+    "t": 559.171630859375,
+    "r": 526.8550415039062,
+    "b": 618.5765991210938,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000437",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The sentence should read “The Ra value should be less than 5 % of the maximum indentation penetration depth whenever possible.”",
+  "canonical_form": "The Ra value should be less than 5 % of the maximum indentation penetration depth whenever possible.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000240",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 512.14697265625,
+    "r": 560.8909912109375,
+    "b": 551.7930297851562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000097",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "NOTE 2 As applicable, this document has adopted hardness test parameters as defined by the Working Group on Hardness (CCM-WGH) under the framework of the International Committee of Weights and Measures (CIPM) Consultative Committee for Mass and Related Quantities (CCM) (see Annex F).",
+  "canonical_form": "As applicable, this document has adopted hardness test parameters as defined by the Working Group on Hardness (CCM-WGH) under the framework of the International Committee of Weights and Measures (CIPM) Consultative Committee for Mass and Related Quantities (CCM).",
+  "page_start": 16,
+  "chunk_id": "din_iso_6507_vickers_c000055",
+  "bboxes": [
+   {
+    "page_no": 16,
+    "l": 36.850521087646484,
+    "t": 453.437744140625,
+    "r": 526.6135864257812,
+    "b": 485.437744140625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000394",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The subsequent discussions led to the realization that hardness standards should be included in the key comparison database (KCDB) for the mutual recognition arrangement (MRA) and thus, a full Working Group on Hardness (CCM-WGH) was established in the framework of the CCM[16].",
+  "canonical_form": "The subsequent discussions led to the realization that hardness standards should be included in the key comparison database (KCDB) for the mutual recognition arrangement (MRA), and thus a full Working Group on Hardness (CCM-WGH) was established in the framework of the CCM.",
+  "page_start": 41,
+  "chunk_id": "din_iso_6507_vickers_c000227",
+  "bboxes": [
+   {
+    "page_no": 41,
+    "l": 70.86641693115234,
+    "t": 193.27000427246094,
+    "r": 560.8593139648438,
+    "b": 301.07000732421875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000426",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The Ra value should be 5 %N1 of the maximum indentation penetration depth whenever possible.",
+  "canonical_form": "The Ra value should be 5 of the maximum indentation penetration depth whenever possible.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000240",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 512.14697265625,
+    "r": 560.8909912109375,
+    "b": 551.7930297851562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000337",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "From this definition, two things are necessary for a measurement result to have traceability: a) an unbroken chain of calibrations, each contributing to the measurement uncertainty; b) a reference to which traceability is claimed.",
+  "canonical_form": "From this definition, two things are necessary for a measurement result to have traceability: an unbroken chain of calibrations, each contributing to the measurement uncertainty, and a reference to which traceability is claimed.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000192",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.88299560546875,
+    "t": 363.9495849609375,
+    "r": 509.37835693359375,
+    "b": 374.9495849609375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 385.2626037597656,
+    "r": 498.0262756347656,
+    "b": 396.2626037597656,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 406.5745849609375,
+    "r": 549.56591796875,
+    "b": 417.5745849609375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000304",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Both the resolution of the length measurement indicating instrument and the optical resolution of the measuring microscope shall be considered.",
+  "canonical_form": "The resolution of the length measurement indicating instrument and the optical resolution of the measuring microscope shall be considered.",
+  "page_start": 33,
+  "chunk_id": "din_iso_6507_vickers_c000165",
+  "bboxes": [
+   {
+    "page_no": 33,
+    "l": 70.86609649658203,
+    "t": 142.25399780273438,
+    "r": 556.0238037109375,
+    "b": 206.79098510742188,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000459",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For determining indentation spacing when testing laminated materials, a bond surface shall be considered as an interface.",
+  "canonical_form": "For determining indentation spacing when testing laminated materials, a bond surface is considered as an interface.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000255",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 579.1370239257812,
+    "r": 526.835693359375,
+    "b": 662.7369995117188,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000248",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+  "canonical_form": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+  "page_start": 29,
+  "chunk_id": "din_iso_6507_vickers_c000134",
+  "bboxes": [
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 194.47300720214844,
+    "r": 560.8568115234375,
+    "b": 241.7729949951172,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000194",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "A strict comparison of hardness values is only possible at identical test forces.",
+  "canonical_form": "A strict comparison of hardness values is only possible at identical test forces.",
+  "page_start": 21,
+  "chunk_id": "din_iso_6507_vickers_c000105",
+  "bboxes": [
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 572.2766723632812,
+    "r": 456.0374755859375,
+    "b": 582.2766723632812,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000383",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "As with calibration level traceability, this is the most practical path and should also be used for the determination of measurement uncertainty.",
+  "canonical_form": "As with calibration level traceability, this is the most practical path and should also be used for the determination of measurement uncertainty.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000222",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 611.64404296875,
+    "r": 560.8535766601562,
+    "b": 695.2440185546875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000414",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Typically, for hardness measurements of coatings, small indents (and so test forces in the Vickers microhardness range) are required.",
+  "canonical_form": "For hardness measurements of coatings, small indents and test forces in the Vickers microhardness range are typically required.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000236",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 220.7369842529297,
+    "r": 562.010986328125,
+    "b": 304.33697509765625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000169",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Magnifications should be selected so that the diagonal can be enlarged to greater than 25 %, but less than 75 % of the maximum possible optical field of view; see 6.3.",
+  "canonical_form": "Magnifications should be selected so that the diagonal can be enlarged to greater than 25% but less than 75% of the maximum possible optical field of view.",
+  "page_start": 20,
+  "chunk_id": "din_iso_6507_vickers_c000094",
+  "bboxes": [
+   {
+    "page_no": 20,
+    "l": 36.84902572631836,
+    "t": 465.31524658203125,
+    "r": 526.8347778320312,
+    "b": 488.4152526855469,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000305",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In most cases, the overall resolution of the measurement system should be included twice in the calculation of uH due to resolving the positions of both ends of the long diagonal independently; uE is a contribution to the measurement uncertainty due to the maximum permissible devia tion of the bias, u b E E = / 3 (rectangular distribution), where bE is the maximum permissi ble deviation of the bias as specified in ISO 6507-2, and the result of the measurement is calculated according to Formula (D.6):",
+  "canonical_form": "In most cases, the overall resolution of the measurement system should be included twice in the calculation of uH due to resolving the positions of both ends of the long diagonal independently; uE is a contribution to the measurement uncertainty due to the maximum permissible deviation of the bias, uE = bE / 3 (rectangular distribution), where bE is the maximum permissible deviation of the bias as specified in ISO 6507-2, and the result of the measurement is calculated according to Formula (D.6).",
+  "page_start": 33,
+  "chunk_id": "din_iso_6507_vickers_c000166",
+  "bboxes": [
+   {
+    "page_no": 33,
+    "l": 70.86609649658203,
+    "t": 142.25399780273438,
+    "r": 556.0238037109375,
+    "b": 206.79098510742188,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 33,
+    "l": 70.86620330810547,
+    "t": 212.96102905273438,
+    "r": 553.8639526367188,
+    "b": 267.97802734375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000297",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Method M2 is only valid for hardness testing machines that have passed an indirect verification in accordance with ISO 6507-2 using the value b U + HTM, rather than only the bias value, b, when determining compliance with the maximum permissible deviation of the bias (see ISO 6507-2).",
+  "canonical_form": "Method M2 is only valid for hardness testing machines that have passed an indirect verification in accordance with ISO 6507-2 using the value b U + HTM, rather than only the bias value, b, when determining compliance with the maximum permissible deviation of the bias.",
+  "page_start": 32,
+  "chunk_id": "din_iso_6507_vickers_c000161",
+  "bboxes": [
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 588.4093017578125,
+    "r": 526.84375,
+    "b": 687.978271484375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000271",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The bias, b, of a hardness testing machine (also named “error”), which is derived from the difference between — the certified calibration value of the hardness reference block used, and — the mean hardness value of the five indentations made in this block during calibration of the hardness testing machine (see ISO 6507-2) can be implemented in different ways into the determination of uncertainty.",
+  "canonical_form": "The bias, b, of a hardness testing machine, also named “error,” is derived from the difference between the certified calibration value of the hardness reference block used and the mean hardness value of the five indentations made in this block during calibration of the hardness testing machine (see ISO 6507-2) and can be implemented in different ways into the determination of uncertainty.",
+  "page_start": 30,
+  "chunk_id": "din_iso_6507_vickers_c000147",
+  "bboxes": [
+   {
+    "page_no": 30,
+    "l": 36.846107482910156,
+    "t": 667.8950805664062,
+    "r": 526.8314819335938,
+    "b": 693.7111206054688,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 30,
+    "l": 36.85030746459961,
+    "t": 704.0300903320312,
+    "r": 396.0993957519531,
+    "b": 715.0300903320312,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 30,
+    "l": 36.85030746459961,
+    "t": 725.3421020507812,
+    "r": 526.8422241210938,
+    "b": 736.3421020507812,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 30,
+    "l": 56.9763069152832,
+    "t": 737.4423217773438,
+    "r": 526.8330688476562,
+    "b": 760.5422973632812,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000226",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "A hardness reference block shall be chosen for testing that is calibrated in accordance to ISO 6507-3 on the scale and at the approximate hardness level at which the machine will be used.",
+  "canonical_form": "A hardness reference block for testing is calibrated in accordance with ISO 6507-3 on the scale and at the approximate hardness level at which the machine will be used.",
+  "page_start": 28,
+  "chunk_id": "din_iso_6507_vickers_c000124",
+  "bboxes": [
+   {
+    "page_no": 28,
+    "l": 36.851009368896484,
+    "t": 245.0135955810547,
+    "r": 526.8395385742188,
+    "b": 280.213623046875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 28,
+    "l": 36.851009368896484,
+    "t": 290.5206298828125,
+    "r": 526.8473510742188,
+    "b": 362.025634765625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000293",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "This will particularly be the case when — the measured hardness is significantly different from the hardness levels of the blocks used during the machine’s calibration, — the machine’s bias value varies significantly throughout its calibrated range, — the material being measured is different from the material of the hardness reference blocks used during the machine’s calibration, or — the day-to-day performance (reproducibility) of the hardness testing machine varies significantly.",
+  "canonical_form": "This will particularly be the case when the measured hardness is significantly different from the hardness levels of the blocks used during the machine’s calibration, the machine’s bias value varies significantly throughout its calibrated range, the material being measured is different from the material of the hardness reference blocks used during the machine’s calibration, or the day-to-day performance (reproducibility) of the hardness testing machine varies significantly.",
+  "page_start": 32,
+  "chunk_id": "din_iso_6507_vickers_c000159",
+  "bboxes": [
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 386.17828369140625,
+    "r": 526.8429565429688,
+    "b": 410.14727783203125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 419.5903015136719,
+    "r": 526.8350830078125,
+    "b": 430.5903015136719,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 56.977291107177734,
+    "t": 431.6903076171875,
+    "r": 178.1786346435547,
+    "b": 442.6903076171875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 453.0032958984375,
+    "r": 418.31585693359375,
+    "b": 464.0032958984375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 474.3162841796875,
+    "r": 526.8529663085938,
+    "b": 485.3162841796875,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 56.977291107177734,
+    "t": 486.4162902832031,
+    "r": 225.21791076660156,
+    "b": 497.4162902832031,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 507.72833251953125,
+    "r": 520.44775390625,
+    "b": 518.7283325195312,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000463",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+  "canonical_form": "This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000256",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 699.0050048828125,
+    "r": 526.8380126953125,
+    "b": 782.605224609375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000378",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "At the same time, however, the specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.",
+  "canonical_form": "The specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000218",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 419.1750183105469,
+    "r": 560.8709716796875,
+    "b": 575.3750610351562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000300",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The procedure for the determination of U is explained in Table D.1.",
+  "canonical_form": "The procedure for the determination of U is explained in Table D.1.",
+  "page_start": 32,
+  "chunk_id": "din_iso_6507_vickers_c000163",
+  "bboxes": [
+   {
+    "page_no": 32,
+    "l": 36.85129165649414,
+    "t": 588.4093017578125,
+    "r": 526.84375,
+    "b": 687.978271484375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000424",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Since coatings that are prone to work hardening will always be affected to some extent by metallographic specimen preparation techniques, care shall be taken to minimize this effect.",
+  "canonical_form": "Since coatings that are prone to work hardening will always be affected to some extent by metallographic specimen preparation techniques, care must be taken to minimize this effect.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000240",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.87799835205078,
+    "t": 444.45501708984375,
+    "r": 561.8870239257812,
+    "b": 503.8550109863281,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000117",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "No deformation shall be visible at the back of the test piece after the test.",
+  "canonical_form": "No visible deformation shall be present on the back of the test piece after the test.",
+  "page_start": 17,
+  "chunk_id": "din_iso_6507_vickers_c000068",
+  "bboxes": [
+   {
+    "page_no": 17,
+    "l": 70.8614273071289,
+    "t": 510.93084716796875,
+    "r": 560.8453979492188,
+    "b": 546.1307983398438,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 17,
+    "l": 70.8647232055664,
+    "t": 556.44384765625,
+    "r": 366.5746765136719,
+    "b": 567.44384765625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000114",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Due to the small depth of Vickers microhardness indentations, it is essential that special precautions be taken during preparation.",
+  "canonical_form": "Due to the small depth of Vickers microhardness indentations, special precautions must be taken during preparation.",
+  "page_start": 17,
+  "chunk_id": "din_iso_6507_vickers_c000066",
+  "bboxes": [
+   {
+    "page_no": 17,
+    "l": 70.8647232055664,
+    "t": 436.6328430175781,
+    "r": 560.8554077148438,
+    "b": 471.8328552246094,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000453",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the material contains precipitates or inclusions, then the indentation can be distorted near those inhomogeneities in the microstructure.",
+  "canonical_form": "If the material contains precipitates or inclusions, then the indentation can be distorted near the inhomogeneities in the microstructure.",
+  "page_start": 44,
+  "chunk_id": "din_iso_6507_vickers_c000252",
+  "bboxes": [
+   {
+    "page_no": 44,
+    "l": 36.850399017333984,
+    "t": 450.0560302734375,
+    "r": 526.8388061523438,
+    "b": 509.4560241699219,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000328",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The value of sH based on measurements from the last indirect verification according to ISO 6507-2 can be used, but will usually overestimate the lack of repeatability uncertainty component since it includes the CRM non-uniformity.",
+  "canonical_form": "The value of sH based on measurements from the last indirect verification according to ISO 6507-2 can be used, but it will usually overestimate the lack of repeatability uncertainty component because it includes the CRM non-uniformity.",
+  "page_start": 36,
+  "chunk_id": "din_iso_6507_vickers_c000185",
+  "bboxes": [
+   {
+    "page_no": 36,
+    "l": 260.718994140625,
+    "t": 85.7911148071289,
+    "r": 273.9219970703125,
+    "b": 786.7080078125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 36,
+    "l": 272.84197998046875,
+    "t": 85.81302642822266,
+    "r": 281.84197998046875,
+    "b": 786.706298828125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000213",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Table B.2 — Concave spherical surfaces d/D Correction factor d/D Correction factor 0,004 1,005 0,057 1,080 0,008 1,010 0,060 1,085 0,012 1,015 0,063 1,090 0,016 1,020 0,066 1,095 0,020 1,025 0,069 1,100 0,024 1,030 0,071 1,105 0,028 1,035 0,074 1,110 0,031 1,040 0,077 1,115 0,035 1,045 0,079 1,120 0,038 1,050 0,082 1,125 0,041 1,055 0,084 1,130 0,045 1,060 0,087 1,135 0,048 1,065 0,089 1,140 0,051 1,070 0,091 1,145 0,054 1,075 0,094 1,150 B.2 Cylindrical surfaces Tables B.3 to B.6 give the correction factors when tests are made on cylindrical surfaces.",
+  "canonical_form": "Table B.2 gives the correction factors for tests made on concave spherical surfaces, where the correction factor is tabulated in terms of the ratio of the mean diagonal, d, of the indentation to the diameter, D, of the sphere. Tables B.3 to B.6 give the correction factors when tests are made on cylindrical surfaces.",
+  "page_start": 24,
+  "chunk_id": "din_iso_6507_vickers_c000115",
+  "bboxes": [
+   {
+    "page_no": 24,
+    "l": 202.64999389648438,
+    "t": 823.1424560546875,
+    "r": 584.8685913085938,
+    "b": 831.3453369140625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 24,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000340",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The calibration procedures include direct measurements of various components affecting the machine’s performance, such as the test forces, indenter shape, and indentation measuring equipment, as well as hardness measurements of a range of reference blocks.",
+  "canonical_form": "The calibration procedures include direct measurements of the test forces, indenter shape, and indentation measuring equipment, as well as hardness measurements of a range of reference blocks.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000194",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 462.0306091308594,
+    "r": 560.8561401367188,
+    "b": 569.8306274414062,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000191",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "correction is applicable; f) all operations not specified in this document or regarded as optional; g) details of any circumstances that affected the results; h) the temperature of the test, if it is outside the ambient range specified in 8.1; i) where conversion to another hardness scale is also performed, the basis and method of this conversion .",
+  "canonical_form": "correction is applicable; f) all operations not specified in this document or regarded as optional; g) details of any circumstances that affected the results; h) the temperature of the test, if it is outside the ambient range specified in 8.1; i) where conversion to another hardness scale is also performed, the basis and method of this conversion .",
+  "page_start": 21,
+  "chunk_id": "din_iso_6507_vickers_c000104",
+  "bboxes": [
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 407.5506896972656,
+    "r": 418.81646728515625,
+    "b": 418.5506896972656,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 428.8626708984375,
+    "r": 418.33465576171875,
+    "b": 439.8626708984375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 450.1756896972656,
+    "r": 345.22637939453125,
+    "b": 461.1756896972656,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 471.4886779785156,
+    "r": 452.75445556640625,
+    "b": 482.4886779785156,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 21,
+    "l": 70.86554718017578,
+    "t": 492.8006896972656,
+    "r": 560.851806640625,
+    "b": 515.9006958007812,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000413",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Annex H (normative) Determining the Vickers hardness of metallic and other inorganic coatings H.1 General This Annex specifies additional procedures and requirements when applying this standard for determining the Vickers hardness of metallic and other inorganic coatings.",
+  "canonical_form": "Annex H (normative) specifies additional procedures and requirements for determining the Vickers hardness of metallic and other inorganic coatings.",
+  "page_start": 42,
+  "chunk_id": "din_iso_6507_vickers_c000235",
+  "bboxes": [
+   {
+    "page_no": 42,
+    "l": 202.64999389648438,
+    "t": 823.1424560546875,
+    "r": 584.8685913085938,
+    "b": 831.3453369140625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 42,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000354",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Vickers hardness is not a fundamental property of a material, but rather an ordinal quantity dependent on a defined test method.",
+  "canonical_form": "Vickers hardness is not a fundamental property of a material but rather an ordinal quantity dependent on a defined test method.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000203",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.85575485229492,
+    "t": 454.68585205078125,
+    "r": 526.8577270507812,
+    "b": 610.8858642578125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000355",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Ideally, the ultimate reference for a Vickers hardness measurement should be an internationally agreed definition of this method, including values of all test parameters.",
+  "canonical_form": "The ultimate reference for a Vickers hardness measurement should ideally be an internationally agreed definition of the method, including values of all test parameters.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000203",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.85575485229492,
+    "t": 454.68585205078125,
+    "r": 526.8577270507812,
+    "b": 610.8858642578125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000362",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For the Direct Verification path given on the right-hand side of Figure E.1, it is extremely difficult to identify, measure and, if necessary, correct for all parameters that may affect the measured hardness value.",
+  "canonical_form": "For the Direct Verification path given on the right-hand side of Figure E.1, it is extremely difficult to identify, measure, and, if necessary, correct for all parameters that may affect the measured hardness value.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000208",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.850555419921875,
+    "t": 655.3418579101562,
+    "r": 526.854248046875,
+    "b": 751.0413818359375,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000408",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If the glare is excessive, reduce the aperture; but never use less than 3/4 of the opening, since resolution would be decreased and diffraction phenomena could lead to false measurements.",
+  "canonical_form": "If the glare is excessive, reduce the aperture, but never use less than three-quarters of the opening, as resolution would decrease and diffraction phenomena could lead to false measurements.",
+  "page_start": 42,
+  "chunk_id": "din_iso_6507_vickers_c000233",
+  "bboxes": [
+   {
+    "page_no": 42,
+    "l": 36.850399017333984,
+    "t": 419.0550231933594,
+    "r": 526.832275390625,
+    "b": 430.0550231933594,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 42,
+    "l": 56.97639846801758,
+    "t": 431.155029296875,
+    "r": 526.8383178710938,
+    "b": 454.2550354003906,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000290",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Both the resolution of the length measurement indicating instrument and the optical resolution of the measuring microscope shall be considered.",
+  "canonical_form": "The resolution of the length measurement indicating instrument and the optical resolution of the measuring microscope shall be considered.",
+  "page_start": 31,
+  "chunk_id": null,
+  "bboxes": []
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000287",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The result of using this method is that either all determined hardness values, x, have to be reduced by b or the uncertainty, U, has to be increased by b.",
+  "canonical_form": "The result of using this method is that either all determined hardness values must be reduced by the uncertainty or the uncertainty must be increased by the uncertainty.",
+  "page_start": 31,
+  "chunk_id": "din_iso_6507_vickers_c000153",
+  "bboxes": [
+   {
+    "page_no": 31,
+    "l": 70.86399841308594,
+    "t": 375.671630859375,
+    "r": 560.8623046875,
+    "b": 449.59161376953125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000358",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "At this time, the CCM-WGH has not developed definitions for Vickers hardness scales so the highest reference is usually an NMI’s realization of the Vickers scales based on its own chosen definition of the test.",
+  "canonical_form": "At this time, the CCM-WGH has not developed definitions for Vickers hardness scales, so the highest reference is usually an NMI’s realization of the Vickers scales based on its own chosen definition of the test.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000205",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 36.85575485229492,
+    "t": 454.68585205078125,
+    "r": 526.8577270507812,
+    "b": 610.8858642578125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000327",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "If 0,8 bE < b < 1,0 bE, the relationship of hardness values between CRM and sample should be considered.",
+  "canonical_form": "If 0,8 bE < b < 1,0 bE, the relationship of hardness values between CRM and sample should be considered.",
+  "page_start": 36,
+  "chunk_id": "din_iso_6507_vickers_c000184",
+  "bboxes": [
+   {
+    "page_no": 36,
+    "l": 245.1490020751953,
+    "t": 378.4941711425781,
+    "r": 258.3520202636719,
+    "b": 786.706298828125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000475",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "To ensure that comparable hardness values are obtained when comparing the hardness of two different areas of the coating or when comparing the hardness of a test area to a reference area, the comparison tests shall be performed using the same nominal force and duration of the applied test force as used in the initial or reference tests.",
+  "canonical_form": "To ensure that comparable hardness values are obtained when comparing the hardness of two different areas of the coating or when comparing the hardness of a test area to a reference area, the comparison tests must be performed using the same nominal force and duration of the applied test force as used in the initial or reference tests.",
+  "page_start": 45,
+  "chunk_id": "din_iso_6507_vickers_c000262",
+  "bboxes": [
+   {
+    "page_no": 45,
+    "l": 70.86634063720703,
+    "t": 683.4446411132812,
+    "r": 560.8570556640625,
+    "b": 767.0450439453125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000255",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Most product specifications have tolerances that have been developed over the past years based mainly on the requirements of the product but also, in part, on the performance of the machine used to make the hardness measurement.",
+  "canonical_form": "Most product specifications have tolerances that have been developed over the past years based mainly on the requirements of the product but also, in part, on the performance of the machine used to make the hardness measurement.",
+  "page_start": 30,
+  "chunk_id": "din_iso_6507_vickers_c000138",
+  "bboxes": [
+   {
+    "page_no": 30,
+    "l": 36.85030746459961,
+    "t": 272.93011474609375,
+    "r": 526.8453979492188,
+    "b": 404.9291076660156,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000256",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "These tolerances, therefore, incorporate a contribution due to the uncertainty of the hardness measurement and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.",
+  "canonical_form": "These tolerances incorporate a contribution due to the uncertainty of the hardness measurement, and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.",
+  "page_start": 30,
+  "chunk_id": "din_iso_6507_vickers_c000139",
+  "bboxes": [
+   {
+    "page_no": 30,
+    "l": 36.85030746459961,
+    "t": 272.93011474609375,
+    "r": 526.8453979492188,
+    "b": 404.9291076660156,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000343",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "ISO 6507-3 specifies both the procedure required to calibrate the reference blocks used in the Indirect Verification of the testing machine and also the required calibration and verification procedures of the machine used to calibrate these blocks.",
+  "canonical_form": "ISO 6507-3 specifies the procedure to calibrate the reference blocks used in the Indirect Verification of the testing machine and the calibration and verification procedures of the machine used to calibrate these blocks.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000196",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 580.1486206054688,
+    "r": 560.8538208007812,
+    "b": 615.3485717773438,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000373",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Traceability through this path is possible since NMIs typically have the capability to thoroughly evaluate their measurement systems and their uncertainty levels are confirmed through international comparisons with other NMIs.",
+  "canonical_form": "Traceability through this path is possible since national metrology institutes typically have the capability to thoroughly evaluate their measurement systems and their uncertainty levels are confirmed through international comparisons with other national metrology institutes.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000215",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000374",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In contrast, decades of Vickers hardness measurement experience have shown that, for the lower levels in the calibration hierarchy, it is most practical to obtain traceability and determine measurement uncertainty based primarily on the Indirect Verification calibration chain; however, proper traceability of the individual machine component quantity values is also important.",
+  "canonical_form": "Decades of Vickers hardness measurement experience have shown that for the lower levels in the calibration hierarchy, it is most practical to obtain traceability and determine measurement uncertainty based primarily on the Indirect Verification calibration chain, but proper traceability of the individual machine component quantity values is also important.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000216",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000288",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The procedure for the determination of UM1 is explained in Table D.1.",
+  "canonical_form": "The procedure for the determination of UM1 is explained in Table D.1.",
+  "page_start": 31,
+  "chunk_id": "din_iso_6507_vickers_c000154",
+  "bboxes": [
+   {
+    "page_no": 31,
+    "l": 70.86399841308594,
+    "t": 375.671630859375,
+    "r": 560.8623046875,
+    "b": 449.59161376953125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000485",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The coefficient of variation is normally expected to be less than 5 %, but if a larger value is obtained, it shall be reported in the test report (see H.4).",
+  "canonical_form": "The coefficient of variation is normally expected to be less than 5 %, but if a larger value is obtained, it must be reported in the test report.",
+  "page_start": 46,
+  "chunk_id": "din_iso_6507_vickers_c000267",
+  "bboxes": [
+   {
+    "page_no": 46,
+    "l": 36.850887298583984,
+    "t": 368.8225402832031,
+    "r": 526.8379516601562,
+    "b": 404.0225524902344,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000244",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "This applies to all measurements made when performing a periodic verification of the machine.",
+  "canonical_form": "This applies to all measurements made when performing a periodic verification of the machine.",
+  "page_start": 29,
+  "chunk_id": "din_iso_6507_vickers_c000133",
+  "bboxes": [
+   {
+    "page_no": 29,
+    "l": 70.86609649658203,
+    "t": 84.8179931640625,
+    "r": 560.6311645507812,
+    "b": 149.8179931640625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000168",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For all tests, the perimeter of the indentation shall be clearly defined in the field of view of the microscope.",
+  "canonical_form": "For all tests, the perimeter of the indentation shall be clearly defined in the field of view of the microscope.",
+  "page_start": 20,
+  "chunk_id": "din_iso_6507_vickers_c000093",
+  "bboxes": [
+   {
+    "page_no": 20,
+    "l": 36.84902572631836,
+    "t": 419.80224609375,
+    "r": 526.8518676757812,
+    "b": 455.00225830078125,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000484",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "H H H H n n = + + + 1 2 ... (H.1) Calculate the coefficient of variation CV (%) of the hardness measurements according to Formula H.2 C s H V = × 100 (H.2) where s is the standard deviation of the n hardness values measured to calculate the hardness value H , according to Formula H.3.",
+  "canonical_form": "Calculate the coefficient of variation CV (%) of the hardness measurements according to Formula H.2, where s is the standard deviation of the n hardness values measured to calculate the hardness value H, according to Formula H.3.",
+  "page_start": 46,
+  "chunk_id": "din_iso_6507_vickers_c000266",
+  "bboxes": [
+   {
+    "page_no": 46,
+    "l": 36.850887298583984,
+    "t": 228.32925415039062,
+    "r": 512.3259887695312,
+    "b": 245.11798095703125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 46,
+    "l": 56.163387298583984,
+    "t": 249.67324829101562,
+    "r": 524.4135131835938,
+    "b": 279.8572082519531,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 46,
+    "l": 36.850887298583984,
+    "t": 288.1672668457031,
+    "r": 521.6124877929688,
+    "b": 313.9842529296875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000375",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "This traceability scheme has proven to be suitable for industrial Vickers hardness measurements.",
+  "canonical_form": "This traceability scheme has proven to be suitable for industrial Vickers hardness measurements.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000217",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000372",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higherlevel hardness reference artefact.",
+  "canonical_form": "For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higher-level hardness reference artefact.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000214",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000419",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The test piece may be chemically, electrochemically or mechanically polished.",
+  "canonical_form": "The test piece may be polished chemically, electrochemically, or mechanically.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000238",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.86699676513672,
+    "t": 374.7480163574219,
+    "r": 561.98388671875,
+    "b": 434.14801025390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000059",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "The main changes are as follows: — Scope revised to include testing on metallic coatings and other inorganic coatings; — added 7.6 - Metallic and other inorganic coatings; — requirements have been added to the test report for reporting the surface curvature, if the curvature correction is applicable; — added Annex H to cover coatings specific requirements; — updated references.",
+  "canonical_form": "The main changes are as follows: the scope has been revised to include testing on metallic coatings and other inorganic coatings; section 7.6 has been added for metallic and other inorganic coatings; requirements have been added to the test report for reporting the surface curvature if the curvature correction is applicable; Annex H has been added to cover coating-specific requirements; and references have been updated.",
+  "page_start": 12,
+  "chunk_id": "din_iso_6507_vickers_c000032",
+  "bboxes": [
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 545.2805786132812,
+    "r": 192.7054901123047,
+    "b": 556.2805786132812,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 566.5935668945312,
+    "r": 445.7572937011719,
+    "b": 577.5935668945312,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 587.9055786132812,
+    "r": 289.5922546386719,
+    "b": 598.9055786132812,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 609.2185668945312,
+    "r": 526.8382568359375,
+    "b": 620.2185668945312,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 56.97688674926758,
+    "t": 621.318603515625,
+    "r": 170.5452880859375,
+    "b": 632.318603515625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 642.630615234375,
+    "r": 320.3775634765625,
+    "b": 653.630615234375,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 12,
+    "l": 36.850887298583984,
+    "t": 663.943603515625,
+    "r": 150.9197998046875,
+    "b": 674.943603515625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000421",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "Because of the surface roughness of sprayed metal coatings, indentation measurements of such coatings shall normally be made on the cross-section.",
+  "canonical_form": "Because of the surface roughness of sprayed metal coatings, indentation measurements of such coatings are normally made on the cross-section.",
+  "page_start": 43,
+  "chunk_id": "din_iso_6507_vickers_c000239",
+  "bboxes": [
+   {
+    "page_no": 43,
+    "l": 70.87799835205078,
+    "t": 444.45501708984375,
+    "r": 561.8870239257812,
+    "b": 503.8550109863281,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000367",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "making measurements during the hardness test, is that an error in one component’s measurement can be compensated or offset by an error in a different component’s measurement.",
+  "canonical_form": "Making measurements during the hardness test involves the possibility that an error in one component’s measurement can be compensated or offset by an error in a different component’s measurement.",
+  "page_start": 38,
+  "chunk_id": "din_iso_6507_vickers_c000211",
+  "bboxes": [
+   {
+    "page_no": 38,
+    "l": 202.64999389648438,
+    "t": 823.1424560546875,
+    "r": 584.8685913085938,
+    "b": 831.3453369140625,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 38,
+    "l": 9.249136924743652,
+    "t": 20.625301361083984,
+    "r": 17.452070236206055,
+    "b": 114.98004150390625,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000170",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "NOTE 1 In general, decreasing the test force increases the scatter of results of the measurements.",
+  "canonical_form": "In general, decreasing the test force increases the scatter of results of the measurements.",
+  "page_start": 20,
+  "chunk_id": "din_iso_6507_vickers_c000094",
+  "bboxes": [
+   {
+    "page_no": 20,
+    "l": 36.84902572631836,
+    "t": 499.2782287597656,
+    "r": 526.6151733398438,
+    "b": 553.2781982421875,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000339",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "E.2 Chains of calibrations ISO 6507-2 specifies a set of calibration and verification procedures required to demonstrate that the testing machine is suitable for use in accordance with this document.",
+  "canonical_form": "ISO 6507-2 specifies a set of calibration and verification procedures required to demonstrate that the testing machine is suitable for use in accordance with this document.",
+  "page_start": 37,
+  "chunk_id": "din_iso_6507_vickers_c000193",
+  "bboxes": [
+   {
+    "page_no": 37,
+    "l": 70.86649322509766,
+    "t": 462.0306091308594,
+    "r": 560.8561401367188,
+    "b": 569.8306274414062,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000329",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In circumstances where the average of multiple hardness measurements on a test sample is to be reported, rather than a single hardness measurement, the value of sH in Step 5 should be replaced with the standard deviation of the multiple hardness measurements of the sample under test divided by the square-root of the number of hardness measurements, n, and the value of t in Step 6 should be appropriate for the n measurements ( u t s n H H = × / ).",
+  "canonical_form": "In circumstances where the average of multiple hardness measurements on a test sample is to be reported, rather than a single hardness measurement, the value of sH in Step 5 should be replaced with the standard deviation of the multiple hardness measurements of the sample under test divided by the square root of the number of hardness measurements, n, and the value of t in Step 6 should be appropriate for the n measurements.",
+  "page_start": 36,
+  "chunk_id": "din_iso_6507_vickers_c000186",
+  "bboxes": [
+   {
+    "page_no": 36,
+    "l": 272.84197998046875,
+    "t": 85.81302642822266,
+    "r": 281.84197998046875,
+    "b": 786.706298828125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 36,
+    "l": 280.51898193359375,
+    "t": 85.81070709228516,
+    "r": 293.7220153808594,
+    "b": 786.706298828125,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 36,
+    "l": 293.4159851074219,
+    "t": 85.81436920166016,
+    "r": 307.25250244140625,
+    "b": 786.7101440429688,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000370",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "E.5 Vickers hardness measurement traceability E.5.1 General The above issues indicate that both types of traceability path usually need to be in place for achieving Vickers hardness measurement traceability.",
+  "canonical_form": "E.5 Vickers hardness measurement traceability E.5.1 General The above issues indicate that both types of traceability path usually need to be in place for achieving Vickers hardness measurement traceability.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000213",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 173.9190216064453,
+    "r": 359.2216796875,
+    "b": 191.41702270507812,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 200.92202758789062,
+    "r": 150.90357971191406,
+    "b": 217.0740203857422,
+    "coord_origin": "TOPLEFT"
+   },
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 226.70701599121094,
+    "r": 560.861328125,
+    "b": 382.9070129394531,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ },
+ {
+  "fact_id": "din_iso_6507_vickers_F000381",
+  "doc": "din_iso_6507_vickers_full",
+  "text": "In this case, the calibration laboratory’s measurement traceability may be achieved through the Indirect Verification path using consensus reference block standards or through the Direct Verification path confirmed by intercomparison.",
+  "canonical_form": "In this case, the calibration laboratory’s measurement traceability may be achieved through the Indirect Verification path using consensus reference block standards or through the Direct Verification path confirmed by intercomparison.",
+  "page_start": 39,
+  "chunk_id": "din_iso_6507_vickers_c000221",
+  "bboxes": [
+   {
+    "page_no": 39,
+    "l": 70.86609649658203,
+    "t": 419.1750183105469,
+    "r": 560.8709716796875,
+    "b": 575.3750610351562,
+    "coord_origin": "TOPLEFT"
+   }
+  ]
+ }
+]

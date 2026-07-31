@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend:
+    name: Backend tests (production/backend)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install backend dependencies
+        working-directory: production/backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Run backend tests
+        working-directory: production/backend
+        run: python -m pytest -q
+
+  frontend:
+    name: Frontend tests (production/frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: production/frontend/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: production/frontend
+        run: npm ci
+      - name: Run frontend tests
+        working-directory: production/frontend
+        run: npx vitest run
+
+  engine:
+    name: Vendored engine tests (src/rag_gt)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install engine package with test extras
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]"
+      - name: Run engine test suite
+        run: python -m pytest tests/ -q
