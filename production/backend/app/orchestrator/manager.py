@@ -36,6 +36,23 @@ def _worker_entry(pipeline, run_id, run_dir, config, q, cancel, completed):
     execute_run(dag, run_id, Path(run_dir), config, q.put, cancel, frozenset(completed))
 
 
+# Config keys that are credentials. They reach the worker (which needs them to
+# call the API) but are never written to the run store, whose rows are returned
+# verbatim by GET /api/runs/{id} and are readable by anyone with UI access.
+SECRET_CONFIG_KEYS = frozenset({"api_key", "api_base_url"})
+
+
+def split_secrets(config: dict) -> tuple[dict, dict]:
+    """(persistable_config, secrets). Never persist the second one."""
+    secrets = {k: v for k, v in config.items() if k in SECRET_CONFIG_KEYS and v}
+    safe = {k: v for k, v in config.items() if k not in SECRET_CONFIG_KEYS}
+    if secrets:
+        # Record THAT a key was supplied, never the key itself, so the run
+        # detail view can explain where credentials came from.
+        safe["credentials_source"] = "run_config"
+    return safe, secrets
+
+
 class RunManager:
     def __init__(self, store: Store, bus: EventBus, data_dir: Path, mode: str = "thread") -> None:
         assert mode in ("thread", "process")
@@ -45,6 +62,8 @@ class RunManager:
         self.mode = mode
         self._cancels: dict[str, Any] = {}
         self._pumps: dict[str, threading.Thread] = {}
+        # run_id -> secrets, in memory only, dropped when the process exits
+        self._secrets: dict[str, dict] = {}
 
     # -- lifecycle -------------------------------------------------------------
 
@@ -57,7 +76,10 @@ class RunManager:
         if pipeline not in PIPELINES:
             raise ValueError(f"unknown pipeline {pipeline!r}")
         run_id = uuid.uuid4().hex[:12]
-        self.store.create_run(run_id, config, pipeline)
+        safe, secrets = split_secrets(config)
+        if secrets:
+            self._secrets[run_id] = secrets
+        self.store.create_run(run_id, safe, pipeline)
         dag = PIPELINES[pipeline]()
         for name in dag.topo_order():
             self.store.upsert_stage(run_id, name, status="queued")
@@ -70,7 +92,8 @@ class RunManager:
         run = self.store.get_run(run_id)
         if run is None:
             raise KeyError(run_id)
-        self._launch(run_id, run["pipeline"], self.data_dir / run_id, run["config"], frozenset())
+        config = {**run["config"], **self._secrets.get(run_id, {})}
+        self._launch(run_id, run["pipeline"], self.data_dir / run_id, config, frozenset())
 
     def start_run(self, config: dict, pipeline: str = "dummy") -> str:
         run_id = self.prepare_run(config, pipeline)
@@ -91,7 +114,8 @@ class RunManager:
                 self.store.upsert_stage(
                     run_id, s["name"], status="queued", error=None, traceback=None
                 )
-        self._launch(run_id, run["pipeline"], self.data_dir / run_id, run["config"], completed)
+        config = {**run["config"], **self._secrets.get(run_id, {})}
+        self._launch(run_id, run["pipeline"], self.data_dir / run_id, config, completed)
 
     def cancel(self, run_id: str) -> None:
         ev = self._cancels.get(run_id)

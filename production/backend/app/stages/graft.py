@@ -31,16 +31,31 @@ _SRC = _WORKTREE_ROOT / "src"
 _MEM: dict[str, dict[str, Any]] = {}
 
 
-def _bootstrap() -> None:
-    """Make rag_gt importable and load API credentials."""
+def _bootstrap(config: dict | None = None) -> None:
+    """Make rag_gt importable and load API credentials.
+
+    Credentials resolve in this order:
+      1. the run config (a key typed into the Runs panel for THIS run);
+      2. the server's .env file.
+    A per-run key overrides the server default without being written anywhere:
+    `RunManager.split_secrets` keeps it out of the run store, and it is applied
+    to this worker process's environment only.
+    """
     if str(_SRC) not in sys.path:
         sys.path.insert(0, str(_SRC))
+    import os
+
     from dotenv import load_dotenv
 
     for cand in (_WORKTREE_ROOT / ".env", _WORKTREE_ROOT.parents[1] / ".env"):
         if cand.exists():
             load_dotenv(cand)
             break
+
+    for cfg_key, env_key in (("api_key", "API_KEY"), ("api_base_url", "API_BASE_URL")):
+        value = (config or {}).get(cfg_key)
+        if value:
+            os.environ[env_key] = str(value)
 
 
 # -- state ---------------------------------------------------------------
@@ -82,7 +97,7 @@ def _docs(ctx: StageContext) -> list[tuple[str, str]]:
 
 
 def profile_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.allpdf.preflight import profile_pdf
 
     docs = _docs(ctx)
@@ -114,7 +129,7 @@ def profile_stage(ctx: StageContext) -> None:
 
 
 def ingest_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.allpdf.ingest import ingest_document
 
     state = _load_state(ctx)
@@ -137,7 +152,7 @@ def ingest_stage(ctx: StageContext) -> None:
 
 
 def chunk_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.allpdf.chunk import agentic_chunk
 
     state = _load_state(ctx)
@@ -184,7 +199,7 @@ def _fact_provenance(f: Any) -> dict:
 
 
 def extract_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.allpdf.extract import extract_sfu_facts
 
     state = _load_state(ctx)
@@ -218,7 +233,7 @@ def extract_stage(ctx: StageContext) -> None:
 
 
 def clean_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.allpdf.filter_adaptive import filter_facts_adaptive
 
     state = _load_state(ctx)
@@ -256,17 +271,44 @@ class BudgetExceeded(RuntimeError):
 
 
 class CostBudget:
-    """Shared across all TracedLLM instances of a run; aborts at the cap."""
+    """Shared across all TracedLLM instances of a run; aborts at the cap.
 
-    def __init__(self, max_cost_usd: float) -> None:
+    Enforces a DOLLAR cap when per-token pricing is known and a TOKEN cap when
+    it is not. Without the token fallback an unpriced run would add 0.0 per
+    call and never trip any cap -- the same silent-free-run failure the
+    original pricing guard existed to prevent.
+    """
+
+    def __init__(
+        self,
+        max_cost_usd: float,
+        *,
+        max_tokens_total: int | None = None,
+        pricing_known: bool = True,
+    ) -> None:
         self.max_cost_usd = float(max_cost_usd)
+        self.max_tokens_total = int(max_tokens_total or 0)
+        self.pricing_known = pricing_known
         self.spent = 0.0
+        self.tokens = 0
 
-    def add(self, cost: float) -> None:
+    def add(self, cost: float, tokens: int = 0) -> None:
         self.spent += cost
-        if self.max_cost_usd > 0 and self.spent > self.max_cost_usd:
+        self.tokens += int(tokens)
+        if self.pricing_known and self.max_cost_usd > 0 and self.spent > self.max_cost_usd:
             raise BudgetExceeded(
                 f"LLM budget exceeded: ${self.spent:.4f} > ${self.max_cost_usd:.4f} cap"
+            )
+        if (
+            not self.pricing_known
+            and self.max_tokens_total > 0
+            and self.tokens > self.max_tokens_total
+        ):
+            raise BudgetExceeded(
+                f"LLM token budget exceeded: {self.tokens:,} > "
+                f"{self.max_tokens_total:,} tokens. Per-token pricing for this "
+                "endpoint is unknown, so the dollar cap cannot be enforced — set "
+                "price_in_per_mtok / price_out_per_mtok to use a dollar cap."
             )
 
 
@@ -274,14 +316,18 @@ _PAYLOAD_CAP = 4000  # chars of prompt/output stored per span
 
 
 class LivePricingRequired(RuntimeError):
-    """Raised when a live-mode LLM call starts without explicit per-token pricing.
+    """No longer raised by TracedLLM; retained so existing imports still work.
 
-    Defaulting price_in_per_mtok/price_out_per_mtok to 0.0 would make every
-    live run "look free" in cost metrics while real API spend accrues against
-    max_cost_usd — fail loudly instead, matching the rest of this codebase's
-    convention of surfacing unknown pricing (see the "unknown" price-table
-    entry and `price_unknown` flag in `rag_gt.comparison.cost_tracker`)
-    rather than silently guessing a number.
+    Historically a live run refused to start unless price_in_per_mtok and
+    price_out_per_mtok were both supplied, because defaulting them to 0.0 made
+    every live run report "$0.00" while real spend accrued. The goal was right
+    but the mechanism pushed an accounting detail onto the user and blocked the
+    run over it — for token counts that are themselves a len(text)//4 estimate.
+
+    `app.stages.pricing.resolve_pricing` now supplies the same guarantee
+    without the block: prices come from the config, else from a per-provider
+    table keyed on the API base URL, else the run proceeds with cost reported
+    as UNKNOWN (never $0.00) and bounded by a token cap instead of a dollar cap.
     """
 
 
@@ -293,28 +339,19 @@ class TracedLLM:
         self._ctx = ctx
         self._role = role
         self._budget = budget
-        live = ctx.config.get("llm_mode", "import") == "live"
-        price_in = ctx.config.get("price_in_per_mtok")
-        price_out = ctx.config.get("price_out_per_mtok")
-        if live and (price_in is None or price_out is None):
-            missing = [
-                name
-                for name, val in (
-                    ("price_in_per_mtok", price_in),
-                    ("price_out_per_mtok", price_out),
-                )
-                if val is None
-            ]
-            raise LivePricingRequired(
-                f"llm_mode=live requires {', '.join(missing)} to be set "
-                "explicitly in the run config (USD per 1,000,000 tokens) — "
-                "otherwise cost metrics silently read as $0 while real API "
-                "spend accrues against max_cost_usd. Pass both fields in the "
-                "run config before starting a live run (use 0.0 explicitly "
-                "if the endpoint is genuinely free)."
-            )
-        self._price_in = float(price_in) if price_in is not None else 0.0
-        self._price_out = float(price_out) if price_out is not None else 0.0
+        import os
+
+        from app.stages.pricing import resolve_pricing
+
+        pricing = resolve_pricing(
+            ctx.config,
+            base_url=os.getenv("API_BASE_URL", ""),
+            model=os.getenv("RAG_LLM_CHAT_MODEL", ""),
+        )
+        self._price_in = pricing.price_in_per_mtok
+        self._price_out = pricing.price_out_per_mtok
+        self._pricing_known = pricing.is_known
+        self._pricing_source = pricing.source
 
     def generate(self, prompt: str, temperature: float = 0.0, max_tokens: int = 512) -> str:
         with self._ctx.span(
@@ -327,16 +364,38 @@ class TracedLLM:
             sp.output = {"text": out[:_PAYLOAD_CAP]}
             sp.tokens_in = tok_in
             sp.tokens_out = tok_out
-            sp.cost_usd = cost
-            sp.extra = {"temperature": temperature, "max_tokens": max_tokens}
-            self._budget.add(cost)
+            # None, not 0.0, when pricing is unknown: a run whose cost was never
+            # established must not render as a free one.
+            sp.cost_usd = cost if self._pricing_known else None
+            sp.extra = {
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+                "pricing_source": self._pricing_source,
+                "price_unknown": not self._pricing_known,
+            }
+            self._budget.add(cost, tok_in + tok_out)
         return out
 
 
 def _traced_llm(ctx: StageContext, role: str, budget: CostBudget | None = None):
+    import os
+
+    from app.stages.pricing import DEFAULT_MAX_TOKENS_TOTAL, resolve_pricing
     from rag_gt.core.llm import get_llm
 
-    budget = budget or CostBudget(float(ctx.config.get("max_cost_usd", 5.0)))
+    if budget is None:
+        pricing = resolve_pricing(
+            ctx.config,
+            base_url=os.getenv("API_BASE_URL", ""),
+            model=os.getenv("RAG_LLM_CHAT_MODEL", ""),
+        )
+        budget = CostBudget(
+            float(ctx.config.get("max_cost_usd", 5.0)),
+            max_tokens_total=int(
+                ctx.config.get("max_tokens_total") or DEFAULT_MAX_TOKENS_TOTAL
+            ),
+            pricing_known=pricing.is_known,
+        )
     return TracedLLM(get_llm(role), ctx, role, budget)
 
 
@@ -355,7 +414,7 @@ DEFAULT_GT_IMPORT = _WORKTREE_ROOT / "data" / "eval_results" / "allpdf_qa_pairs_
 
 
 def graph_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     if _skip_import(ctx, "the fact graph"):
         return
     from rag_gt.allpdf.pipeline import _build_graph, _embed_and_index
@@ -392,7 +451,7 @@ def graph_stage(ctx: StageContext) -> None:
 
 
 def sample_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     if _skip_import(ctx, "the chains"):
         return
     import random
@@ -406,10 +465,20 @@ def sample_stage(ctx: StageContext) -> None:
         raise RuntimeError("fact graph not in memory — retry from the 'graph' stage")
     rng = random.Random(int(ctx.config.get("seed", 42)))
     target = int(ctx.config.get("target_chains", 20))
-    mh_chains = int(ctx.config.get("multihop_chains", 0))
+    # `questions_per_doc` is the user-facing target: how many QA pairs to aim
+    # for per document. It is BEST-EFFORT by design -- ask for 100 from a
+    # document that can only support 20 and you get 20, with the shortfall
+    # reported rather than padded. 0 / unset means "no cap, take everything the
+    # document supports", which is the historical behaviour.
+    questions_per_doc = int(ctx.config.get("questions_per_doc") or 0)
+    # Multi-hop defaulted to 0 in the web path, which is why a 453-pair run
+    # contained only 4 multi-hop pairs. Default to a share of the target.
+    mh_default = max(0, questions_per_doc // 5) if questions_per_doc else 0
+    mh_chains = int(ctx.config.get("multihop_chains", mh_default))
 
     chains_by_doc: dict[str, list] = {}
     n_single_total = n_multi_total = 0
+    shortfall: dict[str, dict[str, int]] = {}
     docs = list(kept)
     for i, doc_id in enumerate(docs, 1):
         ctx.check_cancel()
@@ -423,20 +492,53 @@ def sample_stage(ctx: StageContext) -> None:
                     require_cross_page=True, min_page_gap=1,
                 )
                 chains += [c for c in mh if tuple(c.fact_ids) not in local]
+            available = len(chains)
+            if questions_per_doc > 0 and available > questions_per_doc:
+                # Sample rather than truncate: chains are emitted in fact order,
+                # so head-truncation would bias the dataset toward the front of
+                # the document. Multi-hop chains are kept preferentially because
+                # they are the scarce kind.
+                multi = [c for c in chains if len(c.fact_ids) > 1]
+                single = [c for c in chains if len(c.fact_ids) == 1]
+                keep_multi = multi[:questions_per_doc]
+                room = max(0, questions_per_doc - len(keep_multi))
+                keep_single = rng.sample(single, min(room, len(single)))
+                chains = keep_multi + keep_single
+                n_single = len(keep_single)
+            if questions_per_doc > 0 and available < questions_per_doc:
+                shortfall[doc_id] = {"requested": questions_per_doc, "available": available}
+                ctx.log(
+                    "info",
+                    f"{doc_id}: {available} chains available, "
+                    f"{questions_per_doc} requested — producing {available} "
+                    "(the document does not support more)",
+                )
             chains_by_doc[doc_id] = chains
             n_single_total += n_single
             n_multi_total += len(chains) - n_single
-            sp.output = {"chains": len(chains), "single": n_single}
+            sp.output = {"chains": len(chains), "single": n_single,
+                         "available": available, "requested": questions_per_doc or None}
         ctx.log("info", f"{doc_id}: {len(chains)} chains ({n_single} single-fact)")
         ctx.progress(i, len(docs), doc_id)
     state["chains"] = chains_by_doc
     _save_state(ctx, state)
     ctx.metric("chains_single", n_single_total)
     ctx.metric("chains_multihop", n_multi_total)
+    if shortfall:
+        # Surfaced, not silently absorbed: the user asked for N and is entitled
+        # to know which documents could not supply it.
+        ctx.metric("questions_shortfall_docs", len(shortfall))
+        ctx.log(
+            "warn",
+            "requested questions_per_doc not reachable for: "
+            + ", ".join(
+                f"{d} ({v['available']}/{v['requested']})" for d, v in shortfall.items()
+            ),
+        )
 
 
 def qagen_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     if _skip_import(ctx, "the QA pairs"):
         return
     from rag_gt.allpdf.pipeline import _run_qgen
@@ -476,7 +578,7 @@ def qagen_stage(ctx: StageContext) -> None:
 
 
 def verify_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     if _skip_import(ctx, "verification results"):
         return
     state = _load_state(ctx)
@@ -492,7 +594,7 @@ def verify_stage(ctx: StageContext) -> None:
 
 
 def gt_dataset_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     state = _load_state(ctx)
     art = ctx.run_dir / "artifacts" / "gt.jsonl"
 
@@ -557,7 +659,7 @@ def _corpus_chunks(state: dict) -> list[dict]:
 
 
 def bm25_index_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.rag.retriever import BM25Retriever
 
     state = _load_state(ctx)
@@ -571,7 +673,7 @@ def bm25_index_stage(ctx: StageContext) -> None:
 
 
 def vector_index_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.rag.retriever import DenseRetriever
 
     state = _load_state(ctx)
@@ -587,7 +689,7 @@ def vector_index_stage(ctx: StageContext) -> None:
 
 
 def fusion_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from rag_gt.rag.retriever import HybridRetriever
 
     state = _load_state(ctx)
@@ -603,7 +705,7 @@ def fusion_stage(ctx: StageContext) -> None:
 
 
 def rerank_warmup_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from app.ragengine.rerank import Reranker
 
     model = str(ctx.config.get("rerank_model", "cross-encoder/ms-marco-MiniLM-L-6-v2"))
@@ -691,7 +793,7 @@ def _eval_cell(
 
 
 def sweep_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     import random
 
     state = _load_state(ctx)
@@ -748,7 +850,7 @@ def sweep_stage(ctx: StageContext) -> None:
 
 
 def leaderboard_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     state = _load_state(ctx)
     rows = _require(state, "leaderboard", "sweep")
     for r in sorted(rows, key=lambda r: -r["f1_rw"])[:5]:
@@ -758,7 +860,7 @@ def leaderboard_stage(ctx: StageContext) -> None:
 
 
 def select_config_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     state = _load_state(ctx)
     rows = _require(state, "leaderboard", "sweep")
     winner = next(r for r in rows if r.get("winner"))
@@ -773,7 +875,7 @@ def select_config_stage(ctx: StageContext) -> None:
 
 
 def final_eval_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from app.evaluation.matching import aggregate
 
     state = _load_state(ctx)
@@ -816,7 +918,7 @@ def final_eval_stage(ctx: StageContext) -> None:
 
 
 def report_stage(ctx: StageContext) -> None:
-    _bootstrap()
+    _bootstrap(ctx.config)
     from app.evaluation.report import build_report
 
     state = _load_state(ctx)

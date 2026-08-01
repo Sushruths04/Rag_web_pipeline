@@ -60,23 +60,23 @@ export interface ModeInfo {
 
 export const MODES: ModeInfo[] = [
   {
-    title: 'Import mode',
-    tag: 'FREE — $0.00',
+    title: 'Reuse existing questions',
+    tag: 'FREE — no API calls',
     bullets: [
-      'Uses the already-generated, already-verified GT dataset from an earlier paid run',
-      'Zero API calls, zero cost — no LLM is contacted at all',
-      'Still real end-to-end: parses your PDFs, chunks them, builds BM25 + vector + hybrid indexes, runs the sweep, scores retrieval — all with local models',
-      'Limitation: it can only evaluate PDFs the imported GT already covers — a new PDF has no questions yet',
+      'Scores retrieval against questions that were already generated and verified in an earlier run',
+      'No LLM is contacted, so nothing is charged to your API key',
+      'Still a real end-to-end evaluation: your PDFs are parsed and chunked, BM25 + vector + hybrid indexes are built, the sweep runs and retrieval is scored — all with local models',
+      'Only covers PDFs the existing question set already includes. A newly uploaded document has no questions yet — use the other mode for that',
     ],
   },
   {
-    title: 'Live mode',
-    tag: 'PAID — budget-capped',
+    title: 'Generate new questions',
+    tag: 'USES YOUR API KEY — capped',
     bullets: [
-      'Sends your PDF chunks to a real LLM API to extract facts and generate fresh questions and answers',
-      'Costs real money per token — the max-cost budget cap aborts the run if exceeded, and max-pairs bounds the volume',
-      'Use it when you upload a document the GT has never seen',
-      'Fully traced: every LLM call becomes a span with tokens in/out and dollar cost, so you can audit exactly where the money went',
+      'Reads your PDFs with an LLM to extract facts, then writes fresh questions and answers grounded in them',
+      'Charged per token by your provider. The max-cost cap stops the run before it goes past your limit',
+      'Choose this when you upload a document that has no questions yet',
+      'Fully traced: every LLM call is a span with tokens in and out and its cost, so you can see exactly where the money went',
     ],
   },
 ]

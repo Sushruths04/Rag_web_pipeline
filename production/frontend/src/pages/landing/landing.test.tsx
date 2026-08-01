@@ -37,8 +37,11 @@ describe('landing page', () => {
       </MemoryRouter>,
     )
     const modes = container.querySelector('#modes')
-    expect(modes?.textContent).toContain('Import mode')
-    expect(modes?.textContent).toContain('Live mode')
+    // Renamed from "Import mode" / "Live mode": those labels described the
+    // implementation, not what the user gets. The distinction that matters is
+    // whether new questions are generated and whether the API key is used.
+    expect(modes?.textContent).toContain('Reuse existing questions')
+    expect(modes?.textContent).toContain('Generate new questions')
     expect((modes?.querySelectorAll('li').length ?? 0)).toBeGreaterThanOrEqual(8)
     expect(container.querySelectorAll('.component-card').length).toBeGreaterThanOrEqual(10)
   })

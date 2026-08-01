@@ -130,12 +130,22 @@ def test_traced_llm_spans_and_budget(tmp_path):
             llm.generate("more " * 200)
 
 
-def test_traced_llm_live_mode_requires_explicit_prices(tmp_path):
-    """A live run with unset prices must fail loudly, not report $0 cost."""
+def test_unpriced_run_reports_unknown_cost_rather_than_zero(tmp_path, monkeypatch):
+    """A live run with unresolvable prices must not render as a free run.
+
+    Replaces the old "must raise LivePricingRequired" pin. The guarantee being
+    protected is unchanged -- an unpriced run may never look like $0.00 -- but
+    it is now delivered by reporting cost as UNKNOWN and falling back to a
+    token cap, instead of refusing to start and demanding two figures the user
+    has no way to know.
+    """
     import threading
 
     from app.orchestrator.context import StageContext
-    from app.stages.graft import CostBudget, LivePricingRequired, TracedLLM
+    from app.stages.graft import CostBudget, TracedLLM
+
+    monkeypatch.setenv("API_BASE_URL", "https://unknown-provider.example.com/v1")
+    monkeypatch.setenv("RAG_LLM_CHAT_MODEL", "some/unlisted-model")
 
     class FakeLLM:
         def generate(self, prompt, temperature=0.0, max_tokens=512):
@@ -146,10 +156,83 @@ def test_traced_llm_live_mode_requires_explicit_prices(tmp_path):
         {"llm_mode": "live"},  # no price_in_per_mtok / price_out_per_mtok
         lambda *a, **k: None, threading.Event(),
     )
-    budget = CostBudget(max_cost_usd=5.0)
+    budget = CostBudget(max_cost_usd=5.0, max_tokens_total=1_000, pricing_known=False)
+    llm = TracedLLM(FakeLLM(), ctx, "gt", budget)  # must NOT raise
 
-    with pytest.raises(LivePricingRequired, match="price_in_per_mtok, price_out_per_mtok"):
-        TracedLLM(FakeLLM(), ctx, "gt", budget)
+    llm.generate("hello")
+
+    assert budget.pricing_known is False
+    assert budget.tokens > 0, "tokens must still be counted when price is unknown"
+
+
+def test_unpriced_run_is_still_bounded_by_a_token_cap(tmp_path, monkeypatch):
+    """Without prices the dollar cap cannot bite, so a token cap must."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import BudgetExceeded, CostBudget, TracedLLM
+
+    monkeypatch.setenv("API_BASE_URL", "https://unknown-provider.example.com/v1")
+    monkeypatch.setenv("RAG_LLM_CHAT_MODEL", "some/unlisted-model")
+
+    class FakeLLM:
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "answer"
+
+    ctx = StageContext(
+        "r1", "qagen", tmp_path, {"llm_mode": "live"},
+        lambda *a, **k: None, threading.Event(),
+    )
+    budget = CostBudget(max_cost_usd=5.0, max_tokens_total=100, pricing_known=False)
+    llm = TracedLLM(FakeLLM(), ctx, "gt", budget)
+
+    with pytest.raises(BudgetExceeded, match="token budget exceeded"):
+        for _ in range(20):
+            llm.generate("more " * 200)
+
+
+def test_known_provider_prices_resolve_without_user_input():
+    """The point of the change: no typing prices the user cannot know."""
+    from app.stages.pricing import resolve_pricing
+
+    p = resolve_pricing(
+        {},
+        base_url="https://api.tokenfactory.nebius.com/v1",
+        model="Qwen/Qwen3-235B-A22B-Instruct-2507",
+    )
+    assert p.source == "provider"
+    assert p.is_known is True
+    assert p.price_in_per_mtok > 0 and p.price_out_per_mtok > 0
+
+
+def test_explicit_prices_override_the_provider_table():
+    from app.stages.pricing import resolve_pricing
+
+    p = resolve_pricing(
+        {"price_in_per_mtok": 1.23, "price_out_per_mtok": 4.56},
+        base_url="https://api.tokenfactory.nebius.com/v1",
+        model="Qwen/Qwen3-235B-A22B-Instruct-2507",
+    )
+    assert p.source == "explicit"
+    assert (p.price_in_per_mtok, p.price_out_per_mtok) == (1.23, 4.56)
+
+
+def test_unknown_provider_is_reported_as_unknown_not_free():
+    from app.stages.pricing import resolve_pricing
+
+    p = resolve_pricing({}, base_url="https://mystery.example.org/v1", model="x")
+    assert p.source == "unknown"
+    assert p.is_known is False
+
+
+def test_self_hosted_zero_price_is_known_not_unknown():
+    """0.0 for an unmetered institutional endpoint is a fact, not a gap."""
+    from app.stages.pricing import resolve_pricing
+
+    p = resolve_pricing({}, base_url="https://llm.hpc.itc.rwth-aachen.de/v1", model="x")
+    assert p.source == "provider"
+    assert p.is_known is True
+    assert (p.price_in_per_mtok, p.price_out_per_mtok) == (0.0, 0.0)
 
 
 def test_traced_llm_live_mode_accepts_explicit_zero_price(tmp_path):
@@ -175,28 +258,29 @@ def test_traced_llm_live_mode_accepts_explicit_zero_price(tmp_path):
     assert budget.spent == 0.0
 
 
-def test_traced_llm_import_mode_does_not_require_prices(tmp_path):
-    """The guard is scoped to llm_mode=live; import-mode direct construction
-    (as other tests in this file do) must not start requiring prices too."""
+def test_construction_without_prices_never_blocks(tmp_path, monkeypatch):
+    """Direct construction with an empty config must not raise for any mode."""
     import threading
 
     from app.orchestrator.context import StageContext
     from app.stages.graft import CostBudget, TracedLLM
 
+    monkeypatch.setenv("API_BASE_URL", "https://unknown-provider.example.com/v1")
+    monkeypatch.setenv("RAG_LLM_CHAT_MODEL", "some/unlisted-model")
+
     class FakeLLM:
         def generate(self, prompt, temperature=0.0, max_tokens=512):
             return "answer"
 
-    ctx = StageContext(
-        "r1", "qagen", tmp_path,
-        {},  # no llm_mode, no prices
-        lambda *a, **k: None, threading.Event(),
-    )
-    budget = CostBudget(max_cost_usd=5.0)
-    llm = TracedLLM(FakeLLM(), ctx, "gt", budget)  # must not raise
-
-    llm.generate("hello")
-    assert budget.spent == 0.0
+    for config in ({}, {"llm_mode": "import"}, {"llm_mode": "live"}):
+        ctx = StageContext(
+            "r1", "qagen", tmp_path, config,
+            lambda *a, **k: None, threading.Event(),
+        )
+        budget = CostBudget(max_cost_usd=5.0, pricing_known=False)
+        llm = TracedLLM(FakeLLM(), ctx, "gt", budget)  # must not raise
+        llm.generate("hello")
+        assert budget.spent == 0.0  # unknown pricing contributes no dollars
 
 
 def test_reranker_orders_by_cross_encoder_score():
