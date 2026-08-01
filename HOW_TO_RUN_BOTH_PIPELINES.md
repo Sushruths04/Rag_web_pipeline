@@ -188,11 +188,15 @@ Three ingestion bugs were found and fixed today. All are merged into each
 repo's **local `main`** and verified. **Nothing has been pushed** — `origin/main`
 is still at the pre-fix commit in both repos.
 
-| Repo | local `main` | `origin/main` |
-|---|---|---|
-| `Rag_web_pipeline` | `8df38e8` | `9684c40` (behind) |
-| `Rag_software_stack` | `3184094` | `b1fa245` (behind) |
-| `RAG_GT` | `e04de22` on `hop-redesign-singlemulti-20260622` | n/a |
+Check exactly how far ahead each repo is:
+
+```bash
+git log --oneline origin/main..main     # run in each repo
+```
+
+`origin/main` sits at `9684c40` (`Rag_web_pipeline`) and `b1fa245`
+(`Rag_software_stack`) — the pre-fix commits. In `RAG_GT` the work is on
+branch `hop-redesign-singlemulti-20260622`, which has no remote.
 
 To publish, when you want to: `git push origin main` in each repo.
 To undo instead: `git reset --hard <origin/main sha>`.
