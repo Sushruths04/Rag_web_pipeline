@@ -251,15 +251,92 @@ _TAUTOLOGY_STOPWORDS = {
 _TAUTOLOGY_NEW_WORD_FLOOR = 0.25
 
 
+# Verbs and connectives that carry no answer content on their own. An answer
+# whose ONLY new material is drawn from this set has not answered anything --
+# it has re-worded the question's own predicate.
+_WEAK_NEW_STEMS = frozenset({
+    "assist", "help", "aid", "provid", "give", "us", "use", "includ", "appli",
+    "relat", "serv", "consist", "compris", "involv", "describ", "specifi",
+    "defin", "list", "present", "show", "contain", "cover", "indic", "accord",
+    "refer", "correspond", "pertain", "concern", "regard", "address", "state",
+    "mention", "note", "set", "mak", "do", "be", "have", "may", "might", "can",
+    "could", "shall", "should", "must", "will", "would", "requir", "need",
+    "follow", "obtain", "achiev", "result", "occur", "exist", "avail",
+})
+
+_STEM_SUFFIXES = (
+    "ications", "ication", "ations", "ation", "ements", "ement", "ments",
+    "ment", "ances", "ance", "ences", "ence", "ings", "ing", "ions", "ion",
+    "ives", "ive", "ers", "er", "als", "al", "ed", "es", "s",
+)
+
+
+def _stem(word: str) -> str:
+    """Crude suffix stripper.
+
+    Only needs to make morphological variants collide -- "selection"/"selecting"
+    -> "select", "provide"/"provides" -> "provid" -- so an answer that merely
+    re-inflects the question's own words is not credited with new information.
+    """
+    w = word
+    changed = True
+    while changed and len(w) > 4:
+        changed = False
+        for suf in _STEM_SUFFIXES:
+            if w.endswith(suf) and len(w) - len(suf) >= 3:
+                w = w[: -len(suf)]
+                changed = True
+                break
+    return w.rstrip("e") if len(w) > 3 else w
+
+
+def _is_substantive(stem: str) -> bool:
+    """A stem that could plausibly BE an answer."""
+    if any(ch.isdigit() for ch in stem):
+        return True          # a quantity, a threshold, a standard number
+    return len(stem) >= 3 and stem not in _WEAK_NEW_STEMS
+
+
 def _is_tautological(question: str, answer: str) -> bool:
     """True when the answer restates the question with no new information.
 
-    "Which characteristic of a WPS specifies maximum run width for manual
-    welding?" / "WPS specifies the maximum width of the run for manual welding."
-    — the answer copies the question's content back verbatim. We measure the
-    fraction of the answer's content words that do NOT appear in the question.
-    If fewer than _TAUTOLOGY_NEW_WORD_FLOOR (25%) are new, the pair is circular.
+    Measures NOVELTY PRESENCE, not a novelty ratio. The earlier ratio form
+    ("fewer than 25% of the answer's content words are new") was wrong for
+    short factoid answers: replaying it over the 2026-08-01 run rejected
+    "What is the minimum required development time?" / "... is 10 minutes."
+    because the one new token was diluted by the question's own phrasing.
+    Well-formed answers legitimately echo the question; what makes a pair
+    circular is that nothing substantive is added at all.
+
+    A pair is tautological when every content word the answer introduces is
+    either a morphological variant of a question word or a weak predicate.
     """
+    def _content(text: str) -> list[str]:
+        out = []
+        for w in (text or "").split():
+            w = w.lower().strip(".,;:?!\"'()[]{}")
+            if not w or w in _TAUTOLOGY_STOPWORDS:
+                continue
+            # Keep short NUMERIC tokens. The >2-character floor silently
+            # discarded "2", "10", "5" -- precisely the tokens that most often
+            # ARE the answer ("Level 2", "a type 2 reference block",
+            # "10 minutes"), which made those pairs look contentless.
+            if len(w) > 2 or any(ch.isdigit() for ch in w):
+                out.append(w)
+        return out
+
+    q_stems = {_stem(w) for w in _content(question)}
+    a_stems = [_stem(w) for w in _content(answer)]
+    if not a_stems:
+        return False
+    new_stems = [s for s in a_stems if s not in q_stems]
+    if not new_stems:
+        return True
+    return not any(_is_substantive(s) for s in new_stems)
+
+
+def _is_tautological_ratio_legacy(question: str, answer: str) -> bool:
+    """Original ratio-based form, retained for reference. Not used as a gate."""
     def _content(text: str) -> set:
         return {
             w.lower().strip(".,;:?!\"'()[]{}") for w in text.split()
@@ -272,6 +349,95 @@ def _is_tautological(question: str, answer: str) -> bool:
         return False
     new_in_answer = a_words - q_words
     return len(new_in_answer) / len(a_words) < _TAUTOLOGY_NEW_WORD_FLOOR
+
+
+_PUNCT_STRIP_RE = _re.compile(r"[^\w\s]")
+_WS_RE = _re.compile(r"\s+")
+
+
+def _normalize_question(question: str) -> str:
+    """Canonical key for exact-duplicate question detection.
+
+    The allpdf pipeline generates one question per chain independently and had
+    no dedup of any kind, so byte-identical questions shipped in the same
+    dataset (18 near-duplicate pairs, several byte-identical, in the
+    2026-08-01 run). Mirrors ``gt_pipeline._normalize_question_for_dedup``.
+    """
+    import unicodedata
+
+    text = unicodedata.normalize("NFKC", question or "").lower()
+    return _WS_RE.sub(" ", _PUNCT_STRIP_RE.sub(" ", text)).strip()
+
+
+def _reject_pair_reason(question: str, answer: str, facts) -> Optional[str]:
+    """Pair-level quality gate for the allpdf pipeline.
+
+    Two mechanisms, both of which already existed but neither of which was
+    reachable from this pipeline:
+
+    * ``rag_gt.validation.gt_quality`` — the 20-check suite (Q1..Q20). It was
+      only ever imported by ``pipeline/gt_pipeline.py`` and
+      ``cli/arm_continuation.py``. Replaying it over the 2026-08-01 run's 453
+      pairs showed 93 (20.5%) would have been rejected on hard-fail flags.
+    * ``_is_tautological`` — implemented, unit-tested, and called from nowhere
+      but its own test since the "FIX 5" removal. The removal reasoning held
+      for multi-hop pairs (whose circularity came from fabricated edges) but
+      the single-fact path, which produces ~99% of pairs, was never covered.
+
+    Only the hard-fail flag set is enforced. The weighted score is deliberately
+    NOT used as a threshold here: replaying it showed `quality < 0.7` firing on
+    0 of 453 pairs, because the per-check weights are small relative to
+    TOTAL_WEIGHT. Gating on an inert number would be theatre.
+    """
+    from rag_gt.validation.gt_quality import (
+        CHECKS,
+        GENERIC_SOURCE_RE,
+        HARD_FAIL_FLAGS,
+    )
+
+    if _is_tautological(question, answer):
+        return "tautological_pair"
+
+    # Q4_generic_referent is enforced in SPLIT form here, deliberately.
+    #
+    # It bundles two unrelated tests. GENERIC_SOURCE_RE ("according to the
+    # provided text", "in the given statements") is a genuine defect in any
+    # domain and is enforced below. GENERIC_RE, however, fires on a noun list
+    # -- method / process / procedure / operation / operator / graph / table --
+    # that was tuned for academic prose, where "the method" is vague. In an ISO
+    # standard those are the domain's own subjects. Replaying the full check
+    # over the 2026-08-01 run rejected 34 pairs, and reading them shows good
+    # ones being lost:
+    #   "What information can the penetrant method provide about
+    #    discontinuities?"  -> rejected on "the ... method"
+    #   "How does the drying process for the part utilize forced-air
+    #    circulation?"      -> rejected on "the drying process"
+    # Both name a real subject and carry strong retrieval anchors.
+    # Under-specified questions are still caught by Q1_deictic_no_antecedent
+    # (kept below) and by the Stage-4 deictic-opener rule on the fact itself.
+    if GENERIC_SOURCE_RE.search(question or ""):
+        return "quality_generic_source_frame"
+
+    fact_dicts = []
+    for f in facts:
+        fact_dicts.append({
+            "fact_id": getattr(f, "fact_id", ""),
+            "text": getattr(f, "text", "") or "",
+            "canonical_form": getattr(f, "canonical_form", "") or "",
+            "supporting_spans": getattr(f, "supporting_spans", []) or [],
+        })
+
+    for check in CHECKS:
+        if check.name not in HARD_FAIL_FLAGS:
+            continue
+        if check.name == "Q4_generic_referent":
+            continue  # enforced in split form above -- see the comment there
+        try:
+            if check.fn(question, answer, fact_dicts):
+                return f"quality_{check.name}"
+        except Exception as e:  # a broken check must not silently pass a pair
+            logger.warning(f"[pipeline] quality check {check.name} errored: {e}")
+    return None
 
 
 def _run_qgen(
@@ -313,6 +479,28 @@ def _run_qgen(
     n_abstain_dropped = 0
     n_ungrounded_dropped = 0
     n_tautological_dropped = 0
+    n_quality_dropped = 0
+    n_duplicate_dropped = 0
+    quality_reasons: Dict[str, int] = {}
+    seen_questions: set[str] = set()
+
+    def _accept(question: str, answer: str, chain_facts) -> bool:
+        """Pair-level gate + dedup. Mutates the counters above."""
+        nonlocal n_quality_dropped, n_duplicate_dropped, n_tautological_dropped
+        reason = _reject_pair_reason(question, answer, chain_facts)
+        if reason:
+            if reason == "tautological_pair":
+                n_tautological_dropped += 1
+            else:
+                n_quality_dropped += 1
+            quality_reasons[reason] = quality_reasons.get(reason, 0) + 1
+            return False
+        key = _normalize_question(question)
+        if key in seen_questions:
+            n_duplicate_dropped += 1
+            return False
+        seen_questions.add(key)
+        return True
 
     n_single_pairs = 0
     for chain in chains:
@@ -337,6 +525,11 @@ def _run_qgen(
                     continue
                 if not is_grounded(answer, [fact]):
                     n_ungrounded_dropped += 1
+                    continue
+                # Grounding proves the answer is TRUE given the fact; it cannot
+                # tell whether the answer is INFORMATIVE. A restatement of a
+                # deferring fact is perfectly entailed. Hence the pair gate.
+                if not _accept(question, answer, [fact]):
                     continue
                 pairs.append({
                     "chain_fact_ids": chain.fact_ids,
@@ -428,10 +621,14 @@ def _run_qgen(
                 )
                 continue
 
-            # NOTE: the tautology gate was removed (FIX 5). It was a Layer-C
-            # band-aid for circular pairs whose real cause is junk facts (Layer A)
-            # and fabricated edges (Layer B), now fixed at the source. The
-            # principled grounding gate above is retained.
+            # The tautology gate was removed in "FIX 5" on the theory that
+            # circular pairs were caused by junk facts (Layer A) and fabricated
+            # edges (Layer B), both fixed at the source. That held for two-fact
+            # pairs, but the single-fact path — ~99% of output — was never
+            # covered, so it is restored here for both paths alongside the
+            # gt_quality hard-fail checks and dedup.
+            if not _accept(question, answer, chain_facts):
+                continue
 
             hop = classify_pair_facts(chain_facts, order_index_by_id=order_index)
             necessity = None
@@ -472,7 +669,9 @@ def _run_qgen(
         f"[pipeline] Stage 7 done: {len(pairs)} pairs from {len(chains)} chains "
         f"[fragment_skip={n_fragment_skipped} qgen_fail={qgen_fail} agen_fail={agen_fail} "
         f"compound_regen={n_compound_regen} abstain_dropped={n_abstain_dropped} "
-        f"ungrounded_dropped={n_ungrounded_dropped} tautological_dropped={n_tautological_dropped}] "
+        f"ungrounded_dropped={n_ungrounded_dropped} tautological_dropped={n_tautological_dropped} "
+        f"quality_dropped={n_quality_dropped} duplicate_dropped={n_duplicate_dropped} "
+        f"quality_reasons={quality_reasons}] "
         f"[qgen_avg={avg_q}s agen_avg={avg_a}s "
         f"qgen_total={sum(qgen_times):.1f}s agen_total={sum(agen_times):.1f}s]"
     )
@@ -486,6 +685,9 @@ def _run_qgen(
         "n_abstain_dropped": n_abstain_dropped,
         "n_ungrounded_dropped": n_ungrounded_dropped,
         "n_tautological_dropped": n_tautological_dropped,
+        "n_quality_dropped": n_quality_dropped,
+        "n_duplicate_dropped": n_duplicate_dropped,
+        "quality_reasons": dict(quality_reasons),
         "n_pairs_produced": len(pairs),
         "qgen_total_sec": round(sum(qgen_times), 2),
         "agen_total_sec": round(sum(agen_times), 2),

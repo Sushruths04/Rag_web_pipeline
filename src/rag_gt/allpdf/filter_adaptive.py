@@ -39,7 +39,9 @@ from rag_gt.facts.domain_filter import (
     filter_fact_domain,
     fact_domain_reject_reason,
     has_dangling_anaphora,
+    has_unresolved_deictic_opener,
     is_bare_numbered_heading,
+    is_deferring_fact,
     is_printout_metadata,
     is_reference_list_dump,
     is_table_artifact,
@@ -177,6 +179,20 @@ def _relaxed_reject(fact: Fact, front_matter_pages: frozenset[int] = frozenset()
         return "printout_metadata"
     if COT_META_RE.search(text):
         return "cot_meta_leak"
+
+    # --- deferring facts (2026-08-01) ---
+    # A fact that only points at content elsewhere ("Annex A lists criteria
+    # which assist in ...") is grounded, fluent and scores 1.0 for
+    # self-containment, so no gate downstream can catch it — the only honest
+    # answer to any question built from it restates the pointer.
+    if is_deferring_fact(text):
+        return "deferring_fact"
+
+    # --- unresolved demonstrative opener, ISO register (2026-08-01) ---
+    # "This record shall be used as a comparison ..." — the referent lives in a
+    # different fact, so the question it generates is under-specified.
+    if has_unresolved_deictic_opener(text):
+        return "unresolved_deictic"
 
     # --- mid-sentence / list-residue fragments (RC-5) ---
     # Checked before the self-containment floor so a fragment is reported as

@@ -73,7 +73,18 @@ ISO_BOILERPLATE_RE = re.compile(
     r"national standards (?:bodies|organi[sz]ations) of|"
     r"cen members are the national standards|"
     r"the secretariat of which is held by|"
-    r"this (?:european|international) standard shall be given the status"
+    r"this (?:european|international) standard shall be given the status|"
+    # Clause-2 "Normative references" boilerplate. Near-identical in every ISO
+    # standard; anchored on the dated/undated pair so a technical sentence that
+    # merely says "for undated references" cannot match on its own.
+    r"for dated references,? only the edition cited applies|"
+    r"the following documents are referred to in the text in such a way|"
+    # CEN cover-page approval and exploitation-rights notices. The existing
+    # front-matter cue "all rights reserved" never matched CEN's actual wording,
+    # which inserts "in any form and by any means" mid-phrase.
+    r"this (?:european|international) standard was approved by cen|"
+    r"all rights of exploitation in any form and by any means reserved|"
+    r"cen national members"
     r")\b",
     re.I,
 )
@@ -90,9 +101,32 @@ NUMBERED_REFERENCE_RE = re.compile(r"^\s*\[\d{1,3}\]\s+\S")
 # extraction (the header line is pulled in-flow and concatenated to the body).
 # This is a STRIP target, not a reject target: the technical remainder after the
 # watermark is real content and must be preserved.
+# The controlled-copy watermark is a FOUR-line block, not one line:
+#     Date/time of the printout: 2025-04-23, 11:56:33
+#     Company name: RWTH Aachen University Universitätsbiblioth..
+#     User name: IP
+#     Printed copies are uncontrolled
+# Matching only the last line (the original behaviour) left the first three to be
+# glued onto real sentences by the SFU segmenter — the source of the "Aachen
+# University Universitätsbiblioth.." residue in 6.4% of the 2026-08-01 run's facts.
+#
+# Each field is matched as "<label>:" plus its value up to the next field label,
+# so a block split across chunk boundaries is still cleaned. Requiring the colon
+# is what keeps legitimate prose safe: "...shall record the company name and
+# address of the organization..." has no colon and is left untouched.
+_WATERMARK_FIELD_LABEL = (
+    r"(?:date\s*/\s*time of the printout|company name|user name|order number|"
+    r"kundennummer|bestellte)"
+)
+_WATERMARK_TERMINAL = r"(?:printed copies are uncontrolled|uncontrolled when printed)"
 PRINTED_COPY_WATERMARK_RE = re.compile(
-    r"(?:user name\s*:\s*\S+\s+)?"
-    r"(?:printed copies are uncontrolled|uncontrolled when printed)",
+    # A run of labelled fields optionally followed by the terminal phrase, OR the
+    # terminal phrase alone.
+    r"(?:" + _WATERMARK_FIELD_LABEL + r"\s*:\s*"
+    r"(?:(?!" + _WATERMARK_FIELD_LABEL + r"\s*:|" + _WATERMARK_TERMINAL + r").)*"
+    r")+"
+    r"(?:\s*" + _WATERMARK_TERMINAL + r")?"
+    r"|" + _WATERMARK_TERMINAL,
     re.I,
 )
 
@@ -189,6 +223,183 @@ _PRINTOUT_METADATA_RE = re.compile(
 
 def is_printout_metadata(text: str) -> bool:
     return bool(_PRINTOUT_METADATA_RE.search(text or ""))
+
+
+# --- Deferring facts ------------------------------------------------------
+# A "deferring fact" asserts only that content lives somewhere else. Its
+# predicate points at a location instead of stating the value, constraint or
+# relation itself:
+#
+#     "Annex A lists criteria which assist in the selection of the appropriate
+#      part of the ISO 3834 series."
+#
+# There is no criterion in that sentence, so every question generated from it
+# can only be answered by restating the pointer. Such a fact is grounded,
+# fluent and scores 1.0 for self-containment, which is why no existing gate
+# caught it: the NLI grounding check correctly finds the restatement entailed,
+# because it IS entailed. Grounding measures truth, not informativeness.
+#
+# Detection is a CONJUNCTION, never the pointer pattern alone, because plenty
+# of legitimate facts mention an annex or a clause while also carrying real
+# content. A fact is deferring only when it points somewhere AND supplies no
+# payload of its own.
+
+# The pointer appears as the grammatical subject: "Annex A lists ...".
+# "This document/standard/part specifies ..." is deliberately EXCLUDED — a
+# scope statement whose object is concrete is a legitimate fact.
+_DEFER_SUBJECT_RE = re.compile(
+    r"^\s*(?:this\s+|the\s+)?"
+    r"(?:annex(?:es)?|appendix|appendices|clause|sub-?clause|section|table|figure)"
+    r"\s*[A-Z]?\.?\d*[a-z]?\s*"
+    r"(?:\([^)]{1,20}\)\s*)?"
+    r"(?:\w+\s+){0,3}?"
+    r"\b(?:lists?|gives?|provides?|specifies|specify|describes?|defines?|"
+    r"sets?\s+out|presents?|shows?|contains?|covers?|includes?|indicates?|"
+    r"establishes?|outlines?)\b",
+    re.I,
+)
+
+# The pointer appears as the complement: "... shall be defined in the written
+# test procedure."
+_DEFER_LOCATION = (
+    r"(?:annex(?:es)?\s*[A-Z]?|appendix\s*[A-Z]?|clause\s*\d|sub-?clause\s*\d|"
+    r"section\s*\d|table\s*[A-Z]?\.?\d|figure\s*[A-Z]?\.?\d|"
+    r"the\s+(?:written\s+)?(?:test\s+)?procedure|"
+    r"the\s+(?:approved|agreed|applicable|relevant|written)\s+\w+|"
+    r"the\s+product\s+specification|the\s+specification|the\s+contract|"
+    r"the\s+manufacturer'?s?\s+(?:recommendations?|instructions?)|"
+    r"the\s+acceptance\s+criteria|the\s+relevant\s+standard)"
+)
+_DEFER_PASSIVE_RE = re.compile(
+    r"\b(?:shall|should|must|may|can|is|are|was|were|will)\s+(?:be\s+)?"
+    r"(?:defined|specified|given|described|listed|stated|provided|set\s+out|"
+    r"presented|found|indicated|detailed|documented|recorded|agreed)\s+"
+    r"(?:in|by|according\s+to|in\s+accordance\s+with)\s+" + _DEFER_LOCATION,
+    re.I,
+)
+
+# A payload: something the fact actually supplies. Any of these means the fact
+# stands on its own even though it also points somewhere.
+_INSTANTIATION_RE = re.compile(
+    r"\b(?:including|such\s+as|namely|as\s+follows|for\s+example|e\.g\.|i\.e\.)\b|"
+    # A quantity with a unit, a percentage, or a numeric bound/range.
+    r"\d\s*(?:%|°\s*C|°\s*F|mm|cm|m\b|µm|um|nm|kg|g\b|N\b|kN|MPa|GPa|Pa\b|"
+    r"HV|HB|HRC|min\b|s\b|h\b|V\b|A\b|W\b|Hz|bar|psi)|"
+    r"\b(?:between|from)\s+[\d.,]+\s*\w{0,6}\s*(?:and|to)\s+[\d.,]+|"
+    r"\b(?:greater|less|not\s+less|not\s+more|no\s+less|no\s+more|at\s+least|"
+    r"at\s+most|maximum|minimum)\s+than\s+[\d.,]+|"
+    r"\b(?:greater|less)\s+than\s+[\d.,]+\s*%",
+    re.I,
+)
+
+# Deferring to a NAMED external standard is legitimate ground truth: "which
+# standard specifies the test blocks?" is a real retrieval question with a real
+# answer. Only the deferral COMPLEMENT counts — a standard number mentioned
+# elsewhere in the sentence does not exempt it.
+_DEFER_TO_NAMED_STANDARD_RE = re.compile(
+    r"\b(?:in|by|according\s+to|in\s+accordance\s+with|with)\s+"
+    r"(?:ISO|EN|DIN|IEC|ASTM|BS|AWS|ANSI|JIS)\s*(?:/\s*\w+\s*)?[\d]{2,5}",
+    re.I,
+)
+
+
+def is_deferring_fact(text: str) -> bool:
+    """True when a fact only points at content instead of carrying it.
+
+    See the block comment above for the rationale. Returns False whenever the
+    fact supplies a payload of its own (a quantity, an enumeration, an explicit
+    instantiation) or defers to a specifically named external standard.
+    """
+    t = " ".join((text or "").split())
+    if not t:
+        return False
+    if _INSTANTIATION_RE.search(t):
+        return False
+    if _DEFER_TO_NAMED_STANDARD_RE.search(t):
+        return False
+    return bool(_DEFER_SUBJECT_RE.search(t) or _DEFER_PASSIVE_RE.search(t))
+
+
+# --- Unresolved deictic openers, ISO register -----------------------------
+# ``UNRESOLVED_DEICTIC_OPENER_RE`` / ``fact_has_unresolved_deictic`` cannot be
+# reused for the allpdf pipeline for three independent reasons:
+#   1. that helper returns False whenever ``canonical_form`` is populated, and
+#      the allpdf path populates it for every fact;
+#   2. its verb list omits ``shall`` — the dominant modal in ISO normative prose;
+#   3. it deliberately treats demonstrative+noun ("This record ...") as already
+#      resolved, which is the exact shape that leaks here.
+# This is a separate text-level predicate rather than a change to the existing
+# one, so the legacy pipeline's behaviour is untouched.
+
+# Nouns that make a demonstrative self-resolving: the fact names its own source.
+_SELF_REFERENTIAL_NOUN = (
+    r"(?:document|standard|part|annex|appendix|clause|sub-?clause|section|"
+    r"table|figure|international\s+standard|european\s+standard|specification)"
+)
+_ISO_MODAL = (
+    r"(?:shall|should|must|may|can|is|are|was|were|will|would|might|has|have|"
+    r"had|does|do|did|applies|apply|covers?|requires?|means?|makes?|allows?|"
+    r"enables?|provides?|leads?|causes?|ensures?|results?|shows?|suggests?|"
+    r"implies|indicates?|represents?|demonstrates?)"
+)
+_ISO_DEICTIC_OPENER_RE = re.compile(
+    r"^\s*(?:"
+    # Bare pronoun + verb: "It shall not be used ..."
+    r"(?:it|they|these|those|this|that)\s+" + _ISO_MODAL + r"\b"
+    r"|"
+    # Demonstrative + non-self-referential noun + modal: "This record shall ..."
+    r"(?:this|these|those|that)\s+(?!" + _SELF_REFERENTIAL_NOUN + r"\b)"
+    r"[a-z]+(?:\s+[a-z]+){0,2}\s+" + _ISO_MODAL + r"\b"
+    r")",
+    re.I,
+)
+
+
+# Expletive (dummy) "it" is not anaphoric -- it has no referent to resolve:
+#     "It is the responsibility of a qualified person ... to decide which tests
+#      are applicable."                                    <- expletive, keep
+#     "It may be advantageous to use a reference component." <- expletive, keep
+#     "It shall not be used to remedy inadequate removal."   <- anaphoric, drop
+# The discriminator is what follows the copula: a determiner or a predicate
+# adjective introduces an extraposed subject, whereas a past participle
+# ("used", "given") makes it a passive with a real, absent referent.
+# Expressed as code rather than one regex: a single pattern with optional
+# "not"/"be" groups backtracks around the participle guard and wrongly exempts
+# "It shall not be used to remedy ...".
+_IT_OPENER_RE = re.compile(
+    r"^\s*it\s+"
+    r"((?:is|was|are|were|may|might|can|could|shall|should|would|will)"
+    r"(?:\s+not)?(?:\s+be)?)"
+    r"\s+(\S+)",
+    re.I,
+)
+_PARTICIPLE_RE = re.compile(r"[a-z]+(?:ed|en)$", re.I)
+_EXTRAPOSED_RE = re.compile(r"\bto\s+[a-z]+|\bthat\b", re.I)
+
+
+def _is_expletive_it(text: str) -> bool:
+    m = _IT_OPENER_RE.match(text)
+    if not m:
+        return False
+    following = m.group(2).strip(".,;:()")
+    # A past participle after the copula makes this a passive with a real,
+    # absent referent ("It shall not be used ..."), not an extraposed subject.
+    if _PARTICIPLE_RE.fullmatch(following):
+        return False
+    return bool(_EXTRAPOSED_RE.search(text[m.end(1):]))
+
+
+def has_unresolved_deictic_opener(text: str) -> bool:
+    """True when a fact opens with a demonstrative whose referent is outside it.
+
+    Operates on text, not on a Fact, so it is usable after canonical-form
+    rewriting. Self-referential openers ("This document specifies ...") and
+    expletive "it" constructions are exempt: neither has a missing referent.
+    """
+    t = " ".join((text or "").split())
+    if _is_expletive_it(t):
+        return False
+    return bool(_ISO_DEICTIC_OPENER_RE.match(t))
 
 
 def strip_running_artifacts(text: str) -> str:

@@ -128,8 +128,13 @@ def _expand_short_fact(canonical: str, chunk_text: str) -> str:
     if best_idx > 0:
         pred = usable[best_idx - 1]
         if pred.lower().rstrip(".!?") != canonical.lower().rstrip(".!?"):
-            joiner = " " if pred.endswith((":", ";")) else ". "
-            return pred.rstrip(" ") + joiner + canonical
+            # `pred` comes from a sentence splitter, so it usually already ends in
+            # terminal punctuation. Appending ". " unconditionally produced the
+            # doubled-period ("..") that appeared in 13.5% of the 2026-08-01 run's
+            # facts. Only supply a period when the predecessor lacks one.
+            pred = pred.rstrip()
+            joiner = " " if pred.endswith((":", ";", ".", "!", "?")) else ". "
+            return pred + joiner + canonical
 
     # Fallback: attach the successor sentence.
     if best_idx < len(usable) - 1:
