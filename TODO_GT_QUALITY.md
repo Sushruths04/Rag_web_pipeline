@@ -59,7 +59,8 @@ widening the deferring rule, which would start eating real scope statements.
 Collect the 27 survivors from the audit and extend the pattern set against
 them, keeping the existing negative controls green.
 
-### [ ] T4. `near_tautological_answer` — 43 pairs (9.8%)
+### [~] T4. `near_tautological_answer` — 43 pairs (9.8%)
+**Partly addressed by T14 (question framing).** The remaining work is triage.
 This is the audit script's **loose** band (80–95% question/answer word
 overlap), deliberately stricter than the shipped gate. Triage required: decide
 per-pair whether these are genuinely circular or just well-formed answers that
@@ -133,7 +134,43 @@ acceptance to make it pass.
 
 ---
 
+### [ ] T15. A question can still presuppose a value the fact never names
+
+The framing fix (T14) removes the *cause* of most of these, but no gate detects
+the shape directly. The user-reported pair passes every gate:
+
+```
+F: In the other approach, a correction is made to the measurement result to
+   compensate for the systematic bias.
+Q: What correction is applied to measurement results to address systematic bias?
+A: A correction is applied to the measurement result to compensate for the
+   systematic bias.
+```
+
+`_is_tautological` passes it because the answer contributes exactly one
+substantive stem (`compensat`). A detector would need to spot that the question
+asks for a specific instance ("**What** correction") that the fact only refers
+to generically. Deliberately not attempted yet — a naive version would reject
+legitimate factoid pairs, which is the mistake already made once with the
+tautology ratio.
+
+---
+
 ## Done on 2026-08-01
+
+- [x] **T14. Question-form monotony (89.7% "What") — root cause of the vacuity.**
+      The single-fact prompt defined PROBE as "asks *what* is true", framed
+      everything as property-identification, and `_format_role_shape_hint` was
+      gated behind `len(facts) == 2` so ~99% of output got no form guidance at
+      all. Measured: every near-tautological pair in the 438 opened with "What"
+      (11.7% of "What" pairs vs 0% of How/Why/Under-what).
+      Fixed with a deterministic per-fact affordance hint
+      (`question_affordances`) plus a rewritten payload→form table.
+      Live A/B, 44 real facts: "What" 90.9% → 43.2%, with under-what 25%,
+      why 18.2%, how/how-much 13.6%. First iteration over-steered to
+      "Under what condition" (41%); retuned by ordering patterns
+      most-specific-first, capping the menu at 2, and dropping bare "where"
+      (a relative pronoun in ISO prose, 21 of 108 false condition hits).
 
 - [x] `..` doubled-period joiner (`extract.py:131`) — 13.5% → 1.1%
 - [x] Four-line watermark strip + chunk-boundary orphan — 6.4% → 0.7%

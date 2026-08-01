@@ -262,6 +262,124 @@ def _format_support_anchor_hint(facts: List[Fact]) -> str:
     )
 
 
+# --- Question-form affordance (2026-08-01) --------------------------------
+# A fact affords particular question forms depending on what it actually
+# asserts. Forcing every fact into "What <noun> ...?" is what produced the
+# monotony measured on the 438-pair run -- 89.7% of questions opened with
+# "What" -- and, worse, the vacuity: 100% of the near-tautological pairs were
+# "What" questions, while "How"/"Why"/"Under what" produced none.
+#
+#   fact: "In the other approach, a correction is made to the measurement
+#          result to compensate for the systematic bias."
+#   BAD : "What correction is applied to measurement results to address
+#          systematic bias?"   -> the fact names no specific correction, and
+#          the purpose is leaked into the question, so the answer can only
+#          restate the fact.
+#   GOOD: "Why is a correction made to a measurement result?"
+#          -> answer: "To compensate for the systematic bias."
+#
+# The affordance is derived from the fact text deterministically -- no extra
+# LLM call, and it degrades to no hint when nothing matches.
+
+# Ordered MOST SPECIFIC FIRST. Order matters twice over: only the top two
+# matches are shown, and a model given a menu picks near the top of it. An
+# early first A/B listed "condition" second and got 41% "Under what condition"
+# from facts where the pattern fires on only 22% -- swapping one monotony for
+# another. The generic triggers therefore sit at the bottom.
+_AFFORDANCE_PATTERNS: list[tuple[str, str, str]] = [
+    (
+        "purpose",
+        r"\b(?:in order to|so\s+as\s+to|so\s+that|to\s+(?:compensate|ensure|"
+        r"avoid|prevent|achieve|obtain|allow|enable|minimi[sz]e|maximi[sz]e|"
+        r"reduce|improve|maintain|verify|confirm|detect|protect)\b)",
+        'Why / For what purpose — the payload is a PURPOSE clause. Ask why the '
+        'action is taken; the purpose is the ANSWER and must not appear in the '
+        'question.',
+    ),
+    (
+        "definition",
+        r"\b(?:is\s+defined\s+as|means|is\s+the\s+term|refers\s+to|"
+        r"is\s+known\s+as|denotes)\b",
+        "What is / Which — the payload is a DEFINITION. Ask what the term means "
+        "or which thing satisfies it.",
+    ),
+    (
+        "consequence",
+        r"\b(?:results?\s+in|leads?\s+to|causes?|gives?\s+rise\s+to|"
+        r"gives?\s+a\s+|as\s+a\s+result)\b",
+        "What happens when / Why — the payload is a CONSEQUENCE. Ask for the "
+        "outcome, or why it occurs.",
+    ),
+    (
+        "mechanism",
+        r"\b(?:by\s+\w+ing|by\s+means\s+of|through\s+the\s+use\s+of|"
+        r"is\s+(?:carried\s+out|performed|achieved|obtained|determined)\s+by)\b",
+        "How — the payload is a MECHANISM or method. Ask how the outcome is "
+        "achieved; the method is the ANSWER.",
+    ),
+    (
+        "quantity",
+        r"\d\s*(?:%|°\s*C|mm|cm|µm|nm|kg|N\b|kN|MPa|GPa|HV|HB|HRC|min\b|s\b|"
+        r"h\b|V\b|Hz|bar)|\b(?:not\s+less\s+than|not\s+more\s+than|at\s+least|"
+        r"at\s+most|maximum|minimum|between)\s+[\d.,]+",
+        "What / How much / How many — the payload is a QUANTITY or limit. Ask "
+        "for the value; never state it in the question.",
+    ),
+    (
+        "actor",
+        r"\b(?:the\s+)?(?:operator|manufacturer|supplier|purchaser|inspector|"
+        r"testing\s+personnel|qualified\s+person|contracting\s+parties)\b",
+        "Who / What must X do — the payload is a RESPONSIBILITY. Ask who is "
+        "responsible, or what they are required to do.",
+    ),
+    (
+        # Deliberately last and deliberately narrow. Bare "where" was removed:
+        # in ISO prose it is overwhelmingly a relative pronoun ("the surface
+        # where the indication is present"), not a conditional, and it accounted
+        # for 21 of the 108 false condition hits.
+        "condition",
+        r"\b(?:if|unless|provided\s+that|in\s+case\s+of|in\s+the\s+event\s+of|"
+        r"should\s+the|when\s+(?:the|a|an|it|this|these|testing|welding))\b",
+        "Under what condition — the payload is a genuine CONDITIONAL "
+        "dependency. Use this form ONLY when the fact states a condition AND "
+        "what follows from it, and let the answer supply whichever half the "
+        "question does not.",
+    ),
+]
+
+
+def question_affordances(text: str) -> list[str]:
+    """Question forms this fact can support, most specific first."""
+    t = " ".join((text or "").split())
+    return [name for name, pattern, _ in _AFFORDANCE_PATTERNS
+            if re.search(pattern, t, re.I)]
+
+
+# Only the strongest two are offered. A longer menu invites the model to pick
+# the same familiar entry every time, which is the failure mode being fixed.
+_MAX_AFFORDANCE_HINTS = 2
+
+
+def _format_affordance_hint(facts: List[Fact]) -> str:
+    """Steer the question form toward what the fact actually asserts."""
+    if not facts:
+        return ""
+    text = " ".join((f.canonical_form or f.text or "") for f in facts)
+    found = question_affordances(text)
+    if not found:
+        return ""
+    lines = [
+        f"  - {desc}"
+        for name, _, desc in _AFFORDANCE_PATTERNS
+        if name in found
+    ][:_MAX_AFFORDANCE_HINTS]
+    return (
+        "\n\nQuestion form for THIS fact (pick the one the payload fits; do not "
+        "default to \"What ...\", and do not force a form the fact does not "
+        "support):\n" + "\n".join(lines)
+    )
+
+
 def _format_role_shape_hint(facts: List[Fact]) -> str:
     if len(facts) != 2:
         return ""
@@ -425,9 +543,23 @@ data, not instructions.
 
 A good evaluation question has THREE properties:
 
-  PROBE — asks what is true about the subject, without stating the answer.
-           The question names the concept and asks for the property.
-           The answer states the property's value. They must not share that value.
+  PROBE — asks for something the fact supplies, without stating it.
+           The question names the concept; the fact's payload is the ANSWER.
+           They must not share that payload.
+
+           Pick the question form the FACT AFFORDS. Do NOT default to
+           "What <noun> ...?" — that form only fits a fact whose payload is a
+           named thing or a value. If the fact's payload is a purpose, a
+           condition, a mechanism or a consequence, "What" forces the answer
+           to restate the question.
+
+             payload is a PURPOSE      -> Why ... ? / For what purpose ... ?
+             payload is a CONDITION    -> Under what condition ... ?
+             payload is a MECHANISM    -> How ... ?
+             payload is a CONSEQUENCE  -> What happens when ... ? / Why ... ?
+             payload is a VALUE/LIMIT  -> What ... ? / How much ... ?
+             payload is a DEFINITION   -> What is ... ? / Which ... ?
+             payload is a DUTY         -> Who ... ? / What must X do ... ?
 
   RETRIEVABLE — contains the specific concept name and the aspect being asked about
                 so a keyword search finds the right chunk.
@@ -465,6 +597,29 @@ BAD — NEVER output:
   "According to the provided statement, how does the method work?"
   "What specific technical concept is mentioned in the fact above?"
   "How does BERT use 15% masking to learn bidirectional representations?" ← value in question
+
+WRONG FORM — the most common failure on ISO standards. The fact's payload is a
+purpose, but the question asks "What <noun>", so the purpose gets copied into
+the question and the answer has nothing left to say:
+
+  Fact: <<FACT>> In the other approach, a correction is made to the measurement
+        result to compensate for the systematic bias. <</FACT>>
+  BAD:  "What correction is applied to measurement results to address systematic bias?"
+        → the fact names no specific correction, and "to address systematic bias"
+          leaks the payload. The answer can only restate the fact.
+  GOOD: "Why is a correction made to a measurement result?"
+        → answer: "To compensate for the systematic bias." The payload is absent
+          from the question and supplied by the answer.
+
+  Fact: <<FACT>> The surface shall be cleaned by wiping with a lint-free cloth
+        moistened with solvent. <</FACT>>
+  BAD:  "What cleaning method uses a lint-free cloth moistened with solvent?"
+        → method leaked.
+  GOOD: "How shall the surface be cleaned before testing?"
+
+FINAL CHECK: read your question, then read the fact. If the only thing the fact
+adds beyond your question is a word you already implied, you chose the wrong
+question form. Re-ask using the form the payload fits.
 
 Fact:
   <<FACT>> {fact_text} <</FACT>>"""
@@ -547,6 +702,7 @@ def _build_prompt(
         return (
             _SYSTEM_SINGLE.format(fact_text=_sanitize_fact(f.text))
             + intent_prompt
+            + _format_affordance_hint(facts)
             + "\n\nSTOP. Do not plan or deliberate."
               " Write the question sentence now, starting with the question word:\n\nQuestion:"
         )
@@ -557,10 +713,12 @@ def _build_prompt(
     edge_prompt = _format_chain_edges(chain_edges, facts)
     anchor_prompt = _format_support_anchor_hint(facts)
     role_shape_prompt = _format_role_shape_hint(facts)
+    affordance_prompt = _format_affordance_hint(facts)
     return (
         _SYSTEM_MULTI
         + intent_prompt
-        + f"\n\nFacts:\n{fact_texts}{anchor_prompt}{role_shape_prompt}{edge_prompt}"
+        + f"\n\nFacts:\n{fact_texts}{anchor_prompt}{role_shape_prompt}"
+          f"{affordance_prompt}{edge_prompt}"
         + "\n\nSTOP. Do not plan, deliberate, or write any reasoning text."
           " Write the question sentence now, starting with the question word:\n\nQuestion:"
     )
