@@ -360,6 +360,37 @@ def _convert_range(
     return document.export_to_markdown()
 
 
+def _item_text(item, document) -> str:
+    """Text for one Docling item, serializing tables instead of dropping them.
+
+    A ``TableItem``'s ``.text`` is ``None``, so a plain ``getattr(item,
+    "text")`` silently discarded every table -- on the very backend chosen
+    *because* the document is table-dense, with ``do_table_structure=True``
+    already paying to extract that structure. ``export_to_markdown()`` keeps
+    the header row and cell alignment, which is what lets a downstream stage
+    read a row against its header instead of seeing loose cells.
+    """
+    raw = getattr(item, "text", None)
+    if raw:
+        return str(raw)
+    exporter = getattr(item, "export_to_markdown", None)
+    if exporter is None:
+        return ""
+    try:
+        try:
+            return str(exporter(document) or "")
+        except TypeError:
+            # Older Docling signatures take no document argument.
+            return str(exporter() or "")
+    except Exception as e:  # noqa: BLE001
+        ref = getattr(item, "self_ref", "?")
+        logger.warning(
+            f"[Docling] could not serialize {type(item).__name__} {ref}: "
+            f"{type(e).__name__}: {e}; skipping it"
+        )
+        return ""
+
+
 def _docling_units_to_text(
     document,
     doc_id: str,
@@ -372,8 +403,7 @@ def _docling_units_to_text(
     local_cursor = 0
     paragraph_idx = 0
     for item, _level in document.iterate_items():
-        raw = getattr(item, "text", None)
-        cleaned = clean_text(str(raw or ""))
+        cleaned = clean_text(_item_text(item, document))
         if not cleaned:
             continue
         if parts:
