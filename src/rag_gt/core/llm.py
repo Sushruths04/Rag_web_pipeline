@@ -142,6 +142,7 @@ class APILLM:
             "calls_with_usage": 0,
             "calls_without_usage": 0,
         }
+        logger.info(f"[APILLM] model={self.model} @ {self.base_url}")
 
     def _record_usage(self, usage: object) -> None:
         """Store the provider's token counts for the call just completed."""
@@ -166,7 +167,6 @@ class APILLM:
         self.usage_totals["completion_tokens"] += completion
         self.usage_totals["total_tokens"] += total
         self.usage_totals["calls_with_usage"] += 1
-        logger.info(f"[APILLM] model={self.model} @ {self.base_url}")
 
     def __repr__(self) -> str:
         # Never include api_key or _headers in repr — they reach tracebacks.

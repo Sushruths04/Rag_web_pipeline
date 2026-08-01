@@ -89,6 +89,34 @@ def test_total_tokens_is_derived_when_the_provider_omits_it():
     assert llm.last_usage["total_tokens"] == 10
 
 
+def test_construction_logs_once_and_calls_log_nothing():
+    """Regression: the __init__ banner must not fire on every generate().
+
+    Adding _record_usage swallowed the trailing `logger.info` out of __init__
+    into the new method, so a 47-page run logged the model banner once per LLM
+    call instead of once per client.
+    """
+    from loguru import logger
+
+    seen: list = []
+    logger.remove()
+    sink = logger.add(lambda m: seen.append(m), level="INFO")
+    try:
+        llm = _client()
+        at_construction = len(seen)
+        usage = {"prompt_tokens": 5, "completion_tokens": 2, "total_tokens": 7}
+        with patch.object(llm._session, "post", return_value=_response(usage=usage)):
+            for _ in range(5):
+                llm.generate("hi")
+        during_calls = len(seen) - at_construction
+    finally:
+        logger.remove(sink)
+
+    assert at_construction == 1, "constructor should log its banner exactly once"
+    assert during_calls == 0, "generate() must not re-log the banner"
+    assert llm.usage_totals["total_tokens"] == 35
+
+
 @pytest.mark.parametrize("usage", ["not-a-dict", 42, {"prompt_tokens": "abc"}])
 def test_malformed_usage_does_not_break_generation(usage):
     llm = _client()
