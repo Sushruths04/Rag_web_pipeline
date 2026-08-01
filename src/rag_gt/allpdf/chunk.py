@@ -117,6 +117,28 @@ def _pack_units(
     return chunks
 
 
+def _rollup_bboxes(chunks: List[dict]) -> None:
+    """Surface each chunk's source-unit bboxes as a chunk-level ``bboxes`` key.
+
+    ``_pack_units`` (table_aware / ocr_block) already does this. The chunkers
+    behind ``chunk_document`` (clause / heading / recursive) keep their
+    provenance nested inside ``source_units`` and emit no chunk-level key, but
+    Stage 3's ``_make_span`` reads ``chunk["bboxes"]`` -- so every fact from
+    those strategies used to land with empty bbox provenance even though the
+    boxes were sitting one level down the whole time. Mutates in place.
+    """
+    for c in chunks:
+        if c.get("bboxes"):
+            continue
+        boxes = [
+            bb
+            for u in (c.get("source_units") or [])
+            for bb in (u.get("bboxes") or [])
+        ]
+        if boxes:
+            c["bboxes"] = boxes
+
+
 def agentic_chunk(profile: DocProfile, ingest: IngestResult) -> ChunkResult:
     strategy = select_strategy(profile)
     route_type, size, overlap = _PARAMS[strategy]
@@ -133,6 +155,7 @@ def agentic_chunk(profile: DocProfile, ingest: IngestResult) -> ChunkResult:
             source_units=ingest.units,
         )
         chunks = chunk_document(doc, {"doc_type": route_type}, size, overlap)
+        _rollup_bboxes(chunks)
 
     return ChunkResult(
         doc_id=profile.doc_id,
