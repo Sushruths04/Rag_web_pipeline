@@ -1,0 +1,4324 @@
+{
+  "generated_at": "2026-08-02 01:39:54",
+  "models": [
+    {
+      "id": "google/gemma-3-27b-it",
+      "label": "Gemma 3 27B",
+      "tier": "~27B small"
+    },
+    {
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "label": "Llama 3.3 70B",
+      "tier": "70B mid"
+    },
+    {
+      "id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+      "label": "Qwen3 235B-A22B",
+      "tier": "anchor (current)"
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-V4-Pro",
+      "label": "DeepSeek V4 Pro",
+      "tier": "frontier open"
+    },
+    {
+      "id": "moonshotai/Kimi-K3",
+      "label": "Kimi K3",
+      "tier": "frontier open"
+    }
+  ],
+  "chains": [
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000256",
+        "din_iso_6507_1_F000283"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00038",
+          "src": "din_iso_6507_1_F000256",
+          "dst": "din_iso_6507_1_F000283",
+          "type": "mechanism",
+          "bridging_fact_id": "din_iso_6507_1_F000283",
+          "bridging_quote": "the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain",
+          "relation_claim": "The traceability of a national metrology institute's primary Vickers hardness standard machine is established via a Direct Verification calibration chain, which relies on the historically defined procedure of calibrating machine components directly in the absence of higher-level reference standards.",
+          "nli_score": 0.9980037808418274,
+          "single_src_score": 0.0027301462832838297,
+          "single_dst_score": 0.0007642741547897458,
+          "joint_only_margin": 0.9952736345585436,
+          "source_contribution": "Direct Verification refers to the calibration and verification of the machine components themselves.",
+          "destination_contribution": "Traceability of a national primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain.",
+          "source_contribution_score": 0.9908451437950134,
+          "destination_contribution_score": 0.9983490705490112,
+          "source_cross_score": 0.0014713448472321033,
+          "destination_cross_score": 0.00026607958716340363,
+          "contribution_distinctness": 0.9893737989477813,
+          "answer_contribution_score": 0.6436815072549507,
+          "question_seed": "How is traceability established for a national primary Vickers hardness standard machine when no higher-level reference artefact exists?",
+          "question_seed_score": 0.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000256",
+          "text": "Historically, the calibration and verification of the machine components has been termed the machine’s Direct Verification and the calibration and verification of the testing machine by reference block measurements its Indirect Verification.",
+          "raw_text": "Historically, the calibration and verification of the machine components has been termed the machine’s Direct Verification and the calibration and verification of the testing machine by reference block measurements its Indirect Verification.",
+          "canonical_form": "Historically, the calibration and verification of the machine components has been termed the machine’s Direct Verification and the calibration and verification of the testing machine by reference block measurements its Indirect Verification.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000167",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 76566,
+              "char_end": 76807,
+              "page_start": 37,
+              "page_end": 37,
+              "bboxes": [
+                {
+                  "page_no": 37,
+                  "l": 70.86649322509766,
+                  "t": 436.5435791015625,
+                  "r": 560.8561401367188,
+                  "b": 594.734619140625,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 37
+        },
+        {
+          "fact_id": "din_iso_6507_1_F000283",
+          "text": "For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higherlevel hardness reference artefact.",
+          "raw_text": "For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higherlevel hardness reference artefact.",
+          "canonical_form": "For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higherlevel hardness reference artefact.",
+          "role": "example",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000185",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 81977,
+              "char_end": 82213,
+              "page_start": 39,
+              "page_end": 39,
+              "bboxes": [
+                {
+                  "page_no": 39,
+                  "l": 70.86609649658203,
+                  "t": 201.2200164794922,
+                  "r": 560.861328125,
+                  "b": 407.8110046386719,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 39
+        }
+      ],
+      "chain_id": "c00"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000176",
+        "din_iso_6507_1_F000179"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00019",
+          "src": "din_iso_6507_1_F000176",
+          "dst": "din_iso_6507_1_F000179",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_6507_1_F000179",
+          "bridging_quote": "any small defects on the surface rapidly worsen",
+          "relation_claim": "Indenter defects that appear after short use can rapidly worsen due to surface imperfections, leading to the indenter becoming useless.",
+          "nli_score": 0.9961285591125488,
+          "single_src_score": 0.00010058563202619553,
+          "single_dst_score": 0.004459609277546406,
+          "joint_only_margin": 0.9916689498350024,
+          "source_contribution": "Some indenters become defective after short use.",
+          "destination_contribution": "Small surface defects can rapidly worsen and render the indenter useless.",
+          "source_contribution_score": 0.9950826168060303,
+          "destination_contribution_score": 0.9983443021774292,
+          "source_cross_score": 0.012847455218434334,
+          "destination_cross_score": 0.0001895943278213963,
+          "contribution_distinctness": 0.9822351615875959,
+          "answer_contribution_score": 0.9935918371193111,
+          "question_seed": "What happens when an indenter develops minor defects after brief use?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000176",
+          "text": "C.2 Indenter inspection Experience has shown that a number of initially satisfactory indenters can become defective after use for a comparatively short time.",
+          "raw_text": "C.2 Indenter inspection Experience has shown that a number of initially satisfactory indenters can become defective after use for a comparatively short time.",
+          "canonical_form": "C.2 Indenter inspection Experience has shown that a number of initially satisfactory indenters can become defective after use for a comparatively short time.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000114",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 55490,
+              "char_end": 55647,
+              "page_start": 29,
+              "page_end": 29,
+              "bboxes": [
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 61.64799118041992,
+                  "r": 560.6311645507812,
+                  "b": 172.45799255371094,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 167.64100646972656,
+                  "r": 217.197998046875,
+                  "b": 185.13900756835938,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 168.9860076904297,
+                  "r": 560.8568115234375,
+                  "b": 266.677001953125,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 29
+        },
+        {
+          "fact_id": "din_iso_6507_1_F000179",
+          "text": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "raw_text": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "canonical_form": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000115",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 55801,
+              "char_end": 55887,
+              "page_start": 29,
+              "page_end": 29,
+              "bboxes": [
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 168.9860076904297,
+                  "r": 560.8568115234375,
+                  "b": 266.677001953125,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 29
+        }
+      ],
+      "chain_id": "c01"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000179",
+        "din_iso_6507_1_F000180"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00009",
+          "src": "din_iso_6507_1_F000179",
+          "dst": "din_iso_6507_1_F000180",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_6507_1_F000180",
+          "bridging_quote": "the verification of the indenter is no longer valid when the indenter shows defects",
+          "relation_claim": "Surface defects on an indenter lead to invalid verification because they compromise the indenter's functionality, necessitating daily visual checks and adherence to ISO 6507-2 for repaired indenters.",
+          "nli_score": 0.9950969815254211,
+          "single_src_score": 0.00048718336620368063,
+          "single_dst_score": 0.39100033044815063,
+          "joint_only_margin": 0.6040966510772705,
+          "source_contribution": "Small surface defects can rapidly worsen and render the indenter useless.",
+          "destination_contribution": "The verification of the indenter becomes invalid if defects are present, requiring monitoring and compliance with ISO 6507-2 for repairs.",
+          "source_contribution_score": 0.9983443021774292,
+          "destination_contribution_score": 0.9967377781867981,
+          "source_cross_score": 0.0005157761625014246,
+          "destination_cross_score": 0.0006795548833906651,
+          "contribution_distinctness": 0.9960582233034074,
+          "answer_contribution_score": 0.9977096671005711,
+          "question_seed": "Why must indenters be visually checked daily and conform to ISO 6507-2 if repaired?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000179",
+          "text": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "raw_text": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "canonical_form": "If not, any small defects on the surface rapidly worsen and make the indenter useless.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000115",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 55801,
+              "char_end": 55887,
+              "page_start": 29,
+              "page_end": 29,
+              "bboxes": [
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 168.9860076904297,
+                  "r": 560.8568115234375,
+                  "b": 266.677001953125,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 29
+        },
+        {
+          "fact_id": "din_iso_6507_1_F000180",
+          "text": "Therefore, — the condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; — the verification of the indenter is no longer valid when the indenter shows defects; — reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.",
+          "raw_text": "Therefore, — the condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; — the verification of the indenter is no longer valid when the indenter shows defects; — reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.",
+          "canonical_form": "Therefore, — the condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; — the verification of the indenter is no longer valid when the indenter shows defects; — reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000116",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 55890,
+              "char_end": 56239,
+              "page_start": 29,
+              "page_end": 29,
+              "bboxes": [
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 168.9860076904297,
+                  "r": 560.8568115234375,
+                  "b": 266.677001953125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 226.59898376464844,
+                  "r": 560.8612670898438,
+                  "b": 287.989990234375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 90.99210357666016,
+                  "t": 238.6990203857422,
+                  "r": 349.7594909667969,
+                  "b": 300.09002685546875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 260.01104736328125,
+                  "r": 479.7856140136719,
+                  "b": 321.40203857421875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 281.32403564453125,
+                  "r": 520.4774169921875,
+                  "b": 342.71502685546875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 29
+        }
+      ],
+      "chain_id": "c02"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000190",
+        "din_iso_6507_1_F000280"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00032",
+          "src": "din_iso_6507_1_F000190",
+          "dst": "din_iso_6507_1_F000280",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_6507_1_F000280",
+          "bridging_quote": "If the errors in the individual machine components are significant",
+          "relation_claim": "Significant errors in individual machine components can prevent traceability from being ensured, which underscores the importance of those components operating within tolerances.",
+          "nli_score": 0.9983556866645813,
+          "single_src_score": 0.0012210373533889651,
+          "single_dst_score": 0.0011031291214749217,
+          "joint_only_margin": 0.9971346493111923,
+          "source_contribution": "The individual machine components must operate within tolerances.",
+          "destination_contribution": "Significant errors in the individual machine components may prevent traceability from being ensured.",
+          "source_contribution_score": 0.9977313876152039,
+          "destination_contribution_score": 0.9985378980636597,
+          "source_cross_score": 0.01346997544169426,
+          "destination_cross_score": 0.0004988853470422328,
+          "contribution_distinctness": 0.9842614121735096,
+          "answer_contribution_score": 0.9951579080894589,
+          "question_seed": "Why must machine components operate within tolerances in this context?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000190",
+          "text": "Because of this approach, it is important that the individual machine components are operating within the tolerances.",
+          "raw_text": "Because of this approach, it is important that the individual machine components are operating within the tolerances.",
+          "canonical_form": "Because of this approach, it is important that the individual machine components are operating within the tolerances.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000123",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 58249,
+              "char_end": 58366,
+              "page_start": 30,
+              "page_end": 30,
+              "bboxes": [
+                {
+                  "page_no": 30,
+                  "l": 36.85030746459961,
+                  "t": 389.76007080078125,
+                  "r": 526.8453979492188,
+                  "b": 523.7520751953125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 30,
+                  "l": 36.847808837890625,
+                  "t": 483.662109375,
+                  "r": 526.8397827148438,
+                  "b": 605.5531005859375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 30
+        },
+        {
+          "fact_id": "din_iso_6507_1_F000280",
+          "text": "If the errors in the individual machine components are significant, then traceability again may not be ensured.",
+          "raw_text": "If the errors in the individual machine components are significant, then traceability again may not be ensured.",
+          "canonical_form": "If the errors in the individual machine components are significant, then traceability again may not be ensured.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000183",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 81501,
+              "char_end": 81612,
+              "page_start": 39,
+              "page_end": 39,
+              "bboxes": [
+                {
+                  "page_no": 39,
+                  "l": 70.86609649658203,
+                  "t": 59.30900573730469,
+                  "r": 560.8543701171875,
+                  "b": 181.20001220703125,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 39
+        }
+      ],
+      "chain_id": "c03"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000359",
+        "din_iso_6507_1_F000360"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00016",
+          "src": "din_iso_6507_1_F000359",
+          "dst": "din_iso_6507_1_F000360",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_6507_1_F000360",
+          "bridging_quote": "lower hardness values are obtained if vibrations are present",
+          "relation_claim": "Vibration during testing causes lower hardness values to be measured, particularly under small forces where vibrational effects are more evident.",
+          "nli_score": 0.9949546456336975,
+          "single_src_score": 0.0013592371251434088,
+          "single_dst_score": 0.0018055710243061185,
+          "joint_only_margin": 0.9931490746093914,
+          "source_contribution": "Vibration introduces significant measurement error, especially under small forces.",
+          "destination_contribution": "The presence of vibrations leads to lower measured hardness values.",
+          "source_contribution_score": 0.9841368198394775,
+          "destination_contribution_score": 0.9977454543113708,
+          "source_cross_score": 0.0003332588530611247,
+          "destination_cross_score": 8.175378025043756e-05,
+          "contribution_distinctness": 0.9838035609864164,
+          "answer_contribution_score": 0.9896056181823951,
+          "question_seed": "How does vibration affect hardness measurement results under small forces?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000359",
+          "text": "Vibration represents a serious source of error irrespective of the force applied, but the effects are far more evident with small forces.",
+          "raw_text": "Vibration represents a serious source of error irrespective of the force applied, but the effects are far more evident with small forces.",
+          "canonical_form": "Vibration represents a serious source of error irrespective of the force applied, but the effects are far more evident with small forces.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000225",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 95472,
+              "char_end": 95609,
+              "page_start": 44,
+              "page_end": 44,
+              "bboxes": [
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 553.6500244140625,
+                  "r": 526.835693359375,
+                  "b": 687.6409912109375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 673.219970703125,
+                  "r": 201.7100067138672,
+                  "b": 689.3720092773438,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 673.5180053710938,
+                  "r": 526.8380126953125,
+                  "b": 807.5092163085938,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 44
+        },
+        {
+          "fact_id": "din_iso_6507_1_F000360",
+          "text": "In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+          "raw_text": "In general, lower hardness values are obtained if vibrations are present.",
+          "canonical_form": "In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000226",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 95616,
+              "char_end": 95689,
+              "page_start": 44,
+              "page_end": 44,
+              "bboxes": [
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 673.5180053710938,
+                  "r": 526.8380126953125,
+                  "b": 807.5092163085938,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 44
+        }
+      ],
+      "chain_id": "c04"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000217"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000217",
+          "text": "The result of the measurement can be reported in two ways: — as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3) — or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4) When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.",
+          "raw_text": "The result of the measurement can be reported in two ways: — as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3) — or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4) When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.",
+          "canonical_form": "The result of the measurement can be reported in two ways: — as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3) — or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4) When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000138",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 63845,
+              "char_end": 64452,
+              "page_start": 32,
+              "page_end": 32,
+              "bboxes": [
+                {
+                  "page_no": 32,
+                  "l": 36.849491119384766,
+                  "t": 211.49729919433594,
+                  "r": 322.63946533203125,
+                  "b": 272.8883056640625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 36.85139083862305,
+                  "t": 232.81529235839844,
+                  "r": 526.8389892578125,
+                  "b": 294.206298828125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 56.985191345214844,
+                  "t": 244.91526794433594,
+                  "r": 187.53799438476562,
+                  "b": 306.3062744140625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 60.143192291259766,
+                  "t": 266.228271484375,
+                  "r": 524.41650390625,
+                  "b": 330.6502685546875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 36.85139083862305,
+                  "t": 296.7532958984375,
+                  "r": 526.8295288085938,
+                  "b": 358.144287109375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 56.969791412353516,
+                  "t": 308.853271484375,
+                  "r": 520.2919921875,
+                  "b": 370.2442932128906,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 60.14309310913086,
+                  "t": 330.166259765625,
+                  "r": 524.4130249023438,
+                  "b": 391.5572814941406,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 32,
+                  "l": 36.85129165649414,
+                  "t": 360.6912841796875,
+                  "r": 526.8429565429688,
+                  "b": 434.1822814941406,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 32
+        }
+      ],
+      "chain_id": "c05"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000184"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000184",
+          "text": "These tolerances, therefore, incorporate a contribution due to the uncertainty of the hardness measurement and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.",
+          "raw_text": "These tolerances, therefore, incorporate a contribution due to the uncertainty of the hardness measurement and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.",
+          "canonical_form": "These tolerances, therefore, incorporate a contribution due to the uncertainty of the hardness measurement and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.",
+          "role": "consequence",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000119",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 57079,
+              "char_end": 57374,
+              "page_start": 30,
+              "page_end": 30,
+              "bboxes": [
+                {
+                  "page_no": 30,
+                  "l": 36.85030746459961,
+                  "t": 247.44309997558594,
+                  "r": 526.8453979492188,
+                  "b": 429.8330993652344,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 30
+        }
+      ],
+      "chain_id": "c06"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000173"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000173",
+          "text": "Table C.1 — Maximum permissible percent HV bias Mean diagonal length, d mm Maximum permissible percent HV bias, brel,of the testing machine ± %HV 0,02 ≤ d < 0,14 0,21/ d + 1,5 0,14 ≤ d ≤ 1,400 3 DIN EN ISO 6507-1:2024-01 EN ISO 6507-1:2023 (E) 20 NOTE The criteria specified in this document for the performance of the testing machine have been developed and refined over a significant period of time.",
+          "raw_text": "Table C.1 — Maximum permissible percent HV bias Mean diagonal length, d mm Maximum permissible percent HV bias, brel,of the testing machine ± %HV 0,02 ≤ d < 0,14 0,21/ d + 1,5 0,14 ≤ d ≤ 1,400 3 DIN EN ISO 6507-1:2024-01 EN ISO 6507-1:2023 (E) 20 NOTE The criteria specified in this document for the performance of the testing machine have been developed and refined over a significant period of time.",
+          "canonical_form": "Table C.1 — Maximum permissible percent HV bias Mean diagonal length, d mm Maximum permissible percent HV bias, brel,of the testing machine ± %HV 0,02 ≤ d < 0,14 0,21/ d + 1,5 0,14 ≤ d ≤ 1,400 3 DIN EN ISO 6507-1:2024-01 EN ISO 6507-1:2023 (E) 20 NOTE The criteria specified in this document for the performance of the testing machine have been developed and refined over a significant period of time.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000112",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 54447,
+              "char_end": 54848,
+              "page_start": 28,
+              "page_end": 29,
+              "bboxes": [
+                {
+                  "page_no": 28,
+                  "l": 151.42660522460938,
+                  "t": 631.8416137695312,
+                  "r": 409.8326416015625,
+                  "b": 646.6476440429688,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 113.26850128173828,
+                  "t": 633.2745361328125,
+                  "r": 218.6544952392578,
+                  "b": 689.0845336914062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 155.87850952148438,
+                  "t": 645.2745361328125,
+                  "r": 173.8485107421875,
+                  "b": 701.0845336914062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 261.8284912109375,
+                  "t": 633.7745361328125,
+                  "r": 473.95849609375,
+                  "b": 689.5845336914062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 320.6514892578125,
+                  "t": 644.7745361328125,
+                  "r": 415.14154052734375,
+                  "b": 700.5845336914062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 350.1094970703125,
+                  "t": 655.7745361328125,
+                  "r": 383.4795227050781,
+                  "b": 711.5845336914062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 131.62449645996094,
+                  "t": 673.0265502929688,
+                  "r": 395.1455383300781,
+                  "b": 728.8365478515625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 128.74649047851562,
+                  "t": 688.9865112304688,
+                  "r": 369.5664978027344,
+                  "b": 745.5885009765625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 36.85098648071289,
+                  "t": 26.697507858276367,
+                  "r": 178.69598388671875,
+                  "b": 54.70351028442383,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 36.85098648071289,
+                  "t": 799.7775268554688,
+                  "r": 49.8749885559082,
+                  "b": 814.5835571289062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 9.998700141906738,
+                  "t": 10.251136779785156,
+                  "r": 154.8518829345703,
+                  "b": 18.454071044921875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 202.64999389648438,
+                  "t": 823.1424560546875,
+                  "r": 584.8685913085938,
+                  "b": 831.3453369140625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 28,
+                  "l": 9.249136924743652,
+                  "t": 20.625301361083984,
+                  "r": 17.452070236206055,
+                  "b": 114.98004150390625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 29,
+                  "l": 70.86609649658203,
+                  "t": 61.64799118041992,
+                  "r": 560.6311645507812,
+                  "b": 172.45799255371094,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 28
+        }
+      ],
+      "chain_id": "c07"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000059"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000059",
+          "text": "For undated references, the latest edition of the referenced document (including any amendments) applies.",
+          "raw_text": "For undated references, the latest edition of the referenced document (including any amendments) applies.",
+          "canonical_form": "For undated references, the latest edition of the referenced document (including any amendments) applies.",
+          "role": "example",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000036",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 28711,
+              "char_end": 28816,
+              "page_start": 13,
+              "page_end": 13,
+              "bboxes": [
+                {
+                  "page_no": 13,
+                  "l": 70.86571502685547,
+                  "t": 533.2391967773438,
+                  "r": 219.5259246826172,
+                  "b": 550.7372436523438,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 13,
+                  "l": 70.86571502685547,
+                  "t": 534.584228515625,
+                  "r": 560.8652954101562,
+                  "b": 620.1752319335938,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 13
+        }
+      ],
+      "chain_id": "c08"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000289"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000289",
+          "text": "At the same time, however, the specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.",
+          "raw_text": "At the same time, however, the specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.",
+          "canonical_form": "At the same time, however, the specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.",
+          "role": "exception",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000189",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 83235,
+              "char_end": 83408,
+              "page_start": 39,
+              "page_end": 39,
+              "bboxes": [
+                {
+                  "page_no": 39,
+                  "l": 70.86609649658203,
+                  "t": 393.68798828125,
+                  "r": 560.8709716796875,
+                  "b": 600.279052734375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 39
+        }
+      ],
+      "chain_id": "c09"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000355"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000355",
+          "text": "H.3.4 Indentation orientation and spacing when measuring a coating cross-section When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.",
+          "raw_text": "H.3.4 Indentation orientation and spacing when measuring a coating cross-section When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.",
+          "canonical_form": "H.3.4 Indentation orientation and spacing when measuring a coating cross-section When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000223",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 94650,
+              "char_end": 94898,
+              "page_start": 44,
+              "page_end": 44,
+              "bboxes": [
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 494.2869873046875,
+                  "r": 526.8411254882812,
+                  "b": 567.7780151367188,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 553.3510131835938,
+                  "r": 494.3300476074219,
+                  "b": 569.5030517578125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 553.6500244140625,
+                  "r": 526.835693359375,
+                  "b": 687.6409912109375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 44
+        }
+      ],
+      "chain_id": "c10"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000360"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000360",
+          "text": "In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+          "raw_text": "In general, lower hardness values are obtained if vibrations are present.",
+          "canonical_form": "In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000226",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 95616,
+              "char_end": 95689,
+              "page_start": 44,
+              "page_end": 44,
+              "bboxes": [
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 673.5180053710938,
+                  "r": 526.8380126953125,
+                  "b": 807.5092163085938,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 44
+        }
+      ],
+      "chain_id": "c11"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000107"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000107",
+          "text": "Therefore, where possible, the indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working.",
+          "raw_text": "Therefore, where possible, the indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working.",
+          "canonical_form": "Therefore, where possible, the indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working.",
+          "role": "consequence",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000070",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 37993,
+              "char_end": 38149,
+              "page_start": 18,
+              "page_end": 18,
+              "bboxes": [
+                {
+                  "page_no": 18,
+                  "l": 36.85195541381836,
+                  "t": 659.017578125,
+                  "r": 526.8416137695312,
+                  "b": 768.80859375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 18
+        }
+      ],
+      "chain_id": "c12"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000155"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000155",
+          "text": "The required thickness is given by the point of intersection of the minimum thickness scale and a line (shown dotted in the example in Figure A.2) joining the test force (right-hand scale) with the hardness (left-hand scale).",
+          "raw_text": "The required thickness is given by the point of intersection of the minimum thickness scale and a line (shown dotted in the example in Figure A.2) joining the test force (right-hand scale) with the hardness (left-hand scale).",
+          "canonical_form": "The required thickness is given by the point of intersection of the minimum thickness scale and a line (shown dotted in the example in Figure A.2) joining the test force (right-hand scale) with the hardness (left-hand scale).",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000100",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 47042,
+              "char_end": 47267,
+              "page_start": 23,
+              "page_end": 23,
+              "bboxes": [
+                {
+                  "page_no": 23,
+                  "l": 70.8649673461914,
+                  "t": 615.5679931640625,
+                  "r": 560.8457641601562,
+                  "b": 725.3590087890625,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 23
+        }
+      ],
+      "chain_id": "c13"
+    },
+    {
+      "doc_id": "din_iso_6507_1",
+      "fact_ids": [
+        "din_iso_6507_1_F000343"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_6507_1_F000343",
+          "text": "In the case of plated parts, the test coupons may serve as a useful tool for electrolyte control, particularly in the case of coatings such as gold for which the hardness is sensitive to the composition of the plating solution and to all the electroplating variables.",
+          "raw_text": "In the case of plated parts, the test coupons may serve as a useful tool for electrolyte control, particularly in the case of coatings such as gold for which the hardness is sensitive to the composition of the plating solution and to all the electroplating variables.",
+          "canonical_form": "In the case of plated parts, the test coupons may serve as a useful tool for electrolyte control, particularly in the case of coatings such as gold for which the hardness is sensitive to the composition of the plating solution and to all the electroplating variables.",
+          "role": "example",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_6507_1",
+              "chunk_id": "din_iso_6507_1_c000218",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 92907,
+              "char_end": 93174,
+              "page_start": 44,
+              "page_end": 44,
+              "bboxes": [
+                {
+                  "page_no": 44,
+                  "l": 36.850399017333984,
+                  "t": 82.10801696777344,
+                  "r": 526.8402099609375,
+                  "b": 216.0989990234375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 44
+        }
+      ],
+      "chain_id": "c14"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000064",
+        "din_iso_3452_1_F000072"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00035",
+          "src": "din_iso_3452_1_F000064",
+          "dst": "din_iso_3452_1_F000072",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_3452_1_F000072",
+          "bridging_quote": "can react with a penetrant and greatly reduce its sensitivity",
+          "relation_claim": "Residues left after chemical precleaning can react with the penetrant, impairing its ability to detect discontinuities by reducing sensitivity.",
+          "nli_score": 0.9975016713142395,
+          "single_src_score": 0.00022982709924690425,
+          "single_dst_score": 0.0019071976421400905,
+          "joint_only_margin": 0.9955944736720994,
+          "source_contribution": "Precleaning must remove residues to allow penetrant entry into discontinuities.",
+          "destination_contribution": "Chemical precleaning residues can react with penetrant and reduce its sensitivity.",
+          "source_contribution_score": 0.9967008233070374,
+          "destination_contribution_score": 0.9980573058128357,
+          "source_cross_score": 0.00024533996474929154,
+          "destination_cross_score": 0.00021187547827139497,
+          "contribution_distinctness": 0.9964554833422881,
+          "answer_contribution_score": 0.9977942001583869,
+          "question_seed": "Why must residues from chemical precleaning be completely removed before applying penetrant?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000064",
+          "text": "Precleaning shall ensure that the test surface is free from residues and that it allows the penetrant to enter any discontinuity.",
+          "raw_text": "Precleaning shall ensure that the test surface is free from residues and that it allows the penetrant to enter any discontinuity.",
+          "canonical_form": "Precleaning shall ensure that the test surface is free from residues and that it allows the penetrant to enter any discontinuity.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000045",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 35197,
+              "char_end": 35326,
+              "page_start": 14,
+              "page_end": 14,
+              "bboxes": [
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 294.3590393066406,
+                  "r": 130.91598510742188,
+                  "b": 310.51104736328125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 323.09600830078125,
+                  "r": 114.70730590820312,
+                  "b": 337.9020080566406,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 322.3480224609375,
+                  "r": 526.8443603515625,
+                  "b": 420.02801513671875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 14
+        },
+        {
+          "fact_id": "din_iso_3452_1_F000072",
+          "text": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "raw_text": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "canonical_form": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000049",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 36268,
+              "char_end": 36375,
+              "page_start": 14,
+              "page_end": 14,
+              "bboxes": [
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 550.5760498046875,
+                  "r": 526.84228515625,
+                  "b": 636.1561279296875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 14
+        }
+      ],
+      "chain_id": "c15"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000072",
+        "din_iso_3452_1_F000073"
+      ],
+      "depth": 2,
+      "chain_edges": [
+        {
+          "edge_id": "e00022",
+          "src": "din_iso_3452_1_F000072",
+          "dst": "din_iso_3452_1_F000073",
+          "type": "causal",
+          "bridging_fact_id": "din_iso_3452_1_F000073",
+          "bridging_quote": "Therefore",
+          "relation_claim": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity, so chemical agents shall be removed from the surface under examination after the cleaning process using suitable cleaning methods.",
+          "nli_score": 0.9973722696304321,
+          "single_src_score": 0.00017824358656071126,
+          "single_dst_score": 0.00045101376599632204,
+          "joint_only_margin": 0.9969212558644358,
+          "source_contribution": "Chemical precleaning residues can reduce penetrant sensitivity.",
+          "destination_contribution": "Chemical agents must be removed after cleaning using suitable methods.",
+          "source_contribution_score": 0.9982637763023376,
+          "destination_contribution_score": 0.9980675578117371,
+          "source_cross_score": 0.001188434660434723,
+          "destination_cross_score": 0.0007635566289536655,
+          "contribution_distinctness": 0.9970753416419029,
+          "answer_contribution_score": 0.9984958585351705,
+          "question_seed": "Why must chemical agents be removed from the surface after precleaning in penetrant testing?",
+          "question_seed_score": 1.0
+        }
+      ],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000072",
+          "text": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "raw_text": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "canonical_form": "Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000049",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 36268,
+              "char_end": 36375,
+              "page_start": 14,
+              "page_end": 14,
+              "bboxes": [
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 550.5760498046875,
+                  "r": 526.84228515625,
+                  "b": 636.1561279296875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 14
+        },
+        {
+          "fact_id": "din_iso_3452_1_F000073",
+          "text": "Therefore, chemical agents shall be removed from the surface under examination, after the cleaning process, using suitable cleaning methods.",
+          "raw_text": "Therefore, chemical agents shall be removed from the surface under examination, after the cleaning process, using suitable cleaning methods.",
+          "canonical_form": "Therefore, chemical agents shall be removed from the surface under examination, after the cleaning process, using suitable cleaning methods.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000049",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 36376,
+              "char_end": 36516,
+              "page_start": 14,
+              "page_end": 14,
+              "bboxes": [
+                {
+                  "page_no": 14,
+                  "l": 36.850399017333984,
+                  "t": 550.5760498046875,
+                  "r": 526.84228515625,
+                  "b": 636.1561279296875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 14
+        }
+      ],
+      "chain_id": "c16"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000047"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000047",
+          "text": "EXAMPLE A product family comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a), and having a system sensitivity of level 2 gives the following penetrant testing system designation when using ISO 3452-1 and ISO 3452-2: product family ISO 3452-2, IAa Level 2.",
+          "raw_text": "EXAMPLE A product family comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a), and having a system sensitivity of level 2 gives the following penetrant testing system designation when using ISO 3452-1 and ISO 3452-2: product family ISO 3452-2, IAa Level 2.",
+          "canonical_form": "EXAMPLE A product family comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a), and having a system sensitivity of level 2 gives the following penetrant testing system designation when using ISO 3452-1 and ISO 3452-2: product family ISO 3452-2, IAa Level 2.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000031",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 31441,
+              "char_end": 31758,
+              "page_start": 13,
+              "page_end": 13,
+              "bboxes": [
+                {
+                  "page_no": 13,
+                  "l": 70.86620330810547,
+                  "t": 129.6370086669922,
+                  "r": 560.6392211914062,
+                  "b": 207.43701171875,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 13
+        }
+      ],
+      "chain_id": "c17"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000082"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000082",
+          "text": "The penetration time shall be between 5 min and 60 min and shall not be less than the manufacturer's recommended time for the required sensitivity.",
+          "raw_text": "The penetration time shall be between 5 min and 60 min and shall not be less than the manufacturer's recommended time for the required sensitivity.",
+          "canonical_form": "The penetration time shall be between 5 min and 60 min and shall not be less than the manufacturer's recommended time for the required sensitivity.",
+          "role": "constraint",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000054",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 37816,
+              "char_end": 37963,
+              "page_start": 15,
+              "page_end": 15,
+              "bboxes": [
+                {
+                  "page_no": 15,
+                  "l": 70.86610412597656,
+                  "t": 180.85897827148438,
+                  "r": 194.610595703125,
+                  "b": 195.66497802734375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 15,
+                  "l": 70.86610412597656,
+                  "t": 180.11094665527344,
+                  "r": 560.8479614257812,
+                  "b": 253.59092712402344,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 15,
+                  "l": 70.8660888671875,
+                  "t": 213.52891540527344,
+                  "r": 560.860107421875,
+                  "b": 299.1088562011719,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 15
+        }
+      ],
+      "chain_id": "c18"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000210"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000210",
+          "text": "B.3.11 Visible light intensity in inspection booth (fluorescent systems) Measure, in accordance with ISO 3059, the maximum visible light intensity in the booth.",
+          "raw_text": "B.3.11 Visible light intensity in inspection booth (fluorescent systems) Measure, in accordance with ISO 3059, the maximum visible light intensity in the booth.",
+          "canonical_form": "B.3.11 Visible light intensity in inspection booth (fluorescent systems) Measure, in accordance with ISO 3059, the maximum visible light intensity in the booth.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000124",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 60856,
+              "char_end": 61016,
+              "page_start": 27,
+              "page_end": 27,
+              "bboxes": [
+                {
+                  "page_no": 27,
+                  "l": 70.86620330810547,
+                  "t": 378.6520080566406,
+                  "r": 455.31268310546875,
+                  "b": 394.80401611328125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 27,
+                  "l": 70.86620330810547,
+                  "t": 378.95001220703125,
+                  "r": 486.7521057128906,
+                  "b": 440.3299865722656,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 27,
+                  "l": 70.86620330810547,
+                  "t": 425.9210205078125,
+                  "r": 367.66827392578125,
+                  "b": 442.0730285644531,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 27,
+                  "l": 70.86620330810547,
+                  "t": 426.218994140625,
+                  "r": 560.8370971679688,
+                  "b": 499.6990051269531,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 27
+        }
+      ],
+      "chain_id": "c19"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000146"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000146",
+          "text": "Inspection aids such as magnification instruments or mirrors can be used. Assessment by the wipe-off technique (see 8.7.3) may assist the inspection.",
+          "raw_text": "Inspection aids such as magnification instruments or mirrors can be used.",
+          "canonical_form": "Inspection aids such as magnification instruments or mirrors can be used. Assessment by the wipe-off technique (see 8.7.3) may assist the inspection.",
+          "role": "example",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000085",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 46967,
+              "char_end": 47040,
+              "page_start": 18,
+              "page_end": 18,
+              "bboxes": [
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 365.33203125,
+                  "r": 389.1068115234375,
+                  "b": 426.7120056152344,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 386.6500244140625,
+                  "r": 391.6089172363281,
+                  "b": 448.0299987792969,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 436.3919982910156,
+                  "r": 171.65867614746094,
+                  "b": 451.197998046875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 435.64398193359375,
+                  "r": 526.8407592773438,
+                  "b": 521.2239990234375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 18
+        }
+      ],
+      "chain_id": "c20"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000170"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000170",
+          "text": "DIN EN ISO 3452-1:2022-02 16 EN ISO 3452-1:2021 (E) f) viewing conditions; g) test temperatures; h) test results (description of discontinuities detected); i) test location, date of testing, name of the operator; Annex A (normative) Main stages of standard penetrant examination The sequence of operations to be followed is illustrated for the general case (except form f and g) by Figure A.1.",
+          "raw_text": "DIN EN ISO 3452-1:2022-02 16 EN ISO 3452-1:2021 (E) f) viewing conditions; g) test temperatures; h) test results (description of discontinuities detected); i) test location, date of testing, name of the operator; Annex A (normative) Main stages of standard penetrant examination The sequence of operations to be followed is illustrated for the general case (except form f and g) by Figure A.1.",
+          "canonical_form": "DIN EN ISO 3452-1:2022-02 16 EN ISO 3452-1:2021 (E) f) viewing conditions; g) test temperatures; h) test results (description of discontinuities detected); i) test location, date of testing, name of the operator; Annex A (normative) Main stages of standard penetrant examination The sequence of operations to be followed is illustrated for the general case (except form f and g) by Figure A.1.",
+          "role": "exception",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000102",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 51893,
+              "char_end": 52286,
+              "page_start": 20,
+              "page_end": 21,
+              "bboxes": [
+                {
+                  "page_no": 20,
+                  "l": 36.85049819946289,
+                  "t": 28.104581832885742,
+                  "r": 178.69544982910156,
+                  "b": 42.91058349609375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.85049819946289,
+                  "t": 799.7765502929688,
+                  "r": 49.8745002746582,
+                  "b": 814.5825805664062,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.85049819946289,
+                  "t": 38.479583740234375,
+                  "r": 155.83702087402344,
+                  "b": 53.28558349609375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.83940124511719,
+                  "t": 59.88255310058594,
+                  "r": 150.03929138183594,
+                  "b": 121.26255798339844,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.83940124511719,
+                  "t": 81.20055389404297,
+                  "r": 145.19271850585938,
+                  "b": 142.58055114746094,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.83940124511719,
+                  "t": 102.50776672363281,
+                  "r": 306.1568603515625,
+                  "b": 163.8877716064453,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.83940124511719,
+                  "t": 123.82575988769531,
+                  "r": 295.85528564453125,
+                  "b": 185.2057647705078,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 9.998700141906738,
+                  "t": 10.251136779785156,
+                  "r": 154.8518829345703,
+                  "b": 18.454071044921875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 202.64999389648438,
+                  "t": 823.1424560546875,
+                  "r": 584.8685913085938,
+                  "b": 831.3453369140625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 9.249136924743652,
+                  "t": 20.625301361083984,
+                  "r": 17.452070236206055,
+                  "b": 114.98004150390625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 21,
+                  "l": 273.4169921875,
+                  "t": 65.21295928955078,
+                  "r": 359.4201965332031,
+                  "b": 154.4929656982422,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 21,
+                  "l": 141.5769805908203,
+                  "t": 115.93293762207031,
+                  "r": 487.7017517089844,
+                  "b": 155.06890869140625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 21,
+                  "l": 70.86620330810547,
+                  "t": 167.7830047607422,
+                  "r": 560.8579711914062,
+                  "b": 241.2629852294922,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 20
+        }
+      ],
+      "chain_id": "c21"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000059"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000059",
+          "text": "7.3.5 For parts associated with peroxide rocket fuel, explosive stores (these include all items containing explosive propellant, initiating or pyrotechnic materials), oxygen equipment or nuclear applications, the compatibility of penetrant testing products shall be given special consideration.",
+          "raw_text": "7.3.5 For parts associated with peroxide rocket fuel, explosive stores (these include all items containing explosive propellant, initiating or pyrotechnic materials), oxygen equipment or nuclear applications, the compatibility of penetrant testing products shall be given special consideration.",
+          "canonical_form": "7.3.5 For parts associated with peroxide rocket fuel, explosive stores (these include all items containing explosive propellant, initiating or pyrotechnic materials), oxygen equipment or nuclear applications, the compatibility of penetrant testing products shall be given special consideration.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000041",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 34271,
+              "char_end": 34565,
+              "page_start": 14,
+              "page_end": 14,
+              "bboxes": [
+                {
+                  "page_no": 14,
+                  "l": 36.85039520263672,
+                  "t": 99.09599304199219,
+                  "r": 526.8323364257812,
+                  "b": 184.6759490966797,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 14
+        }
+      ],
+      "chain_id": "c22"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000177"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000177",
+          "text": "The tests may be carried out at more frequent intervals or additional tests carried out if necessary to ensure correct processing conditions.",
+          "raw_text": "The tests may be carried out at more frequent intervals or additional tests carried out if necessary to ensure correct processing conditions.",
+          "canonical_form": "The tests may be carried out at more frequent intervals or additional tests carried out if necessary to ensure correct processing conditions.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000106",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 53803,
+              "char_end": 53944,
+              "page_start": 23,
+              "page_end": 23,
+              "bboxes": [
+                {
+                  "page_no": 23,
+                  "l": 70.86618041992188,
+                  "t": 292.950927734375,
+                  "r": 560.85791015625,
+                  "b": 390.63092041015625,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 23
+        }
+      ],
+      "chain_id": "c23"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000154"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000154",
+          "text": "Where no indication redevelops, this shall not be the sole evidence for assessing an indication as spurious or non-relevant but can be used to demonstrate that the initial interpretation is correct (e.g. water mark or surface contamination) or to allow the inspector to obtain additional beneficial information by witnessing the growth of the indication during the redevelopment time.",
+          "raw_text": "Where no indication redevelops, this shall not be the sole evidence for assessing an indication as spurious or non-relevant but can be used to demonstrate that the initial interpretation is correct (e.g. water mark or surface contamination) or to allow the inspector to obtain additional beneficial information by witnessing the growth of the indication during the redevelopment time.",
+          "canonical_form": "Where no indication redevelops, this shall not be the sole evidence for assessing an indication as spurious or non-relevant but can be used to demonstrate that the initial interpretation is correct (e.g. water mark or surface contamination) or to allow the inspector to obtain additional beneficial information by witnessing the growth of the indication during the redevelopment time.",
+          "role": "constraint",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000089",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 47931,
+              "char_end": 48315,
+              "page_start": 18,
+              "page_end": 18,
+              "bboxes": [
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 508.8489990234375,
+                  "r": 526.8510131835938,
+                  "b": 667.029052734375,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 18
+        }
+      ],
+      "chain_id": "c24"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000167"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000167",
+          "text": "j) name, qualification status and signature of the test supervisor.",
+          "raw_text": "j) name, qualification status and signature of the test supervisor.",
+          "canonical_form": "j) name, qualification status and signature of the test supervisor.",
+          "role": "definition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000099",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 51221,
+              "char_end": 51288,
+              "page_start": 19,
+              "page_end": 20,
+              "bboxes": [
+                {
+                  "page_no": 19,
+                  "l": 9.998700141906738,
+                  "t": 10.251136779785156,
+                  "r": 154.8518829345703,
+                  "b": 18.454071044921875,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 202.64999389648438,
+                  "t": 823.1424560546875,
+                  "r": 584.8685913085938,
+                  "b": 831.3453369140625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 9.249136924743652,
+                  "t": 20.625301361083984,
+                  "r": 17.452070236206055,
+                  "b": 114.98004150390625,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 20,
+                  "l": 36.850399017333984,
+                  "t": 146.0439910888672,
+                  "r": 353.66802978515625,
+                  "b": 207.4239959716797,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 19
+        }
+      ],
+      "chain_id": "c25"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000141"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000141",
+          "text": "Care should be taken to differentiate between true indications and spurious or false indications, such as scratches or changes of section.",
+          "raw_text": "Care should be taken to differentiate between true indications and spurious or false indications, such as scratches or changes of section.",
+          "canonical_form": "Care should be taken to differentiate between true indications and spurious or false indications, such as scratches or changes of section.",
+          "role": "example",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000083",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 46331,
+              "char_end": 46469,
+              "page_start": 18,
+              "page_end": 18,
+              "bboxes": [
+                {
+                  "page_no": 18,
+                  "l": 36.850399017333984,
+                  "t": 243.77098083496094,
+                  "r": 526.8377685546875,
+                  "b": 329.3509826660156,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 18
+        }
+      ],
+      "chain_id": "c26"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000166"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000166",
+          "text": "A type III penetrant used as a fluorescent penetrant (UV-A is used) is recorded similar to type I. d) test procedure; e) deviations (if any) from the test procedure; DIN EN ISO 3452-1:2022-02 15 EN ISO 3452-1:2021 (E) c) apply further developer — use a light coating of wet solvent-based (non-aqueous) developer, applied from a distance where the material dries almost immediately on contact, unless otherwise agreed; d) inspect the area immediately after the application of the developer; e) inspect again at intervals and at the final development time of 10 min.",
+          "raw_text": "A type III penetrant used as a fluorescent penetrant (UV-A is used) is recorded similar to type I. d) test procedure; e) deviations (if any) from the test procedure; DIN EN ISO 3452-1:2022-02 15 EN ISO 3452-1:2021 (E) c) apply further developer — use a light coating of wet solvent-based (non-aqueous) developer, applied from a distance where the material dries almost immediately on contact, unless otherwise agreed; d) inspect the area immediately after the application of the developer; e) inspect again at intervals and at the final development time of 10 min.",
+          "canonical_form": "A type III penetrant used as a fluorescent penetrant (UV-A is used) is recorded similar to type I. d) test procedure; e) deviations (if any) from the test procedure; DIN EN ISO 3452-1:2022-02 15 EN ISO 3452-1:2021 (E) c) apply further developer — use a light coating of wet solvent-based (non-aqueous) developer, applied from a distance where the material dries almost immediately on contact, unless otherwise agreed; d) inspect the area immediately after the application of the developer; e) inspect again at intervals and at the final development time of 10 min.",
+          "role": "exception",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000098",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 50646,
+              "char_end": 51210,
+              "page_start": 19,
+              "page_end": 19,
+              "bboxes": [
+                {
+                  "page_no": 19,
+                  "l": 90.99210357666016,
+                  "t": 674.0860595703125,
+                  "r": 560.63720703125,
+                  "b": 751.8860473632812,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 70.86609649658203,
+                  "t": 714.2810668945312,
+                  "r": 163.5521240234375,
+                  "b": 775.6610717773438,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 70.8551025390625,
+                  "t": 735.5880737304688,
+                  "r": 295.5916748046875,
+                  "b": 796.9680786132812,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 418.97100830078125,
+                  "t": 28.105131149291992,
+                  "r": 560.816162109375,
+                  "b": 42.9111328125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 545.39599609375,
+                  "t": 799.777099609375,
+                  "r": 558.4200439453125,
+                  "b": 814.5831298828125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 439.44000244140625,
+                  "t": 38.480133056640625,
+                  "r": 558.4269409179688,
+                  "b": 53.2861328125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 70.86619567871094,
+                  "t": 59.883148193359375,
+                  "r": 560.859130859375,
+                  "b": 133.36314392089844,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 70.86619567871094,
+                  "t": 93.29014587402344,
+                  "r": 409.5672302246094,
+                  "b": 154.67015075683594,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 19,
+                  "l": 70.8552017211914,
+                  "t": 114.60813903808594,
+                  "r": 421.3072814941406,
+                  "b": 175.98814392089844,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 19
+        }
+      ],
+      "chain_id": "c27"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000179"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000179",
+          "text": "B.2 Records A separate record of the process and control test results for each working place shall be maintained.",
+          "raw_text": "B.2 Records A separate record of the process and control test results for each working place shall be maintained.",
+          "canonical_form": "B.2 Records A separate record of the process and control test results for each working place shall be maintained.",
+          "role": "rule",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000107",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 54087,
+              "char_end": 54200,
+              "page_start": 23,
+              "page_end": 23,
+              "bboxes": [
+                {
+                  "page_no": 23,
+                  "l": 70.86618041992188,
+                  "t": 350.56890869140625,
+                  "r": 560.8502197265625,
+                  "b": 424.0489196777344,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 23,
+                  "l": 70.86609649658203,
+                  "t": 416.77301025390625,
+                  "r": 147.42051696777344,
+                  "b": 434.27099609375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 23,
+                  "l": 70.86609649658203,
+                  "t": 418.1180419921875,
+                  "r": 560.8468627929688,
+                  "b": 503.6980285644531,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 23
+        }
+      ],
+      "chain_id": "c28"
+    },
+    {
+      "doc_id": "din_iso_3452_1",
+      "fact_ids": [
+        "din_iso_3452_1_F000201"
+      ],
+      "depth": 1,
+      "chain_edges": [],
+      "facts": [
+        {
+          "fact_id": "din_iso_3452_1_F000201",
+          "text": "B.3.4 Rinse water appearance When using recycled water, check for opacity, fluorescence, foam or coloration of the rinse water, the presence of any of which can suggest that the treatment system is not functioning effectively.",
+          "raw_text": "B.3.4 Rinse water appearance When using recycled water, check for opacity, fluorescence, foam or coloration of the rinse water, the presence of any of which can suggest that the treatment system is not functioning effectively.",
+          "canonical_form": "B.3.4 Rinse water appearance When using recycled water, check for opacity, fluorescence, foam or coloration of the rinse water, the presence of any of which can suggest that the treatment system is not functioning effectively.",
+          "role": "condition",
+          "weight": 0.5,
+          "self_containment_score": 1.0,
+          "self_containment_known": false,
+          "spans": [
+            {
+              "doc_id": "din_iso_3452_1",
+              "chunk_id": "din_iso_3452_1_c000120",
+              "start_token": 0,
+              "end_token": 0,
+              "char_start": 59493,
+              "char_end": 59719,
+              "page_start": 26,
+              "page_end": 26,
+              "bboxes": [
+                {
+                  "page_no": 26,
+                  "l": 36.850399017333984,
+                  "t": 642.1929931640625,
+                  "r": 206.1859893798828,
+                  "b": 658.3450317382812,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 26,
+                  "l": 36.850399017333984,
+                  "t": 642.4910278320312,
+                  "r": 526.8411254882812,
+                  "b": 715.9710693359375,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 26,
+                  "l": 36.850399017333984,
+                  "t": 701.5609741210938,
+                  "r": 211.56317138671875,
+                  "b": 717.7130126953125,
+                  "coord_origin": "TOPLEFT"
+                },
+                {
+                  "page_no": 26,
+                  "l": 36.850399017333984,
+                  "t": 701.8600463867188,
+                  "r": 364.6900939941406,
+                  "b": 763.2400512695312,
+                  "coord_origin": "TOPLEFT"
+                }
+              ]
+            }
+          ],
+          "page_start": 26
+        }
+      ],
+      "chain_id": "c29"
+    }
+  ],
+  "results": {
+    "google/gemma-3-27b-it": [
+      {
+        "chain_id": "c00",
+        "question": "What distinction and traceability method characterize machine calibration at the National Metrology Institute level?",
+        "answer": "The National Metrology Institute’s primary Vickers hardness standard machine achieves traceability through a Direct Verification calibration chain. This method is used because there is no recognized higher-level hardness reference artefact.",
+        "qgen_sec": 1.02,
+        "agen_sec": 0.55,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c01",
+        "question": "Under what condition does an indenter’s initial satisfactory condition rapidly worsen and become unusable?",
+        "answer": "An indenter becomes unusable when small imperfections on its surface quickly deteriorate. This happens if the indenter is not maintained properly after a short period of use.",
+        "qgen_sec": 1.05,
+        "agen_sec": 0.44,
+        "stem": "Under",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c02",
+        "question": "Under what condition must indenters be regularly inspected and potentially replaced to maintain reliable testing results?",
+        "answer": "Indenters must be checked daily by visually assessing the indentation’s appearance on a reference block. An indenter’s verification is invalidated when flaws are observed on it.",
+        "qgen_sec": 1.03,
+        "agen_sec": 0.5,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c03",
+        "question": "Under what condition is traceability not ensured during machine operation in this approach?",
+        "answer": "Traceability is not ensured when substantial errors exist in the separate machine parts. This outcome occurs because operating within specified limits is important for the individual machine components.",
+        "qgen_sec": 1.0,
+        "agen_sec": 0.48,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c04",
+        "question": "How does vibration influence hardness values, particularly when measuring with small forces?",
+        "answer": "Vibration leads to diminished hardness readings overall. Its impact on measurements is especially noticeable when utilizing minimal force during testing.",
+        "qgen_sec": 1.0,
+        "agen_sec": 0.78,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c05",
+        "question": "How is the expanded uncertainty adjusted when a measurement value is not corrected for bias?",
+        "answer": "Xucorr has an expanded uncertainty, U, that is increased by the absolute value of the bias, b. This adjustment is calculated using Formula (D.4): X x U b ucorr M = ± + [ ] 1.",
+        "qgen_sec": 0.83,
+        "agen_sec": 0.7,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c06",
+        "question": "Why should further allowance not be made for the uncertainty of the hardness measurement?",
+        "answer": "These tolerances already include the contribution from hardness measurement uncertainty, so reducing the specified tolerance based on estimated uncertainty would be inappropriate. Further adjustment is unnecessary because the existing tolerances account for this uncertainty.",
+        "qgen_sec": 0.3,
+        "agen_sec": 0.82,
+        "stem": "Why",
+        "reject_reason": "quality_Q7_bad_fact_fragment",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c07",
+        "question": "How does the maximum permissible percent HV bias change with mean diagonal length?",
+        "answer": "Table C.1 shows that the maximum permissible percent HV bias is equal to 0.21 divided by the mean diagonal length plus 1.5 when the mean diagonal length is between 0.02 and 0.14 mm. For mean diagonal lengths between 0.14 and 1,400 mm, the maximum permissible percent HV bias is 3.",
+        "qgen_sec": 0.33,
+        "agen_sec": 1.6,
+        "stem": "How",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c08",
+        "question": "Under what circumstances does the latest edition of a referenced document apply?",
+        "answer": "The latest edition of a referenced document is applicable when the reference lacks a date. This applies to the document itself, as well as any revisions made to it.",
+        "qgen_sec": 0.28,
+        "agen_sec": 1.47,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c09",
+        "question": "Why should the components of a calibration machine be calibrated frequently?",
+        "answer": "The specified components of the calibration machine should be calibrated frequently to ensure offsetting errors do not become substantial.",
+        "qgen_sec": 0.64,
+        "agen_sec": 0.81,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c10",
+        "question": "Under what condition should indentations be oriented when measuring a coating cross-section?",
+        "answer": "H.3.4 Indentations should be oriented with one of their diagonals roughly perpendicular to the boundary between the coating and the material it covers.",
+        "qgen_sec": 1.08,
+        "agen_sec": 0.65,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c11",
+        "question": "Under what condition are lower hardness values typically obtained during a measurement?",
+        "answer": "Lower hardness values are generally obtained when vibrations are present. This error can be identified through comparisons with a standard sample possessing a known hardness close to that of the material being tested.",
+        "qgen_sec": 0.39,
+        "agen_sec": 1.15,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c12",
+        "question": "Why orient the diagonals of indentation approximately 45° to the direction of cold-working?",
+        "answer": "Indentation should be oriented so its diagonals are approximately 45° to the direction of cold-working to achieve this alignment when feasible.",
+        "qgen_sec": 0.53,
+        "agen_sec": 0.55,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c13",
+        "question": "How does the required thickness relate to the test force and hardness values?",
+        "answer": "The required thickness is determined where the minimum thickness scale intersects a line connecting the test force and the hardness.",
+        "qgen_sec": 0.35,
+        "agen_sec": 0.6,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c14",
+        "question": "For what purpose can test coupons be useful when evaluating plated parts?",
+        "answer": "Test coupons can be a helpful instrument for managing the electrolyte, especially with coatings like gold. The hardness of gold is affected by the makeup of the plating solution and all factors involved in electroplating.",
+        "qgen_sec": 0.56,
+        "agen_sec": 0.63,
+        "stem": "For",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c15",
+        "question": "What effect can residues from chemical precleaning have on penetrant sensitivity during discontinuity detection?",
+        "answer": "Residues from chemical precleaning processes can substantially lower the ability of a penetrant to detect flaws. This occurs because they may interact with the penetrant itself.",
+        "qgen_sec": 0.58,
+        "agen_sec": 0.53,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c16",
+        "question": "Why is removal of residues from chemical precleaning necessary for accurate penetrant inspection?",
+        "answer": "Residues from chemical precleaning can diminish a penetrant’s ability to detect flaws. Consequently, chemical agents must be taken off the surface being inspected with appropriate cleaning techniques.",
+        "qgen_sec": 0.47,
+        "agen_sec": 0.56,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c17",
+        "question": "What penetrant testing system designation results from a level 2 system sensitivity?",
+        "answer": "product family ISO 3452-2, IAa Level 2 is the designation for a system with a level 2 sensitivity. This designation results when using ISO 3452-1 and ISO 3452-2 with a fluorescent penetrant, water as the remover, and a dry-powder developer.",
+        "qgen_sec": 0.35,
+        "agen_sec": 0.92,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c18",
+        "question": "What range defines the acceptable penetration time for a test?",
+        "answer": "The penetration time must fall between 5 minutes and 60 minutes, and it cannot be shorter than what the producer suggests for the needed sensitivity.",
+        "qgen_sec": 0.37,
+        "agen_sec": 0.47,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c19",
+        "question": "How should visible light intensity be measured in an inspection booth with fluorescent systems?",
+        "answer": "ISO 3059 details the method for measuring the greatest visible light intensity within the booth.",
+        "qgen_sec": 0.29,
+        "agen_sec": 0.32,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c20",
+        "question": "How can magnification instruments or mirrors assist in performing an inspection?",
+        "answer": "Inspection aids, including magnifying devices and reflective surfaces, are permissible for use during examination. These tools can be employed to help with the inspection process.",
+        "qgen_sec": 0.37,
+        "agen_sec": 1.16,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c21",
+        "question": "What does Annex A of DIN EN ISO 3452-1:2022-02 illustrate for standard penetrant examination?",
+        "answer": "DIN EN ISO 3452-1:2022-02 illustrates the sequence of operations to be followed for the general case of standard penetrant examination, excluding viewing conditions and test temperatures, by Figure A.1.",
+        "qgen_sec": 0.71,
+        "agen_sec": 0.93,
+        "stem": "What",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c22",
+        "question": "For what parts does penetrant testing require special consideration of product compatibility?",
+        "answer": "Parts linked to peroxide rocket fuel, explosive stores, oxygen equipment, or nuclear applications necessitate careful evaluation of penetrant testing product compatibility.",
+        "qgen_sec": 0.32,
+        "agen_sec": 0.85,
+        "stem": "For",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c23",
+        "question": "Why might tests be carried out at intervals more frequent than typically scheduled?",
+        "answer": "The tests may be performed more often, or extra tests may be done, to confirm that processing is happening as it should.",
+        "qgen_sec": 0.32,
+        "agen_sec": 0.74,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c24",
+        "question": "Why can the absence of redeveloping indications be used during flaw evaluation?",
+        "answer": "The lack of reappearance of a marking doesn't, by itself, prove a flaw is unimportant, but it can support a prior judgment or help an examiner gather more useful details by observing how the marking changes over time.",
+        "qgen_sec": 0.28,
+        "agen_sec": 1.69,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c25",
+        "question": "What information must be included regarding the test supervisor?",
+        "answer": "The test supervisor must have their name, qualification status, and signature included.",
+        "qgen_sec": 0.77,
+        "agen_sec": 0.27,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c26",
+        "question": "Why is it important to differentiate between true and false indications?",
+        "answer": "True indications must be distinguished from misleading signals like abrasions or alterations in cross-section. This differentiation is necessary to avoid misinterpreting evidence.",
+        "qgen_sec": 0.26,
+        "agen_sec": 0.9,
+        "stem": "Why",
+        "reject_reason": "quality_Q1_deictic_no_antecedent",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c27",
+        "question": "How shall a type III fluorescent penetrant be recorded during testing?",
+        "answer": "A type III penetrant, when used as a fluorescent penetrant, is recorded similarly to a type I penetrant. The test procedure and any deviations from it should be recorded.",
+        "qgen_sec": 0.29,
+        "agen_sec": 0.52,
+        "stem": "How",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c28",
+        "question": "What documentation must be maintained for each working place’s process and control test results?",
+        "answer": "B.2 Records states a distinct record of process and control test results must be kept for each work area.",
+        "qgen_sec": 0.3,
+        "agen_sec": 0.36,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c29",
+        "question": "Why check the appearance of rinse water when using recycled water?",
+        "answer": "Rinse water appearance should be checked for opacity, fluorescence, foam, or coloration because these characteristics can indicate that the water treatment system is not working as expected.",
+        "qgen_sec": 0.26,
+        "agen_sec": 0.45,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      }
+    ],
+    "meta-llama/Llama-3.3-70B-Instruct": [
+      {
+        "chain_id": "c00",
+        "question": "What mechanism and advantage does Direct Verification provide at the National Level for an NMI's Vickers hardness standard machine?",
+        "answer": "Direct Verification provides a calibration chain for an NMI's primary Vickers hardness standard machine. This mechanism achieves traceability at the National Level since there is no recognized higher-level hardness reference artefact.",
+        "qgen_sec": 1.72,
+        "agen_sec": 4.0,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c01",
+        "question": "What property and practical consequence of indenter defects arise when an indenter becomes defective after brief use?",
+        "answer": "Indenters can become defective after a short time, and when they do, small defects on their surface rapidly worsen. This worsening makes the indenter useless.",
+        "qgen_sec": 1.68,
+        "agen_sec": 0.95,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c02",
+        "question": "What property of indenter surface defects and resulting practical consequence for indenter verification necessitate daily visual checks and compliance with ISO 6507-2?",
+        "answer": "Indenters have surface defects that rapidly worsen, making them useless, and this necessitates daily visual checks. Indenters showing defects are no longer valid for verification and must meet ISO 6507-2 requirements if reground or repaired.",
+        "qgen_sec": 1.88,
+        "agen_sec": 1.24,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c03",
+        "question": "What property of individual machine components and practical consequence for traceability follow when their errors are significant?",
+        "answer": "Individual machine components have operating errors that are significant, and this leads to traceability not being ensured. When their errors are significant, the practical consequence for traceability is that it may not be ensured.",
+        "qgen_sec": 1.65,
+        "agen_sec": 4.08,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c04",
+        "question": "What property of hardness measurement and practical consequence of vibration are associated with small forces in accordance with ISO 6507-3?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 1.75,
+        "agen_sec": 3.25,
+        "stem": "What",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c05",
+        "question": "What does the Xcorr measurement result correct for?",
+        "answer": "Xcorr corrects for the measurement bias, b. The correction is calculated according to Formula (D.3).",
+        "qgen_sec": 5.09,
+        "agen_sec": 0.63,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c06",
+        "question": "Why would making a further allowance for the uncertainty of the hardness measurement be inappropriate?",
+        "answer": "The tolerances incorporate a contribution due to the uncertainty of the hardness measurement. Making a further allowance for this uncertainty would be inappropriate because it would be duplicating a contribution already accounted for in the tolerances.",
+        "qgen_sec": 0.8,
+        "agen_sec": 12.82,
+        "stem": "Why",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c07",
+        "question": "What is the maximum permissible percent HV bias for a testing machine?",
+        "answer": "The testing machine has a maximum permissible percent HV bias of ± %HV, which is determined by the formulas 0,21/ d + 1,5 for 0,02 ≤ d < 0,14 and 3 for 0,14 ≤ d ≤ 1,400.",
+        "qgen_sec": 0.4,
+        "agen_sec": 2.49,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c08",
+        "question": "What applies when a reference is undated?",
+        "answer": "The referenced document's latest edition, including any amendments, applies. This includes the application of any updates to the document.",
+        "qgen_sec": 0.33,
+        "agen_sec": 10.55,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c09",
+        "question": "Why should the components of the calibration machine be calibrated frequently?",
+        "answer": "The components of the calibration machine should be calibrated frequently to ensure that offsetting errors are not significant. Calibration on a frequent basis is necessary for this purpose.",
+        "qgen_sec": 0.41,
+        "agen_sec": 0.77,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c10",
+        "question": "How shall indentations be oriented when measuring a coating cross-section?",
+        "answer": "H.3.4 indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface. This orientation is required when testing a cross-section of the coating.",
+        "qgen_sec": 0.46,
+        "agen_sec": 9.8,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c11",
+        "question": "Under what condition are lower hardness values obtained?",
+        "answer": "Lower hardness values are obtained when vibrations are present.",
+        "qgen_sec": 0.36,
+        "agen_sec": 0.34,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c12",
+        "question": "Why should the indentation be made with diagonals oriented at a specific angle to the direction of cold-working?",
+        "answer": "Indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working. This orientation is recommended where possible.",
+        "qgen_sec": 0.62,
+        "agen_sec": 0.79,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c13",
+        "question": "How is the required thickness determined from the test force and hardness?",
+        "answer": "The required thickness is determined by the point of intersection of the minimum thickness scale and a line joining the test force with the hardness. This line connects the test force on the right-hand scale with the hardness on the left-hand scale.",
+        "qgen_sec": 0.74,
+        "agen_sec": 1.0,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c14",
+        "question": "What purpose do test coupons serve in the case of plated parts?",
+        "answer": "Test coupons serve as a useful tool for electrolyte control in the case of plated parts. They are particularly useful for coatings such as gold, where hardness is sensitive to the composition of the plating solution and electroplating variables.",
+        "qgen_sec": 0.4,
+        "agen_sec": 8.84,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c15",
+        "question": "What property of precleaning and practical consequence of residue reaction must be considered when applying penetrant?",
+        "answer": "Precleaning has the property of ensuring a residue-free test surface, and the practical consequence of residue reaction is that it can greatly reduce the sensitivity of the penetrant.",
+        "qgen_sec": 0.56,
+        "agen_sec": 7.69,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c16",
+        "question": "What property of residues from chemical precleaning processes and resulting practical consequence of removing chemical agents affect penetrant sensitivity?",
+        "answer": "Residues from chemical precleaning processes have the property of reacting with a penetrant, which reduces its sensitivity. Removing chemical agents from the surface under examination helps maintain the sensitivity of the penetrant.",
+        "qgen_sec": 0.6,
+        "agen_sec": 0.97,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c17",
+        "question": "What designation system does ISO 3452-1 and ISO 3452-2 use for penetrant testing?",
+        "answer": "ISO 3452-1 and ISO 3452-2 use the product family designation system, which includes the penetrant type, remover type, and developer type, along with the system sensitivity level, as in the example \"product family ISO 3452-2, IAa Level 2\".",
+        "qgen_sec": 0.58,
+        "agen_sec": 1.3,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c18",
+        "question": "What is the required range for the penetration time?",
+        "answer": "The penetration time shall be between 5 min and 60 min. It must also not be less than the manufacturer's recommended time for the required sensitivity.",
+        "qgen_sec": 8.84,
+        "agen_sec": 7.42,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c19",
+        "question": "What standard does the measurement of visible light intensity in an inspection booth follow?",
+        "answer": "The measurement of visible light intensity in an inspection booth follows ISO 3059. This standard is used for measuring the maximum visible light intensity in the booth.",
+        "qgen_sec": 12.52,
+        "agen_sec": 0.77,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c20",
+        "question": "What inspection aids can be used to assist the inspection?",
+        "answer": "Inspection aids, such as magnification instruments or mirrors, can be used. Assessment by the wipe-off technique may also assist the inspection.",
+        "qgen_sec": 12.2,
+        "agen_sec": 0.68,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c21",
+        "question": "What information must the test results include according to DIN EN ISO 3452-1?",
+        "answer": "DIN EN ISO 3452-1 requires test results to include a description of discontinuities detected.",
+        "qgen_sec": 12.15,
+        "agen_sec": 0.59,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c22",
+        "question": "What applications require special consideration for penetrant testing product compatibility?",
+        "answer": "Nuclear applications require special consideration for penetrant testing product compatibility, as do applications associated with peroxide rocket fuel, explosive stores, oxygen equipment.",
+        "qgen_sec": 4.93,
+        "agen_sec": 7.33,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c23",
+        "question": "Why may the tests be carried out at more frequent intervals?",
+        "answer": "The tests may be carried out at more frequent intervals to ensure correct processing conditions. They are done this way if necessary.",
+        "qgen_sec": 11.78,
+        "agen_sec": 0.62,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c24",
+        "question": "Why can the absence of redeveloped indication be used during assessment?",
+        "answer": "The absence of redeveloped indication can be used to demonstrate that the initial interpretation is correct or to obtain additional beneficial information. It allows the inspector to witness the growth of the indication during the redevelopment time.",
+        "qgen_sec": 0.42,
+        "agen_sec": 1.23,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c25",
+        "question": "What information must be provided for the test supervisor?",
+        "answer": "The test supervisor's information must include their name, qualification status, and signature.",
+        "qgen_sec": 0.32,
+        "agen_sec": 0.52,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c26",
+        "question": "What differentiates true indications from spurious or false indications?",
+        "answer": "Care differentiates between true indications and spurious or false indications, such as scratches or changes of section. This differentiation is necessary to distinguish them.",
+        "qgen_sec": 0.37,
+        "agen_sec": 0.94,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c27",
+        "question": "How is a type III fluorescent penetrant applied and inspected according to DIN EN ISO 3452-1?",
+        "answer": "Type III fluorescent penetrant is applied and inspected by first applying a light coating of wet solvent-based developer from a distance where the material dries almost immediately on contact, then inspecting the area immediately after application, and again at intervals and at the final development time of 10 min. The test procedure for type III penetrant is recorded similar to type I.",
+        "qgen_sec": 0.66,
+        "agen_sec": 2.15,
+        "stem": "How",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c28",
+        "question": "What records shall be maintained for each working place?",
+        "answer": "B.2 Records shall be maintained for a separate record of the process and control test results. A separate record of the process and control test results for each working place shall be maintained.",
+        "qgen_sec": 0.36,
+        "agen_sec": 1.06,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c29",
+        "question": "What suggests that a treatment system is not functioning effectively?",
+        "answer": "Rinse water appearance suggests that a treatment system is not functioning effectively, specifically the presence of opacity, fluorescence, foam, or coloration.",
+        "qgen_sec": 0.38,
+        "agen_sec": 1.29,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      }
+    ],
+    "Qwen/Qwen3-235B-A22B-Instruct-2507": [
+      {
+        "chain_id": "c00",
+        "question": "What verification mechanism ensures traceability of an NMI’s primary Vickers hardness standard machine at the national level?",
+        "answer": "The traceability of an NMI’s primary Vickers hardness standard machine at the national level is ensured through a Direct Verification calibration chain.",
+        "qgen_sec": 5.44,
+        "agen_sec": 0.52,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c01",
+        "question": "What happens to an indenter with minor surface defects after short-term use if not inspected?",
+        "answer": "An indenter with minor surface defects will rapidly deteriorate and become useless after short-term use if not inspected.",
+        "qgen_sec": 1.78,
+        "agen_sec": 1.21,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c02",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 5.15,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c03",
+        "question": "Under what condition might traceability not be ensured in the welding process due to machine component issues?",
+        "answer": "Traceability may not be ensured if the errors in the individual machine components are significant.",
+        "qgen_sec": 3.03,
+        "agen_sec": 1.89,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c04",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 4.14,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c05",
+        "question": "How does reporting Xcorr adjust the measurement value for systematic bias?",
+        "answer": "Reporting Xcorr adjusts the measurement value by subtracting the measurement bias, b, from the measurement value, x, according to Formula (D.3).",
+        "qgen_sec": 2.57,
+        "agen_sec": 1.15,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c06",
+        "question": "Why should no further allowance be made for the uncertainty of hardness measurements in specified tolerances?",
+        "answer": "The specified tolerances already incorporate a contribution due to the uncertainty of the hardness measurement, making any further allowance for this uncertainty inappropriate.",
+        "qgen_sec": 0.82,
+        "agen_sec": 1.01,
+        "stem": "Why",
+        "reject_reason": "quality_Q7_bad_fact_fragment",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c07",
+        "question": "What is the maximum permissible percent HV bias for a mean diagonal length between 0.02 mm and 0.14 mm?",
+        "answer": "For a mean diagonal length between 0.02 mm and 0.14 mm, the maximum permissible percent HV bias is given by the expression 0.21/d + 1.5.",
+        "qgen_sec": 0.51,
+        "agen_sec": 1.75,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c08",
+        "question": "What applies when a reference is undated?",
+        "answer": "For undated references, the latest edition of the referenced document, including any amendments, applies.",
+        "qgen_sec": 0.41,
+        "agen_sec": 1.39,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c09",
+        "question": "Why should the specified components of the calibration machine be calibrated frequently?",
+        "answer": "The specified components of the calibration machine require frequent calibration to prevent significant offsetting errors.",
+        "qgen_sec": 0.4,
+        "agen_sec": 1.68,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c10",
+        "question": "Under what condition shall one of the diagonals of an indentation be oriented at approximately 90° to the coating substrate interface?",
+        "answer": "Indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface when measuring a coating cross-section.",
+        "qgen_sec": 1.19,
+        "agen_sec": 1.26,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c11",
+        "question": "Under what condition can vibrations affect hardness measurement results?",
+        "answer": "Lower hardness values may result when vibrations are present during measurement. This effect can be identified by performing comparative tests on a reference specimen with known hardness similar to the test surface, such as a block calibrated to ISO 6507-3.",
+        "qgen_sec": 0.76,
+        "agen_sec": 2.11,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c12",
+        "question": "Why should the indentation be made with diagonals oriented at approximately 45° to the direction of cold-working?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 0.8,
+        "agen_sec": 0.61,
+        "stem": "Why",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c13",
+        "question": "How is the required thickness determined using the minimum thickness scale and a line connecting test force with hardness?",
+        "answer": "The required thickness is determined by the point of intersection between the minimum thickness scale and a line joining the test force on the right-hand scale with the hardness on the left-hand scale.",
+        "qgen_sec": 1.48,
+        "agen_sec": 0.74,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c14",
+        "question": "Why may test coupons serve as a useful tool for electrolyte control in the case of plated parts?",
+        "answer": "Test coupons may serve as a useful tool for electrolyte control in the case of plated parts because the hardness of coatings such as gold is sensitive to the composition of the plating solution and to all electroplating variables.",
+        "qgen_sec": 0.82,
+        "agen_sec": 0.76,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c15",
+        "question": "What property of chemical precleaning residues and consequence for penetrant performance must be considered during surface preparation?",
+        "answer": "Chemical precleaning residues can react with a penetrant, which greatly reduces its sensitivity. Therefore, ensuring the test surface is free from such residues is essential for effective penetrant performance.",
+        "qgen_sec": 1.16,
+        "agen_sec": 0.93,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c16",
+        "question": "Why must residues from chemical precleaning processes be removed before penetrant testing?",
+        "answer": "Residues from chemical precleaning processes must be removed before penetrant testing because they can react with a penetrant and greatly reduce its sensitivity. Therefore, chemical agents are removed using suitable cleaning methods after the cleaning process.",
+        "qgen_sec": 0.88,
+        "agen_sec": 0.93,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c17",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 2.75,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c18",
+        "question": "What is the required range for penetration time in relation to sensitivity?",
+        "answer": "The penetration time must be between 5 minutes and 60 minutes and not less than the manufacturer's recommended time for the required sensitivity.",
+        "qgen_sec": 0.58,
+        "agen_sec": 0.55,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c19",
+        "question": "What must be measured in the inspection booth for fluorescent systems according to ISO 3059?",
+        "answer": "The maximum visible light intensity must be measured in the inspection booth for fluorescent systems according to ISO 3059.",
+        "qgen_sec": 0.57,
+        "agen_sec": 0.59,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c20",
+        "question": "How can inspection be assisted when using magnification instruments or mirrors?",
+        "answer": "Inspection can be assisted by using the wipe-off technique when employing magnification instruments or mirrors.",
+        "qgen_sec": 0.36,
+        "agen_sec": 0.59,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c21",
+        "question": "What must be recorded regarding test results in a standard penetrant examination?",
+        "answer": "Test results must include a description of discontinuities detected.",
+        "qgen_sec": 0.76,
+        "agen_sec": 0.35,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c22",
+        "question": "Why must the compatibility of penetrant testing products be specially considered for parts associated with peroxide rocket fuel?",
+        "answer": "Parts associated with peroxide rocket fuel require special consideration for the compatibility of penetrant testing products due to the hazardous nature of the materials involved, such as explosive propellants or pyrotechnic substances.",
+        "qgen_sec": 0.7,
+        "agen_sec": 0.94,
+        "stem": "Why",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c23",
+        "question": "Under what condition may tests be carried out more frequently?",
+        "answer": "Tests may be carried out more frequently if necessary to ensure correct processing conditions.",
+        "qgen_sec": 0.66,
+        "agen_sec": 0.97,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c24",
+        "question": "Why should the absence of indication redeveloping not be the sole evidence for assessing an indication as spurious?",
+        "answer": "The absence of indication redeveloping should not be the sole evidence for assessing an indication as spurious because it can instead serve to confirm the accuracy of the initial interpretation or provide useful information about the indication's behavior during redevelopment time.",
+        "qgen_sec": 0.84,
+        "agen_sec": 1.08,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c25",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 2.04,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c26",
+        "question": "Why should care be taken when interpreting indications during inspection?",
+        "answer": "Care should be taken when interpreting indications during inspection to differentiate between true indications and spurious or false indications, such as scratches or changes of section.",
+        "qgen_sec": 0.41,
+        "agen_sec": 0.48,
+        "stem": "Why",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c27",
+        "question": "How should a wet solvent-based non-aqueous developer be applied during penetrant testing?",
+        "answer": "A wet solvent-based non-aqueous developer should be applied as a light coating from a distance where the material dries almost immediately on contact, unless otherwise agreed.",
+        "qgen_sec": 0.72,
+        "agen_sec": 0.5,
+        "stem": "How",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c28",
+        "question": "What must be maintained for each working place regarding process and control test results?",
+        "answer": "A separate record of the process and control test results must be maintained for each working place.",
+        "qgen_sec": 0.57,
+        "agen_sec": 0.36,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c29",
+        "question": "What indicates ineffective treatment system performance when using recycled water?",
+        "answer": "Opacity, fluorescence, foam, or coloration in the rinse water indicates ineffective treatment system performance when using recycled water.",
+        "qgen_sec": 0.44,
+        "agen_sec": 0.52,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      }
+    ],
+    "deepseek-ai/DeepSeek-V4-Pro": [
+      {
+        "chain_id": "c00",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 7.62,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c01",
+        "question": "What happens to an indenter when small surface defects develop after brief use?",
+        "answer": "The indenter rapidly worsens and becomes useless.",
+        "qgen_sec": 2.0,
+        "agen_sec": 0.81,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c02",
+        "question": "Why must indenters be visually checked daily and meet ISO 6507-2 requirements after regrinding or repair?",
+        "answer": "Indenters must be visually checked daily because small surface defects rapidly worsen and make the indenter useless, and reground or repaired indenters shall meet all of the requirements of ISO 6507-2.",
+        "qgen_sec": 2.64,
+        "agen_sec": 2.4,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c03",
+        "question": "Why must individual machine components operate within tolerances to maintain traceability?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 4.09,
+        "agen_sec": 0.86,
+        "stem": "Why",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c04",
+        "question": "How does vibration affect hardness measurement results under small forces?",
+        "answer": "Vibration causes lower hardness values, and its effects are far more evident with small forces.",
+        "qgen_sec": 1.96,
+        "agen_sec": 1.13,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c05",
+        "question": "What are the two ways the measurement result can be reported?",
+        "answer": "As Xcorr, where the measured value is adjusted for bias, or as Xucorr, where the measured value remains unadjusted and the expanded uncertainty is enlarged by the absolute bias.",
+        "qgen_sec": 1.96,
+        "agen_sec": 4.73,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c06",
+        "question": "Why is it inappropriate to reduce the specified tolerance by the estimated measurement uncertainty?",
+        "answer": "The specified tolerances already include a contribution from the hardness measurement uncertainty.",
+        "qgen_sec": 1.29,
+        "agen_sec": 0.86,
+        "stem": "Why",
+        "reject_reason": "quality_Q1_deictic_no_antecedent",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c07",
+        "question": "What is the maximum permissible percent HV bias for a mean diagonal length of 0.14 mm or greater?",
+        "answer": "For mean diagonal lengths from 0.14 mm up to and including 1.400 mm, the maximum permissible percent HV bias of the testing machine is ±3 %HV.",
+        "qgen_sec": 1.04,
+        "agen_sec": 2.27,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c08",
+        "question": "Under what condition does the latest edition of a referenced document apply?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 1.61,
+        "agen_sec": 1.12,
+        "stem": "Under",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c09",
+        "question": "Why should the specified components of the calibration machine be calibrated on a frequent basis?",
+        "answer": "To prevent offsetting errors from becoming significant.",
+        "qgen_sec": 1.34,
+        "agen_sec": 2.16,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c10",
+        "question": "Under what condition shall one diagonal of an indentation be oriented approximately 90° to the coating-substrate interface?",
+        "answer": "When testing a coating cross-section.",
+        "qgen_sec": 1.38,
+        "agen_sec": 0.98,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c11",
+        "question": "Under what condition are lower hardness values obtained?",
+        "answer": "Lower hardness values are obtained when vibrations are present.",
+        "qgen_sec": 1.02,
+        "agen_sec": 0.98,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c12",
+        "question": "Why should the indentation diagonals be oriented at approximately 45° to the cold-working direction?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 1.16,
+        "agen_sec": 0.7,
+        "stem": "Why",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c13",
+        "question": "How is the required thickness determined from the hardness and test force scales?",
+        "answer": "The required thickness is found at the crossing of the minimum thickness scale and a dotted line connecting the hardness value on the left-hand scale with the test force on the right-hand scale.",
+        "qgen_sec": 1.22,
+        "agen_sec": 2.15,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c14",
+        "question": "For what purpose may test coupons serve in the case of plated parts with composition-sensitive coatings such as gold?",
+        "answer": "Test coupons may assist with electrolyte control, especially for coatings like gold whose hardness depends on the plating solution composition and electroplating variables.",
+        "qgen_sec": 1.49,
+        "agen_sec": 1.0,
+        "stem": "For",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c15",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 7.13,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c16",
+        "question": "Why must chemical agents be removed from the surface after chemical precleaning in penetrant testing?",
+        "answer": "Chemical residues left by precleaning can interact with the penetrant and significantly lower its sensitivity.",
+        "qgen_sec": 1.3,
+        "agen_sec": 2.57,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c17",
+        "question": "How is a penetrant testing system designated when using ISO 3452-1 and ISO 3452-2?",
+        "answer": "A penetrant testing system is designated as product family ISO 3452-2, IAa Level 2.",
+        "qgen_sec": 1.34,
+        "agen_sec": 1.18,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c18",
+        "question": "What is the required range for penetration time?",
+        "answer": "The penetration time must fall within 5 minutes to 60 minutes and must equal or exceed the manufacturer's recommended time for the needed sensitivity.",
+        "qgen_sec": 1.1,
+        "agen_sec": 1.43,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c19",
+        "question": "How is the maximum visible light intensity in a fluorescent inspection booth measured?",
+        "answer": "ISO 3059 specifies the procedure for measuring the maximum visible light intensity in the booth.",
+        "qgen_sec": 0.96,
+        "agen_sec": 1.3,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c20",
+        "question": "What inspection aids may be used to assist the assessment?",
+        "answer": "Magnification instruments or mirrors can be used.",
+        "qgen_sec": 1.29,
+        "agen_sec": 1.33,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c21",
+        "question": null,
+        "answer": null,
+        "qgen_sec": 3.68,
+        "agen_sec": null,
+        "stem": null,
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": null,
+        "reframed": false,
+        "error": "qgen returned empty"
+      },
+      {
+        "chain_id": "c22",
+        "question": "Under what condition must the compatibility of penetrant testing products receive special consideration?",
+        "answer": "When parts are associated with peroxide rocket fuel, explosive stores, oxygen equipment, or nuclear applications.",
+        "qgen_sec": 0.89,
+        "agen_sec": 1.48,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c23",
+        "question": "Under what condition may tests be carried out at more frequent intervals?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 1.14,
+        "agen_sec": 1.14,
+        "stem": "Under",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c24",
+        "question": "Under what condition can redevelopment be used to confirm an initial interpretation?",
+        "answer": "Redevelopment can confirm an initial interpretation when no indication redevelops.",
+        "qgen_sec": 1.14,
+        "agen_sec": 1.17,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c25",
+        "question": "What information must the test supervisor provide on the test report?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 1.21,
+        "agen_sec": 0.76,
+        "stem": "What",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c26",
+        "question": "What should be distinguished from true indications during inspection?",
+        "answer": "Spurious or false indications, such as scratches or changes of section, should be distinguished from true indications.",
+        "qgen_sec": 0.96,
+        "agen_sec": 1.04,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c27",
+        "question": "How long after developer application does the final inspection occur in fluorescent penetrant testing?",
+        "answer": "In fluorescent penetrant testing, the final inspection occurs at a development time of 10 minutes.",
+        "qgen_sec": 1.13,
+        "agen_sec": 0.93,
+        "stem": "How",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c28",
+        "question": "What records shall be maintained for each working place?",
+        "answer": "A separate record of the process and control test results shall be maintained.",
+        "qgen_sec": 0.93,
+        "agen_sec": 1.02,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c29",
+        "question": "Under what condition does the appearance of rinse water indicate ineffective treatment system function?",
+        "answer": "When using recycled water, opacity, fluorescence, foam, or coloration in the rinse water suggests that the treatment system is not functioning effectively.",
+        "qgen_sec": 0.9,
+        "agen_sec": 1.11,
+        "stem": "Under",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      }
+    ],
+    "moonshotai/Kimi-K3": [
+      {
+        "chain_id": "c00",
+        "question": "which are terms from S1 and S2. Required anchors include Direct, Verification, Indirect and NMI, Vickers, National Level. Is using Direct/Indirect in question leaking answer?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 7.31,
+        "agen_sec": 5.1,
+        "stem": "Which",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c01",
+        "question": "What happens to small surface defects on an initially satisfactory indenter after brief use?",
+        "answer": "Small defects on an indenter's surface rapidly worsen, making the indenter useless.",
+        "qgen_sec": 8.03,
+        "agen_sec": 3.97,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c02",
+        "question": "What risk from small surface defects on indenters drives daily visual monitoring and ISO 6507-2 requirements for repaired indenters?",
+        "answer": "Small surface defects on indenters rapidly worsen and render the indenter useless. This risk is what motivates the daily visual checks and the requirement that reground or repaired indenters satisfy ISO 6507-2.",
+        "qgen_sec": 7.46,
+        "agen_sec": 6.99,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c03",
+        "question": "why tolerances matter; the answer is traceability. So don't mention traceability?",
+        "answer": "Tolerances on individual machine components must be maintained because significant errors in those components can result in traceability no longer being ensured.",
+        "qgen_sec": 7.1,
+        "agen_sec": 17.88,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c04",
+        "question": "How does vibration affect measured hardness values under small forces?",
+        "answer": "Vibration produces lower hardness readings, and this error becomes far more pronounced when the applied force is small.",
+        "qgen_sec": 4.39,
+        "agen_sec": 8.95,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": true,
+        "error": null
+      },
+      {
+        "chain_id": "c05",
+        "question": "How can a measurement result be reported when accounting for measurement bias?",
+        "answer": "A measurement result can be reported.",
+        "qgen_sec": 4.81,
+        "agen_sec": 8.86,
+        "stem": "How",
+        "reject_reason": "tautological_pair",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c06",
+        "question": "Why is it inappropriate to reduce the specified hardness tolerance by the estimated measurement uncertainty?",
+        "answer": "The specified hardness tolerances already incorporate a contribution due to the uncertainty of the hardness measurement, so making any further allowance for that uncertainty would be inappropriate.",
+        "qgen_sec": 3.46,
+        "agen_sec": 4.38,
+        "stem": "Why",
+        "reject_reason": "quality_Q1_deictic_no_antecedent",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c07",
+        "question": "What maximum permissible percent HV bias does ISO 6507-1 specify for the testing machine?",
+        "answer": "ISO 6507-1 sets the allowable HV bias of the testing machine at 0.21/d + 1.5 %HV for mean diagonal lengths d from 0.02 mm up to but not including 0.14 mm, and at 3 %HV for diagonals from 0.14 mm up to 1.400 mm.",
+        "qgen_sec": 4.34,
+        "agen_sec": 3.16,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c08",
+        "question": "Which edition of a referenced document applies when the reference is undated?",
+        "answer": "The latest edition of the referenced document, including any amendments, applies for undated references.",
+        "qgen_sec": 2.07,
+        "agen_sec": 6.89,
+        "stem": "Which",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c09",
+        "question": "Why should the specified components of a calibration machine be calibrated frequently?",
+        "answer": "The specified components of a calibration machine require frequent calibration in order to ensure that offsetting errors do not become significant.",
+        "qgen_sec": 1.45,
+        "agen_sec": 4.88,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c10",
+        "question": "How shall the indentations be oriented when measuring a coating cross-section?",
+        "answer": "The indentations must be positioned so that one of the diagonals sits approximately 90° to the coating substrate interface.",
+        "qgen_sec": 1.44,
+        "agen_sec": 6.23,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c11",
+        "question": "How can the measurement error caused by vibrations during hardness testing be detected?",
+        "answer": "The measurement error caused by vibrations during hardness testing is identified through comparative measurements on a specimen of known hardness nearly equal to that of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.",
+        "qgen_sec": 3.65,
+        "agen_sec": 6.25,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c12",
+        "question": "Why should the orientation of the indentation diagonals be controlled relative to the direction of cold-working?",
+        "answer": "Insufficient information to answer.",
+        "qgen_sec": 5.9,
+        "agen_sec": 2.82,
+        "stem": "Why",
+        "reject_reason": "abstention",
+        "is_abstention": true,
+        "is_grounded": null,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c13",
+        "question": "How is the required thickness determined from the test force and hardness scales?",
+        "answer": "The required thickness is found at the point where the minimum thickness scale intersects a line drawn between the force value on the right-hand scale and the hardness reading on the left-hand scale.",
+        "qgen_sec": 3.89,
+        "agen_sec": 5.68,
+        "stem": "How",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c14",
+        "question": "Why are test coupons a useful tool for plated parts with gold coatings?",
+        "answer": "Test coupons help with electrolyte control on plated parts because the hardness of gold coatings is sensitive to the composition of the plating solution and to all the electroplating variables.",
+        "qgen_sec": 2.65,
+        "agen_sec": 2.86,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c15",
+        "question": "Why must residues from chemical precleaning be completely removed before applying penetrant?",
+        "answer": "Residues from chemical precleaning must be completely removed because they can react with the penetrant and greatly reduce its sensitivity.",
+        "qgen_sec": 5.59,
+        "agen_sec": 5.41,
+        "stem": "Why",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c16",
+        "question": "Why must chemical agents be removed from the surface after precleaning in penetrant testing?",
+        "answer": "Chemical agents require removal after the cleaning process because residues from chemical precleaning can react with the penetrant and greatly reduce its sensitivity.",
+        "qgen_sec": 5.15,
+        "agen_sec": 6.11,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c17",
+        "question": "What designation...?",
+        "answer": "The penetrant testing system comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a) at system sensitivity level 2 carries the designation \"product family ISO 3452-2, IAa Level 2\" when classified using ISO 3452-1 and ISO 3452-2.",
+        "qgen_sec": 6.19,
+        "agen_sec": 4.46,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c18",
+        "question": "What is the allowable range for penetration time in liquid penetrant testing?",
+        "answer": "Penetration time must fall between 5 min and 60 min, and it must not be shorter than the manufacturer's recommended time for the required sensitivity.",
+        "qgen_sec": 3.56,
+        "agen_sec": 3.81,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c19",
+        "question": "What must be measured in a fluorescent-system inspection booth in accordance with ISO 3059?",
+        "answer": "\"In a fluorescent-system inspection booth, the maximum visible light intensity in the booth must be measured in accordance with ISO 3059.\" But begins with a clause echoing.",
+        "qgen_sec": 3.11,
+        "agen_sec": 9.35,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c20",
+        "question": "What inspection aids and assessment techniques may assist a visual inspection?",
+        "answer": "A visual inspection can be supported by aids such as magnification instruments or mirrors. The wipe-off technique (see 8.7.3) may also assist in the assessment.",
+        "qgen_sec": 3.52,
+        "agen_sec": 3.52,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c21",
+        "question": "What information must the test report include for penetrant examination under ISO 3452-1?",
+        "answer": "ISO 3452-1 requires the documentation to state the viewing conditions, the test temperatures, and the test results describing the discontinuities detected, as well as the test location, the date of testing, and the name of the operator.",
+        "qgen_sec": 6.25,
+        "agen_sec": 4.77,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c22",
+        "question": "Which parts require special consideration of penetrant testing product compatibility?",
+        "answer": "\"Parts associated with peroxide rocket fuel, explosive.",
+        "qgen_sec": 4.19,
+        "agen_sec": 11.21,
+        "stem": "Which",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c23",
+        "question": "Why may tests be carried out at more frequent intervals or additional tests performed?",
+        "answer": "Tests may be conducted more often or supplemented with additional ones when necessary to ensure correct processing conditions.",
+        "qgen_sec": 1.8,
+        "agen_sec": 5.44,
+        "stem": "Why",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c24",
+        "question": "For what purpose is indication redevelopment used in liquid penetrant inspection?",
+        "answer": "Indication redevelopment serves to confirm that the initial interpretation is correct — for instance, showing a mark to be a water mark or surface contamination — or to give the inspector additional beneficial information by letting them witness the growth of the indication during the redevelopment time.",
+        "qgen_sec": 4.52,
+        "agen_sec": 13.48,
+        "stem": "For",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c25",
+        "question": "What information about the test supervisor must be included in the test report?",
+        "answer": "The test report must record the test supervisor's name, qualification status, and signature.",
+        "qgen_sec": 4.3,
+        "agen_sec": 3.31,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c26",
+        "question": "What should be differentiated when interpreting indications in non-destructive testing?",
+        "answer": "Indications in non-destructive testing require careful distinction between true indications and spurious or false ones, such as scratches or changes of section.",
+        "qgen_sec": 4.39,
+        "agen_sec": 4.66,
+        "stem": "What",
+        "reject_reason": "ungrounded",
+        "is_abstention": false,
+        "is_grounded": false,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c27",
+        "question": "What is the final development time at which the area is inspected again during penetrant testing?",
+        "answer": "Penetrant testing calls for re-examination of the area at intervals, with the last check performed once development has reached 10 min.",
+        "qgen_sec": 3.75,
+        "agen_sec": 13.67,
+        "stem": "What",
+        "reject_reason": "quality_Q9_weak_required_evidence",
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c28",
+        "question": "What record shall be maintained for each working place?",
+        "answer": "Each working place requires a separate record of the process and control test results.",
+        "qgen_sec": 2.9,
+        "agen_sec": 6.63,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      },
+      {
+        "chain_id": "c29",
+        "question": "What should be checked in the rinse water when using recycled water?",
+        "answer": "The rinse water should be checked for opacity, fluorescence, foam, or coloration, since the presence of any of these can suggest that the treatment system is not functioning effectively.",
+        "qgen_sec": 5.1,
+        "agen_sec": 6.76,
+        "stem": "What",
+        "reject_reason": null,
+        "is_abstention": false,
+        "is_grounded": true,
+        "reframed": false,
+        "error": null
+      }
+    ]
+  },
+  "usage": {
+    "google/gemma-3-27b-it": {
+      "prompt_tokens": 61810,
+      "completion_tokens": 1714,
+      "total_tokens": 63524,
+      "calls_with_usage": 66,
+      "calls_without_usage": 0
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "prompt_tokens": 56992,
+      "completion_tokens": 1571,
+      "total_tokens": 58563,
+      "calls_with_usage": 60,
+      "calls_without_usage": 0
+    },
+    "Qwen/Qwen3-235B-A22B-Instruct-2507": {
+      "prompt_tokens": 74260,
+      "completion_tokens": 1734,
+      "total_tokens": 75994,
+      "calls_with_usage": 71,
+      "calls_without_usage": 0
+    },
+    "deepseek-ai/DeepSeek-V4-Pro": {
+      "prompt_tokens": 69247,
+      "completion_tokens": 1292,
+      "total_tokens": 70539,
+      "calls_with_usage": 67,
+      "calls_without_usage": 0
+    },
+    "moonshotai/Kimi-K3": {
+      "prompt_tokens": 67367,
+      "completion_tokens": 26236,
+      "total_tokens": 93603,
+      "calls_with_usage": 65,
+      "calls_without_usage": 0
+    }
+  },
+  "wall_sec": {
+    "google/gemma-3-27b-it": 19.7,
+    "meta-llama/Llama-3.3-70B-Instruct": 32.3,
+    "Qwen/Qwen3-235B-A22B-Instruct-2507": 12.4,
+    "deepseek-ai/DeepSeek-V4-Pro": 17.3,
+    "moonshotai/Kimi-K3": 62.6
+  }
+}

@@ -1,0 +1,1766 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multi-model Q&amp;A bake-off — 30 questions × 5 models</title>
+<style>
+:root{color-scheme:light dark;
+ --surface:#fcfcfb;--plane:#f9f9f7;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;
+ --grid:#e1e0d9;--line:#c3c2b7;--ring:rgba(11,11,11,.10);
+ --good:#0ca30c;--warn:#fab219;--crit:#d03b3b;
+ --s0:#2a78d6;--s1:#eb6834;--s2:#1baf7a;--s3:#eda100;--s4:#e87ba4;--s5:#008300;}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme=light])){
+ --surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;--muted:#898781;
+ --grid:#2c2c2a;--line:#383835;--ring:rgba(255,255,255,.10);
+ --s0:#3987e5;--s1:#d95926;--s2:#199e70;--s3:#c98500;--s4:#d55181;--s5:#008300;}}
+:root[data-theme=dark]{
+ --surface:#1a1a19;--plane:#0d0d0d;--ink:#fff;--ink2:#c3c2b7;--muted:#898781;
+ --grid:#2c2c2a;--line:#383835;--ring:rgba(255,255,255,.10);
+ --s0:#3987e5;--s1:#d95926;--s2:#199e70;--s3:#c98500;--s4:#d55181;--s5:#008300;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--ink);
+ font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;}
+.wrap{max-width:1500px;margin:0 auto;padding:32px 20px 80px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:19px;margin:0 0 6px}
+h3{font-size:15px;margin:26px 0 4px}
+.sub{color:var(--ink2);margin:0 0 26px}
+.note{color:var(--ink2);font-size:13px;margin:0 0 14px;max-width:78ch}
+code{background:var(--grid);padding:1px 5px;border-radius:4px;font-size:12px}
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:12px;
+ padding:22px;margin-bottom:30px}
+.tablewrap{overflow-x:auto}
+table.sum{border-collapse:collapse;width:100%;font-size:13.5px;min-width:720px}
+table.sum th{text-align:right;color:var(--muted);font-weight:600;font-size:12px;
+ text-transform:uppercase;letter-spacing:.03em;padding:0 10px 8px;
+ border-bottom:1px solid var(--line)}
+table.sum th:first-child{text-align:left}
+table.sum td{padding:10px;border-bottom:1px solid var(--grid)}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+td.mname{font-weight:600}
+.tier{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 12px}
+.lg{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2)}
+.lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.stems{display:flex;flex-direction:column;gap:8px}
+.stemrow{display:grid;grid-template-columns:150px 1fr 70px;gap:12px;align-items:center}
+.stemname{font-size:13px;font-weight:600;text-align:right}
+.stembar{display:flex;height:26px;border-radius:5px;overflow:hidden;gap:2px}
+.stemtop{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.seg{display:flex;align-items:center;justify-content:center;min-width:3px}
+.seglab{font-size:11px;font-weight:600;color:#fff;white-space:nowrap;
+ padding:0 4px;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.s0,i.s0{background:var(--s0)}.s1,i.s1{background:var(--s1)}
+.s2,i.s2{background:var(--s2)}.s3,i.s3{background:var(--s3)}
+.s4,i.s4{background:var(--s4)}.s5,i.s5{background:var(--s5)}
+.block{background:var(--surface);border:1px solid var(--ring);border-radius:12px;
+ padding:18px;margin-bottom:18px}
+.bhead{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.bnum{font-size:20px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.bmeta{font-size:12.5px;color:var(--ink2)}
+.evidence{background:var(--plane);border-left:3px solid var(--line);
+ border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:14px}
+.fact{margin-bottom:8px;font-size:13.5px}
+.fact:last-child{margin-bottom:0}
+.role{display:inline-block;background:var(--grid);color:var(--ink2);font-size:10.5px;
+ text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
+ margin-right:7px;font-weight:600}
+.pg{color:var(--muted);font-size:11.5px;margin-right:7px;font-variant-numeric:tabular-nums}
+.ftext{color:var(--ink2)}
+.grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,1fr);
+ gap:12px;overflow-x:auto;padding-bottom:6px}
+.col{border:1px solid var(--ring);border-radius:9px;padding:12px;background:var(--plane)}
+.col.v-pass{border-left:3px solid var(--good)}
+.col.v-reject{border-left:3px solid var(--warn)}
+.col.v-error{border-left:3px solid var(--crit)}
+.colhead{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+ color:var(--ink2);text-transform:uppercase;letter-spacing:.03em;margin-bottom:9px;
+ padding-bottom:7px;border-bottom:1px solid var(--grid)}
+.dot{width:8px;height:8px;border-radius:50%;margin-left:auto}
+.v-pass .dot{background:var(--good)}.v-reject .dot{background:var(--warn)}
+.v-error .dot{background:var(--crit)}
+.q{font-size:13.5px;font-weight:600;margin-bottom:9px}
+.a{font-size:13px;color:var(--ink2);padding-top:9px;border-top:1px dashed var(--grid)}
+.flag{margin-top:9px;font-size:11px;font-weight:600;color:var(--crit);
+ background:color-mix(in srgb,var(--warn) 16%,transparent);
+ padding:3px 7px;border-radius:4px;display:inline-block}
+.flag.reframe{color:var(--ink2);background:var(--grid)}
+.err{font-size:12.5px;color:var(--crit);font-family:ui-monospace,monospace;
+ word-break:break-word}
+.meta{margin-top:9px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+</style></head>
+<body><div class="wrap">
+<h1>Multi-model Q&amp;A bake-off</h1>
+<p class="sub">30 fact chains from din_iso_3452_1, din_iso_6507_1 · 5 models ·
+generated 2026-08-02 01:39:54<br>
+Every model saw the identical evidence. Only question generation and answer
+generation vary.</p>
+
+    <section class="panel">
+      <h2>Summary</h2>
+      <p class="note">Gate pass = the pair would have survived
+      <code>pipeline._reject_pair_reason</code>, the grounding check and the
+      abstention check. Rejected pairs are still shown below so every model has a
+      value in every row.</p>
+      <div class="tablewrap">
+        <table class="sum">
+          <thead><tr>
+            <th>Model</th><th>Gate pass</th><th>Rejected</th><th>Errors</th>
+            <th>Q words</th><th>A words</th><th>Mean latency</th>
+            <th>Tokens</th><th>Wall</th>
+          </tr></thead>
+          <tbody>
+        <tr>
+          <td class="mname">Gemma 3 27B<span class="tier">~27B small</span></td>
+          <td class="num"><strong>23</strong> / 30</td>
+          <td class="num">7</td>
+          <td class="num">0</td>
+          <td class="num">12.6</td>
+          <td class="num">26.9</td>
+          <td class="num">1.3s</td>
+          <td class="num">63,524</td>
+          <td class="num">19.7s</td>
+        </tr>
+        <tr>
+          <td class="mname">Llama 3.3 70B<span class="tier">70B mid</span></td>
+          <td class="num"><strong>23</strong> / 30</td>
+          <td class="num">7</td>
+          <td class="num">0</td>
+          <td class="num">12.9</td>
+          <td class="num">27.6</td>
+          <td class="num">6.0s</td>
+          <td class="num">58,563</td>
+          <td class="num">32.3s</td>
+        </tr>
+        <tr>
+          <td class="mname">Qwen3 235B-A22B<span class="tier">anchor (current)</span></td>
+          <td class="num"><strong>19</strong> / 30</td>
+          <td class="num">7</td>
+          <td class="num">4</td>
+          <td class="num">14.2</td>
+          <td class="num">23.0</td>
+          <td class="num">2.3s</td>
+          <td class="num">75,994</td>
+          <td class="num">12.4s</td>
+        </tr>
+        <tr>
+          <td class="mname">DeepSeek V4 Pro<span class="tier">frontier open</span></td>
+          <td class="num"><strong>19</strong> / 30</td>
+          <td class="num">8</td>
+          <td class="num">3</td>
+          <td class="num">12.8</td>
+          <td class="num">14.2</td>
+          <td class="num">3.2s</td>
+          <td class="num">70,539</td>
+          <td class="num">17.3s</td>
+        </tr>
+        <tr>
+          <td class="mname">Kimi K3<span class="tier">frontier open</span></td>
+          <td class="num"><strong>19</strong> / 30</td>
+          <td class="num">11</td>
+          <td class="num">0</td>
+          <td class="num">12.8</td>
+          <td class="num">23.2</td>
+          <td class="num">11.0s</td>
+          <td class="num">93,603</td>
+          <td class="num">62.6s</td>
+        </tr></tbody>
+        </table>
+      </div>
+
+      <h3>Question-stem distribution</h3>
+      <p class="note">Which interrogative each model reaches for. A column
+      dominated by one stem is generating a narrow band of question types.</p>
+      <div class="legend"><span class="lg"><i class="s0"></i>What</span><span class="lg"><i class="s1"></i>How</span><span class="lg"><i class="s2"></i>Which</span><span class="lg"><i class="s3"></i>Under</span><span class="lg"><i class="s4"></i>Why</span><span class="lg"><i class="s5"></i>Other</span></div>
+      <div class="stems">
+        <div class="stemrow">
+          <div class="stemname">Gemma 3 27B</div>
+          <div class="stembar"><div class="seg s0" style="width:23.33%" title="What: 7 of 30"><span class="seglab">What 7</span></div><div class="seg s1" style="width:23.33%" title="How: 7 of 30"><span class="seglab">How 7</span></div><div class="seg s3" style="width:20.00%" title="Under: 6 of 30"><span class="seglab">Under 6</span></div><div class="seg s4" style="width:26.67%" title="Why: 8 of 30"><span class="seglab">Why 8</span></div><div class="seg s5" style="width:6.67%" title="Other: 2 of 30"></div></div>
+          <div class="stemtop">Why 27%</div>
+        </div>
+        <div class="stemrow">
+          <div class="stemname">Llama 3.3 70B</div>
+          <div class="stembar"><div class="seg s0" style="width:70.00%" title="What: 21 of 30"><span class="seglab">What 21</span></div><div class="seg s1" style="width:10.00%" title="How: 3 of 30"></div><div class="seg s3" style="width:3.33%" title="Under: 1 of 30"></div><div class="seg s4" style="width:16.67%" title="Why: 5 of 30"><span class="seglab">Why 5</span></div></div>
+          <div class="stemtop">What 70%</div>
+        </div>
+        <div class="stemrow">
+          <div class="stemname">Qwen3 235B-A22B</div>
+          <div class="stembar"><div class="seg s0" style="width:38.46%" title="What: 10 of 26"><span class="seglab">What 10</span></div><div class="seg s1" style="width:15.38%" title="How: 4 of 26"><span class="seglab">How 4</span></div><div class="seg s3" style="width:15.38%" title="Under: 4 of 26"><span class="seglab">Under 4</span></div><div class="seg s4" style="width:30.77%" title="Why: 8 of 26"><span class="seglab">Why 8</span></div></div>
+          <div class="stemtop">What 38%</div>
+        </div>
+        <div class="stemrow">
+          <div class="stemname">DeepSeek V4 Pro</div>
+          <div class="stembar"><div class="seg s0" style="width:29.63%" title="What: 8 of 27"><span class="seglab">What 8</span></div><div class="seg s1" style="width:18.52%" title="How: 5 of 27"><span class="seglab">How 5</span></div><div class="seg s3" style="width:25.93%" title="Under: 7 of 27"><span class="seglab">Under 7</span></div><div class="seg s4" style="width:22.22%" title="Why: 6 of 27"><span class="seglab">Why 6</span></div><div class="seg s5" style="width:3.70%" title="Other: 1 of 27"></div></div>
+          <div class="stemtop">What 30%</div>
+        </div>
+        <div class="stemrow">
+          <div class="stemname">Kimi K3</div>
+          <div class="stembar"><div class="seg s0" style="width:43.33%" title="What: 13 of 30"><span class="seglab">What 13</span></div><div class="seg s1" style="width:16.67%" title="How: 5 of 30"><span class="seglab">How 5</span></div><div class="seg s2" style="width:10.00%" title="Which: 3 of 30"></div><div class="seg s4" style="width:26.67%" title="Why: 8 of 30"><span class="seglab">Why 8</span></div><div class="seg s5" style="width:3.33%" title="Other: 1 of 30"></div></div>
+          <div class="stemtop">What 43%</div>
+        </div></div>
+    </section>
+<h2>All 30 questions</h2>
+<p class="note">Each block shows the source facts, then every model's question and
+answer for those same facts. Left border: green = passed the quality gate,
+amber = generated but rejected, red = the call failed.</p>
+
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">01</span>
+            <span class="bmeta">din_iso_6507_1 · 2-fact chain · edge: mechanism</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.37</span>
+                  <span class="ftext">Historically, the calibration and verification of the machine components has been termed the machine’s Direct Verification and the calibration and verification of the testing machine by reference block measurements its Indirect Verification.</span>
+                </div><div class="fact">
+                  <span class="role">example</span>
+                  <span class="pg">p.39</span>
+                  <span class="ftext">For example, at the National Level, the traceability of an NMI’s primary Vickers hardness standard machine is achieved through a Direct Verification calibration chain since there is no recognized higherlevel hardness reference artefact.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What distinction and traceability method characterize machine calibration at the National Metrology Institute level?</div>
+                  <div class="a">The National Metrology Institute’s primary Vickers hardness standard machine achieves traceability through a Direct Verification calibration chain. This method is used because there is no recognized higher-level hardness reference artefact.</div>
+                  
+                  <div class="meta">1.02s + 0.55s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What mechanism and advantage does Direct Verification provide at the National Level for an NMI&#x27;s Vickers hardness standard machine?</div>
+                  <div class="a">Direct Verification provides a calibration chain for an NMI&#x27;s primary Vickers hardness standard machine. This mechanism achieves traceability at the National Level since there is no recognized higher-level hardness reference artefact.</div>
+                  
+                  <div class="meta">1.72s + 4.0s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What verification mechanism ensures traceability of an NMI’s primary Vickers hardness standard machine at the national level?</div>
+                  <div class="a">The traceability of an NMI’s primary Vickers hardness standard machine at the national level is ensured through a Direct Verification calibration chain.</div>
+                  
+                  <div class="meta">5.44s + 0.52s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">which are terms from S1 and S2. Required anchors include Direct, Verification, Indirect and NMI, Vickers, National Level. Is using Direct/Indirect in question leaking answer?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">7.31s + 5.1s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">02</span>
+            <span class="bmeta">din_iso_6507_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.29</span>
+                  <span class="ftext">C.2 Indenter inspection Experience has shown that a number of initially satisfactory indenters can become defective after use for a comparatively short time.</span>
+                </div><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.29</span>
+                  <span class="ftext">If not, any small defects on the surface rapidly worsen and make the indenter useless.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition does an indenter’s initial satisfactory condition rapidly worsen and become unusable?</div>
+                  <div class="a">An indenter becomes unusable when small imperfections on its surface quickly deteriorate. This happens if the indenter is not maintained properly after a short period of use.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">1.05s + 0.44s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property and practical consequence of indenter defects arise when an indenter becomes defective after brief use?</div>
+                  <div class="a">Indenters can become defective after a short time, and when they do, small defects on their surface rapidly worsen. This worsening makes the indenter useless.</div>
+                  
+                  <div class="meta">1.68s + 0.95s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What happens to an indenter with minor surface defects after short-term use if not inspected?</div>
+                  <div class="a">An indenter with minor surface defects will rapidly deteriorate and become useless after short-term use if not inspected.</div>
+                  
+                  <div class="meta">1.78s + 1.21s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What happens to an indenter when small surface defects develop after brief use?</div>
+                  <div class="a">The indenter rapidly worsens and becomes useless.</div>
+                  
+                  <div class="meta">2.0s + 0.81s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What happens to small surface defects on an initially satisfactory indenter after brief use?</div>
+                  <div class="a">Small defects on an indenter&#x27;s surface rapidly worsen, making the indenter useless.</div>
+                  
+                  <div class="meta">8.03s + 3.97s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">03</span>
+            <span class="bmeta">din_iso_6507_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.29</span>
+                  <span class="ftext">If not, any small defects on the surface rapidly worsen and make the indenter useless.</span>
+                </div><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.29</span>
+                  <span class="ftext">Therefore, — the condition of indenters should be monitored by visually checking the aspect of the indentation on a reference block each day the testing machine is used; — the verification of the indenter is no longer valid when the indenter shows defects; — reground or otherwise repaired indenters shall meet all of the requirements of ISO 6507-2.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition must indenters be regularly inspected and potentially replaced to maintain reliable testing results?</div>
+                  <div class="a">Indenters must be checked daily by visually assessing the indentation’s appearance on a reference block. An indenter’s verification is invalidated when flaws are observed on it.</div>
+                  
+                  <div class="meta">1.03s + 0.5s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property of indenter surface defects and resulting practical consequence for indenter verification necessitate daily visual checks and compliance with ISO 6507-2?</div>
+                  <div class="a">Indenters have surface defects that rapidly worsen, making them useless, and this necessitates daily visual checks. Indenters showing defects are no longer valid for verification and must meet ISO 6507-2 requirements if reground or repaired.</div>
+                  
+                  <div class="meta">1.88s + 1.24s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why must indenters be visually checked daily and meet ISO 6507-2 requirements after regrinding or repair?</div>
+                  <div class="a">Indenters must be visually checked daily because small surface defects rapidly worsen and make the indenter useless, and reground or repaired indenters shall meet all of the requirements of ISO 6507-2.</div>
+                  
+                  <div class="meta">2.64s + 2.4s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What risk from small surface defects on indenters drives daily visual monitoring and ISO 6507-2 requirements for repaired indenters?</div>
+                  <div class="a">Small surface defects on indenters rapidly worsen and render the indenter useless. This risk is what motivates the daily visual checks and the requirement that reground or repaired indenters satisfy ISO 6507-2.</div>
+                  
+                  <div class="meta">7.46s + 6.99s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">04</span>
+            <span class="bmeta">din_iso_6507_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.30</span>
+                  <span class="ftext">Because of this approach, it is important that the individual machine components are operating within the tolerances.</span>
+                </div><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.39</span>
+                  <span class="ftext">If the errors in the individual machine components are significant, then traceability again may not be ensured.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition is traceability not ensured during machine operation in this approach?</div>
+                  <div class="a">Traceability is not ensured when substantial errors exist in the separate machine parts. This outcome occurs because operating within specified limits is important for the individual machine components.</div>
+                  
+                  <div class="meta">1.0s + 0.48s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property of individual machine components and practical consequence for traceability follow when their errors are significant?</div>
+                  <div class="a">Individual machine components have operating errors that are significant, and this leads to traceability not being ensured. When their errors are significant, the practical consequence for traceability is that it may not be ensured.</div>
+                  
+                  <div class="meta">1.65s + 4.08s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition might traceability not be ensured in the welding process due to machine component issues?</div>
+                  <div class="a">Traceability may not be ensured if the errors in the individual machine components are significant.</div>
+                  
+                  <div class="meta">3.03s + 1.89s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why must individual machine components operate within tolerances to maintain traceability?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">4.09s + 0.86s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">why tolerances matter; the answer is traceability. So don&#x27;t mention traceability?</div>
+                  <div class="a">Tolerances on individual machine components must be maintained because significant errors in those components can result in traceability no longer being ensured.</div>
+                  
+                  <div class="meta">7.1s + 17.88s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">05</span>
+            <span class="bmeta">din_iso_6507_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.44</span>
+                  <span class="ftext">Vibration represents a serious source of error irrespective of the force applied, but the effects are far more evident with small forces.</span>
+                </div><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.44</span>
+                  <span class="ftext">In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How does vibration influence hardness values, particularly when measuring with small forces?</div>
+                  <div class="a">Vibration leads to diminished hardness readings overall. Its impact on measurements is especially noticeable when utilizing minimal force during testing.</div>
+                  
+                  <div class="meta">1.0s + 0.78s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property of hardness measurement and practical consequence of vibration are associated with small forces in accordance with ISO 6507-3?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">1.75s + 3.25s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">How does vibration affect hardness measurement results under small forces?</div>
+                  <div class="a">Vibration causes lower hardness values, and its effects are far more evident with small forces.</div>
+                  
+                  <div class="meta">1.96s + 1.13s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">How does vibration affect measured hardness values under small forces?</div>
+                  <div class="a">Vibration produces lower hardness readings, and this error becomes far more pronounced when the applied force is small.</div>
+                  <div class="flag reframe">reframed</div>
+                  <div class="meta">4.39s + 8.95s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">06</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.32</span>
+                  <span class="ftext">The result of the measurement can be reported in two ways: — as Xcorr, where the measurement value, x, is corrected for the measurement bias, b, calculated according to Formula (D.3): X x b U corr M = − ( )± 1 (D.3) — or as Xucorr, where the measurement value, x, is not corrected for the measurement bias, b, and the expanded uncertainty, U, is increased by the absolute value of the bias according to Formula (D.4): X x U b ucorr M = ± + [ ] 1 (D.4) When method M1 is used, it can also be appropriate to include additional uncertainty contributions within the RSS term relating to the value of b employed.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How is the expanded uncertainty adjusted when a measurement value is not corrected for bias?</div>
+                  <div class="a">Xucorr has an expanded uncertainty, U, that is increased by the absolute value of the bias, b. This adjustment is calculated using Formula (D.4): X x U b ucorr M = ± + [ ] 1.</div>
+                  
+                  <div class="meta">0.83s + 0.7s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What does the Xcorr measurement result correct for?</div>
+                  <div class="a">Xcorr corrects for the measurement bias, b. The correction is calculated according to Formula (D.3).</div>
+                  
+                  <div class="meta">5.09s + 0.63s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">How does reporting Xcorr adjust the measurement value for systematic bias?</div>
+                  <div class="a">Reporting Xcorr adjusts the measurement value by subtracting the measurement bias, b, from the measurement value, x, according to Formula (D.3).</div>
+                  
+                  <div class="meta">2.57s + 1.15s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What are the two ways the measurement result can be reported?</div>
+                  <div class="a">As Xcorr, where the measured value is adjusted for bias, or as Xucorr, where the measured value remains unadjusted and the expanded uncertainty is enlarged by the absolute bias.</div>
+                  
+                  <div class="meta">1.96s + 4.73s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">How can a measurement result be reported when accounting for measurement bias?</div>
+                  <div class="a">A measurement result can be reported.</div>
+                  <div class="flag">rejected: tautological_pair</div>
+                  <div class="meta">4.81s + 8.86s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">07</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">consequence</span>
+                  <span class="pg">p.30</span>
+                  <span class="ftext">These tolerances, therefore, incorporate a contribution due to the uncertainty of the hardness measurement and it would be inappropriate to make any further allowance for this uncertainty by, for example, reducing the specified tolerance by the estimated uncertainty of the hardness measurement.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why should further allowance not be made for the uncertainty of the hardness measurement?</div>
+                  <div class="a">These tolerances already include the contribution from hardness measurement uncertainty, so reducing the specified tolerance based on estimated uncertainty would be inappropriate. Further adjustment is unnecessary because the existing tolerances account for this uncertainty.</div>
+                  <div class="flag">rejected: quality_Q7_bad_fact_fragment</div>
+                  <div class="meta">0.3s + 0.82s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Why would making a further allowance for the uncertainty of the hardness measurement be inappropriate?</div>
+                  <div class="a">The tolerances incorporate a contribution due to the uncertainty of the hardness measurement. Making a further allowance for this uncertainty would be inappropriate because it would be duplicating a contribution already accounted for in the tolerances.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.8s + 12.82s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why should no further allowance be made for the uncertainty of hardness measurements in specified tolerances?</div>
+                  <div class="a">The specified tolerances already incorporate a contribution due to the uncertainty of the hardness measurement, making any further allowance for this uncertainty inappropriate.</div>
+                  <div class="flag">rejected: quality_Q7_bad_fact_fragment</div>
+                  <div class="meta">0.82s + 1.01s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why is it inappropriate to reduce the specified tolerance by the estimated measurement uncertainty?</div>
+                  <div class="a">The specified tolerances already include a contribution from the hardness measurement uncertainty.</div>
+                  <div class="flag">rejected: quality_Q1_deictic_no_antecedent</div>
+                  <div class="meta">1.29s + 0.86s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why is it inappropriate to reduce the specified hardness tolerance by the estimated measurement uncertainty?</div>
+                  <div class="a">The specified hardness tolerances already incorporate a contribution due to the uncertainty of the hardness measurement, so making any further allowance for that uncertainty would be inappropriate.</div>
+                  <div class="flag">rejected: quality_Q1_deictic_no_antecedent</div>
+                  <div class="meta">3.46s + 4.38s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">08</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.28</span>
+                  <span class="ftext">Table C.1 — Maximum permissible percent HV bias Mean diagonal length, d mm Maximum permissible percent HV bias, brel,of the testing machine ± %HV 0,02 ≤ d &lt; 0,14 0,21/ d + 1,5 0,14 ≤ d ≤ 1,400 3 DIN EN ISO 6507-1:2024-01 EN ISO 6507-1:2023 (E) 20 NOTE The criteria specified in this document for the performance of the testing machine have been developed and refined over a significant period of time.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How does the maximum permissible percent HV bias change with mean diagonal length?</div>
+                  <div class="a">Table C.1 shows that the maximum permissible percent HV bias is equal to 0.21 divided by the mean diagonal length plus 1.5 when the mean diagonal length is between 0.02 and 0.14 mm. For mean diagonal lengths between 0.14 and 1,400 mm, the maximum permissible percent HV bias is 3.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.33s + 1.6s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What is the maximum permissible percent HV bias for a testing machine?</div>
+                  <div class="a">The testing machine has a maximum permissible percent HV bias of ± %HV, which is determined by the formulas 0,21/ d + 1,5 for 0,02 ≤ d &lt; 0,14 and 3 for 0,14 ≤ d ≤ 1,400.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.4s + 2.49s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What is the maximum permissible percent HV bias for a mean diagonal length between 0.02 mm and 0.14 mm?</div>
+                  <div class="a">For a mean diagonal length between 0.02 mm and 0.14 mm, the maximum permissible percent HV bias is given by the expression 0.21/d + 1.5.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.51s + 1.75s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What is the maximum permissible percent HV bias for a mean diagonal length of 0.14 mm or greater?</div>
+                  <div class="a">For mean diagonal lengths from 0.14 mm up to and including 1.400 mm, the maximum permissible percent HV bias of the testing machine is ±3 %HV.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">1.04s + 2.27s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What maximum permissible percent HV bias does ISO 6507-1 specify for the testing machine?</div>
+                  <div class="a">ISO 6507-1 sets the allowable HV bias of the testing machine at 0.21/d + 1.5 %HV for mean diagonal lengths d from 0.02 mm up to but not including 0.14 mm, and at 3 %HV for diagonals from 0.14 mm up to 1.400 mm.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">4.34s + 3.16s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">09</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">example</span>
+                  <span class="pg">p.13</span>
+                  <span class="ftext">For undated references, the latest edition of the referenced document (including any amendments) applies.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what circumstances does the latest edition of a referenced document apply?</div>
+                  <div class="a">The latest edition of a referenced document is applicable when the reference lacks a date. This applies to the document itself, as well as any revisions made to it.</div>
+                  
+                  <div class="meta">0.28s + 1.47s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What applies when a reference is undated?</div>
+                  <div class="a">The referenced document&#x27;s latest edition, including any amendments, applies. This includes the application of any updates to the document.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.33s + 10.55s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What applies when a reference is undated?</div>
+                  <div class="a">For undated references, the latest edition of the referenced document, including any amendments, applies.</div>
+                  
+                  <div class="meta">0.41s + 1.39s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition does the latest edition of a referenced document apply?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">1.61s + 1.12s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Which edition of a referenced document applies when the reference is undated?</div>
+                  <div class="a">The latest edition of the referenced document, including any amendments, applies for undated references.</div>
+                  
+                  <div class="meta">2.07s + 6.89s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">10</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">exception</span>
+                  <span class="pg">p.39</span>
+                  <span class="ftext">At the same time, however, the specified components of the calibration machine should be calibrated on a frequent basis to ensure that offsetting errors are not significant.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the components of a calibration machine be calibrated frequently?</div>
+                  <div class="a">The specified components of the calibration machine should be calibrated frequently to ensure offsetting errors do not become substantial.</div>
+                  
+                  <div class="meta">0.64s + 0.81s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the components of the calibration machine be calibrated frequently?</div>
+                  <div class="a">The components of the calibration machine should be calibrated frequently to ensure that offsetting errors are not significant. Calibration on a frequent basis is necessary for this purpose.</div>
+                  
+                  <div class="meta">0.41s + 0.77s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the specified components of the calibration machine be calibrated frequently?</div>
+                  <div class="a">The specified components of the calibration machine require frequent calibration to prevent significant offsetting errors.</div>
+                  
+                  <div class="meta">0.4s + 1.68s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why should the specified components of the calibration machine be calibrated on a frequent basis?</div>
+                  <div class="a">To prevent offsetting errors from becoming significant.</div>
+                  
+                  <div class="meta">1.34s + 2.16s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why should the specified components of a calibration machine be calibrated frequently?</div>
+                  <div class="a">The specified components of a calibration machine require frequent calibration in order to ensure that offsetting errors do not become significant.</div>
+                  
+                  <div class="meta">1.45s + 4.88s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">11</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.44</span>
+                  <span class="ftext">H.3.4 Indentation orientation and spacing when measuring a coating cross-section When testing a cross-section of the coating, the indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition should indentations be oriented when measuring a coating cross-section?</div>
+                  <div class="a">H.3.4 Indentations should be oriented with one of their diagonals roughly perpendicular to the boundary between the coating and the material it covers.</div>
+                  
+                  <div class="meta">1.08s + 0.65s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">How shall indentations be oriented when measuring a coating cross-section?</div>
+                  <div class="a">H.3.4 indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface. This orientation is required when testing a cross-section of the coating.</div>
+                  
+                  <div class="meta">0.46s + 9.8s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition shall one of the diagonals of an indentation be oriented at approximately 90° to the coating substrate interface?</div>
+                  <div class="a">Indentations shall be oriented such that one of the diagonals is approximately 90° to the coating substrate interface when measuring a coating cross-section.</div>
+                  
+                  <div class="meta">1.19s + 1.26s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition shall one diagonal of an indentation be oriented approximately 90° to the coating-substrate interface?</div>
+                  <div class="a">When testing a coating cross-section.</div>
+                  
+                  <div class="meta">1.38s + 0.98s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">How shall the indentations be oriented when measuring a coating cross-section?</div>
+                  <div class="a">The indentations must be positioned so that one of the diagonals sits approximately 90° to the coating substrate interface.</div>
+                  
+                  <div class="meta">1.44s + 6.23s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">12</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.44</span>
+                  <span class="ftext">In general, lower hardness values are obtained if vibrations are present. This source of error can be detected by comparative measurements on a specimen of known hardness nearly equal to the hardness of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition are lower hardness values typically obtained during a measurement?</div>
+                  <div class="a">Lower hardness values are generally obtained when vibrations are present. This error can be identified through comparisons with a standard sample possessing a known hardness close to that of the material being tested.</div>
+                  
+                  <div class="meta">0.39s + 1.15s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition are lower hardness values obtained?</div>
+                  <div class="a">Lower hardness values are obtained when vibrations are present.</div>
+                  
+                  <div class="meta">0.36s + 0.34s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition can vibrations affect hardness measurement results?</div>
+                  <div class="a">Lower hardness values may result when vibrations are present during measurement. This effect can be identified by performing comparative tests on a reference specimen with known hardness similar to the test surface, such as a block calibrated to ISO 6507-3.</div>
+                  
+                  <div class="meta">0.76s + 2.11s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition are lower hardness values obtained?</div>
+                  <div class="a">Lower hardness values are obtained when vibrations are present.</div>
+                  
+                  <div class="meta">1.02s + 0.98s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">How can the measurement error caused by vibrations during hardness testing be detected?</div>
+                  <div class="a">The measurement error caused by vibrations during hardness testing is identified through comparative measurements on a specimen of known hardness nearly equal to that of the test surface, such as hardness reference blocks calibrated in accordance with ISO 6507-3.</div>
+                  
+                  <div class="meta">3.65s + 6.25s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">13</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">consequence</span>
+                  <span class="pg">p.18</span>
+                  <span class="ftext">Therefore, where possible, the indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why orient the diagonals of indentation approximately 45° to the direction of cold-working?</div>
+                  <div class="a">Indentation should be oriented so its diagonals are approximately 45° to the direction of cold-working to achieve this alignment when feasible.</div>
+                  
+                  <div class="meta">0.53s + 0.55s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the indentation be made with diagonals oriented at a specific angle to the direction of cold-working?</div>
+                  <div class="a">Indentation should be made so that the diagonals are oriented in plane at approximately 45° to the direction of cold-working. This orientation is recommended where possible.</div>
+                  
+                  <div class="meta">0.62s + 0.79s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the indentation be made with diagonals oriented at approximately 45° to the direction of cold-working?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">0.8s + 0.61s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why should the indentation diagonals be oriented at approximately 45° to the cold-working direction?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">1.16s + 0.7s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why should the orientation of the indentation diagonals be controlled relative to the direction of cold-working?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">5.9s + 2.82s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">14</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.23</span>
+                  <span class="ftext">The required thickness is given by the point of intersection of the minimum thickness scale and a line (shown dotted in the example in Figure A.2) joining the test force (right-hand scale) with the hardness (left-hand scale).</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How does the required thickness relate to the test force and hardness values?</div>
+                  <div class="a">The required thickness is determined where the minimum thickness scale intersects a line connecting the test force and the hardness.</div>
+                  
+                  <div class="meta">0.35s + 0.6s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">How is the required thickness determined from the test force and hardness?</div>
+                  <div class="a">The required thickness is determined by the point of intersection of the minimum thickness scale and a line joining the test force with the hardness. This line connects the test force on the right-hand scale with the hardness on the left-hand scale.</div>
+                  
+                  <div class="meta">0.74s + 1.0s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">How is the required thickness determined using the minimum thickness scale and a line connecting test force with hardness?</div>
+                  <div class="a">The required thickness is determined by the point of intersection between the minimum thickness scale and a line joining the test force on the right-hand scale with the hardness on the left-hand scale.</div>
+                  
+                  <div class="meta">1.48s + 0.74s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">How is the required thickness determined from the hardness and test force scales?</div>
+                  <div class="a">The required thickness is found at the crossing of the minimum thickness scale and a dotted line connecting the hardness value on the left-hand scale with the test force on the right-hand scale.</div>
+                  
+                  <div class="meta">1.22s + 2.15s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">How is the required thickness determined from the test force and hardness scales?</div>
+                  <div class="a">The required thickness is found at the point where the minimum thickness scale intersects a line drawn between the force value on the right-hand scale and the hardness reading on the left-hand scale.</div>
+                  
+                  <div class="meta">3.89s + 5.68s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">15</span>
+            <span class="bmeta">din_iso_6507_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">example</span>
+                  <span class="pg">p.44</span>
+                  <span class="ftext">In the case of plated parts, the test coupons may serve as a useful tool for electrolyte control, particularly in the case of coatings such as gold for which the hardness is sensitive to the composition of the plating solution and to all the electroplating variables.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">For what purpose can test coupons be useful when evaluating plated parts?</div>
+                  <div class="a">Test coupons can be a helpful instrument for managing the electrolyte, especially with coatings like gold. The hardness of gold is affected by the makeup of the plating solution and all factors involved in electroplating.</div>
+                  
+                  <div class="meta">0.56s + 0.63s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What purpose do test coupons serve in the case of plated parts?</div>
+                  <div class="a">Test coupons serve as a useful tool for electrolyte control in the case of plated parts. They are particularly useful for coatings such as gold, where hardness is sensitive to the composition of the plating solution and electroplating variables.</div>
+                  
+                  <div class="meta">0.4s + 8.84s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why may test coupons serve as a useful tool for electrolyte control in the case of plated parts?</div>
+                  <div class="a">Test coupons may serve as a useful tool for electrolyte control in the case of plated parts because the hardness of coatings such as gold is sensitive to the composition of the plating solution and to all electroplating variables.</div>
+                  
+                  <div class="meta">0.82s + 0.76s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">For what purpose may test coupons serve in the case of plated parts with composition-sensitive coatings such as gold?</div>
+                  <div class="a">Test coupons may assist with electrolyte control, especially for coatings like gold whose hardness depends on the plating solution composition and electroplating variables.</div>
+                  
+                  <div class="meta">1.49s + 1.0s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why are test coupons a useful tool for plated parts with gold coatings?</div>
+                  <div class="a">Test coupons help with electrolyte control on plated parts because the hardness of gold coatings is sensitive to the composition of the plating solution and to all the electroplating variables.</div>
+                  
+                  <div class="meta">2.65s + 2.86s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">16</span>
+            <span class="bmeta">din_iso_3452_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.14</span>
+                  <span class="ftext">Precleaning shall ensure that the test surface is free from residues and that it allows the penetrant to enter any discontinuity.</span>
+                </div><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.14</span>
+                  <span class="ftext">Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What effect can residues from chemical precleaning have on penetrant sensitivity during discontinuity detection?</div>
+                  <div class="a">Residues from chemical precleaning processes can substantially lower the ability of a penetrant to detect flaws. This occurs because they may interact with the penetrant itself.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.58s + 0.53s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property of precleaning and practical consequence of residue reaction must be considered when applying penetrant?</div>
+                  <div class="a">Precleaning has the property of ensuring a residue-free test surface, and the practical consequence of residue reaction is that it can greatly reduce the sensitivity of the penetrant.</div>
+                  
+                  <div class="meta">0.56s + 7.69s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What property of chemical precleaning residues and consequence for penetrant performance must be considered during surface preparation?</div>
+                  <div class="a">Chemical precleaning residues can react with a penetrant, which greatly reduces its sensitivity. Therefore, ensuring the test surface is free from such residues is essential for effective penetrant performance.</div>
+                  
+                  <div class="meta">1.16s + 0.93s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why must residues from chemical precleaning be completely removed before applying penetrant?</div>
+                  <div class="a">Residues from chemical precleaning must be completely removed because they can react with the penetrant and greatly reduce its sensitivity.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">5.59s + 5.41s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">17</span>
+            <span class="bmeta">din_iso_3452_1 · 2-fact chain · edge: causal</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.14</span>
+                  <span class="ftext">Residues from chemical precleaning processes can react with a penetrant and greatly reduce its sensitivity.</span>
+                </div><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.14</span>
+                  <span class="ftext">Therefore, chemical agents shall be removed from the surface under examination, after the cleaning process, using suitable cleaning methods.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why is removal of residues from chemical precleaning necessary for accurate penetrant inspection?</div>
+                  <div class="a">Residues from chemical precleaning can diminish a penetrant’s ability to detect flaws. Consequently, chemical agents must be taken off the surface being inspected with appropriate cleaning techniques.</div>
+                  
+                  <div class="meta">0.47s + 0.56s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What property of residues from chemical precleaning processes and resulting practical consequence of removing chemical agents affect penetrant sensitivity?</div>
+                  <div class="a">Residues from chemical precleaning processes have the property of reacting with a penetrant, which reduces its sensitivity. Removing chemical agents from the surface under examination helps maintain the sensitivity of the penetrant.</div>
+                  
+                  <div class="meta">0.6s + 0.97s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why must residues from chemical precleaning processes be removed before penetrant testing?</div>
+                  <div class="a">Residues from chemical precleaning processes must be removed before penetrant testing because they can react with a penetrant and greatly reduce its sensitivity. Therefore, chemical agents are removed using suitable cleaning methods after the cleaning process.</div>
+                  
+                  <div class="meta">0.88s + 0.93s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Why must chemical agents be removed from the surface after chemical precleaning in penetrant testing?</div>
+                  <div class="a">Chemical residues left by precleaning can interact with the penetrant and significantly lower its sensitivity.</div>
+                  
+                  <div class="meta">1.3s + 2.57s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why must chemical agents be removed from the surface after precleaning in penetrant testing?</div>
+                  <div class="a">Chemical agents require removal after the cleaning process because residues from chemical precleaning can react with the penetrant and greatly reduce its sensitivity.</div>
+                  
+                  <div class="meta">5.15s + 6.11s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">18</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.13</span>
+                  <span class="ftext">EXAMPLE A product family comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a), and having a system sensitivity of level 2 gives the following penetrant testing system designation when using ISO 3452-1 and ISO 3452-2: product family ISO 3452-2, IAa Level 2.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What penetrant testing system designation results from a level 2 system sensitivity?</div>
+                  <div class="a">product family ISO 3452-2, IAa Level 2 is the designation for a system with a level 2 sensitivity. This designation results when using ISO 3452-1 and ISO 3452-2 with a fluorescent penetrant, water as the remover, and a dry-powder developer.</div>
+                  
+                  <div class="meta">0.35s + 0.92s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What designation system does ISO 3452-1 and ISO 3452-2 use for penetrant testing?</div>
+                  <div class="a">ISO 3452-1 and ISO 3452-2 use the product family designation system, which includes the penetrant type, remover type, and developer type, along with the system sensitivity level, as in the example &quot;product family ISO 3452-2, IAa Level 2&quot;.</div>
+                  
+                  <div class="meta">0.58s + 1.3s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">How is a penetrant testing system designated when using ISO 3452-1 and ISO 3452-2?</div>
+                  <div class="a">A penetrant testing system is designated as product family ISO 3452-2, IAa Level 2.</div>
+                  
+                  <div class="meta">1.34s + 1.18s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What designation...?</div>
+                  <div class="a">The penetrant testing system comprising a fluorescent penetrant (I), water as the excess penetrant remover (A), and a dry-powder developer (a) at system sensitivity level 2 carries the designation &quot;product family ISO 3452-2, IAa Level 2&quot; when classified using ISO 3452-1 and ISO 3452-2.</div>
+                  
+                  <div class="meta">6.19s + 4.46s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">19</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">constraint</span>
+                  <span class="pg">p.15</span>
+                  <span class="ftext">The penetration time shall be between 5 min and 60 min and shall not be less than the manufacturer&#x27;s recommended time for the required sensitivity.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What range defines the acceptable penetration time for a test?</div>
+                  <div class="a">The penetration time must fall between 5 minutes and 60 minutes, and it cannot be shorter than what the producer suggests for the needed sensitivity.</div>
+                  
+                  <div class="meta">0.37s + 0.47s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What is the required range for the penetration time?</div>
+                  <div class="a">The penetration time shall be between 5 min and 60 min. It must also not be less than the manufacturer&#x27;s recommended time for the required sensitivity.</div>
+                  
+                  <div class="meta">8.84s + 7.42s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What is the required range for penetration time in relation to sensitivity?</div>
+                  <div class="a">The penetration time must be between 5 minutes and 60 minutes and not less than the manufacturer&#x27;s recommended time for the required sensitivity.</div>
+                  
+                  <div class="meta">0.58s + 0.55s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What is the required range for penetration time?</div>
+                  <div class="a">The penetration time must fall within 5 minutes to 60 minutes and must equal or exceed the manufacturer&#x27;s recommended time for the needed sensitivity.</div>
+                  
+                  <div class="meta">1.1s + 1.43s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What is the allowable range for penetration time in liquid penetrant testing?</div>
+                  <div class="a">Penetration time must fall between 5 min and 60 min, and it must not be shorter than the manufacturer&#x27;s recommended time for the required sensitivity.</div>
+                  
+                  <div class="meta">3.56s + 3.81s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">20</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.27</span>
+                  <span class="ftext">B.3.11 Visible light intensity in inspection booth (fluorescent systems) Measure, in accordance with ISO 3059, the maximum visible light intensity in the booth.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How should visible light intensity be measured in an inspection booth with fluorescent systems?</div>
+                  <div class="a">ISO 3059 details the method for measuring the greatest visible light intensity within the booth.</div>
+                  
+                  <div class="meta">0.29s + 0.32s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What standard does the measurement of visible light intensity in an inspection booth follow?</div>
+                  <div class="a">The measurement of visible light intensity in an inspection booth follows ISO 3059. This standard is used for measuring the maximum visible light intensity in the booth.</div>
+                  
+                  <div class="meta">12.52s + 0.77s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What must be measured in the inspection booth for fluorescent systems according to ISO 3059?</div>
+                  <div class="a">The maximum visible light intensity must be measured in the inspection booth for fluorescent systems according to ISO 3059.</div>
+                  
+                  <div class="meta">0.57s + 0.59s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">How is the maximum visible light intensity in a fluorescent inspection booth measured?</div>
+                  <div class="a">ISO 3059 specifies the procedure for measuring the maximum visible light intensity in the booth.</div>
+                  
+                  <div class="meta">0.96s + 1.3s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What must be measured in a fluorescent-system inspection booth in accordance with ISO 3059?</div>
+                  <div class="a">&quot;In a fluorescent-system inspection booth, the maximum visible light intensity in the booth must be measured in accordance with ISO 3059.&quot; But begins with a clause echoing.</div>
+                  
+                  <div class="meta">3.11s + 9.35s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">21</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">example</span>
+                  <span class="pg">p.18</span>
+                  <span class="ftext">Inspection aids such as magnification instruments or mirrors can be used. Assessment by the wipe-off technique (see 8.7.3) may assist the inspection.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How can magnification instruments or mirrors assist in performing an inspection?</div>
+                  <div class="a">Inspection aids, including magnifying devices and reflective surfaces, are permissible for use during examination. These tools can be employed to help with the inspection process.</div>
+                  
+                  <div class="meta">0.37s + 1.16s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What inspection aids can be used to assist the inspection?</div>
+                  <div class="a">Inspection aids, such as magnification instruments or mirrors, can be used. Assessment by the wipe-off technique may also assist the inspection.</div>
+                  
+                  <div class="meta">12.2s + 0.68s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">How can inspection be assisted when using magnification instruments or mirrors?</div>
+                  <div class="a">Inspection can be assisted by using the wipe-off technique when employing magnification instruments or mirrors.</div>
+                  
+                  <div class="meta">0.36s + 0.59s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What inspection aids may be used to assist the assessment?</div>
+                  <div class="a">Magnification instruments or mirrors can be used.</div>
+                  
+                  <div class="meta">1.29s + 1.33s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What inspection aids and assessment techniques may assist a visual inspection?</div>
+                  <div class="a">A visual inspection can be supported by aids such as magnification instruments or mirrors. The wipe-off technique (see 8.7.3) may also assist in the assessment.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">3.52s + 3.52s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">22</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">exception</span>
+                  <span class="pg">p.20</span>
+                  <span class="ftext">DIN EN ISO 3452-1:2022-02 16 EN ISO 3452-1:2021 (E) f) viewing conditions; g) test temperatures; h) test results (description of discontinuities detected); i) test location, date of testing, name of the operator; Annex A (normative) Main stages of standard penetrant examination The sequence of operations to be followed is illustrated for the general case (except form f and g) by Figure A.1.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What does Annex A of DIN EN ISO 3452-1:2022-02 illustrate for standard penetrant examination?</div>
+                  <div class="a">DIN EN ISO 3452-1:2022-02 illustrates the sequence of operations to be followed for the general case of standard penetrant examination, excluding viewing conditions and test temperatures, by Figure A.1.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">0.71s + 0.93s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What information must the test results include according to DIN EN ISO 3452-1?</div>
+                  <div class="a">DIN EN ISO 3452-1 requires test results to include a description of discontinuities detected.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">12.15s + 0.59s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What must be recorded regarding test results in a standard penetrant examination?</div>
+                  <div class="a">Test results must include a description of discontinuities detected.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.76s + 0.35s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What information must the test report include for penetrant examination under ISO 3452-1?</div>
+                  <div class="a">ISO 3452-1 requires the documentation to state the viewing conditions, the test temperatures, and the test results describing the discontinuities detected, as well as the test location, the date of testing, and the name of the operator.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">6.25s + 4.77s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">23</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.14</span>
+                  <span class="ftext">7.3.5 For parts associated with peroxide rocket fuel, explosive stores (these include all items containing explosive propellant, initiating or pyrotechnic materials), oxygen equipment or nuclear applications, the compatibility of penetrant testing products shall be given special consideration.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">For what parts does penetrant testing require special consideration of product compatibility?</div>
+                  <div class="a">Parts linked to peroxide rocket fuel, explosive stores, oxygen equipment, or nuclear applications necessitate careful evaluation of penetrant testing product compatibility.</div>
+                  
+                  <div class="meta">0.32s + 0.85s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What applications require special consideration for penetrant testing product compatibility?</div>
+                  <div class="a">Nuclear applications require special consideration for penetrant testing product compatibility, as do applications associated with peroxide rocket fuel, explosive stores, oxygen equipment.</div>
+                  
+                  <div class="meta">4.93s + 7.33s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why must the compatibility of penetrant testing products be specially considered for parts associated with peroxide rocket fuel?</div>
+                  <div class="a">Parts associated with peroxide rocket fuel require special consideration for the compatibility of penetrant testing products due to the hazardous nature of the materials involved, such as explosive propellants or pyrotechnic substances.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.7s + 0.94s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition must the compatibility of penetrant testing products receive special consideration?</div>
+                  <div class="a">When parts are associated with peroxide rocket fuel, explosive stores, oxygen equipment, or nuclear applications.</div>
+                  
+                  <div class="meta">0.89s + 1.48s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Which parts require special consideration of penetrant testing product compatibility?</div>
+                  <div class="a">&quot;Parts associated with peroxide rocket fuel, explosive.</div>
+                  
+                  <div class="meta">4.19s + 11.21s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">24</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.23</span>
+                  <span class="ftext">The tests may be carried out at more frequent intervals or additional tests carried out if necessary to ensure correct processing conditions.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why might tests be carried out at intervals more frequent than typically scheduled?</div>
+                  <div class="a">The tests may be performed more often, or extra tests may be done, to confirm that processing is happening as it should.</div>
+                  
+                  <div class="meta">0.32s + 0.74s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Why may the tests be carried out at more frequent intervals?</div>
+                  <div class="a">The tests may be carried out at more frequent intervals to ensure correct processing conditions. They are done this way if necessary.</div>
+                  
+                  <div class="meta">11.78s + 0.62s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition may tests be carried out more frequently?</div>
+                  <div class="a">Tests may be carried out more frequently if necessary to ensure correct processing conditions.</div>
+                  
+                  <div class="meta">0.66s + 0.97s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition may tests be carried out at more frequent intervals?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">1.14s + 1.14s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">Why may tests be carried out at more frequent intervals or additional tests performed?</div>
+                  <div class="a">Tests may be conducted more often or supplemented with additional ones when necessary to ensure correct processing conditions.</div>
+                  
+                  <div class="meta">1.8s + 5.44s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">25</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">constraint</span>
+                  <span class="pg">p.18</span>
+                  <span class="ftext">Where no indication redevelops, this shall not be the sole evidence for assessing an indication as spurious or non-relevant but can be used to demonstrate that the initial interpretation is correct (e.g. water mark or surface contamination) or to allow the inspector to obtain additional beneficial information by witnessing the growth of the indication during the redevelopment time.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why can the absence of redeveloping indications be used during flaw evaluation?</div>
+                  <div class="a">The lack of reappearance of a marking doesn&#x27;t, by itself, prove a flaw is unimportant, but it can support a prior judgment or help an examiner gather more useful details by observing how the marking changes over time.</div>
+                  
+                  <div class="meta">0.28s + 1.69s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">Why can the absence of redeveloped indication be used during assessment?</div>
+                  <div class="a">The absence of redeveloped indication can be used to demonstrate that the initial interpretation is correct or to obtain additional beneficial information. It allows the inspector to witness the growth of the indication during the redevelopment time.</div>
+                  
+                  <div class="meta">0.42s + 1.23s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why should the absence of indication redeveloping not be the sole evidence for assessing an indication as spurious?</div>
+                  <div class="a">The absence of indication redeveloping should not be the sole evidence for assessing an indication as spurious because it can instead serve to confirm the accuracy of the initial interpretation or provide useful information about the indication&#x27;s behavior during redevelopment time.</div>
+                  
+                  <div class="meta">0.84s + 1.08s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition can redevelopment be used to confirm an initial interpretation?</div>
+                  <div class="a">Redevelopment can confirm an initial interpretation when no indication redevelops.</div>
+                  
+                  <div class="meta">1.14s + 1.17s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">For what purpose is indication redevelopment used in liquid penetrant inspection?</div>
+                  <div class="a">Indication redevelopment serves to confirm that the initial interpretation is correct — for instance, showing a mark to be a water mark or surface contamination — or to give the inspector additional beneficial information by letting them witness the growth of the indication during the redevelopment time.</div>
+                  
+                  <div class="meta">4.52s + 13.48s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">26</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">definition</span>
+                  <span class="pg">p.19</span>
+                  <span class="ftext">j) name, qualification status and signature of the test supervisor.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What information must be included regarding the test supervisor?</div>
+                  <div class="a">The test supervisor must have their name, qualification status, and signature included.</div>
+                  
+                  <div class="meta">0.77s + 0.27s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What information must be provided for the test supervisor?</div>
+                  <div class="a">The test supervisor&#x27;s information must include their name, qualification status, and signature.</div>
+                  
+                  <div class="meta">0.32s + 0.52s</div>
+              </div>
+              <div class="col v-error">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                <div class="err">qgen returned empty</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What information must the test supervisor provide on the test report?</div>
+                  <div class="a">Insufficient information to answer.</div>
+                  <div class="flag">rejected: abstention</div>
+                  <div class="meta">1.21s + 0.76s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What information about the test supervisor must be included in the test report?</div>
+                  <div class="a">The test report must record the test supervisor&#x27;s name, qualification status, and signature.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">4.3s + 3.31s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">27</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">example</span>
+                  <span class="pg">p.18</span>
+                  <span class="ftext">Care should be taken to differentiate between true indications and spurious or false indications, such as scratches or changes of section.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why is it important to differentiate between true and false indications?</div>
+                  <div class="a">True indications must be distinguished from misleading signals like abrasions or alterations in cross-section. This differentiation is necessary to avoid misinterpreting evidence.</div>
+                  <div class="flag">rejected: quality_Q1_deictic_no_antecedent</div>
+                  <div class="meta">0.26s + 0.9s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What differentiates true indications from spurious or false indications?</div>
+                  <div class="a">Care differentiates between true indications and spurious or false indications, such as scratches or changes of section. This differentiation is necessary to distinguish them.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.37s + 0.94s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">Why should care be taken when interpreting indications during inspection?</div>
+                  <div class="a">Care should be taken when interpreting indications during inspection to differentiate between true indications and spurious or false indications, such as scratches or changes of section.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">0.41s + 0.48s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What should be distinguished from true indications during inspection?</div>
+                  <div class="a">Spurious or false indications, such as scratches or changes of section, should be distinguished from true indications.</div>
+                  
+                  <div class="meta">0.96s + 1.04s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What should be differentiated when interpreting indications in non-destructive testing?</div>
+                  <div class="a">Indications in non-destructive testing require careful distinction between true indications and spurious or false ones, such as scratches or changes of section.</div>
+                  <div class="flag">rejected: ungrounded</div>
+                  <div class="meta">4.39s + 4.66s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">28</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">exception</span>
+                  <span class="pg">p.19</span>
+                  <span class="ftext">A type III penetrant used as a fluorescent penetrant (UV-A is used) is recorded similar to type I. d) test procedure; e) deviations (if any) from the test procedure; DIN EN ISO 3452-1:2022-02 15 EN ISO 3452-1:2021 (E) c) apply further developer — use a light coating of wet solvent-based (non-aqueous) developer, applied from a distance where the material dries almost immediately on contact, unless otherwise agreed; d) inspect the area immediately after the application of the developer; e) inspect again at intervals and at the final development time of 10 min.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-reject">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">How shall a type III fluorescent penetrant be recorded during testing?</div>
+                  <div class="a">A type III penetrant, when used as a fluorescent penetrant, is recorded similarly to a type I penetrant. The test procedure and any deviations from it should be recorded.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">0.29s + 0.52s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">How is a type III fluorescent penetrant applied and inspected according to DIN EN ISO 3452-1?</div>
+                  <div class="a">Type III fluorescent penetrant is applied and inspected by first applying a light coating of wet solvent-based developer from a distance where the material dries almost immediately on contact, then inspecting the area immediately after application, and again at intervals and at the final development time of 10 min. The test procedure for type III penetrant is recorded similar to type I.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">0.66s + 2.15s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">How should a wet solvent-based non-aqueous developer be applied during penetrant testing?</div>
+                  <div class="a">A wet solvent-based non-aqueous developer should be applied as a light coating from a distance where the material dries almost immediately on contact, unless otherwise agreed.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">0.72s + 0.5s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">How long after developer application does the final inspection occur in fluorescent penetrant testing?</div>
+                  <div class="a">In fluorescent penetrant testing, the final inspection occurs at a development time of 10 minutes.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">1.13s + 0.93s</div>
+              </div>
+              <div class="col v-reject">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What is the final development time at which the area is inspected again during penetrant testing?</div>
+                  <div class="a">Penetrant testing calls for re-examination of the area at intervals, with the last check performed once development has reached 10 min.</div>
+                  <div class="flag">rejected: quality_Q9_weak_required_evidence</div>
+                  <div class="meta">3.75s + 13.67s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">29</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">rule</span>
+                  <span class="pg">p.23</span>
+                  <span class="ftext">B.2 Records A separate record of the process and control test results for each working place shall be maintained.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">What documentation must be maintained for each working place’s process and control test results?</div>
+                  <div class="a">B.2 Records states a distinct record of process and control test results must be kept for each work area.</div>
+                  
+                  <div class="meta">0.3s + 0.36s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What records shall be maintained for each working place?</div>
+                  <div class="a">B.2 Records shall be maintained for a separate record of the process and control test results. A separate record of the process and control test results for each working place shall be maintained.</div>
+                  
+                  <div class="meta">0.36s + 1.06s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What must be maintained for each working place regarding process and control test results?</div>
+                  <div class="a">A separate record of the process and control test results must be maintained for each working place.</div>
+                  
+                  <div class="meta">0.57s + 0.36s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">What records shall be maintained for each working place?</div>
+                  <div class="a">A separate record of the process and control test results shall be maintained.</div>
+                  
+                  <div class="meta">0.93s + 1.02s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What record shall be maintained for each working place?</div>
+                  <div class="a">Each working place requires a separate record of the process and control test results.</div>
+                  
+                  <div class="meta">2.9s + 6.63s</div>
+              </div></div>
+        </article>
+        <article class="block">
+          <header class="bhead">
+            <span class="bnum">30</span>
+            <span class="bmeta">din_iso_3452_1 · single fact</span>
+          </header>
+          <div class="evidence"><div class="fact">
+                  <span class="role">condition</span>
+                  <span class="pg">p.26</span>
+                  <span class="ftext">B.3.4 Rinse water appearance When using recycled water, check for opacity, fluorescence, foam or coloration of the rinse water, the presence of any of which can suggest that the treatment system is not functioning effectively.</span>
+                </div></div>
+          <div class="grid">
+              <div class="col v-pass">
+                <div class="colhead">Gemma 3 27B<span class="dot"></span></div>
+                
+                  <div class="q">Why check the appearance of rinse water when using recycled water?</div>
+                  <div class="a">Rinse water appearance should be checked for opacity, fluorescence, foam, or coloration because these characteristics can indicate that the water treatment system is not working as expected.</div>
+                  
+                  <div class="meta">0.26s + 0.45s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Llama 3.3 70B<span class="dot"></span></div>
+                
+                  <div class="q">What suggests that a treatment system is not functioning effectively?</div>
+                  <div class="a">Rinse water appearance suggests that a treatment system is not functioning effectively, specifically the presence of opacity, fluorescence, foam, or coloration.</div>
+                  
+                  <div class="meta">0.38s + 1.29s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Qwen3 235B-A22B<span class="dot"></span></div>
+                
+                  <div class="q">What indicates ineffective treatment system performance when using recycled water?</div>
+                  <div class="a">Opacity, fluorescence, foam, or coloration in the rinse water indicates ineffective treatment system performance when using recycled water.</div>
+                  
+                  <div class="meta">0.44s + 0.52s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">DeepSeek V4 Pro<span class="dot"></span></div>
+                
+                  <div class="q">Under what condition does the appearance of rinse water indicate ineffective treatment system function?</div>
+                  <div class="a">When using recycled water, opacity, fluorescence, foam, or coloration in the rinse water suggests that the treatment system is not functioning effectively.</div>
+                  
+                  <div class="meta">0.9s + 1.11s</div>
+              </div>
+              <div class="col v-pass">
+                <div class="colhead">Kimi K3<span class="dot"></span></div>
+                
+                  <div class="q">What should be checked in the rinse water when using recycled water?</div>
+                  <div class="a">The rinse water should be checked for opacity, fluorescence, foam, or coloration, since the presence of any of these can suggest that the treatment system is not functioning effectively.</div>
+                  
+                  <div class="meta">5.1s + 6.76s</div>
+              </div></div>
+        </article>
+</div></body></html>
