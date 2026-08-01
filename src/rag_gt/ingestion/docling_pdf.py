@@ -163,6 +163,16 @@ def extract_pdf_docling_with_layout(
                 source_sha1=source_sha1,
                 cursor=cursor,
             )
+            # convert() can succeed while silently dropping pages; repair them.
+            page_text, page_units = _repair_dropped_pages(
+                page_text,
+                page_units,
+                source=source,
+                doc_id=doc_id,
+                source_sha1=source_sha1,
+                page_range=page_range,
+                cursor=cursor,
+            )
             if page_text:
                 if parts:
                     parts.append("\n\n")
@@ -214,6 +224,113 @@ def extract_pdf_docling_with_layout(
     )
     _validate_min_text(source, text, min_text_chars, min_text_file_ratio)
     return text, units
+
+
+def _effective_pages(units: List[SourceUnit]) -> List[int]:
+    """Page number per unit, carrying the last seen page forward.
+
+    Docling emits some items without provenance (page_no is None). Those
+    belong with whatever preceded them in reading order, so they inherit the
+    previous unit's page rather than sorting to the front.
+    """
+    out: List[int] = []
+    last = 0
+    for u in units:
+        if u.page_no is not None:
+            last = u.page_no
+        out.append(last)
+    return out
+
+
+def _reserialize(units: List[SourceUnit], cursor: int) -> tuple[str, List[SourceUnit]]:
+    """Join an ordered unit list into text, reassigning char offsets from cursor.
+
+    Mirrors the "\\n\\n" joining used when Docling items are first serialized,
+    so a repaired range is indistinguishable in shape from an intact one.
+    """
+    parts: List[str] = []
+    out: List[SourceUnit] = []
+    local = 0
+    for u in units:
+        if parts:
+            parts.append("\n\n")
+            local += 2
+        start = cursor + local
+        parts.append(u.text)
+        local += len(u.text)
+        out.append(
+            SourceUnit(
+                doc_id=u.doc_id,
+                char_start=start,
+                char_end=cursor + local,
+                text=u.text,
+                page_no=u.page_no,
+                block_id=u.block_id,
+                paragraph_id=u.paragraph_id,
+                bboxes=u.bboxes,
+                source_path=u.source_path,
+                source_sha1=u.source_sha1,
+                extractor=u.extractor,
+            )
+        )
+    return "".join(parts), out
+
+
+def _repair_dropped_pages(
+    page_text: str,
+    page_units: List[SourceUnit],
+    *,
+    source: Path,
+    doc_id: str,
+    source_sha1: str,
+    page_range: Tuple[int, int],
+    cursor: int,
+) -> tuple[str, List[SourceUnit]]:
+    """Fill in pages Docling dropped without raising.
+
+    Docling swallows some native-layer failures (notably ``std::bad_alloc``
+    during preprocessing) and returns a *partial* document: the convert call
+    succeeds, so the caller's ``except`` never fires, and the affected pages
+    disappear with no signal. Observed on DIN EN ISO 13919-1 (pages 18-20,
+    non-deterministically 17-20) where the dropped pages held the imperfection
+    classification tables -- i.e. the document's entire technical substance.
+
+    Any page in the range that produced no unit is re-extracted with the
+    PyMuPDF layout path and spliced back in page order. Genuinely blank pages
+    yield nothing and are therefore self-correcting.
+    """
+    start, end = page_range
+    covered = {u.page_no for u in page_units if u.page_no is not None}
+    missing = [p for p in range(start, end + 1) if p not in covered]
+    if not missing:
+        return page_text, page_units
+
+    from rag_gt.ingestion.pdf import extract_pdf_with_layout
+
+    recovered: List[SourceUnit] = []
+    for p in missing:
+        try:
+            _, u = extract_pdf_with_layout(
+                str(source), doc_id=doc_id, source_sha1=source_sha1, page_range=(p, p)
+            )
+        except Exception as e:  # noqa: BLE001
+            logger.warning(f"[Docling] page {p} repair failed: {type(e).__name__}: {e}")
+            continue
+        recovered.extend(u)
+
+    if not recovered:
+        return page_text, page_units
+
+    logger.warning(
+        f"[Docling] {source.name}: pages {missing} produced no units "
+        f"(silent Docling drop); recovered {len(recovered)} unit(s) via PyMuPDF"
+    )
+    merged = page_units + recovered
+    keys = _effective_pages(page_units) + [
+        u.page_no if u.page_no is not None else 0 for u in recovered
+    ]
+    order = sorted(range(len(merged)), key=lambda i: keys[i])
+    return _reserialize([merged[i] for i in order], cursor)
 
 
 def _page_ranges(source: Path, page_range_size: int) -> list[Tuple[int, int]]:

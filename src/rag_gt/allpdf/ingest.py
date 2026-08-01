@@ -182,7 +182,14 @@ def _slice_pdf(path: str, page_range: Tuple[int, int]) -> str:
     start, end = page_range
     cache_dir = Path("data/cache/allpdf_slices")
     cache_dir.mkdir(parents=True, exist_ok=True)
-    key = hashlib.sha1(f"{path}:{start}:{end}".encode()).hexdigest()[:16]
+    # Key on file identity, not just its path: the same filename can hold a
+    # different document later (corrected re-export, overwritten temp name).
+    # Without size+mtime the cache would serve the previous document's pages
+    # and ground truth would be built from a file no longer on disk.
+    st = Path(path).stat()
+    key = hashlib.sha1(
+        f"{path}:{start}:{end}:{st.st_size}:{st.st_mtime_ns}".encode()
+    ).hexdigest()[:16]
     out_path = cache_dir / f"slice_{key}.pdf"
     if out_path.exists():
         return str(out_path)
