@@ -174,11 +174,39 @@ Frontend tests: `npm test` inside `production/frontend` or `studio/core-ui`.
   `git worktree add .worktrees/<name> -b <branch>`.
 - Nothing gets pushed to GitHub without an explicit per-instance request.
 
-### Known gotcha: worktrees and Python imports
+### ⚠ Known trap: which `rag_gt` actually runs
 
-`python -m rag_gt` inside a worktree runs the **main repo's** editable
-install, not the worktree's code. Set `PYTHONPATH` to the worktree's `src/`
-and verify with `rag_gt.__file__` before trusting any result.
+**All three repos install a package called `rag_gt`, but only one editable
+install can win per Python environment.** Today that winner is the monorepo:
+
+```
+$ cd "D:/Mini Thesis/Rag_web_pipeline"
+$ python -c "import rag_gt; print(rag_gt.__file__)"
+D:/Mini Thesis/RAG_GT/src/rag_gt/__init__.py     # <-- NOT this repo!
+```
+
+So running a spinout's CLI from inside that spinout silently executes the
+**monorepo's** engine. This is not theoretical — it bit a live run on
+2026-08-01: the monorepo's older `get_llm()` ignores `RAG_LLM_CHAT_MODEL`
+and falls back to a hardcoded `gpt-4o`, so every LLM call 404'd against
+Nebius (`The model 'gpt-4o' does not exist`) even though `.env` was correct.
+The failure looked like a config bug and was actually the wrong code.
+
+Neither spinout currently has a `venv/` despite their READMEs telling you to
+make one — that is why the system-wide install wins.
+
+**Always verify before trusting a run:**
+
+```bash
+PYTHONPATH="D:/Mini Thesis/Rag_web_pipeline/src" python -c "import rag_gt; print(rag_gt.__file__)"
+```
+
+and prefix every command for that repo with the same `PYTHONPATH`. The
+permanent fix is a per-repo venv (`python -m venv venv` + `pip install -e .`),
+which is what the READMEs assume.
+
+The same trap applies to git worktrees: `python -m rag_gt` inside a worktree
+runs the main repo's install, not the worktree's code.
 
 ---
 
