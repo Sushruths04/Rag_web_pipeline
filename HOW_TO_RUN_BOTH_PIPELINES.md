@@ -8,7 +8,7 @@ Two separate repos, same vendored engine (`src/rag_gt/`), different front ends.
 |---|---|---|
 | Path | `D:\Mini Thesis\Rag_web_pipeline` | `D:\Mini Thesis\Rag_software_stack` |
 | What it is | Always-on web app, fixed 19-stage pipeline | Drag-and-drop block/node graph builder |
-| Raw PDFs → report in one go? | **Yes** — drag a folder onto the UI | **No** — canvas starts from already-chunked/extracted docs |
+| Raw PDFs → report in one go? | **Yes** — drag a folder onto the UI | **Per document** — `pdf_source` accepts a raw PDF; no folder batching yet |
 | Backend port | 8017 | 8100 |
 | Frontend port | 5183 | 5190 |
 | Needs Rust? | No | Only for the native desktop window |
@@ -119,21 +119,22 @@ npm run dev:desktop
 This auto-spawns the Python backend — no separate uvicorn terminal. Needs the
 Rust toolchain.
 
-### The honest gap: raw PDFs
+### Raw PDFs — now supported (2026-08-01)
 
-The `pdf_source` block (raw PDF → chunks+facts) is **still a stub**. Only some
-of the 33 block types are wired to the real engine; the rest are marked
-`(planned)` in the UI. So the canvas starts from already-chunked, already
-fact-extracted documents.
+`pdf_source` used to be a stub returning a hardcoded `{"pages": 46}`, so the
+canvas could only start from already-chunked documents. It now runs the
+engine's Stage 0–2 front end (profile → ingest → chunk) and emits both a
+`pdf` and a `chunks` artifact, so a graph can start from a raw PDF and feed
+`chunker` / `fact_extract_llm` directly.
 
-To get PDFs into it, run the engine CLI first, then import the output:
+Set the block's `path` param to your PDF. Verified on
+`DIN EN ISO 13919-1-ENG.pdf`: 24/24 pages, `docling_table` backend,
+`table_aware` chunking, 44 chunks (11 containing markdown tables), 44/44
+carrying bboxes.
 
-```bash
-rag-gt-generate --input_dir my_pdfs/ --output my_pdfs_gt.jsonl
-```
-
-That's **one command per document set**, not one click for a batch. If you
-want raw-PDF-in/report-out with no wiring, use `Rag_web_pipeline` instead.
+Other blocks remain stubs and are marked `(planned)` in the UI. For
+raw-PDF-in/report-out over a whole folder with no wiring at all,
+`Rag_web_pipeline` is still the simpler choice.
 
 ---
 
@@ -147,11 +148,12 @@ python -m pytest tests/ -q
 
 Expected as of 2026-08-01:
 
-| Repo | Result |
-|---|---|
-| `Rag_web_pipeline` | 768 passed, 4 skipped |
-| `Rag_software_stack` | 846 passed, 4 skipped |
-| `RAG_GT` (monorepo) | 540 passed, 1 skipped |
+| Repo | command | Result |
+|---|---|---|
+| `Rag_web_pipeline` | `pytest tests/` | 784 passed, 4 skipped |
+| `Rag_software_stack` | `pytest tests/ studio/backend/tests` | 1003 passed, 5 skipped |
+| `Rag_software_stack` | `cargo test` (in `studio/desktop/src-tauri`) | 8 passed |
+| `RAG_GT` (monorepo) | `pytest tests/` | 556 passed, 1 skipped |
 
 Anything less means something regressed — don't ignore it.
 
@@ -268,15 +270,10 @@ pipeline loudly if this class of silent truncation ever returns.
 
 ## 7. Known open items
 
-- `pdf_source` block in GRAFT Studio is still a stub — this is the only thing
-  standing between it and the same one-click batch experience the web
-  pipeline has.
-- `cargo test` fails out of the box in `Rag_software_stack`: Tauri's
-  `build.rs` validates a gitignored `python-runtime` path even for tests. CI
-  works around it with a placeholder dir; `main` is untouched.
-- Meta-key naming mismatch (`n_qa`/`n_multihop` vs `count`/`multi_hop`) makes
-  QA-gen nodes show "? QA" in the canvas. Cosmetic, data underneath is fine.
-- `.env.example` in `Rag_web_pipeline` still lists Ollama vars that a code
-  comment says were removed.
-- `_slice_pdf` writes to the relative path `data/cache/allpdf_slices`, so the
-  cache lands wherever you launched from. Run CLI commands from the repo root.
+All items previously listed here were fixed on 2026-08-01 — see
+`ARCHITECTURE_AND_FIXES_20260801.md`. What remains:
+
+- Neither spinout has a `venv`, so CLI runs need the `PYTHONPATH` prefix
+  above. A per-repo venv is the permanent fix.
+- Most Studio blocks beyond the wired spine are still stubs, marked
+  `(planned)` in the UI.

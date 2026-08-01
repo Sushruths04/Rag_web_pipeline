@@ -179,17 +179,21 @@ distribution is degenerate (nothing between 0.75 and 0.99), the sub-threshold
 band genuinely mixes table content with real boilerplate, and lowering the
 floor admits junk without recovering the tables.
 
-### Docling `bad_alloc` on pages 19–20
+### ~~Docling `bad_alloc` on pages 19–20~~ — FIXED
 
-A native-layer failure inside Docling's preprocessor on this specific
-document. The page-repair covers it, so no data is lost, but those pages come
-back via PyMuPDF without table structure. Fixing it properly means either a
-Docling upgrade or per-page conversion with a smaller memory footprint.
+The bad_alloc is memory pressure from the 20-page batch, not a property of
+the pages: they convert cleanly on their own. Recovery is now Docling-first
+(retry the dropped page narrowly, PyMuPDF only if that also fails), so those
+pages come back **with** table structure. Result on the real PDF:
+`extractors={"docling": 212}` — zero PyMuPDF fallback — and table units
+spanning pages 12–20.
 
-### `pdf_source` block in GRAFT Studio
+### ~~`pdf_source` block in GRAFT Studio~~ — FIXED
 
-Still a stub. It is the only thing between the Studio and the same one-click
-batch experience the web pipeline already has.
+Now runs the engine's Stage 0–2 front end and emits `pdf` + `chunks`, so a
+Studio graph can start from a raw PDF. Verified through the live registry on
+DIN EN ISO 13919-1: 24/24 pages, 44 chunks, 11 with markdown tables, 44/44
+with bboxes.
 
 ### `din_iso_3834_1` stage-5 failure is legitimate
 
