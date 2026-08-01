@@ -180,7 +180,14 @@ def _slice_pdf(path: str, page_range: Tuple[int, int]) -> str:
     import fitz
 
     start, end = page_range
-    cache_dir = Path("data/cache/allpdf_slices")
+    # Anchor to the repo's data dir rather than a bare relative path: a bare
+    # "data/cache/..." lands wherever the process happened to be launched from,
+    # so the same slice got re-cut per working directory and stray data/ trees
+    # appeared next to whatever script was run. data_dir() also honours
+    # RAG_GT_DATA_DIR, matching the rest of the codebase.
+    from rag_gt.core.config import data_dir
+
+    cache_dir = data_dir() / "cache" / "allpdf_slices"
     cache_dir.mkdir(parents=True, exist_ok=True)
     # Key on file identity, not just its path: the same filename can hold a
     # different document later (corrected re-export, overwritten temp name).

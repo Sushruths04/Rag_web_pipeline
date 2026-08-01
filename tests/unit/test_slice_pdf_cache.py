@@ -36,9 +36,10 @@ def _text_of(path) -> str:
 
 
 @pytest.fixture(autouse=True)
-def _run_in_tmp(tmp_path, monkeypatch):
-    # _slice_pdf writes to the relative path data/cache/allpdf_slices.
-    monkeypatch.chdir(tmp_path)
+def _isolated_cache(tmp_path, monkeypatch):
+    # _slice_pdf caches under data_dir(), which honours RAG_GT_DATA_DIR.
+    # Point it at tmp_path so tests never touch the repo's real cache.
+    monkeypatch.setenv("RAG_GT_DATA_DIR", str(tmp_path / "data"))
 
 
 def test_replacing_the_source_pdf_does_not_serve_a_stale_slice(tmp_path):
@@ -76,3 +77,23 @@ def test_different_ranges_get_different_slices(tmp_path):
     assert one != two
     assert "one" in _text_of(one)
     assert "two" in _text_of(two)
+
+
+def test_cache_location_is_independent_of_the_working_directory(tmp_path, monkeypatch):
+    """A bare relative "data/cache/..." scattered caches per launch directory."""
+    src = tmp_path / "doc.pdf"
+    _write_pdf(src, ["only page"])
+
+    elsewhere = tmp_path / "some" / "other" / "cwd"
+    elsewhere.mkdir(parents=True)
+
+    monkeypatch.chdir(tmp_path)
+    from_here = _slice_pdf(str(src), (1, 1))
+
+    monkeypatch.chdir(elsewhere)
+    from_there = _slice_pdf(str(src), (1, 1))
+
+    assert from_here == from_there, (
+        "slice cache moved with the working directory; the same slice would be "
+        "re-cut per launch dir and stray data/ trees would accumulate"
+    )
