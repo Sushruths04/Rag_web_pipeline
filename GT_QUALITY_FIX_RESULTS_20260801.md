@@ -70,27 +70,27 @@ extraction masked the Stage-3 fixes.
 | `din_iso_4136` | 12 | 10 | PASS |
 | `din_iso_13919_1` | **0** | **30** | PASS |
 | `din_iso_3452_1` | 152 | 147 | PASS |
-| `din_iso_6507_1` | 282 | 241 | PASS |
-| **total** | **453** | **434** | |
+| `din_iso_6507_1` | 282 | 245 | PASS |
+| **total** | **453** | **438** | |
 
-Multi-hop pairs: **4 → 61**. The web path defaulted `multihop_chains` to 0 and
+Multi-hop pairs: **4 → 58**. The web path defaulted `multihop_chains` to 0 and
 never exposed it.
 
-## Quality, all 434 pairs
+## Quality, all 438 pairs
 
 ```
-CLEAN (no defect flag):  77.6%     (was 56.7%)
-FLAGGED:                 22.4%     (was 43.3%)
+CLEAN (no defect flag):  78.1%     (was 56.7%)
+FLAGGED:                 21.9%     (was 43.3%)
 ```
 
 | defect | before | after |
 |---|---|---|
-| `mangled_fact_text` | 13.5% | 2.3% |
+| `mangled_fact_text` | 13.5% | 1.1% |
 | `unresolved_anaphora` | 7.7% | **0%** |
-| `watermark_bleed` | 6.4% | 2.1% |
+| `watermark_bleed` | 6.4% | 0.7% |
 | `near_duplicate` | 4.0% | 1.6% |
 | `tautological_answer` | 2.2% | 0.7% |
-| deferring facts | 8.4% | 4.6% |
+| deferring facts | 8.4% | 6.2% |
 
 Gates firing in the `6507_1` run log — every one of these was 0 before, because
 the code was unreachable from this pipeline:
@@ -129,7 +129,7 @@ short prose standards.
 
 ## Still open
 
-- 6.0% `meta_document_fact`, 4.6% deferring. The detector is a conjunction with
+- 6.4% `meta_document_fact`, 6.2% deferring. The detector is a conjunction with
   deliberate escape hatches: precise, not exhaustive.
 - 9.7% `near_tautological` under the audit's loose 80–95% overlap band, which
   is stricter than the shipped gate. Some of those are acceptable pairs.
