@@ -402,6 +402,19 @@ def has_unresolved_deictic_opener(text: str) -> bool:
     return bool(_ISO_DEICTIC_OPENER_RE.match(t))
 
 
+# A watermark block that straddles a chunk boundary leaves its tail orphaned in
+# the next chunk with no "Company name:" label to match, e.g.
+#     "Aachen University Universitätsbiblioth.. 8.7.4 Recording Recording may be
+#      done by any adequate method, ..."
+# The PDF truncates the field value mid-word and marks it with a DOUBLE dot.
+# That is a reliable signature: prose never opens with a phrase ending in "..".
+# Three dots (a real ellipsis) are excluded, and the fragment must be short and
+# contain no sentence-ending punctuation of its own.
+_TRUNCATED_FIELD_PREFIX_RE = re.compile(
+    r"^[^.!?\n]{1,70}?(?<!\.)\.\.(?!\.)\s+",
+)
+
+
 def strip_running_artifacts(text: str) -> str:
     """Remove controlled-copy / running-header watermarks glued into a fact.
 
@@ -416,6 +429,7 @@ def strip_running_artifacts(text: str) -> str:
     # legitimate phrase in IT/security standards (ISO 27001 etc.) and stripping
     # it would corrupt real content.
     cleaned = PRINTED_COPY_WATERMARK_RE.sub(" ", text)
+    cleaned = _TRUNCATED_FIELD_PREFIX_RE.sub("", cleaned.lstrip())
     return " ".join(cleaned.split())
 # Reasoning-model chain-of-thought captured as a fact (defence-in-depth net for
 # the Stage-3 canonical_form_rewrite guard). Restricted to model-meta phrasings

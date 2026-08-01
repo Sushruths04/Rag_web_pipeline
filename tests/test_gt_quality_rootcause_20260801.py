@@ -132,6 +132,39 @@ class TestRunningArtifactStripping:
         assert "printout" not in out.lower()
         assert "differences between the lengths of the two diagonals" in out
 
+    # Observed in the post-fix live rerun: when the watermark block straddles a
+    # chunk boundary its tail is orphaned in the next chunk with no field label
+    # left to match. The PDF truncates the value mid-word and marks it "..".
+    ORPHAN_TAILS = [
+        (
+            "Aachen University Universitätsbiblioth.. 8.7.4 Recording Recording "
+            "may be done by any adequate method.",
+            "8.7.4 Recording",
+        ),
+        (
+            "Aachen University Universitätsbiblioth.. Table B.1 — Process and "
+            "control tests Control tests Subclause Frequency",
+            "Table B.1",
+        ),
+    ]
+
+    @pytest.mark.parametrize("raw,expected_start", ORPHAN_TAILS)
+    def test_orphaned_watermark_tail_is_stripped(self, raw, expected_start):
+        out = strip_running_artifacts(raw)
+        assert "Aachen" not in out
+        assert out.startswith(expected_start), out[:60]
+
+    @pytest.mark.parametrize("text", [
+        # A real ellipsis must survive.
+        "The sequence continues ... until the test is complete and recorded.",
+        # A sentence that merely contains a period early on is untouched.
+        "See 6.3. The magnification shall be selected so the diagonal is clear.",
+        # No doubled dot at all.
+        "The developer shall be applied uniformly to the whole test surface.",
+    ])
+    def test_normal_prose_is_not_truncated(self, text):
+        assert strip_running_artifacts(text) == " ".join(text.split())
+
     def test_legitimate_company_name_prose_is_not_destroyed(self):
         """Negative control: 'company name' is a real phrase in some standards."""
         real = (
