@@ -185,15 +185,23 @@ $ python -c "import rag_gt; print(rag_gt.__file__)"
 D:/Mini Thesis/RAG_GT/src/rag_gt/__init__.py     # <-- NOT this repo!
 ```
 
-So running a spinout's CLI from inside that spinout silently executes the
+So running a spinout's **CLI** from inside that spinout silently executes the
 **monorepo's** engine. This is not theoretical — it bit a live run on
 2026-08-01: the monorepo's older `get_llm()` ignores `RAG_LLM_CHAT_MODEL`
 and falls back to a hardcoded `gpt-4o`, so every LLM call 404'd against
 Nebius (`The model 'gpt-4o' does not exist`) even though `.env` was correct.
 The failure looked like a config bug and was actually the wrong code.
 
+**The web app and the Studio backend are NOT affected.** Both already insert
+their own `src/` at the front of `sys.path` before importing the engine —
+`_bootstrap()` in `production/backend/app/stages/graft.py`, and the module
+header of `studio/backend/adapters_live.py`. Verified on 2026-08-01: after
+`_bootstrap()`, `rag_gt` resolves to `Rag_web_pipeline/src/rag_gt`. So the
+drag-and-drop UI flow is safe; it is the bare `python -m rag_gt...` command
+line that picks up the wrong copy.
+
 Neither spinout currently has a `venv/` despite their READMEs telling you to
-make one — that is why the system-wide install wins.
+make one — that is why the system-wide install wins for the CLI.
 
 **Always verify before trusting a run:**
 
