@@ -48,6 +48,28 @@ Stage 4 had already starved it to 7 facts. The root cause is the table-row
 fact representation gap documented in
 `STAGE4_SELF_CONTAINMENT_FINDING_20260801.md`, not the graph stage.
 
+## After the table fix: `din_iso_13919_1` goes FAIL → PASS
+
+The run above exposed the real root cause (Docling tables were being dropped
+entirely — see `ARCHITECTURE_AND_FIXES_20260801.md` §2 Bug 3). After fixing
+that, the same document was rerun live with the same flags:
+
+| | before | after |
+|---|---|---|
+| chunks | 27 | **42** |
+| facts extracted | 95 | **182** |
+| facts kept by Stage 4 | 7 (7%) | **73 (40%)** |
+| candidate pairs | 12 | **219** |
+| edges accepted | 0 | **10** |
+| QA pairs | 6 | **39** |
+| stage4_filter | FAIL | **PASS** |
+| stage5_graph | FAIL | **PASS** |
+| **pipeline** | **FAIL** | **PASS** |
+
+Every gate green. The Stage-4 self-containment collapse that looked like a
+filter problem resolved itself once the tables arrived structured instead of
+as a flat PyMuPDF cell stream — **no threshold was changed.**
+
 ## Third bug found by inspecting the run output: missing bbox provenance
 
 The run surfaced a provenance gap that no test covered. Checking bboxes on

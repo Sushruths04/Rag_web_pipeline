@@ -94,8 +94,23 @@ existing project guidance: fix garbage at the Stage-3/4 source, not with
 output-stage band-aids, and do not remove fragment facts globally because
 multi-hop chains need them.
 
-## Status
+## Status — RESOLVED (same day)
 
-- Ingestion: **fixed and verified** (8/24 → 24/24 pages).
-- Stage 4: **diagnosed, not fixed.** Needs the table-row fact representation
-  above. No threshold was touched.
+The diagnosis above was right about *where* the problem was but wrong about
+*what* it needed. The tables were not arriving as fragments because the fact
+model lacked a table-row representation — they were arriving as fragments
+because **Docling's tables were being dropped entirely** and PyMuPDF was
+refilling those pages as a flat cell stream. See
+`ARCHITECTURE_AND_FIXES_20260801.md` §2 Bug 3.
+
+Once tables are serialized with `export_to_markdown()`, the same document
+reruns to `Pipeline PASS`: Stage 4 goes from `in=95 kept=7 FAIL` to
+`in=182 kept=73 PASS`, and QA pairs from 6 to 39.
+
+**No threshold was ever changed.** The instinct not to tune
+`_RELAXED_MIN_SELF_CONTAINMENT` was correct: the filter was doing its job on
+genuinely malformed input, and the fix belonged three stages upstream.
+
+Row-against-header templating (the idea sketched above) is still worth doing
+to make table facts read more naturally, but it is now an improvement rather
+than a blocker.
