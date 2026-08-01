@@ -190,8 +190,8 @@ is still at the pre-fix commit in both repos.
 
 | Repo | local `main` | `origin/main` |
 |---|---|---|
-| `Rag_web_pipeline` | `a693f69` | `9684c40` (behind) |
-| `Rag_software_stack` | `19584aa` | `b1fa245` (behind) |
+| `Rag_web_pipeline` | `8df38e8` | `9684c40` (behind) |
+| `Rag_software_stack` | `3184094` | `b1fa245` (behind) |
 | `RAG_GT` | `e04de22` on `hop-redesign-singlemulti-20260622` | n/a |
 
 To publish, when you want to: `git push origin main` in each repo.
