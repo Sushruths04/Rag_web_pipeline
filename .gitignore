@@ -16,9 +16,24 @@ dist/
 
 # Runtime data produced by the app
 production/data/runs/
+production/data/*.db
+production/data/*.db-shm
+production/data/*.db-wal
+production/backend/data/
 data/cache/
 data/logs/
 datacache/
+
+# Pipeline run outputs, checkpoints and LLM caches — regenerable, and large.
+# These were accidentally committed on 2026-08-01 by a `git add -A`; the
+# commit was rebuilt rather than pushed.
+data/reruns/
+data/reruns_postfix/
+data/gt_output/
+data/gt_input_*/
+
+# Source standards are licensed documents — keep them out of version control
+rag_files/
 
 # OS
 .DS_Store
