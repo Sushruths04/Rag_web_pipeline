@@ -190,36 +190,76 @@ class _FakeItem:
 
 class _FakeDoc:
     """Mimics a partial Docling document: only page 1 survived."""
+    def __init__(self, pages=(1,)):
+        self._pages = pages
+
     def iterate_items(self):
-        yield _FakeItem("page one body", 1), 0
+        for p in self._pages:
+            yield _FakeItem(f"page {p} body", p), 0
+
+
+class _BatchDropConverter:
+    """Drops pages 2-3 on a wide batch, succeeds when asked for one page.
+
+    This is the real bad_alloc shape: memory pressure from the batch, not a
+    property of the pages. Verified against DIN EN ISO 13919-1 -- pages 19
+    and 20 fail inside the 20-page range and convert cleanly alone.
+    """
+
+    def __init__(self, *a, **k):
+        self.calls = []
+
+    def convert(self, source, raises_on_error=True, page_range=None):
+        self.calls.append(page_range)
+        lo, hi = page_range
+        pages = (1,) if (hi - lo) > 0 else (lo,)
+        return type("R", (), {"document": _FakeDoc(pages)})()
 
 
 class TestRepairIsWiredIntoTheConverter:
     """Guards the call site: deleting the repair hook must fail a test.
 
-    The 10 unit tests above all pass against an unwired _repair_dropped_pages,
+    The unit tests above all pass against an unwired _repair_dropped_pages,
     so without this the regression could silently return.
     """
 
-    def test_silently_dropped_pages_are_repaired_end_to_end(self, monkeypatch, tmp_path):
+    def _run(self, monkeypatch, tmp_path, converter_cls, legacy):
         pdf = tmp_path / "doc.pdf"
         pdf.write_bytes(b"%PDF-1.4 fake")
-
         monkeypatch.setattr(dpdf, "_page_ranges", lambda source, size: [(1, 3)])
-
-        class _FakeConverter:
-            def __init__(self, *a, **k):
-                pass
-
-            def convert(self, source, raises_on_error=True, page_range=None):
-                # Succeeds while returning only page 1 -- exactly the bad_alloc shape.
-                return type("R", (), {"document": _FakeDoc()})()
-
         monkeypatch.setattr(
-            "docling.document_converter.DocumentConverter", _FakeConverter
+            "docling.document_converter.DocumentConverter", converter_cls
+        )
+        monkeypatch.setattr("rag_gt.ingestion.pdf.extract_pdf_with_layout", legacy)
+        return dpdf.extract_pdf_docling_with_layout(
+            str(pdf), "d", do_table_structure=True,
+            min_text_chars=0, min_text_file_ratio=0.0,
         )
 
-        def fake_legacy(path, doc_id, source_sha1="", page_range=None):
+    def test_dropped_pages_are_recovered_by_the_narrow_docling_retry(
+        self, monkeypatch, tmp_path
+    ):
+        def legacy(path, doc_id, source_sha1="", page_range=None):
+            raise AssertionError("PyMuPDF must not run when the retry succeeds")
+
+        text, units = self._run(monkeypatch, tmp_path, _BatchDropConverter, legacy)
+
+        assert sorted({u.page_no for u in units}) == [1, 2, 3]
+        assert all(u.extractor == "docling" for u in units), (
+            "narrow retry keeps Docling structure; PyMuPDF would flatten it"
+        )
+        for u in units:
+            assert text[u.char_start:u.char_end] == u.text
+
+    def test_pymupdf_still_covers_pages_the_retry_cannot_recover(
+        self, monkeypatch, tmp_path
+    ):
+        class _AlwaysDrops(_BatchDropConverter):
+            def convert(self, source, raises_on_error=True, page_range=None):
+                self.calls.append(page_range)
+                return type("R", (), {"document": _FakeDoc((1,))})()
+
+        def legacy(path, doc_id, source_sha1="", page_range=None):
             p = page_range[0]
             return f"recovered page {p}", [
                 SourceUnit(
@@ -228,16 +268,97 @@ class TestRepairIsWiredIntoTheConverter:
                 )
             ]
 
-        monkeypatch.setattr("rag_gt.ingestion.pdf.extract_pdf_with_layout", fake_legacy)
-
-        text, units = dpdf.extract_pdf_docling_with_layout(
-            str(pdf), "d", do_table_structure=True,
-            min_text_chars=0, min_text_file_ratio=0.0,
-        )
+        text, units = self._run(monkeypatch, tmp_path, _AlwaysDrops, legacy)
 
         assert sorted({u.page_no for u in units}) == [1, 2, 3], (
-            "pages 2-3 were silently dropped by the converter and must be repaired"
+            "pages the retry cannot recover must still be filled by PyMuPDF"
         )
         assert "recovered page 2" in text and "recovered page 3" in text
         for u in units:
             assert text[u.char_start:u.char_end] == u.text
+
+
+class TestDoclingRetryBeforePyMuPDFFallback:
+    """Dropped pages are retried with Docling in a narrow range first.
+
+    The std::bad_alloc that drops pages is memory pressure from the 20-page
+    batch, not a property of the pages themselves: pages 19 and 20 of DIN EN
+    ISO 13919-1 convert cleanly on their own (verified 2026-08-01, each
+    yielding a TableItem). Falling straight back to PyMuPDF therefore threw
+    away recoverable table structure -- exactly the structure the
+    docling_table backend exists to get. Retry narrow first, PyMuPDF only if
+    that also fails.
+    """
+
+    def test_successful_docling_retry_is_preferred_over_pymupdf(self, monkeypatch):
+        page_units = [_u("p1", 1)]
+        pymupdf_calls = []
+
+        def fake_legacy(path, doc_id, source_sha1="", page_range=None):
+            pymupdf_calls.append(page_range)
+            return "flat", [_u("flat", page_range[0], extractor="pymupdf")]
+
+        monkeypatch.setattr("rag_gt.ingestion.pdf.extract_pdf_with_layout", fake_legacy)
+
+        def retry(page_no):
+            return [_u(f"| table row p{page_no} |", page_no, extractor="docling")]
+
+        text, units = _repair_dropped_pages(
+            "p1", page_units,
+            source=Path("doc.pdf"), doc_id="d", source_sha1="",
+            page_range=(1, 2), cursor=0, docling_retry=retry,
+        )
+
+        assert pymupdf_calls == [], "PyMuPDF must not run when Docling retry succeeds"
+        assert [u.extractor for u in units] == ["docling", "docling"]
+        assert "| table row p2 |" in text, "table structure must survive the retry"
+
+    def test_falls_back_to_pymupdf_when_the_retry_also_yields_nothing(self, monkeypatch):
+        page_units = [_u("p1", 1)]
+        calls = []
+
+        def fake_legacy(path, doc_id, source_sha1="", page_range=None):
+            calls.append(page_range[0])
+            return "flat", [_u("flat", page_range[0], extractor="pymupdf")]
+
+        monkeypatch.setattr("rag_gt.ingestion.pdf.extract_pdf_with_layout", fake_legacy)
+
+        text, units = _repair_dropped_pages(
+            "p1", page_units,
+            source=Path("doc.pdf"), doc_id="d", source_sha1="",
+            page_range=(1, 2), cursor=0, docling_retry=lambda p: [],
+        )
+        assert calls == [2]
+        assert [u.extractor for u in units] == ["docling", "pymupdf"]
+
+    def test_a_raising_retry_falls_back_instead_of_propagating(self, monkeypatch):
+        monkeypatch.setattr(
+            "rag_gt.ingestion.pdf.extract_pdf_with_layout",
+            lambda path, doc_id, source_sha1="", page_range=None: (
+                "flat", [_u("flat", page_range[0], extractor="pymupdf")]
+            ),
+        )
+
+        def boom(page_no):
+            raise MemoryError("std::bad_alloc again")
+
+        text, units = _repair_dropped_pages(
+            "p1", [_u("p1", 1)],
+            source=Path("doc.pdf"), doc_id="d", source_sha1="",
+            page_range=(1, 2), cursor=0, docling_retry=boom,
+        )
+        assert [u.extractor for u in units] == ["docling", "pymupdf"]
+
+    def test_no_retry_supplied_keeps_the_original_pymupdf_behaviour(self, monkeypatch):
+        monkeypatch.setattr(
+            "rag_gt.ingestion.pdf.extract_pdf_with_layout",
+            lambda path, doc_id, source_sha1="", page_range=None: (
+                "flat", [_u("flat", page_range[0], extractor="pymupdf")]
+            ),
+        )
+        _, units = _repair_dropped_pages(
+            "p1", [_u("p1", 1)],
+            source=Path("doc.pdf"), doc_id="d", source_sha1="",
+            page_range=(1, 2), cursor=0,
+        )
+        assert [u.extractor for u in units] == ["docling", "pymupdf"]

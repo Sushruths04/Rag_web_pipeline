@@ -163,6 +163,24 @@ def extract_pdf_docling_with_layout(
                 source_sha1=source_sha1,
                 cursor=cursor,
             )
+            def _retry_one_page(page_no: int) -> List[SourceUnit]:
+                """Re-convert a single dropped page on its own.
+
+                The batch-level bad_alloc does not recur at this size, so this
+                usually returns the page's real (table-bearing) items.
+                """
+                rr = converter.convert(
+                    source, raises_on_error=True, page_range=(page_no, page_no)
+                )
+                _, u = _docling_units_to_text(
+                    document=rr.document,
+                    doc_id=doc_id,
+                    source_path=str(source),
+                    source_sha1=source_sha1,
+                    cursor=0,
+                )
+                return u
+
             # convert() can succeed while silently dropping pages; repair them.
             page_text, page_units = _repair_dropped_pages(
                 page_text,
@@ -172,6 +190,7 @@ def extract_pdf_docling_with_layout(
                 source_sha1=source_sha1,
                 page_range=page_range,
                 cursor=cursor,
+                docling_retry=_retry_one_page,
             )
             if page_text:
                 if parts:
@@ -285,6 +304,7 @@ def _repair_dropped_pages(
     source_sha1: str,
     page_range: Tuple[int, int],
     cursor: int,
+    docling_retry=None,
 ) -> tuple[str, List[SourceUnit]]:
     """Fill in pages Docling dropped without raising.
 
@@ -295,9 +315,14 @@ def _repair_dropped_pages(
     non-deterministically 17-20) where the dropped pages held the imperfection
     classification tables -- i.e. the document's entire technical substance.
 
-    Any page in the range that produced no unit is re-extracted with the
-    PyMuPDF layout path and spliced back in page order. Genuinely blank pages
-    yield nothing and are therefore self-correcting.
+    Any page in the range that produced no unit is recovered and spliced back
+    in page order. Recovery is tried Docling-first: the bad_alloc is memory
+    pressure from the whole batch, not a property of the pages -- pages 19 and
+    20 of that document convert cleanly on their own, each yielding a
+    TableItem. Retrying them narrowly therefore keeps the table structure the
+    docling_table backend exists to produce; only if that also comes back
+    empty do we settle for PyMuPDF's flat text. Genuinely blank pages yield
+    nothing either way and are self-correcting.
     """
     start, end = page_range
     covered = {u.page_no for u in page_units if u.page_no is not None}
@@ -308,7 +333,28 @@ def _repair_dropped_pages(
     from rag_gt.ingestion.pdf import extract_pdf_with_layout
 
     recovered: List[SourceUnit] = []
+    via_docling: List[int] = []
+    via_pymupdf: List[int] = []
     for p in missing:
+        if docling_retry is not None:
+            try:
+                retried = docling_retry(p) or []
+            except Exception as e:  # noqa: BLE001
+                logger.warning(
+                    f"[Docling] narrow retry of page {p} failed: "
+                    f"{type(e).__name__}: {e}; falling back to PyMuPDF"
+                )
+                retried = []
+            # Only accept units the retry actually attributed to this page: a
+            # converter that ignores page_range would otherwise splice another
+            # page's content in under page p's identity.
+            retried = [u for u in retried if u.page_no in (p, None)]
+            for u in retried:
+                u.page_no = p
+            if retried:
+                recovered.extend(retried)
+                via_docling.append(p)
+                continue
         try:
             _, u = extract_pdf_with_layout(
                 str(source), doc_id=doc_id, source_sha1=source_sha1, page_range=(p, p)
@@ -316,14 +362,22 @@ def _repair_dropped_pages(
         except Exception as e:  # noqa: BLE001
             logger.warning(f"[Docling] page {p} repair failed: {type(e).__name__}: {e}")
             continue
-        recovered.extend(u)
+        if u:
+            recovered.extend(u)
+            via_pymupdf.append(p)
 
     if not recovered:
         return page_text, page_units
 
+    how = []
+    if via_docling:
+        how.append(f"{via_docling} via narrow Docling retry (structure kept)")
+    if via_pymupdf:
+        how.append(f"{via_pymupdf} via PyMuPDF (flat text)")
     logger.warning(
         f"[Docling] {source.name}: pages {missing} produced no units "
-        f"(silent Docling drop); recovered {len(recovered)} unit(s) via PyMuPDF"
+        f"(silent Docling drop); recovered {len(recovered)} unit(s): "
+        + "; ".join(how)
     )
     merged = page_units + recovered
     keys = _effective_pages(page_units) + [
