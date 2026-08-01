@@ -130,6 +130,42 @@ class APILLM:
             "Content-Type": "application/json",
         }
         self._session = requests.Session()
+        # Provider-reported token usage. `last_usage` is the most recent call's
+        # {prompt_tokens, completion_tokens, total_tokens} or None when the
+        # endpoint omitted the block; the totals accumulate over the client's
+        # lifetime. Callers should prefer these over any local estimate.
+        self.last_usage: Optional[dict] = None
+        self.usage_totals: dict = {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "calls_with_usage": 0,
+            "calls_without_usage": 0,
+        }
+
+    def _record_usage(self, usage: object) -> None:
+        """Store the provider's token counts for the call just completed."""
+        if not isinstance(usage, dict):
+            self.last_usage = None
+            self.usage_totals["calls_without_usage"] += 1
+            return
+        try:
+            prompt = int(usage.get("prompt_tokens") or 0)
+            completion = int(usage.get("completion_tokens") or 0)
+        except (TypeError, ValueError):
+            self.last_usage = None
+            self.usage_totals["calls_without_usage"] += 1
+            return
+        total = int(usage.get("total_tokens") or (prompt + completion))
+        self.last_usage = {
+            "prompt_tokens": prompt,
+            "completion_tokens": completion,
+            "total_tokens": total,
+        }
+        self.usage_totals["prompt_tokens"] += prompt
+        self.usage_totals["completion_tokens"] += completion
+        self.usage_totals["total_tokens"] += total
+        self.usage_totals["calls_with_usage"] += 1
         logger.info(f"[APILLM] model={self.model} @ {self.base_url}")
 
     def __repr__(self) -> str:
@@ -224,6 +260,13 @@ class APILLM:
                 if attempt < max_attempts - 1:
                     _backoff_sleep(attempt, cap=self.retry_sleep_cap_seconds)
                 continue
+
+            # Record the provider's OWN token counts before returning. They are
+            # in every OpenAI-compatible response and were previously discarded,
+            # which forced callers to guess with len(text)//4. The provider's
+            # tokenizer is authoritative; a character heuristic is badly wrong on
+            # ISO text, which is dense with numbers, units and identifiers.
+            self._record_usage(result.get("usage"))
 
             message = result["choices"][0].get("message", {})
             content = message.get("content") or message.get("reasoning_content") or ""

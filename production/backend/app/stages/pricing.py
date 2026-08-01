@@ -62,12 +62,18 @@ DEFAULT_MAX_TOKENS_TOTAL = 5_000_000
 class ResolvedPricing:
     price_in_per_mtok: float
     price_out_per_mtok: float
-    source: str            # "explicit" | "provider" | "unknown"
+    source: str            # "off" | "explicit" | "provider" | "unknown"
     provider: Optional[str] = None
 
     @property
     def is_known(self) -> bool:
-        return self.source != "unknown"
+        """True only when a dollar figure can honestly be reported.
+
+        "off"     -- estimation was not requested (the default)
+        "unknown" -- requested, but the endpoint is not in the price table
+        Both render as "not tracked", never as $0.00.
+        """
+        return self.source in {"explicit", "provider"}
 
 
 def _host(base_url: str) -> str:
@@ -96,13 +102,39 @@ def lookup_provider_prices(
     return None
 
 
+def cost_tracking_enabled(config: dict) -> bool:
+    """Whether the operator opted into a dollar estimate for this run.
+
+    OFF by default. See docs/COST_TRACKING_IS_OPTIONAL.md: the provider meters
+    spend authoritatively, so a local estimate is a convenience, not a feature
+    the run should depend on. Supplying a price is itself an opt-in.
+    """
+    mode = str(config.get("cost_tracking", "")).strip().lower()
+    if mode in {"off", "none", "false", "0"}:
+        return False
+    if mode in {"estimate", "on", "true", "1"}:
+        return True
+    return (
+        config.get("price_in_per_mtok") is not None
+        or config.get("price_out_per_mtok") is not None
+    )
+
+
 def resolve_pricing(
     config: dict,
     *,
     base_url: str = "",
     model: str = "",
 ) -> ResolvedPricing:
-    """Resolve per-token pricing without ever blocking the run."""
+    """Resolve per-token pricing. Never blocks the run.
+
+    Returns source="off" when cost estimation was not requested -- the default.
+    In that case the run is bounded by tokens instead, and cost renders as
+    "not tracked" rather than "$0.00".
+    """
+    if not cost_tracking_enabled(config):
+        return ResolvedPricing(0.0, 0.0, "off")
+
     price_in = config.get("price_in_per_mtok")
     price_out = config.get("price_out_per_mtok")
     if price_in is not None and price_out is not None:

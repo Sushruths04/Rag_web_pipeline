@@ -270,45 +270,74 @@ class BudgetExceeded(RuntimeError):
     pass
 
 
+def _report_budget(ctx: StageContext, budget: "CostBudget") -> None:
+    """Emit run-consumption metrics.
+
+    Tokens are always reported because they are always real. A dollar figure is
+    reported ONLY when the operator opted into estimation -- emitting
+    llm_cost_usd=0.0 for an untracked run is exactly the "looks free" failure
+    this codebase already went out of its way to avoid. See
+    docs/COST_TRACKING_IS_OPTIONAL.md.
+    """
+    ctx.metric("llm_tokens", budget.tokens)
+    if budget.tokens_are_estimated:
+        # The endpoint did not return a usage block for at least one call.
+        ctx.metric("llm_tokens_estimated", 1)
+    if budget.pricing_known:
+        ctx.metric("llm_cost_usd_estimate", round(budget.spent, 6))
+
+
 class CostBudget:
     """Shared across all TracedLLM instances of a run; aborts at the cap.
 
-    Enforces a DOLLAR cap when per-token pricing is known and a TOKEN cap when
-    it is not. Without the token fallback an unpriced run would add 0.0 per
-    call and never trip any cap -- the same silent-free-run failure the
-    original pricing guard existed to prevent.
+    TOKENS are the primary bound. They are what the provider actually reports,
+    they need no price table, and they cannot go stale. A dollar cap is applied
+    only when the operator opted into cost estimation by supplying prices.
+
+    See docs/COST_TRACKING_IS_OPTIONAL.md for why the dollar cap was demoted:
+    the provider meters spend authoritatively, our token counts used to be a
+    len(text)//4 guess, and a hardcoded price table drifts silently. A stopping
+    condition does not need prices.
+
+    The name is kept for import compatibility; it is really a run budget.
     """
 
     def __init__(
         self,
-        max_cost_usd: float,
+        max_cost_usd: float = 0.0,
         *,
         max_tokens_total: int | None = None,
-        pricing_known: bool = True,
+        pricing_known: bool = False,
     ) -> None:
-        self.max_cost_usd = float(max_cost_usd)
+        self.max_cost_usd = float(max_cost_usd or 0.0)
         self.max_tokens_total = int(max_tokens_total or 0)
+        # True only when the operator supplied/resolved prices, i.e. opted into
+        # a dollar estimate. False means "cost not tracked" -- never "$0.00".
         self.pricing_known = pricing_known
         self.spent = 0.0
         self.tokens = 0
+        self.tokens_are_estimated = False
 
-    def add(self, cost: float, tokens: int = 0) -> None:
+    @property
+    def cost_usd(self) -> float | None:
+        """Estimated spend, or None when cost tracking is off."""
+        return self.spent if self.pricing_known else None
+
+    def add(self, cost: float, tokens: int = 0, *, estimated: bool = False) -> None:
         self.spent += cost
         self.tokens += int(tokens)
-        if self.pricing_known and self.max_cost_usd > 0 and self.spent > self.max_cost_usd:
-            raise BudgetExceeded(
-                f"LLM budget exceeded: ${self.spent:.4f} > ${self.max_cost_usd:.4f} cap"
-            )
-        if (
-            not self.pricing_known
-            and self.max_tokens_total > 0
-            and self.tokens > self.max_tokens_total
-        ):
+        if estimated:
+            self.tokens_are_estimated = True
+        if self.max_tokens_total > 0 and self.tokens > self.max_tokens_total:
             raise BudgetExceeded(
                 f"LLM token budget exceeded: {self.tokens:,} > "
-                f"{self.max_tokens_total:,} tokens. Per-token pricing for this "
-                "endpoint is unknown, so the dollar cap cannot be enforced — set "
-                "price_in_per_mtok / price_out_per_mtok to use a dollar cap."
+                f"{self.max_tokens_total:,} tokens."
+            )
+        if self.pricing_known and self.max_cost_usd > 0 and self.spent > self.max_cost_usd:
+            raise BudgetExceeded(
+                f"estimated LLM spend exceeded: ${self.spent:.4f} > "
+                f"${self.max_cost_usd:.4f} cap (estimate — your provider's "
+                "dashboard holds the billed figure)"
             )
 
 
@@ -358,22 +387,33 @@ class TracedLLM:
             "llm", f"{self._role}.generate", input={"prompt": prompt[:_PAYLOAD_CAP]}
         ) as sp:
             out = self._inner.generate(prompt, temperature=temperature, max_tokens=max_tokens)
-            tok_in = len(prompt) // 4  # char-estimate, same convention as cost_tracker
-            tok_out = len(out) // 4
+            # Prefer the provider's own token counts. APILLM now records the
+            # `usage` block every OpenAI-compatible endpoint returns; only fall
+            # back to the character heuristic when an endpoint omits it.
+            usage = getattr(self._inner, "last_usage", None)
+            if isinstance(usage, dict) and usage.get("total_tokens"):
+                tok_in = int(usage.get("prompt_tokens") or 0)
+                tok_out = int(usage.get("completion_tokens") or 0)
+                estimated = False
+            else:
+                tok_in = len(prompt) // 4
+                tok_out = len(out) // 4
+                estimated = True
             cost = tok_in / 1e6 * self._price_in + tok_out / 1e6 * self._price_out
             sp.output = {"text": out[:_PAYLOAD_CAP]}
             sp.tokens_in = tok_in
             sp.tokens_out = tok_out
-            # None, not 0.0, when pricing is unknown: a run whose cost was never
-            # established must not render as a free one.
+            # None, not 0.0, when cost tracking is off: a run whose cost was
+            # never established must not render as a free one.
             sp.cost_usd = cost if self._pricing_known else None
             sp.extra = {
                 "temperature": temperature,
                 "max_tokens": max_tokens,
+                "cost_tracking": "estimate" if self._pricing_known else "off",
                 "pricing_source": self._pricing_source,
-                "price_unknown": not self._pricing_known,
+                "tokens_estimated": estimated,
             }
-            self._budget.add(cost, tok_in + tok_out)
+            self._budget.add(cost, tok_in + tok_out, estimated=estimated)
         return out
 
 
@@ -390,7 +430,9 @@ def _traced_llm(ctx: StageContext, role: str, budget: CostBudget | None = None):
             model=os.getenv("RAG_LLM_CHAT_MODEL", ""),
         )
         budget = CostBudget(
-            float(ctx.config.get("max_cost_usd", 5.0)),
+            # 0.0 disables the dollar cap; it only applies when the operator
+            # opted into cost estimation. Tokens are the primary bound.
+            float(ctx.config.get("max_cost_usd") or 0.0),
             max_tokens_total=int(
                 ctx.config.get("max_tokens_total") or DEFAULT_MAX_TOKENS_TOTAL
             ),
@@ -447,7 +489,7 @@ def graph_stage(ctx: StageContext) -> None:
         ctx.log("info", f"{doc_id}: {sfg.edge_count} edges from {sfg.classified_pairs} classified pairs")
         ctx.progress(i, len(profiles), doc_id)
     ctx.metric("edges", total_edges)
-    ctx.metric("llm_cost_usd", round(budget.spent, 6))
+    _report_budget(ctx, budget)
 
 
 def sample_stage(ctx: StageContext) -> None:
@@ -574,7 +616,7 @@ def qagen_stage(ctx: StageContext) -> None:
     state["qgen_obs"] = obs_by_doc
     _save_state(ctx, state)
     ctx.metric("pairs_generated", total)
-    ctx.metric("llm_cost_usd", round(budget.spent, 6))
+    _report_budget(ctx, budget)
 
 
 def verify_stage(ctx: StageContext) -> None:

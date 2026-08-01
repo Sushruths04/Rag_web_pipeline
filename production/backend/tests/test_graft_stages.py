@@ -111,7 +111,7 @@ def test_traced_llm_spans_and_budget(tmp_path):
         {"price_in_per_mtok": 0.5, "price_out_per_mtok": 0.5},
         messages.append, threading.Event(),
     )
-    budget = CostBudget(max_cost_usd=0.0005)
+    budget = CostBudget(max_cost_usd=0.0005, pricing_known=True)
     llm = TracedLLM(FakeLLM(), ctx, "gt", budget)
 
     out = llm.generate("what is X? " * 50)  # ~550 chars prompt
@@ -191,12 +191,35 @@ def test_unpriced_run_is_still_bounded_by_a_token_cap(tmp_path, monkeypatch):
             llm.generate("more " * 200)
 
 
-def test_known_provider_prices_resolve_without_user_input():
-    """The point of the change: no typing prices the user cannot know."""
+def test_cost_tracking_is_off_by_default():
+    """The provider meters spend; a local estimate is opt-in, not the default.
+
+    See docs/COST_TRACKING_IS_OPTIONAL.md.
+    """
+    from app.stages.pricing import cost_tracking_enabled, resolve_pricing
+
+    assert cost_tracking_enabled({}) is False
+    p = resolve_pricing(
+        {},
+        base_url="https://api.tokenfactory.nebius.com/v1",
+        model="Qwen/Qwen3-235B-A22B-Instruct-2507",
+    )
+    assert p.source == "off"
+    assert p.is_known is False, "an untracked run must not report a dollar figure"
+
+
+def test_supplying_a_price_is_itself_an_opt_in():
+    from app.stages.pricing import cost_tracking_enabled
+
+    assert cost_tracking_enabled({"price_in_per_mtok": 0.2}) is True
+
+
+def test_opted_in_run_resolves_provider_prices_without_user_input():
+    """Once opted in, the user still should not have to type rates."""
     from app.stages.pricing import resolve_pricing
 
     p = resolve_pricing(
-        {},
+        {"cost_tracking": "estimate"},
         base_url="https://api.tokenfactory.nebius.com/v1",
         model="Qwen/Qwen3-235B-A22B-Instruct-2507",
     )
@@ -217,22 +240,108 @@ def test_explicit_prices_override_the_provider_table():
     assert (p.price_in_per_mtok, p.price_out_per_mtok) == (1.23, 4.56)
 
 
-def test_unknown_provider_is_reported_as_unknown_not_free():
+def test_unknown_provider_when_opted_in_is_unknown_not_free():
     from app.stages.pricing import resolve_pricing
 
-    p = resolve_pricing({}, base_url="https://mystery.example.org/v1", model="x")
+    p = resolve_pricing(
+        {"cost_tracking": "estimate"},
+        base_url="https://mystery.example.org/v1",
+        model="x",
+    )
     assert p.source == "unknown"
     assert p.is_known is False
 
 
-def test_self_hosted_zero_price_is_known_not_unknown():
+def test_self_hosted_zero_price_is_known_when_opted_in():
     """0.0 for an unmetered institutional endpoint is a fact, not a gap."""
     from app.stages.pricing import resolve_pricing
 
-    p = resolve_pricing({}, base_url="https://llm.hpc.itc.rwth-aachen.de/v1", model="x")
+    p = resolve_pricing(
+        {"cost_tracking": "estimate"},
+        base_url="https://llm.hpc.itc.rwth-aachen.de/v1",
+        model="x",
+    )
     assert p.source == "provider"
     assert p.is_known is True
     assert (p.price_in_per_mtok, p.price_out_per_mtok) == (0.0, 0.0)
+
+
+def test_real_provider_usage_is_preferred_over_the_char_estimate(tmp_path):
+    """APILLM now records the API's own token counts; TracedLLM must use them."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, TracedLLM
+
+    class UsageLLM:
+        """Stands in for APILLM after it records a real usage block."""
+        last_usage = {"prompt_tokens": 1234, "completion_tokens": 77,
+                      "total_tokens": 1311}
+
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "x"  # 1 char -> char-estimate would give 0 output tokens
+
+    messages = []
+    ctx = StageContext(
+        "r1", "qagen", tmp_path, {}, messages.append, threading.Event(),
+    )
+    budget = CostBudget()
+    TracedLLM(UsageLLM(), ctx, "gt", budget).generate("hi")  # 2 chars
+
+    sp = [m["span"] for m in messages if m["kind"] == "span"][0]
+    assert sp["tokens_in"] == 1234, "provider's prompt_tokens must win"
+    assert sp["tokens_out"] == 77
+    assert budget.tokens == 1311
+    assert budget.tokens_are_estimated is False
+
+
+def test_char_estimate_is_used_only_when_the_endpoint_omits_usage(tmp_path):
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, TracedLLM
+
+    class NoUsageLLM:
+        last_usage = None
+
+        def generate(self, prompt, temperature=0.0, max_tokens=512):
+            return "answer " * 100
+
+    messages = []
+    ctx = StageContext(
+        "r1", "qagen", tmp_path, {}, messages.append, threading.Event(),
+    )
+    budget = CostBudget()
+    TracedLLM(NoUsageLLM(), ctx, "gt", budget).generate("what is X? " * 50)
+
+    assert budget.tokens > 0
+    assert budget.tokens_are_estimated is True, "fallback must be flagged"
+
+
+def test_untracked_run_reports_no_dollar_metric(tmp_path):
+    """An untracked run must not emit llm_cost_usd=0.0."""
+    import threading
+
+    from app.orchestrator.context import StageContext
+    from app.stages.graft import CostBudget, _report_budget
+
+    messages = []
+    ctx = StageContext(
+        "r1", "qagen", tmp_path, {}, messages.append, threading.Event(),
+    )
+    budget = CostBudget()
+    budget.add(0.0, 500)
+    _report_budget(ctx, budget)
+
+    names = {
+        m["event"]["payload"]["name"]
+        for m in messages
+        if m["kind"] == "event" and m["event"]["type"] == "stage_metric"
+    }
+    assert "llm_tokens" in names
+    assert not any("cost" in n for n in names), (
+        "a run with cost tracking off must report no dollar figure at all"
+    )
 
 
 def test_traced_llm_live_mode_accepts_explicit_zero_price(tmp_path):

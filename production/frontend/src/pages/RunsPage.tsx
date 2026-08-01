@@ -14,9 +14,11 @@ export default function RunsPage() {
   const [sleepScale, setSleepScale] = useState('0.05')
   const [llmMode, setLlmMode] = useState<'import' | 'live'>('import')
   const [maxCost, setMaxCost] = useState('5.0')
+  const [maxTokens, setMaxTokens] = useState('5000000')
   const [maxPairs, setMaxPairs] = useState('400')
   const [questionsPerDoc, setQuestionsPerDoc] = useState('')
   const [apiKey, setApiKey] = useState('')
+  const [trackCost, setTrackCost] = useState(false)
   const [priceIn, setPriceIn] = useState('')
   const [priceOut, setPriceOut] = useState('')
   const [showAdvanced, setShowAdvanced] = useState(false)
@@ -48,7 +50,6 @@ export default function RunsPage() {
       if (pipeline === 'dummy') config.sleep_scale = Number(sleepScale) || 0.05
       if (pipeline === 'graft') {
         config.llm_mode = llmMode
-        config.max_cost_usd = Number(maxCost) || 5.0
         config.max_pairs = Number(maxPairs) || 400
         if (questionsPerDoc.trim() !== '') {
           config.questions_per_doc = Number(questionsPerDoc)
@@ -58,11 +59,17 @@ export default function RunsPage() {
           // (see RunManager.split_secrets) and applied to the worker process
           // only. Leave it blank to use the server's configured key.
           if (apiKey.trim() !== '') config.api_key = apiKey.trim()
-          // Prices are OPTIONAL. When omitted they are resolved from the
-          // provider's base URL; if the provider is unknown the run still
-          // proceeds and reports cost as "unknown" rather than $0.00.
-          if (priceIn.trim() !== '') config.price_in_per_mtok = Number(priceIn)
-          if (priceOut.trim() !== '') config.price_out_per_mtok = Number(priceOut)
+          // Tokens are the primary bound: the provider reports them, they need
+          // no price table and they cannot go stale.
+          config.max_tokens_total = Number(maxTokens) || 5_000_000
+          // Cost estimation is opt-in. The provider's dashboard is the
+          // authority; see docs/COST_TRACKING_IS_OPTIONAL.md.
+          config.cost_tracking = trackCost ? 'estimate' : 'off'
+          if (trackCost) {
+            config.max_cost_usd = Number(maxCost) || 0
+            if (priceIn.trim() !== '') config.price_in_per_mtok = Number(priceIn)
+            if (priceOut.trim() !== '') config.price_out_per_mtok = Number(priceOut)
+          }
         }
       }
       const { run_id } = await startRun(files, config, pipeline)
@@ -126,13 +133,15 @@ export default function RunsPage() {
                       />
                     </label>
                     <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
-                      <span className="dim">max cost $</span>
-                      <input value={maxCost} onChange={(e) => setMaxCost(e.target.value)} style={{ width: 80 }} />
+                      <span className="dim">token limit</span>
+                      <input value={maxTokens} onChange={(e) => setMaxTokens(e.target.value)} style={{ width: 110 }} />
                     </label>
                   </div>
                   <p className="dim" style={{ fontSize: 11, margin: 0 }}>
-                    Best effort — ask for 100 and a document that can only support 20 will
-                    produce 20, and say so. Leave blank to take everything each document supports.
+                    Questions are best effort — ask for 100 and a document that can only
+                    support 20 will produce 20, and say so. Leave blank to take everything
+                    each document supports. The token limit stops the run; your provider
+                    meters what it actually costs.
                   </p>
 
                   <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
@@ -161,26 +170,41 @@ export default function RunsPage() {
                   </button>
                   {showAdvanced && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                        <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
-                          <span className="dim">max pairs</span>
-                          <input value={maxPairs} onChange={(e) => setMaxPairs(e.target.value)} style={{ width: 80 }} />
-                        </label>
-                        <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
-                          <span className="dim">$ / 1M input tok</span>
-                          <input value={priceIn} onChange={(e) => setPriceIn(e.target.value)} placeholder="auto" style={{ width: 90 }} />
-                        </label>
-                        <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
-                          <span className="dim">$ / 1M output tok</span>
-                          <input value={priceOut} onChange={(e) => setPriceOut(e.target.value)} placeholder="auto" style={{ width: 90 }} />
-                        </label>
-                      </div>
+                      <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
+                        <span className="dim">max pairs</span>
+                        <input value={maxPairs} onChange={(e) => setMaxPairs(e.target.value)} style={{ width: 80 }} />
+                      </label>
+
+                      <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontSize: 12 }}>
+                        <input
+                          type="checkbox"
+                          checked={trackCost}
+                          onChange={(e) => setTrackCost(e.target.checked)}
+                        />
+                        <span>Also estimate cost in dollars (optional)</span>
+                      </label>
                       <p className="dim" style={{ fontSize: 11, margin: 0 }}>
-                        Prices are detected from your endpoint. Override them only if your
-                        rate differs. If the endpoint is unrecognised the run still starts,
-                        but cost is reported as <span className="mono">unknown</span> rather
-                        than $0.00, and a token ceiling replaces the dollar cap.
+                        Off by default. Your provider meters spend and its dashboard is the
+                        authority — anything shown here is an estimate from token counts and
+                        a rate table that can go out of date. The run is bounded by the token
+                        limit either way.
                       </p>
+                      {trackCost && (
+                        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                          <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
+                            <span className="dim">stop at $ (estimate)</span>
+                            <input value={maxCost} onChange={(e) => setMaxCost(e.target.value)} style={{ width: 90 }} />
+                          </label>
+                          <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
+                            <span className="dim">$ / 1M input tok</span>
+                            <input value={priceIn} onChange={(e) => setPriceIn(e.target.value)} placeholder="auto" style={{ width: 90 }} />
+                          </label>
+                          <label style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 12 }}>
+                            <span className="dim">$ / 1M output tok</span>
+                            <input value={priceOut} onChange={(e) => setPriceOut(e.target.value)} placeholder="auto" style={{ width: 90 }} />
+                          </label>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
