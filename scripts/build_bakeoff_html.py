@@ -133,6 +133,151 @@ def build_summary(payload: dict) -> str:
     </section>"""
 
 
+# Hand-written verdict. The tables above say WHAT each model did; this says
+# whether it is usable for ground-truth generation and why. Every claim here is
+# traceable to a chain id in the grid below.
+VERDICT = [
+    dict(
+        rank="1", grade="Best overall", label="DeepSeek V4 Pro",
+        good=[
+            "Tightest answers in the panel — 14.2 words against 23–28 for everyone "
+            "else. \"To prevent offsetting errors from becoming significant.\" (c09), "
+            "\"When testing a coating cross-section.\" (c10). A short answer that is "
+            "exactly the span asked for is the ideal GT answer.",
+            "Lowest ungrounded rate (1/30). When it answers, the answer is "
+            "defensible against the source.",
+            "Fewest compound questions (2/30) — it asks one thing at a time.",
+        ],
+        bad=[
+            "Abstains most: 5/30 \"Insufficient information to answer\", and several "
+            "are wrong. At c08 it asked \"Under what condition does the latest "
+            "edition of a referenced document apply?\" and then abstained — the fact "
+            "states the answer outright.",
+            "3 empty-generation failures.",
+        ],
+        use="Use it when answer precision matters more than yield. Budget for "
+            "~25% loss and re-run the drops.",
+    ),
+    dict(
+        rank="2", grade="Best questions", label="Gemma 3 27B",
+        good=[
+            "Most varied and most natural questions in the panel — 23.3% \"What\", "
+            "five stems, zero template questions. \"How is the expanded uncertainty "
+            "adjusted when a measurement value is not corrected for bias?\" (c05) is "
+            "the sharpest question any model produced on that fact.",
+            "Zero abstentions and zero errors. Highest gate pass rate (23/30) "
+            "alongside Llama.",
+            "Fastest to a usable answer at 19.7s for all 30.",
+        ],
+        bad=[
+            "Paraphrases answers rather than tracking the source wording: "
+            "\"magnifying devices and reflective surfaces\" for \"magnification "
+            "instruments or mirrors\" (c20); \"diminished hardness readings\" for "
+            "\"lower hardness values\" (c04). 3 ungrounded rejections come from this "
+            "drift.",
+            "Paraphrase is a real hazard for GT: the answer should be checkable "
+            "against the span, and re-wording weakens that.",
+        ],
+        use="Best choice for generating the QUESTIONS. Pair it with a stricter "
+            "model for the answers.",
+    ),
+    dict(
+        rank="3", grade="Solid, with one serious flaw", label="Qwen3 235B-A22B (your current)",
+        good=[
+            "Balanced across every axis — no template questions, moderate answer "
+            "length, reasonable stem spread (38.5% What).",
+            "Fastest wall time in the panel (12.4s).",
+        ],
+        bad=[
+            "HALLUCINATED A DOMAIN at c03: \"Under what condition might traceability "
+            "not be ensured in the welding process...\". The document is ISO 6507, "
+            "Vickers hardness. There is no welding anywhere in it. A fabricated "
+            "domain term in a GT question is worse than a dropped pair, because it "
+            "looks correct.",
+            "Most empty-generation failures of any model (4/30).",
+        ],
+        use="Defensible as the default, but the hallucination means questions need "
+            "a term-grounding check before they ship.",
+    ),
+    dict(
+        rank="4", grade="Good output, unreliable process", label="Kimi K3",
+        good=[
+            "When it works, its answers are the most fluent and complete in the "
+            "panel — c06, c07, c09, c14 and c16 are all excellent.",
+            "Zero hard errors.",
+        ],
+        bad=[
+            "REASONING LEAK. 403.6 completion tokens per call against 19–26 for "
+            "every other model — 16×. Chain-of-thought escapes into the question "
+            "field in 3 of 30: \"why tolerances matter; the answer is traceability. "
+            "So don't mention traceability?\" (c03), a truncated \"What "
+            "designation...?\" (c17), and raw planning text at c00.",
+            "The quality gate does not catch it. c03 and c17 both passed with "
+            "reject_reason=None and is_grounded=True — they would have shipped.",
+            "Highest ungrounded rate (6/30), slowest run (62.6s).",
+        ],
+        use="Do not use for GT until the leak is filtered. Same failure mode "
+            "already recorded for gpt-oss-120b.",
+    ),
+    dict(
+        rank="5", grade="Worst — do not use", label="Llama 3.3 70B",
+        good=[
+            "Zero errors, and it ties Gemma on raw gate pass rate (23/30) — which is "
+            "exactly why the gate alone is not a quality measure.",
+        ],
+        bad=[
+            "COLLAPSED INTO A TEMPLATE. 5 of 30 questions are the same construction: "
+            "\"What property of X and practical consequence of Y...\" (c01, c02, c03, "
+            "c15, c16). This is why it is 70% \"What\" — nearly triple Gemma's rate.",
+            "Most compound questions (8/30). The template bolts two asks together, "
+            "which violates the single-focus rule the prompt sets — and it "
+            "backfires: at c04 its own compound question was unanswerable and "
+            "returned \"Insufficient information\".",
+            "Shallowest questions when it does not use the template: \"What does the "
+            "Xcorr measurement result correct for?\" (c05) is a lookup, next to "
+            "Gemma's question on the same fact.",
+            "Copies the source verbatim into the answer (c20) — near-tautological.",
+        ],
+        use="Avoid. It is the largest model in the panel after the frontier two and "
+            "the weakest generator in it.",
+    ),
+]
+
+
+def build_verdict() -> str:
+    cards = []
+    for v in VERDICT:
+        good = "".join(f"<li>{g}</li>" for g in v["good"])
+        bad = "".join(f"<li>{b}</li>" for b in v["bad"])
+        cards.append(f"""
+        <div class="vcard r{v['rank']}">
+          <div class="vhead">
+            <span class="vrank">{v['rank']}</span>
+            <span class="vname">{esc(v['label'])}</span>
+            <span class="vgrade">{esc(v['grade'])}</span>
+          </div>
+          <div class="vcols">
+            <div><h4 class="vg">Strengths</h4><ul>{good}</ul></div>
+            <div><h4 class="vb">Weaknesses</h4><ul>{bad}</ul></div>
+          </div>
+          <p class="vuse"><strong>Verdict:</strong> {v['use']}</p>
+        </div>""")
+    return f"""
+    <section class="panel">
+      <h2>Which model is best</h2>
+      <p class="note">Ranked on fitness for ground-truth generation, not on general
+      capability. Every claim below cites a chain id you can check in the grid.
+      Thirty chains, one sample each at temperature 0 — differences in kind are
+      real; small differences in degree are not.</p>
+      <div class="callout"><strong>The headline:</strong> bigger is not better here.
+      Gemma 3 27B, the smallest model in the panel, writes the most varied and most
+      natural questions. Llama 3.3 70B, more than twice its size, is the worst —
+      it collapses into a single question template. Scale did not predict quality
+      on this task; instruction-adherence did.</div>
+      {''.join(cards)}
+    </section>"""
+
+
 def build_rows(payload: dict) -> str:
     models = payload["models"]
     results = payload["results"]
@@ -245,6 +390,27 @@ td.mname{font-weight:600}
 .s0,i.s0{background:var(--s0)}.s1,i.s1{background:var(--s1)}
 .s2,i.s2{background:var(--s2)}.s3,i.s3{background:var(--s3)}
 .s4,i.s4{background:var(--s4)}.s5,i.s5{background:var(--s5)}
+.callout{background:color-mix(in srgb,var(--s0) 10%,transparent);
+ border-left:3px solid var(--s0);border-radius:0 8px 8px 0;padding:12px 15px;
+ margin:0 0 20px;font-size:14px}
+.vcard{border:1px solid var(--ring);border-radius:10px;padding:16px;margin-bottom:14px;
+ background:var(--plane)}
+.vcard.r1{border-left:4px solid var(--good)}
+.vcard.r2{border-left:4px solid var(--s2)}
+.vcard.r3{border-left:4px solid var(--s3)}
+.vcard.r4{border-left:4px solid var(--warn)}
+.vcard.r5{border-left:4px solid var(--crit)}
+.vhead{display:flex;align-items:baseline;gap:11px;margin-bottom:11px;flex-wrap:wrap}
+.vrank{font-size:22px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.vname{font-size:16px;font-weight:700}
+.vgrade{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+ color:var(--ink2);background:var(--grid);padding:3px 9px;border-radius:11px}
+.vcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.vcols h4{margin:0 0 5px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em}
+h4.vg{color:var(--good)} h4.vb{color:var(--crit)}
+.vcols ul{margin:0;padding-left:17px}
+.vcols li{font-size:13px;color:var(--ink2);margin-bottom:7px}
+.vuse{margin:13px 0 0;padding-top:11px;border-top:1px solid var(--grid);font-size:13.5px}
 .block{background:var(--surface);border:1px solid var(--ring);border-radius:12px;
  padding:18px;margin-bottom:18px}
 .bhead{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
@@ -307,6 +473,7 @@ def main() -> int:
 generated {esc(payload.get('generated_at', ''))}<br>
 Every model saw the identical evidence. Only question generation and answer
 generation vary.</p>
+{build_verdict()}
 {build_summary(payload)}
 <h2>All {n} questions</h2>
 <p class="note">Each block shows the source facts, then every model's question and
